@@ -1,0 +1,7 @@
+//
+//  ModelBean.swift
+//
+//
+
+import UIKit
+

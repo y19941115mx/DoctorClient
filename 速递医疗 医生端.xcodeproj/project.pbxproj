@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647431FA6A259009B21C4 /* AppDelegate.swift */; };
+		840647461FA6A259009B21C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647451FA6A259009B21C4 /* ViewController.swift */; };
+		840647491FA6A259009B21C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840647471FA6A259009B21C4 /* Main.storyboard */; };
+		8406474E1FA6A259009B21C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8406474C1FA6A259009B21C4 /* LaunchScreen.storyboard */; };
+		8406475D1FA6A49D009B21C4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647581FA6A49D009B21C4 /* CustomButton.swift */; };
+		8406475E1FA6A49D009B21C4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406475A1FA6A49D009B21C4 /* BaseViewController.swift */; };
+		8406475F1FA6A49D009B21C4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406475B1FA6A49D009B21C4 /* MainViewController.swift */; };
+		840647631FA6A4BD009B21C4 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647601FA6A4BD009B21C4 /* Util.swift */; };
+		840647641FA6A4BD009B21C4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647611FA6A4BD009B21C4 /* API.swift */; };
+		840647651FA6A4BD009B21C4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647621FA6A4BD009B21C4 /* Extension.swift */; };
+		84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B11FB2A66B006FBCAF /* ModelBean.swift */; };
+		84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */; };
+		84BB03C01FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B81FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m */; };
+		84BB03C11FB2A8F2006FBCAF /* XLSlideSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03BA1FB2A8F2006FBCAF /* XLSlideSegmented.m */; };
+		84BB03C21FB2A8F2006FBCAF /* XLSlideSegmentedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03BC1FB2A8F2006FBCAF /* XLSlideSegmentedItem.m */; };
+		84BB03C31FB2A8F2006FBCAF /* XLSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03BE1FB2A8F2006FBCAF /* XLSlideSwitch.m */; };
+		84BB03C61FB2A92C006FBCAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BB03C51FB2A92C006FBCAF /* Assets.xcassets */; };
+		84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BB03C71FB2A9C0006FBCAF /* Login.storyboard */; };
+		84BB03CA1FB2A9E3006FBCAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */; };
+		84BB03CC1FB2A9EC006FBCAF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */; };
+		F4DB150E0D1B56834269E74D /* Pods_________.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C30DFDD6552B25E411F9EA08 /* Pods_________.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5B3FC993B61434C363F8356B /* Pods-速递医疗 医生端.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-速递医疗 医生端.debug.xcconfig"; path = "Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端.debug.xcconfig"; sourceTree = "<group>"; };
+		840647401FA6A259009B21C4 /* 速递医疗 医生端.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "速递医疗 医生端.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840647431FA6A259009B21C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		840647451FA6A259009B21C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		840647481FA6A259009B21C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8406474D1FA6A259009B21C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8406474F1FA6A259009B21C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		840647581FA6A49D009B21C4 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		8406475A1FA6A49D009B21C4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8406475B1FA6A49D009B21C4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		840647601FA6A4BD009B21C4 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		840647611FA6A4BD009B21C4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		840647621FA6A4BD009B21C4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		84BB03B11FB2A66B006FBCAF /* ModelBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBean.swift; sourceTree = "<group>"; };
+		84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIBean.swift; sourceTree = "<group>"; };
+		84BB03B71FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSegmentedSlideSwitch.h; sourceTree = "<group>"; };
+		84BB03B81FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSegmentedSlideSwitch.m; sourceTree = "<group>"; };
+		84BB03B91FB2A8F2006FBCAF /* XLSlideSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSegmented.h; sourceTree = "<group>"; };
+		84BB03BA1FB2A8F2006FBCAF /* XLSlideSegmented.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlideSegmented.m; sourceTree = "<group>"; };
+		84BB03BB1FB2A8F2006FBCAF /* XLSlideSegmentedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSegmentedItem.h; sourceTree = "<group>"; };
+		84BB03BC1FB2A8F2006FBCAF /* XLSlideSegmentedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlideSegmentedItem.m; sourceTree = "<group>"; };
+		84BB03BD1FB2A8F2006FBCAF /* XLSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSwitch.h; sourceTree = "<group>"; };
+		84BB03BE1FB2A8F2006FBCAF /* XLSlideSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlideSwitch.m; sourceTree = "<group>"; };
+		84BB03BF1FB2A8F2006FBCAF /* XLSlideSwitchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSwitchDelegate.h; sourceTree = "<group>"; };
+		84BB03C41FB2A912006FBCAF /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		84BB03C51FB2A92C006FBCAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84BB03C71FB2A9C0006FBCAF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C30DFDD6552B25E411F9EA08 /* Pods_________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_________.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA1985612B2760BFE0B76DB1 /* Pods-速递医疗 医生端.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-速递医疗 医生端.release.xcconfig"; path = "Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8406473D1FA6A259009B21C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4DB150E0D1B56834269E74D /* Pods_________.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01E050599CDF6061E1C086E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C30DFDD6552B25E411F9EA08 /* Pods_________.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		29DDEB4A7003005C7877B0F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B3FC993B61434C363F8356B /* Pods-速递医疗 医生端.debug.xcconfig */,
+				FA1985612B2760BFE0B76DB1 /* Pods-速递医疗 医生端.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		840647371FA6A259009B21C4 = {
+			isa = PBXGroup;
+			children = (
+				840647421FA6A259009B21C4 /* 速递医疗 医生端 */,
+				840647411FA6A259009B21C4 /* Products */,
+				29DDEB4A7003005C7877B0F5 /* Pods */,
+				01E050599CDF6061E1C086E7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		840647411FA6A259009B21C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				840647401FA6A259009B21C4 /* 速递医疗 医生端.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		840647421FA6A259009B21C4 /* 速递医疗 医生端 */ = {
+			isa = PBXGroup;
+			children = (
+				84BB03B01FB2A53C006FBCAF /* StoryBoard */,
+				840647551FA6A49D009B21C4 /* Model */,
+				840647571FA6A49D009B21C4 /* View */,
+				840647591FA6A49D009B21C4 /* ViewController */,
+				84BB03B51FB2A8F2006FBCAF /* Libs */,
+				840647621FA6A4BD009B21C4 /* Extension.swift */,
+				840647431FA6A259009B21C4 /* AppDelegate.swift */,
+				840647611FA6A4BD009B21C4 /* API.swift */,
+				840647601FA6A4BD009B21C4 /* Util.swift */,
+				840647451FA6A259009B21C4 /* ViewController.swift */,
+				840647471FA6A259009B21C4 /* Main.storyboard */,
+				84BB03C51FB2A92C006FBCAF /* Assets.xcassets */,
+				84BB03C41FB2A912006FBCAF /* Bridging-Header.h */,
+				8406474C1FA6A259009B21C4 /* LaunchScreen.storyboard */,
+				8406474F1FA6A259009B21C4 /* Info.plist */,
+			);
+			path = "速递医疗 医生端";
+			sourceTree = "<group>";
+		};
+		840647551FA6A49D009B21C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */,
+				84BB03B11FB2A66B006FBCAF /* ModelBean.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		840647571FA6A49D009B21C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				840647581FA6A49D009B21C4 /* CustomButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		840647591FA6A49D009B21C4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */,
+				84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */,
+				8406475A1FA6A49D009B21C4 /* BaseViewController.swift */,
+				8406475B1FA6A49D009B21C4 /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		84BB03B01FB2A53C006FBCAF /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				84BB03C71FB2A9C0006FBCAF /* Login.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		84BB03B51FB2A8F2006FBCAF /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				84BB03B61FB2A8F2006FBCAF /* XLSlideSwitch */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		84BB03B61FB2A8F2006FBCAF /* XLSlideSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				84BB03B71FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.h */,
+				84BB03B81FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m */,
+				84BB03B91FB2A8F2006FBCAF /* XLSlideSegmented.h */,
+				84BB03BA1FB2A8F2006FBCAF /* XLSlideSegmented.m */,
+				84BB03BB1FB2A8F2006FBCAF /* XLSlideSegmentedItem.h */,
+				84BB03BC1FB2A8F2006FBCAF /* XLSlideSegmentedItem.m */,
+				84BB03BD1FB2A8F2006FBCAF /* XLSlideSwitch.h */,
+				84BB03BE1FB2A8F2006FBCAF /* XLSlideSwitch.m */,
+				84BB03BF1FB2A8F2006FBCAF /* XLSlideSwitchDelegate.h */,
+			);
+			path = XLSlideSwitch;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8406473F1FA6A259009B21C4 /* 速递医疗 医生端 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 840647521FA6A259009B21C4 /* Build configuration list for PBXNativeTarget "速递医疗 医生端" */;
+			buildPhases = (
+				1D2BEC1261E9224FE371AD1C /* [CP] Check Pods Manifest.lock */,
+				8406473C1FA6A259009B21C4 /* Sources */,
+				8406473D1FA6A259009B21C4 /* Frameworks */,
+				8406473E1FA6A259009B21C4 /* Resources */,
+				562A00989327B0E460846BB3 /* [CP] Embed Pods Frameworks */,
+				C623A27B3C9A9C731575259A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "速递医疗 医生端";
+			productName = "速递医疗 医生端";
+			productReference = 840647401FA6A259009B21C4 /* 速递医疗 医生端.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		840647381FA6A259009B21C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = victor;
+				TargetAttributes = {
+					8406473F1FA6A259009B21C4 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8406473B1FA6A259009B21C4 /* Build configuration list for PBXProject "速递医疗 医生端" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 840647371FA6A259009B21C4;
+			productRefGroup = 840647411FA6A259009B21C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8406473F1FA6A259009B21C4 /* 速递医疗 医生端 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8406473E1FA6A259009B21C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */,
+				8406474E1FA6A259009B21C4 /* LaunchScreen.storyboard in Resources */,
+				84BB03C61FB2A92C006FBCAF /* Assets.xcassets in Resources */,
+				840647491FA6A259009B21C4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D2BEC1261E9224FE371AD1C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-速递医疗 医生端-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		562A00989327B0E460846BB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHash/SwiftHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C623A27B3C9A9C731575259A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8406473C1FA6A259009B21C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840647651FA6A4BD009B21C4 /* Extension.swift in Sources */,
+				8406475E1FA6A49D009B21C4 /* BaseViewController.swift in Sources */,
+				8406475D1FA6A49D009B21C4 /* CustomButton.swift in Sources */,
+				84BB03CA1FB2A9E3006FBCAF /* LoginViewController.swift in Sources */,
+				84BB03C31FB2A8F2006FBCAF /* XLSlideSwitch.m in Sources */,
+				840647461FA6A259009B21C4 /* ViewController.swift in Sources */,
+				84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */,
+				84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */,
+				84BB03C11FB2A8F2006FBCAF /* XLSlideSegmented.m in Sources */,
+				8406475F1FA6A49D009B21C4 /* MainViewController.swift in Sources */,
+				84BB03C21FB2A8F2006FBCAF /* XLSlideSegmentedItem.m in Sources */,
+				84BB03CC1FB2A9EC006FBCAF /* RegisterViewController.swift in Sources */,
+				84BB03C01FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m in Sources */,
+				840647631FA6A4BD009B21C4 /* Util.swift in Sources */,
+				840647641FA6A4BD009B21C4 /* API.swift in Sources */,
+				840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		840647471FA6A259009B21C4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				840647481FA6A259009B21C4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8406474C1FA6A259009B21C4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8406474D1FA6A259009B21C4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		840647501FA6A259009B21C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		840647511FA6A259009B21C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		840647531FA6A259009B21C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B3FC993B61434C363F8356B /* Pods-速递医疗 医生端.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "速递医疗 医生端/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ymx.--------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/admin/Desktop/ios/速递医疗 医生端/速递医疗 医生端/Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		840647541FA6A259009B21C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA1985612B2760BFE0B76DB1 /* Pods-速递医疗 医生端.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "速递医疗 医生端/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ymx.--------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/admin/Desktop/ios/速递医疗 医生端/速递医疗 医生端/Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8406473B1FA6A259009B21C4 /* Build configuration list for PBXProject "速递医疗 医生端" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840647501FA6A259009B21C4 /* Debug */,
+				840647511FA6A259009B21C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		840647521FA6A259009B21C4 /* Build configuration list for PBXNativeTarget "速递医疗 医生端" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840647531FA6A259009B21C4 /* Debug */,
+				840647541FA6A259009B21C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 840647381FA6A259009B21C4 /* Project object */;
+}
