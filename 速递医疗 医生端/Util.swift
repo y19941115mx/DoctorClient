@@ -189,6 +189,21 @@ class ImageUtil{
         imageView.kf.setImage(with: url)
     }
     
+    class func color2img(color:UIColor) -> UIImage{
+        //  颜色转换为背景图片
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context:CGContext = UIGraphicsGetCurrentContext()!
+        context.setFillColor(color.cgColor);
+        context.fill(rect);
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image!
+        
+    }
+    
     static public func setAvator(path:String, imageView:UIImageView) {
         let url = URL(string: path)
         //        imageView.kf.setImage(with: url)

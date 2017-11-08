@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		298DD5651FB2E0E700BBCE14 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298DD5641FB2E0E700BBCE14 /* Home.storyboard */; };
+		298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DD5661FB2E1D200BBCE14 /* Home_main.swift */; };
+		298DD5691FB2E1F100BBCE14 /* Home_detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DD5681FB2E1F100BBCE14 /* Home_detail.swift */; };
 		840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647431FA6A259009B21C4 /* AppDelegate.swift */; };
 		840647461FA6A259009B21C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647451FA6A259009B21C4 /* ViewController.swift */; };
 		840647491FA6A259009B21C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840647471FA6A259009B21C4 /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		298DD5641FB2E0E700BBCE14 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		298DD5661FB2E1D200BBCE14 /* Home_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_main.swift; sourceTree = "<group>"; };
+		298DD5681FB2E1F100BBCE14 /* Home_detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_detail.swift; sourceTree = "<group>"; };
 		5B3FC993B61434C363F8356B /* Pods-速递医疗 医生端.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-速递医疗 医生端.debug.xcconfig"; path = "Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端.debug.xcconfig"; sourceTree = "<group>"; };
 		840647401FA6A259009B21C4 /* 速递医疗 医生端.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "速递医疗 医生端.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		840647431FA6A259009B21C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +159,8 @@
 		840647591FA6A49D009B21C4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				298DD5661FB2E1D200BBCE14 /* Home_main.swift */,
+				298DD5681FB2E1F100BBCE14 /* Home_detail.swift */,
 				84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */,
 				84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */,
 				8406475A1FA6A49D009B21C4 /* BaseViewController.swift */,
@@ -164,6 +172,7 @@
 		84BB03B01FB2A53C006FBCAF /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				298DD5641FB2E0E700BBCE14 /* Home.storyboard */,
 				84BB03C71FB2A9C0006FBCAF /* Login.storyboard */,
 			);
 			path = StoryBoard;
@@ -256,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */,
+				298DD5651FB2E0E700BBCE14 /* Home.storyboard in Resources */,
 				8406474E1FA6A259009B21C4 /* LaunchScreen.storyboard in Resources */,
 				84BB03C61FB2A92C006FBCAF /* Assets.xcassets in Resources */,
 				840647491FA6A259009B21C4 /* Main.storyboard in Resources */,
@@ -344,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				840647651FA6A4BD009B21C4 /* Extension.swift in Sources */,
+				298DD5691FB2E1F100BBCE14 /* Home_detail.swift in Sources */,
 				8406475E1FA6A49D009B21C4 /* BaseViewController.swift in Sources */,
 				8406475D1FA6A49D009B21C4 /* CustomButton.swift in Sources */,
 				84BB03CA1FB2A9E3006FBCAF /* LoginViewController.swift in Sources */,
@@ -359,6 +370,7 @@
 				840647631FA6A4BD009B21C4 /* Util.swift in Sources */,
 				840647641FA6A4BD009B21C4 /* API.swift in Sources */,
 				840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */,
+				298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,7 +513,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ymx.--------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/admin/Desktop/ios/速递医疗 医生端/速递医疗 医生端/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hongyiting/Desktop/DoctorClient/速递医疗 医生端/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -517,7 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ymx.--------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/admin/Desktop/ios/速递医疗 医生端/速递医疗 医生端/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/hongyiting/Desktop/DoctorClient/速递医疗 医生端/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

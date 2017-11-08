@@ -14,18 +14,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // 界面控制
         let userid =  user_default.userId.getStringValue()
-//         跳转到登录页面
-        let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
-        APPLICATION.window?.rootViewController = vc_login
-        
-//        if (userid == nil)  {
-//            // 跳转到登录页面
-//            let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
-//            APPLICATION.window?.rootViewController = vc_login
-//        }else {
-//            let vc_main = MainViewController()
-//            APPLICATION.window?.rootViewController = vc_main
-//        }
+        if (userid == nil)  {
+            // 跳转到登录页面
+            let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
+            APPLICATION.window?.rootViewController = vc_login
+        }else {
+            let vc_main = MainViewController()
+            APPLICATION.window?.rootViewController = vc_main
+        }
     }
 
     override func didReceiveMemoryWarning() {

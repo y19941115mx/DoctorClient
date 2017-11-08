@@ -7,27 +7,22 @@
 import UIKit
 
 class CustomButton: UIButton {
-    var imageRect:CGRect?
-    var labelRect:CGRect?
+    
     
     init(frame: CGRect, imageFrame:CGRect, labelFrame:CGRect) {
         super.init(frame:frame)
-        imageRect = imageFrame
-        labelRect = labelFrame
-        self.imageView?.contentMode = .scaleAspectFill
-        self.titleLabel?.textAlignment = .center
+        setupButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setupButton()
     }
     
-    override func titleRect(forContentRect contentRect: CGRect) -> CGRect {
-        return labelRect!
+    private func setupButton() {
+        self.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
     }
     
-    override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
-        return imageRect!
-    }
+    
 
 }
