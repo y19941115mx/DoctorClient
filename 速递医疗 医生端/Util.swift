@@ -242,6 +242,21 @@ class StringUTil {
         return strNowTime
     }
     
+    // 美国时间转换为中国 yyyy-MM-dd HH:mm:ss
+    class public func usTime2chinaTime(_ str:String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.medium
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US") as Locale! // zh_CN  en_US
+        var enddata = str
+        enddata.insert(contentsOf: " at ", at: enddata.index(enddata.startIndex, offsetBy: 12))
+        
+        let ndate = dateFormatter.date(from: enddata)
+        let endDateString = ndate?.description
+        let ns2=(endDateString! as NSString).substring(to: 19)
+        return ns2
+    }
+    
     // 获取显示时间（几分钟前，几小时前，几天前）
     class public func getComparedTimeStr(str:String) -> String{
         //把字符串转为NSdate

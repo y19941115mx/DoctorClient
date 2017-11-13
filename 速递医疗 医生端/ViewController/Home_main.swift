@@ -48,6 +48,8 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
             }
         }, getMoreHandler: getMoreData)
         
+        self.header?.beginRefreshing()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -66,7 +68,8 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
         let result = data[indexPath.row]
         titleLabel.text = result.familyname
         sexLabel.text = result.familymale
-        timeLabel.text = StringUTil.getComparedTimeStr(str: result.usersickptime!)
+        let restime = StringUTil.usTime2chinaTime(result.usersickptime!)
+        timeLabel.text = StringUTil.getComparedTimeStr(str: restime)
         descLabel.text = result.usersickdesc
         ImageUtil.setImage(path: result.userloginpix!, imageView: patientImg)
         return cell
@@ -74,9 +77,9 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
     
     // MARK: - private method
     private func initView(){
-        sortByLocBtn.addTarget(self, action: #selector(Home_main.clickBtn(button:)), for: .touchUpInside)
-        sortByTimeBtn.addTarget(self, action: #selector(Home_main.clickBtn(button:)), for: .touchUpInside)
-        sortByPatientBtn.addTarget(self, action: #selector(Home_main.clickBtn(button:)), for: .touchUpInside)
+        sortByLocBtn.addTarget(self, action: #selector(clickBtn(button:)), for: .touchUpInside)
+        sortByTimeBtn.addTarget(self, action: #selector(clickBtn(button:)), for: .touchUpInside)
+        sortByPatientBtn.addTarget(self, action: #selector(clickBtn(button:)), for: .touchUpInside)
     }
     
     private func cleanButton(){
@@ -130,18 +133,18 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
         // 推荐病人
         case 10001:
             cleanButton()
-            sortByPatientBtn.setTitleColor(UIColor.APPColor, for: .normal)
+            sortByPatientBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
         // 时间
         case 10002:
             cleanButton()
-            sortByTimeBtn.setTitleColor(UIColor.APPColor, for: .normal)
+            sortByTimeBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             AlertUtil.popMenu(vc: self, title: "选择性别", msg: "选择性别", btns: ["男","女"], handler: {value in
                 dPrint(message: value)
             })
         // 地点
         case 10003:
             cleanButton()
-            sortByLocBtn.setTitleColor(UIColor.APPColor, for: .normal)
+            sortByLocBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             
         default:
             showToast(self.view, "error")
