@@ -6,7 +6,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
+@IBDesignable class CustomButton: UIButton {
     
     
     init(frame: CGRect, imageFrame:CGRect, labelFrame:CGRect) {

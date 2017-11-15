@@ -25,6 +25,8 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavTitle(title: "首页")
+        // 去除多余列表
+        infoTableView.tableFooterView = UIView()
         //初始化navigationBar,添加按钮事件
         initView()
         // 添加下拉刷新
@@ -68,10 +70,9 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
         let result = data[indexPath.row]
         titleLabel.text = result.familyname
         sexLabel.text = result.familymale
-        let restime = StringUTil.usTime2chinaTime(result.usersickptime!)
-        timeLabel.text = StringUTil.getComparedTimeStr(str: restime)
+        timeLabel.text = StringUTil.getComparedTimeStr(str: result.usersickptime!)
         descLabel.text = result.usersickdesc
-        ImageUtil.setImage(path: result.userloginpix!, imageView: patientImg)
+        ImageUtil.setAvator(path: result.userloginpix!, imageView: patientImg)
         return cell
     }
     

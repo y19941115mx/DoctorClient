@@ -183,11 +183,7 @@ class AlertUtil: NSObject {
 }
 
 class ImageUtil{
-    //设置图片
-    class public func setImage(path:String, imageView:UIImageView){
-        let url = URL(string:path)
-        imageView.kf.setImage(with: url)
-    }
+    
     
     class func color2img(color:UIColor) -> UIImage{
         //  颜色转换为背景图片

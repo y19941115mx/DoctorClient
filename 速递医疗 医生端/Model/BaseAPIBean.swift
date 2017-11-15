@@ -148,6 +148,7 @@ class familyBean:Mappable {
     
 }
 
+// 首页病情
 class sickListBean:BaseAPIBean {
     
     var sickDataList: [SickBean]?
@@ -195,5 +196,9 @@ class SickBean:Mappable {
     }
     
 }
+
+// 病情详情
+
+
 
 
