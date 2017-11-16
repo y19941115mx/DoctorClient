@@ -11,7 +11,9 @@ public enum API {
     case docregister(String, String, String) // 注册
     case getmsgcode(String)  // 发送验证码
     case phonetest(String) //验证短信验证码
-    case listsicks(Int, String, String) // 获取首页数据
+    case listsicks(Int, String, String) // 获取首页推荐病情数据
+    case listsicksBytype(Int, Int, String, String) //  首页分类显示
+    case getsickdetail(Int) // 获取病情详细信息
 }
 // 配置请求
 extension API: TargetType {
@@ -28,6 +30,10 @@ extension API: TargetType {
             return "/phonetest"
         case .listsicks:
             return "/listsicks"
+        case .listsicksBytype:
+            return "/listsicks"
+        case .getsickdetail:
+            return "/getsickdetail"
         }
     }
     public var method: Moya.Method {
@@ -51,6 +57,10 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginphone":phone], encoding: URLEncoding.default)
         case .listsicks(let page, let lat, let lon):
             return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon], encoding: URLEncoding.default)
+        case .listsicksBytype(let page, let type, let lat, let lon):
+            return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon, "type":type], encoding: URLEncoding.default)
+        case .getsickdetail(let sickId):
+            return .requestParameters(parameters: ["docloginid":LOGINID!, "usersickid": sickId], encoding: URLEncoding.default)
         }
     }
     
