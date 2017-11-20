@@ -24,7 +24,9 @@ class MainViewController: UITabBarController {
         // 设置tabBar
         let vc_home = UIStoryboard.init(name: "Home", bundle: nil).instantiateInitialViewController()!
         vc_home.tabBarItem = UITabBarItem(title: "主页", image: #imageLiteral(resourceName: "index_home"), tag: 0)
-        self.viewControllers = [vc_home]
+        let vc_mine = UIStoryboard.init(name: "Mine", bundle: nil).instantiateInitialViewController()!
+        vc_mine.tabBarItem = UITabBarItem.init(title: "我的", image: #imageLiteral(resourceName: "index_mine"), tag: 1)
+        self.viewControllers = [vc_home, vc_mine]
     }
 
 }

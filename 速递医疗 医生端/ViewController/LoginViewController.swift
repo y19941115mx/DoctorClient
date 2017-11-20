@@ -55,15 +55,19 @@ class LoginViewController: BaseTextViewController {
                         let json = JSON(jsonObj)
                         let data = json["data"]
                         let userId = data["id"].intValue
-                        let type = data["type"].boolValue
+                        let typename = data["typename"].stringValue
+                        let account = data["huanxinaccount"].stringValue
                         let pix = data["pix"].stringValue
                         let token = data["token"].stringValue
                         let username = data["username"].stringValue
+                        let title = data["title"].stringValue
                         user_default.setUserDefault(key: .userId, value: String(userId))
-                        user_default.setUserDefault(key: .type, value: type)
+                        user_default.setUserDefault(key: .typename, value: typename)
                         user_default.setUserDefault(key: .pix, value: pix)
                         user_default.setUserDefault(key: .token, value: token)
                         user_default.setUserDefault(key: .username, value: username)
+                        user_default.setUserDefault(key: .account, value: account)
+                        user_default.setUserDefault(key: .title, value: title)
                         let vc_main = MainViewController()
                         APPLICATION.window?.rootViewController = vc_main
                     } else{

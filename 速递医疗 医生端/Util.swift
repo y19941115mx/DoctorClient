@@ -89,18 +89,11 @@ class NetWorkUtil<T:BaseAPIBean> {
 
 // UserDefault UserDefault相关的枚举值
 enum user_default:String {
-    case userId, type, pix, token, username
+    case userId, typename, pix, token, username, title, account
     func getStringValue()->String? {
-        switch self {
-        case .type:
-            return nil
-        default:
-            return UserDefaults.standard.string(forKey: self.rawValue)
-        }
+        return UserDefaults.standard.string(forKey: self.rawValue)
     }
-    func getBoolValue()->Bool {
-        return UserDefaults.standard.bool(forKey: self.rawValue)
-    }
+    
     //UserDefaults 进行本地存储
     static func setUserDefault(key:user_default, value:Any){
         UserDefaults.standard.set(value, forKey: key.rawValue)

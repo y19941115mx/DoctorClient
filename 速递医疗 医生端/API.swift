@@ -11,8 +11,11 @@ public enum API {
     case docregister(String, String, String) // 注册
     case getmsgcode(String)  // 发送验证码
     case phonetest(String) //验证短信验证码
-    case listsicks(Int, String, String) // 获取首页数据
     case updatepix(Data) // 上传头像
+    case listsicks(Int, String, String) // 获取首页推荐病情数据
+    case listsicksBytype(Int, Int, String, String) //  首页分类显示
+    case getsickdetail(Int) // 获取病情详细信息
+
 }
 // 配置请求
 extension API: TargetType {
@@ -29,8 +32,15 @@ extension API: TargetType {
             return "/phonetest"
         case .listsicks:
             return "/listsicks"
+<<<<<<< HEAD
         case .updatepix:
             return "/updatepix"
+=======
+        case .listsicksBytype:
+            return "/listsicks"
+        case .getsickdetail:
+            return "/getsickdetail"
+>>>>>>> 9d2e1c23e93a25ad0dc98c16507dbb99fd3e445f
         }
     }
     public var method: Moya.Method {
@@ -54,8 +64,15 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginphone":phone], encoding: URLEncoding.default)
         case .listsicks(let page, let lat, let lon):
             return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon], encoding: URLEncoding.default)
+<<<<<<< HEAD
         case .updatepix(let data):
             return .uploadCompositeMultipart([MultipartFormData.init(provider: .data(data), name: "pictureFile", fileName: "photo.jpg", mimeType:"image/png")], urlParameters: ["docloginid": LOGINID!])
+=======
+        case .listsicksBytype(let page, let type, let lat, let lon):
+            return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon, "type":type], encoding: URLEncoding.default)
+        case .getsickdetail(let sickId):
+            return .requestParameters(parameters: ["docloginid":LOGINID!, "usersickid": sickId], encoding: URLEncoding.default)
+>>>>>>> 9d2e1c23e93a25ad0dc98c16507dbb99fd3e445f
         }
     }
     

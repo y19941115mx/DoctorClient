@@ -11,7 +11,7 @@ import SwiftyJSON
 import Moya
 import ObjectMapper
 
-class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
+class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var infoTableView: UITableView!
     
@@ -21,16 +21,23 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
     
     @IBOutlet weak var sortByLocBtn: UIButton!
     
+    var lon:String = "0"
+    var lat:String = "0"
+    
+    var api:API?
+    var sickBean:sickDetail?
+     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavTitle(title: "首页")
+        api = .listsicks(self.selectedPage, lat, lon)
         // 去除多余列表
         infoTableView.tableFooterView = UIView()
         //初始化navigationBar,添加按钮事件
         initView()
         // 添加下拉刷新
-        initRefresh(scrollView: infoTableView, ApiMethod: .listsicks(self.selectedPage, "0", "0"), refreshHandler: {jsonobj in
+        initRefresh(scrollView: infoTableView, ApiMethod: self.api!, refreshHandler: {jsonobj in
             let bean = Mapper<sickListBean>().map(JSONObject: jsonobj)
             if bean?.code == 100 {
                 self.header?.endRefreshing()
@@ -70,7 +77,11 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
         let result = data[indexPath.row]
         titleLabel.text = result.familyname
         sexLabel.text = result.familymale
-        timeLabel.text = StringUTil.getComparedTimeStr(str: result.usersickptime!)
+        if result.usersickptime == nil {
+            timeLabel.text = ""
+        }else {
+            timeLabel.text = StringUTil.getComparedTimeStr(str: result.usersickptime!)
+        }
         descLabel.text = result.usersickdesc
         ImageUtil.setAvator(path: result.userloginpix!, imageView: patientImg)
         return cell
@@ -91,7 +102,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
 
     private func getMoreData() {
         let Provider = MoyaProvider<API>()
-        Provider.request(API.listsicks(selectedPage, "0", "0")) { result in
+        Provider.request(self.api!) { result in
             switch result {
             case let .success(response):
                 do {
@@ -135,18 +146,29 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
         case 10001:
             cleanButton()
             sortByPatientBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
+            //更新上拉刷新与加载
+            api = API.listsicks(self.selectedPage, lat, lon)
+            ApiMethod = api
+            self.header?.beginRefreshing()
+            showToast(self.view, "按照推荐病人排序")
         // 时间
         case 10002:
             cleanButton()
             sortByTimeBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
-            AlertUtil.popMenu(vc: self, title: "选择性别", msg: "选择性别", btns: ["男","女"], handler: {value in
-                dPrint(message: value)
-            })
+            //更新上拉刷新与加载
+            api = API.listsicksBytype(self.selectedPage, 1, lat, lon)
+            ApiMethod = api
+            self.header?.beginRefreshing()
+            showToast(self.view, "按照时间排序")
         // 地点
         case 10003:
             cleanButton()
             sortByLocBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
-            
+            //更新上拉刷新与加载
+            api = API.listsicksBytype(self.selectedPage, 2, lat, lon)
+            ApiMethod = api
+            self.header?.beginRefreshing()
+            showToast(self.view, "按照地点排序")
         default:
             showToast(self.view, "error")
         }
@@ -159,10 +181,16 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetail" {
-//            let SelectedIndexPath = infoTableView.indexPathForSelectedRow
-//            let patient = data[SelectedIndexPath!.row]
-//            let vc = segue.destination as! PatientDetailViewController
-//            vc.patientBean = patient
+            let vc = segue.destination as! Home_detail
+            vc.sickBean = self.sickBean
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let patient = data[indexPath.row]
+    NetWorkUtil<sickDetailBean>.init(method:API.getsickdetail(patient.usersickid) , vc: self).newRequest(handler: {sick in
+            self.sickBean = sick.sickDetail
+            self.performSegue(withIdentifier: "ShowDetail", sender: self)
+        })
     }
 }

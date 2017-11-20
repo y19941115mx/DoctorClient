@@ -163,32 +163,27 @@ class sickListBean:BaseAPIBean {
 }
 
 class SickBean:Mappable {
-    var usersickptime:String?
-    var distance:String?
-    var userloginpix:String?
-    var familyid: Int = 0
-    var usersickseconddept:String?
-    var familymale:String?
-    var familyname: String?
-    var usersickpic:String?
-    var usersickid: Int = 0
-    var usersickprimarydept:String?
-    var usersickdesc: String?
-    var familyage: Int = 0
+    var usersickid: Int = 0 // 病情Id
+    var usersickptime:String? // 发布时间
+    var distance:String? // 距离
+    var userloginpix:String? // 用户头像
+    var familymale:String? // 亲属性别
+    var familyname: String? // 亲属姓名
+    var familyage: Int = 0 // 亲属年龄
+    var userhuanxinaccount:String? // 环信账号
+    var usersickdesc: String? // 病情描述
+    
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        familyid <- map["familyid"]
-        usersickseconddept <- map["usersickseconddept"]
         familymale <- map["familymale"]
         familyname <- map["familyname"]
-        usersickpic <- map["usersickpic"]
+        userhuanxinaccount <- map["userhuanxinaccount"]
         usersickptime <- map["usersickptime"]
         usersickid <- map["usersickid"]
-        usersickprimarydept <- map["usersickprimarydept"]
         usersickdesc <- map["usersickdesc"]
         familyage <- map["familyage"]
         userloginpix <- map["userloginpix"]
@@ -198,7 +193,42 @@ class SickBean:Mappable {
 }
 
 // 病情详情
+class sickDetailBean: BaseAPIBean {
+    var sickDetail: sickDetail?
+    required init?(map: Map) {
+        super.init(map: map)
+    }
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        sickDetail <- map["data"]
+    }
+}
 
+
+
+//病情图片 usersickpic
+//病情一级部门 usersickprimarydept
+//病情二级部门 usersickseconddept
+
+
+class sickDetail:SickBean {
+    var usersickpic:String?
+    var usersickprimarydept:String?
+    var usersickseconddept:String?
+    
+    required init?(map: Map) {
+        super.init(map: map)
+    }
+    
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        usersickpic <- map["usersickpic"]
+        usersickprimarydept <- map["usersickprimarydept"]
+        usersickseconddept <- map["usersickseconddept"]
+    }
+    
+
+}
 
 
 
