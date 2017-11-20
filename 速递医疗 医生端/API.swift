@@ -12,6 +12,7 @@ public enum API {
     case getmsgcode(String)  // 发送验证码
     case phonetest(String) //验证短信验证码
     case listsicks(Int, String, String) // 获取首页数据
+    case updatepix(Data) // 上传头像
 }
 // 配置请求
 extension API: TargetType {
@@ -28,6 +29,8 @@ extension API: TargetType {
             return "/phonetest"
         case .listsicks:
             return "/listsicks"
+        case .updatepix:
+            return "/updatepix"
         }
     }
     public var method: Moya.Method {
@@ -51,6 +54,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginphone":phone], encoding: URLEncoding.default)
         case .listsicks(let page, let lat, let lon):
             return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon], encoding: URLEncoding.default)
+        case .updatepix(let data):
+            return .uploadCompositeMultipart([MultipartFormData.init(provider: .data(data), name: "pictureFile", fileName: "photo.jpg", mimeType:"image/png")], urlParameters: ["docloginid": LOGINID!])
         }
     }
     
