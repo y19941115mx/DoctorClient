@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		292955F21FBBFA9C008FE9A8 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 292955F11FBBFA9C008FE9A8 /* Mine.storyboard */; };
 		298DD5651FB2E0E700BBCE14 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298DD5641FB2E0E700BBCE14 /* Home.storyboard */; };
 		298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DD5661FB2E1D200BBCE14 /* Home_main.swift */; };
 		298DD5691FB2E1F100BBCE14 /* Home_detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DD5681FB2E1F100BBCE14 /* Home_detail.swift */; };
@@ -21,6 +20,9 @@
 		840647631FA6A4BD009B21C4 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647601FA6A4BD009B21C4 /* Util.swift */; };
 		840647641FA6A4BD009B21C4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647611FA6A4BD009B21C4 /* API.swift */; };
 		840647651FA6A4BD009B21C4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647621FA6A4BD009B21C4 /* Extension.swift */; };
+		84165C1B1FC2E4BF00F32DF5 /* Mine_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */; };
+		84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84165C1C1FC3042F00F32DF5 /* tableViewController.swift */; };
+		84165C1F1FC307D600F32DF5 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84165C1E1FC307D600F32DF5 /* Mine.storyboard */; };
 		84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B11FB2A66B006FBCAF /* ModelBean.swift */; };
 		84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */; };
 		84BB03C01FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B81FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m */; };
@@ -35,7 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		292955F11FBBFA9C008FE9A8 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		298DD5641FB2E0E700BBCE14 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		298DD5661FB2E1D200BBCE14 /* Home_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_main.swift; sourceTree = "<group>"; };
 		298DD5681FB2E1F100BBCE14 /* Home_detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_detail.swift; sourceTree = "<group>"; };
@@ -52,6 +53,9 @@
 		840647601FA6A4BD009B21C4 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		840647611FA6A4BD009B21C4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		840647621FA6A4BD009B21C4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_main.swift; sourceTree = "<group>"; };
+		84165C1C1FC3042F00F32DF5 /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
+		84165C1E1FC307D600F32DF5 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		84BB03B11FB2A66B006FBCAF /* ModelBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBean.swift; sourceTree = "<group>"; };
 		84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIBean.swift; sourceTree = "<group>"; };
 		84BB03B71FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSegmentedSlideSwitch.h; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				840647581FA6A49D009B21C4 /* CustomButton.swift */,
+				84165C1C1FC3042F00F32DF5 /* tableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				298DD5661FB2E1D200BBCE14 /* Home_main.swift */,
+				84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */,
 				298DD5681FB2E1F100BBCE14 /* Home_detail.swift */,
 				84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */,
 				84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */,
@@ -175,7 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				298DD5641FB2E0E700BBCE14 /* Home.storyboard */,
-				292955F11FBBFA9C008FE9A8 /* Mine.storyboard */,
+				84165C1E1FC307D600F32DF5 /* Mine.storyboard */,
 				84BB03C71FB2A9C0006FBCAF /* Login.storyboard */,
 			);
 			path = StoryBoard;
@@ -270,7 +276,7 @@
 				84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */,
 				298DD5651FB2E0E700BBCE14 /* Home.storyboard in Resources */,
 				8406474E1FA6A259009B21C4 /* LaunchScreen.storyboard in Resources */,
-				292955F21FBBFA9C008FE9A8 /* Mine.storyboard in Resources */,
+				84165C1F1FC307D600F32DF5 /* Mine.storyboard in Resources */,
 				84BB03C61FB2A92C006FBCAF /* Assets.xcassets in Resources */,
 				840647491FA6A259009B21C4 /* Main.storyboard in Resources */,
 			);
@@ -363,6 +369,7 @@
 				8406475D1FA6A49D009B21C4 /* CustomButton.swift in Sources */,
 				84BB03CA1FB2A9E3006FBCAF /* LoginViewController.swift in Sources */,
 				84BB03C31FB2A8F2006FBCAF /* XLSlideSwitch.m in Sources */,
+				84165C1B1FC2E4BF00F32DF5 /* Mine_main.swift in Sources */,
 				840647461FA6A259009B21C4 /* ViewController.swift in Sources */,
 				84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */,
 				84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */,
@@ -375,6 +382,7 @@
 				840647641FA6A4BD009B21C4 /* API.swift in Sources */,
 				840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */,
 				298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */,
+				84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

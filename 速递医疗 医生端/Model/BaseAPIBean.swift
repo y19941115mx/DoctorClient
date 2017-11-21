@@ -21,7 +21,7 @@ class BaseAPIBean:Mappable {
     }
 }
 
-class BaseListBean<T>:BaseAPIBean {
+class BaseListBean<T:Mappable>:BaseAPIBean {
     var dataList:[T]?
     required init?(map: Map) {
         super.init(map: map)

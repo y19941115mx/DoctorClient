@@ -27,6 +27,9 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = user_default.username.getStringValue()
+        if nameLabel.text == nil {
+            nameLabel.text = "匿名用户"
+        }
         careerLable.text = user_default.title.getStringValue()
         typeLabel.text = user_default.typename.getStringValue()
         idLabel.text = user_default.userId.getStringValue()
