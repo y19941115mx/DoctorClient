@@ -102,23 +102,24 @@ class SegmentedSlideViewController: BaseViewController {
 }
 
 // 下拉刷新
-class BaseRefreshController<T>:BaseViewController {
+class BaseRefreshController<T:Mappable>:BaseViewController {
     var header:MJRefreshStateHeader?
     var footer:MJRefreshAutoStateFooter?
     var data = [T]()
     var scrollView:UIScrollView?
     var selectedPage = 1
-    var refreshHandler:(_ jsonObj:Any)->Void = {_ in}
     var getMoreHandler:()->Void = {}
     var ApiMethod:API?
+    var getMoreMethod:API?
+    var isTableView:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func initRefresh(scrollView:UIScrollView, ApiMethod:API, refreshHandler:@escaping (_ jsonObj:Any)->Void, getMoreHandler:@escaping ()->Void) {
+    func initRefresh(scrollView:UIScrollView, ApiMethod:API, getMoreHandler:@escaping ()->Void, isTableView:Bool = true) {
         self.ApiMethod = ApiMethod
-        self.refreshHandler = refreshHandler
+        self.isTableView = isTableView
         self.getMoreHandler = getMoreHandler
         self.scrollView = scrollView
         self.header = MJRefreshNormalHeader(refreshingBlock: self.refreshData)
@@ -131,9 +132,9 @@ class BaseRefreshController<T>:BaseViewController {
         self.scrollView?.mj_footer = self.footer
     }
     
-    func initNoFooterRefresh(scrollView:UIScrollView, ApiMethod:API, refreshHandler:@escaping (_ jsonObj:Any)->Void) {
+    func initNoFooterRefresh(scrollView:UIScrollView, ApiMethod:API, isTableView:Bool) {
+        self.isTableView = isTableView
         self.ApiMethod = ApiMethod
-        self.refreshHandler = refreshHandler
         self.scrollView = scrollView
         self.header = MJRefreshNormalHeader(refreshingBlock: self.refreshData)
         header?.lastUpdatedTimeLabel.isHidden = true
@@ -156,8 +157,8 @@ class BaseRefreshController<T>:BaseViewController {
     }
     
     func refreshData(){
-        self.selectedPage = 1
         //刷新数据
+        self.selectedPage = 1
         let Provider = MoyaProvider<API>()
         
         Provider.request(ApiMethod!) { result in
@@ -165,8 +166,28 @@ class BaseRefreshController<T>:BaseViewController {
             case let .success(response):
                 do {
                     self.header?.endRefreshing()
-                    let jsonObj = try response.mapJSON()
-                    self.refreshHandler(jsonObj)
+                    let bean = Mapper<BaseListBean<T>>().map(JSONObject: try response.mapJSON())
+                    if bean?.code == 100 {
+                        if bean?.dataList == nil {
+                            bean?.dataList = [T]()
+                        }
+                        self.data = (bean?.dataList)!
+                        if self.data.count == 0{
+                            //隐藏tableView,添加刷新按钮
+                            self.showRefreshBtn()
+                        }
+                        if self.isTableView {
+                            let tableView = self.scrollView as! UITableView
+                            tableView.reloadData()
+                        }else {
+                            let collectionView = self.scrollView as! UICollectionView
+                            collectionView.reloadData()
+                        }
+                        
+                    }else {
+                        showToast(self.view, (bean?.msg!)!)
+                    }
+                    
                 }catch {
                     showToast(self.view,CATCHMSG)
                 }
@@ -182,9 +203,44 @@ class BaseRefreshController<T>:BaseViewController {
     private func getMoreData(){
         //获取更多数据
         getMoreHandler()
+        let Provider = MoyaProvider<API>()
+        Provider.request(self.getMoreMethod!) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let bean = Mapper<BaseListBean<T>>().map(JSONObject: try response.mapJSON())
+                    self.footer?.endRefreshing()
+                    if bean?.code == 100 {
+                        if bean?.dataList?.count == 0 || bean?.dataList == nil{
+                            showToast(self.view, "已经到底了")
+                            return
+                        }
+                        self.data += (bean?.dataList)!
+                        self.selectedPage += 1
+                        if self.isTableView {
+                            let tableView = self.scrollView as! UITableView
+                            tableView.reloadData()
+                        }else {
+                            let CollectionView = self.scrollView as! UICollectionView
+                            CollectionView.reloadData()
+                        }
+                        
+                    }else {
+                        showToast(self.view, (bean?.msg!)!)
+                    }
+                }catch {
+                    self.footer?.endRefreshing()
+                    showToast(self.view, CATCHMSG)
+                }
+            case let .failure(error):
+                self.footer?.endRefreshing()
+                dPrint(message: "error:\(error)")
+                showToast(self.view, ERRORMSG)
+            }
+        }
+        
     }
-    
-    
+
     @objc func refreshBtn(button:UIButton) {
         // 点击刷新
         self.scrollView?.isHidden = false

@@ -11,6 +11,10 @@ import SwiftyJSON
 import Moya
 import ObjectMapper
 
+enum HomeType:Int {
+    case sortByPatient, sortByTime,sortByLoc
+}
+
 class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var infoTableView: UITableView!
@@ -24,38 +28,29 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     var lon:String = "0"
     var lat:String = "0"
     
-    var api:API?
+    var sortType:HomeType = HomeType.sortByPatient
     var sickBean:sickDetail?
      
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavTitle(title: "首页")
-        api = .listsicks(self.selectedPage, lat, lon)
+
         // 去除多余列表
         infoTableView.tableFooterView = UIView()
         //初始化navigationBar,添加按钮事件
         initView()
         // 添加下拉刷新
-        initRefresh(scrollView: infoTableView, ApiMethod: self.api!, refreshHandler: {jsonobj in
-            let bean = Mapper<sickListBean>().map(JSONObject: jsonobj)
-            if bean?.code == 100 {
-                self.header?.endRefreshing()
-                if bean?.sickDataList == nil {
-                    bean?.sickDataList = [SickBean]()
-                }
-                self.data = (bean?.sickDataList)!
-                if self.data.count == 0{
-                    //隐藏tableView,添加刷新按钮
-                    self.showRefreshBtn()
-                }
-                let tableView = self.scrollView as! UITableView
-                tableView.reloadData()
-            }else {
-                self.header?.endRefreshing()
-                showToast(self.view, (bean?.msg!)!)
+        initRefresh(scrollView: infoTableView, ApiMethod: .listsicks(self.selectedPage, lat, lon),  getMoreHandler: {
+            switch self.sortType {
+            case .sortByPatient:
+                self.getMoreMethod = API.listsicks(self.selectedPage, self.lat, self.lon)
+            case .sortByLoc:
+                self.getMoreMethod = API.listsicksBytype(self.selectedPage, 1, self.lat, self.lon)
+            case .sortByTime:
+                self.getMoreMethod = API.listsicksBytype(self.selectedPage, 2, self.lat, self.lon)
             }
-        }, getMoreHandler: getMoreData)
+        })
         
         self.header?.beginRefreshing()
         
@@ -100,45 +95,6 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         sortByPatientBtn.setTitleColor(UIColor.black, for: .normal)
     }
 
-    private func getMoreData() {
-        let Provider = MoyaProvider<API>()
-        Provider.request(self.api!) { result in
-            switch result {
-            case let .success(response):
-                do {
-                    let bean = Mapper<sickListBean>().map(JSONObject: try response.mapJSON())
-                    if bean?.code == 100 {
-                        self.footer?.endRefreshing()
-                        if bean?.sickDataList?.count == 0{
-                            showToast(self.view, "已经到底了")
-                            return
-                        }
-                        self.footer?.endRefreshing()
-                        self.data += (bean?.sickDataList)!
-                        self.selectedPage += 1
-                        let tableView = self.scrollView as! UITableView
-                        tableView.reloadData()
-                        
-                    }else {
-                        self.footer?.endRefreshing()
-                        showToast(self.view, (bean?.msg!)!)
-                    }
-                }catch {
-                    self.footer?.endRefreshing()
-                    showToast(self.view, CATCHMSG)
-                }
-            case let .failure(error):
-                self.footer?.endRefreshing()
-                dPrint(message: "error:\(error)")
-                showToast(self.view, ERRORMSG)
-            }
-        }
-    }
-    
-   
-    
-    
-    
     //MARK: - action
     @objc func clickBtn(button:UIButton){
         switch button.tag {
@@ -146,9 +102,10 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         case 10001:
             cleanButton()
             sortByPatientBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
-            //更新上拉刷新与加载
-            api = API.listsicks(self.selectedPage, lat, lon)
-            ApiMethod = api
+            //更新下拉刷新与加载
+            ApiMethod = API.listsicks(self.selectedPage, lat, lon)
+            self.sortType = .sortByPatient
+            
             self.header?.beginRefreshing()
             showToast(self.view, "按照推荐病人排序")
         // 时间
@@ -156,8 +113,8 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             cleanButton()
             sortByTimeBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             //更新上拉刷新与加载
-            api = API.listsicksBytype(self.selectedPage, 1, lat, lon)
-            ApiMethod = api
+            ApiMethod = API.listsicksBytype(self.selectedPage, 1, lat, lon)
+            self.sortType = .sortByTime
             self.header?.beginRefreshing()
             showToast(self.view, "按照时间排序")
         // 地点
@@ -165,8 +122,8 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             cleanButton()
             sortByLocBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             //更新上拉刷新与加载
-            api = API.listsicksBytype(self.selectedPage, 2, lat, lon)
-            ApiMethod = api
+            ApiMethod = API.listsicksBytype(self.selectedPage, 2, lat, lon)
+            self.sortType = .sortByLoc
             self.header?.beginRefreshing()
             showToast(self.view, "按照地点排序")
         default:
@@ -174,6 +131,8 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         }
     
     }
+    
+    
     //MARK: - navigation Methond
     @IBAction func unwindToHome(sender: UIStoryboardSegue){
         
