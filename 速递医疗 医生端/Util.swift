@@ -100,8 +100,14 @@ enum user_default:String {
     }
     
     //UserDefaults 清空数据
-    static func clearUserDefaultValue(key:String){
-        UserDefaults.standard.removeObject(forKey: key)
+    static func clearUserDefault(){
+        UserDefaults.standard.removeObject(forKey: "userId")
+        UserDefaults.standard.removeObject(forKey: "typename")
+        UserDefaults.standard.removeObject(forKey: "pix")
+        UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.removeObject(forKey: "title")
+        UserDefaults.standard.removeObject(forKey: "account")
     }
 }
 

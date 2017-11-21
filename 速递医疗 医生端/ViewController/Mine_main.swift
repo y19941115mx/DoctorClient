@@ -27,7 +27,7 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = user_default.username.getStringValue()
-        if nameLabel.text == nil {
+        if nameLabel.text == "" {
             nameLabel.text = "匿名用户"
         }
         careerLable.text = user_default.title.getStringValue()
@@ -60,7 +60,6 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-
         // 显示选中的图片
         photoImageView.image = selectedImage
         //上传头像
@@ -72,8 +71,6 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         dismiss(animated: true, completion: nil)
 
     }
-
-
 
     @IBAction func unwindToMine(sender: UIStoryboardSegue){
 

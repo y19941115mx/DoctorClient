@@ -54,7 +54,9 @@ class Home_detail: BaseViewController, UICollectionViewDataSource{
         return cell
     }
 
-
+    @IBAction func click_btn(_ sender: UIButton) {
+    }
+    
 }
 
 
