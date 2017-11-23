@@ -23,6 +23,7 @@
 		84165C1B1FC2E4BF00F32DF5 /* Mine_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */; };
 		84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84165C1C1FC3042F00F32DF5 /* tableViewController.swift */; };
 		84165C1F1FC307D600F32DF5 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84165C1E1FC307D600F32DF5 /* Mine.storyboard */; };
+		843E71E91FC70E4D00829CA4 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E71E81FC70E4D00829CA4 /* ResetViewController.swift */; };
 		8491A4A21FC45B84008A7D09 /* Mine_setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491A4A11FC45B84008A7D09 /* Mine_setting.swift */; };
 		84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B11FB2A66B006FBCAF /* ModelBean.swift */; };
 		84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */; };
@@ -57,6 +58,7 @@
 		84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_main.swift; sourceTree = "<group>"; };
 		84165C1C1FC3042F00F32DF5 /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
 		84165C1E1FC307D600F32DF5 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
+		843E71E81FC70E4D00829CA4 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		8491A4A11FC45B84008A7D09 /* Mine_setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_setting.swift; sourceTree = "<group>"; };
 		84BB03B11FB2A66B006FBCAF /* ModelBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBean.swift; sourceTree = "<group>"; };
 		84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIBean.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				8491A4A11FC45B84008A7D09 /* Mine_setting.swift */,
 				84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */,
 				84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */,
+				843E71E81FC70E4D00829CA4 /* ResetViewController.swift */,
 				8406475A1FA6A49D009B21C4 /* BaseViewController.swift */,
 				8406475B1FA6A49D009B21C4 /* MainViewController.swift */,
 			);
@@ -384,6 +387,7 @@
 				840647631FA6A4BD009B21C4 /* Util.swift in Sources */,
 				840647641FA6A4BD009B21C4 /* API.swift in Sources */,
 				840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */,
+				843E71E91FC70E4D00829CA4 /* ResetViewController.swift in Sources */,
 				8491A4A21FC45B84008A7D09 /* Mine_setting.swift in Sources */,
 				298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */,
 				84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */,

@@ -43,7 +43,8 @@ class BaseTextViewController:BaseViewController, UITextFieldDelegate {
         
     }
     
-    func initTextFieldDelegate(tv_source:[UITextField]) {
+    func initTextFieldDelegate(tv_source:[UITextField], updateBtnState:@escaping () -> Void) {
+        self.updateBtnState = updateBtnState
         self.tv_source = tv_source
         if tv_source.count != 0 {
             for textField in tv_source {
@@ -160,7 +161,8 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         //刷新数据
         self.selectedPage = 1
         let Provider = MoyaProvider<API>()
-        
+        //刷新地理位置信息
+        MapUtil.singleLocation(successHandler: nil)
         Provider.request(ApiMethod!) { result in
             switch result {
             case let .success(response):

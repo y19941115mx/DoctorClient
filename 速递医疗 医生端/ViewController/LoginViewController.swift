@@ -30,8 +30,7 @@ class LoginViewController: BaseTextViewController {
         super.viewDidLoad()
         updateButtonState()
         // 界面设置
-        initTextFieldDelegate(tv_source: [tv_pwd, tv_phone])
-        updateBtnState = updateButtonState
+        initTextFieldDelegate(tv_source: [tv_pwd, tv_phone], updateBtnState: updateButtonState)
     }
     
     //MARK: - action
@@ -39,7 +38,7 @@ class LoginViewController: BaseTextViewController {
         let phoneNum = tv_phone.text!
         let passNum =  tv_pwd.text!
         
-        // FIXME:  需要做字符串验证
+        // FIXME:  需要做字符串长度验证
         
         SVProgressHUD.show()
         let Provider = MoyaProvider<API>()
@@ -96,7 +95,7 @@ class LoginViewController: BaseTextViewController {
         // Disable the  button if the text field is empty.
         let phoneText = tv_phone.text ?? ""
         let password = tv_pwd.text ?? ""
-        
+        btn_login.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
         btn_login.isEnabled = (!phoneText.isEmpty && !password.isEmpty)
         
     }

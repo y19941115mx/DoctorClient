@@ -13,6 +13,7 @@ import ObjectMapper
 import SwiftHash
 
 let MsgSeconds = 30 // 设置验证码发送间隔时间
+
 class RegisterViewController: BaseTextViewController{
     //Mark:property
     
@@ -65,8 +66,7 @@ class RegisterViewController: BaseTextViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // 初始化界面
-        initTextFieldDelegate(tv_source: [photoTextField, msgCodeTextField, password, password2])
-        updateBtnState = updateButtonState
+        initTextFieldDelegate(tv_source: [photoTextField, msgCodeTextField, password, password2],updateBtnState: updateBtnState)
         updateButtonState()
     }
     
@@ -78,10 +78,11 @@ class RegisterViewController: BaseTextViewController{
         let msgCode = msgCodeTextField.text ?? ""
         let passwordText = password.text ?? ""
         let passwordText2 = password2.text ?? ""
-        // FIXME: 需要做字符串验证
         if passwordText != passwordText2 {
             SVProgressHUD.dismiss()
             self.view.makeToast("两次密码输入不一致")
+        }else if passwordText.count < 6 ||  passwordText.count > 15{
+            self.view.makeToast("请输入6-15位数字或字母")
         }else{
             //1.发送注册请求
             let Provider = MoyaProvider<API>()
@@ -181,10 +182,8 @@ class RegisterViewController: BaseTextViewController{
         let passwordText = password.text ?? ""
         registerButton.isEnabled = (!phoneText.isEmpty && !msgCode.isEmpty
             && !passwordText.isEmpty)
-        
+        sendMsgButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
         sendMsgButton.isEnabled = !phoneText.isEmpty
-        
-        
     }
     
     @objc private func updateTime(timer: Timer) {

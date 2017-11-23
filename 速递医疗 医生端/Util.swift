@@ -30,7 +30,7 @@ public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #fun
         print("------ BEGIN \n\(fileName as NSString)\n方法:\(methodName)\n行号:\(lineNumber)\n打印信息:\(message)\n------ end");
     #endif
 }
-
+// Toast 打印
 public func showToast(_ view:UIView, _ message:String) {
     var style = ToastStyle()
     style.backgroundColor = UIColor.APPColor
@@ -88,7 +88,7 @@ class NetWorkUtil<T:BaseAPIBean> {
 
 //MARK: - 地图定位
 class MapUtil {
-    class func singleLocation(successHandler:@escaping (_ location:CLLocation, _ reGeocode:AMapLocationReGeocode?) -> Void) {
+    class func singleLocation(successHandler:((_ location:CLLocation, _ reGeocode:AMapLocationReGeocode?) -> Void)? ) {
         APPLICATION.locationManager.requestLocation(withReGeocode: true, completionBlock: {(location: CLLocation?, reGeocode: AMapLocationReGeocode?, error: Error?) in
             
             if let error = error {
@@ -115,7 +115,9 @@ class MapUtil {
             if let location = location  {
                 APPLICATION.lon = String(location.coordinate.longitude)
                 APPLICATION.lat = String(location.coordinate.latitude)
-                successHandler(location, reGeocode)
+                if successHandler != nil {
+                successHandler!(location, reGeocode)
+                }
             }
             
         })
