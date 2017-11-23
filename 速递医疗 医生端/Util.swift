@@ -21,8 +21,8 @@ let LOGINID = Int(user_default.userId.getStringValue()!)
 struct StaticClass {
     static let BaseApi = "http://1842719ny8.iok.la:14086/internetmedical/doctor"
     static let RootIP = "http://1842719ny8.iok.la:14086"
-    static let PictureIP = RootIP + "/picture/"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
+    static let GaodeAPIKey = "b345032a17a103cd3c9c4ad346b11d6d"
 }
 //日志打印
 public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #function,lineNumber:Int = #line){

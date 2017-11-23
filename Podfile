@@ -20,4 +20,6 @@ target '速递医疗 医生端' do
     pod 'Kingfisher'
     # 下拉刷新加载
     pod 'MJRefresh'
+	# 高德定位
+    # pod 'AMapLocation'
 end

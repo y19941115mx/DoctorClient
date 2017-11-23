@@ -13,6 +13,7 @@ import SVProgressHUD
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+//    var locationManager:AMapLocationManager = AMapLocationManager()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -22,6 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setBackgroundColor(UIColor.clear)
         SVProgressHUD.setDefaultMaskType(.none) // 可点击取消
         SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
+        // 高德地图设置
+//        AMapServices.shared().apiKey = StaticClass.GaodeAPIKey
+//
+//        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//
+//        locationManager.locationTimeout = 2
+//
+//        locationManager.reGeocodeTimeout = 2
         return true
     }
 
