@@ -22,7 +22,7 @@ struct StaticClass {
     static let BaseApi = "http://1842719ny8.iok.la:14086/internetmedical/doctor"
     static let RootIP = "http://1842719ny8.iok.la:14086"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
-    static let GaodeAPIKey = "b345032a17a103cd3c9c4ad346b11d6d"
+    static let GaodeAPIKey = "dc63bec745429fca2107bdd7e57f7e3c"
 }
 //日志打印
 public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #function,lineNumber:Int = #line){
@@ -83,6 +83,42 @@ class NetWorkUtil<T:BaseAPIBean> {
     //获取科室数据
     class func getDepartMent(success : @escaping (_ response : [String : AnyObject])->(), failture : @escaping (_ error : Error)->()){
         getRequest(urlString: StaticClass.GetDept, params: [:], success: success, failture:failture)
+    }
+}
+
+//MARK: - 地图定位
+class MapUtil {
+    class func singleLocation(successHandler:@escaping (_ location:CLLocation, _ reGeocode:AMapLocationReGeocode?) -> Void) {
+        APPLICATION.locationManager.requestLocation(withReGeocode: true, completionBlock: {(location: CLLocation?, reGeocode: AMapLocationReGeocode?, error: Error?) in
+            
+            if let error = error {
+                let error = error as NSError
+                
+                if error.code == AMapLocationErrorCode.locateFailed.rawValue {
+                    //定位错误：此时location和regeocode没有返回值，不进行annotation的添加
+                    let msg = "定位错误:{\(error.code) - \(error.localizedDescription)};"
+                    showToast((APPLICATION.window?.rootViewController?.view)!, msg)
+                    return
+                }
+                else if error.code == AMapLocationErrorCode.reGeocodeFailed.rawValue
+                    || error.code == AMapLocationErrorCode.timeOut.rawValue
+                    || error.code == AMapLocationErrorCode.cannotFindHost.rawValue
+                    || error.code == AMapLocationErrorCode.badURL.rawValue
+                    || error.code == AMapLocationErrorCode.notConnectedToInternet.rawValue
+                    || error.code == AMapLocationErrorCode.cannotConnectToHost.rawValue {
+                    
+                    //逆地理错误：在带逆地理的单次定位中，逆地理过程可能发生错误，此时location有返回值，regeocode无返回值，进行annotation的添加
+                    let msg = "逆地理错误:{\(error.code) - \(error.localizedDescription)};"
+                    showToast((APPLICATION.window?.rootViewController?.view)!, msg)
+                }
+            }
+            if let location = location  {
+                APPLICATION.lon = String(location.coordinate.longitude)
+                APPLICATION.lat = String(location.coordinate.latitude)
+                successHandler(location, reGeocode)
+            }
+            
+        })
     }
 }
 

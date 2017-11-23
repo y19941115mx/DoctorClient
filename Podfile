@@ -21,5 +21,5 @@ target '速递医疗 医生端' do
     # 下拉刷新加载
     pod 'MJRefresh'
 	# 高德定位
-    # pod 'AMapLocation'
+    pod 'AMapLocation'
 end

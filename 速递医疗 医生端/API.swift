@@ -53,7 +53,7 @@ extension API: TargetType {
         
         switch self {
         case .doclogin(let phone, let pwd):
-           return  .requestParameters(parameters: ["docloginphone":phone, "docloginpwd": pwd], encoding: URLEncoding.default)
+            return  .requestParameters(parameters: ["docloginphone":phone, "docloginpwd": pwd, "doclogindev":2], encoding: URLEncoding.default)
         case .docregister(let phone, let pwd, let code):
             return .requestParameters(parameters: ["docloginphone":phone, "docloginpwd":pwd, "code":code], encoding: URLEncoding.default)
         case .getmsgcode(let phone):

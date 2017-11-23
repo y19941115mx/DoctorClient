@@ -13,24 +13,32 @@ import SVProgressHUD
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-//    var locationManager:AMapLocationManager = AMapLocationManager()
-
+    var locationManager:AMapLocationManager = AMapLocationManager()
+    var lon:String = "0"
+    var lat:String = "0"
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+//        进度条设置
         SVProgressHUD.setDefaultStyle(.custom)
         SVProgressHUD.setForegroundColor(UIColor.APPColor)
         SVProgressHUD.setBackgroundColor(UIColor.clear)
         SVProgressHUD.setDefaultMaskType(.none) // 可点击取消
         SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
-        // 高德地图设置
-//        AMapServices.shared().apiKey = StaticClass.GaodeAPIKey
-//
-//        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-//
-//        locationManager.locationTimeout = 2
-//
-//        locationManager.reGeocodeTimeout = 2
+//         高德地图设置
+        AMapServices.shared().apiKey = StaticClass.GaodeAPIKey
+
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+
+        locationManager.locationTimeout = 2
+
+        locationManager.reGeocodeTimeout = 2
+        
+        MapUtil.singleLocation(successHandler: {location, reGeocode in
+            if reGeocode != nil {
+                showToast((APPLICATION.window?.rootViewController?.view)!, "定位成功："+(reGeocode?.country)! + (reGeocode?.city)! + (reGeocode?.aoiName)!)
+            }
+        })
         return true
     }
 

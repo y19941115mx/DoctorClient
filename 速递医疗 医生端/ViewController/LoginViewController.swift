@@ -43,7 +43,7 @@ class LoginViewController: BaseTextViewController {
         
         SVProgressHUD.show()
         let Provider = MoyaProvider<API>()
-        
+        // 登录
         Provider.request(API.doclogin(phoneNum, MD5(passNum))) { result in
             switch result {
             case let .success(response):

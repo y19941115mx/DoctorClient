@@ -34,6 +34,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavTitle(title: "首页")
         // 去除多余列表
         infoTableView.tableFooterView = UIView()
         //初始化navigationBar,添加按钮事件
