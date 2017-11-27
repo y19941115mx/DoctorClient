@@ -36,6 +36,9 @@
                                 <state key="normal" title="忘记密码">
                                     <color key="titleColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="d6I-81-jxX" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="bd9-a0-8V5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofW-sR-w1p">
                                 <rect key="frame" x="31" y="481.5" width="313" height="30"/>
@@ -93,7 +96,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="新注册用户"/>
                                 <connections>
-                                    <segue destination="jUi-eu-hOJ" kind="presentation" animates="NO" id="sox-Wq-Uj4"/>
+                                    <segue destination="jUi-eu-hOJ" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="sox-Wq-Uj4"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bYX-rv-cXL">
@@ -178,8 +181,11 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLY-QY-mKQ">
-                                        <rect key="frame" x="157" y="44" width="158" height="32"/>
+                                        <rect key="frame" x="157" y="43.5" width="158" height="32"/>
                                         <color key="backgroundColor" red="0.49944639210000003" green="0.84990459679999997" blue="0.98690015080000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="EGx-A9-ReE"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="获取验证码"/>
                                         <userDefinedRuntimeAttributes>
@@ -278,10 +284,10 @@
             </objects>
             <point key="canvasLocation" x="743" y="158"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Reset View Controller-->
         <scene sceneID="f5G-Yh-ZVF">
             <objects>
-                <viewController id="d6I-81-jxX" customClass="RegisterViewController" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="d6I-81-jxX" customClass="ResetViewController" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VYv-b3-lLc"/>
                         <viewControllerLayoutGuide type="bottom" id="yn3-DH-wmf"/>
@@ -295,7 +301,7 @@
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="8" right="8"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGa-q5-XkB">
-                                <rect key="frame" x="30" y="333.5" width="315" height="165"/>
+                                <rect key="frame" x="30" y="333.5" width="315" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="    请输入手机号码" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="an9-DN-VD7">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="30"/>
@@ -318,6 +324,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhO-qX-EMT">
                                         <rect key="frame" x="157" y="44" width="158" height="32"/>
                                         <color key="backgroundColor" red="0.49944639210000003" green="0.84990459679999997" blue="0.98690015080000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="NzC-w5-pt0"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="获取验证码"/>
                                         <userDefinedRuntimeAttributes>
@@ -326,7 +335,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="sendMsg:" destination="d6I-81-jxX" eventType="touchUpInside" id="gXs-QF-owa"/>
+                                            <action selector="click_code:" destination="d6I-81-jxX" eventType="touchUpInside" id="5B9-J7-bg3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -343,11 +352,11 @@
                                     <constraint firstAttribute="trailing" secondItem="hhO-qX-EMT" secondAttribute="trailing" id="oMQ-Z8-mSN"/>
                                     <constraint firstItem="zMJ-tc-Y2J" firstAttribute="leading" secondItem="ZGa-q5-XkB" secondAttribute="leading" id="qml-73-hcU"/>
                                     <constraint firstItem="hhO-qX-EMT" firstAttribute="width" secondItem="rNT-HK-rx7" secondAttribute="width" id="wF2-Ad-cZ0"/>
-                                    <constraint firstAttribute="height" constant="165" id="xev-46-FEI"/>
+                                    <constraint firstAttribute="height" constant="150" id="xev-46-FEI"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dv-28-b9S">
-                                <rect key="frame" x="160.5" y="538.5" width="54" height="28"/>
+                                <rect key="frame" x="160.5" y="523.5" width="54" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="返回登录"/>
                                 <connections>
@@ -355,12 +364,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4W-Oj-JUx">
-                                <rect key="frame" x="30" y="508.5" width="315" height="30"/>
+                                <rect key="frame" x="30" y="493.5" width="315" height="30"/>
                                 <color key="backgroundColor" red="0.45963469150000003" green="0.67534756659999995" blue="0.97651445869999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Pw2-sh-dpR"/>
                                 </constraints>
-                                <state key="normal" title="注册">
+                                <state key="normal" title="重置密码">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -369,7 +378,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="clickRegister:" destination="d6I-81-jxX" eventType="touchUpInside" id="5de-K5-wpV"/>
+                                    <action selector="click_reset:" destination="d6I-81-jxX" eventType="touchUpInside" id="gVI-G8-zfG"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="g6l-8o-EYq">
@@ -400,11 +409,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="X7j-0d-UKg"/>
                     <connections>
-                        <outlet property="msgCodeTextField" destination="rNT-HK-rx7" id="PHu-dF-q12"/>
-                        <outlet property="password" destination="zMJ-tc-Y2J" id="W67-1s-Pwu"/>
-                        <outlet property="photoTextField" destination="an9-DN-VD7" id="JYU-kQ-A45"/>
-                        <outlet property="registerButton" destination="T4W-Oj-JUx" id="JOp-Ov-H1d"/>
-                        <outlet property="sendMsgButton" destination="hhO-qX-EMT" id="XX1-mc-iNu"/>
+                        <outlet property="msgCodeTextField" destination="rNT-HK-rx7" id="uWO-5E-uMw"/>
+                        <outlet property="password" destination="zMJ-tc-Y2J" id="5Xx-qk-Cu5"/>
+                        <outlet property="photoTextField" destination="an9-DN-VD7" id="oUc-SF-7Dn"/>
+                        <outlet property="resetButton" destination="T4W-Oj-JUx" id="mqF-0o-AjZ"/>
+                        <outlet property="sendMsgButton" destination="hhO-qX-EMT" id="rpi-ve-bCQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTa-Uj-HeF" userLabel="First Responder" sceneMemberID="firstResponder"/>

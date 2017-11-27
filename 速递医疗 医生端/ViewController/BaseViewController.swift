@@ -68,7 +68,7 @@ class BaseTextViewController:BaseViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        updateBtnState()
+        self.updateBtnState()
     }
 }
 

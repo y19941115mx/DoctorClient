@@ -15,6 +15,8 @@ public enum API {
     case listsicks(Int, String, String) // 获取首页推荐病情数据
     case listsicksBytype(Int, Int, String, String) //  首页分类显示
     case getsickdetail(Int) // 获取病情详细信息
+    case editpassword(String, String, String) // 重置密码
+    case exit // 退出登录
 
 }
 // 配置请求
@@ -38,6 +40,10 @@ extension API: TargetType {
             return "/listsicks"
         case .getsickdetail:
             return "/getsickdetail"
+        case .editpassword:
+            return "/editpassword"
+        case .exit:
+            return "/exit"
 
         }
     }
@@ -70,7 +76,10 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon, "type":type], encoding: URLEncoding.default)
         case .getsickdetail(let sickId):
             return .requestParameters(parameters: ["docloginid":LOGINID!, "usersickid": sickId], encoding: URLEncoding.default)
-
+        case .editpassword(let phone, let pass, let code):
+            return .requestParameters(parameters: ["docloginphone":phone, "docloginpwd":pass, "code":code], encoding: URLEncoding.default)
+        case .exit:
+            return .requestParameters(parameters: ["docloginid":LOGINID!], encoding: URLEncoding.default)
         }
     }
     

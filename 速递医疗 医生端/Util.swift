@@ -70,6 +70,7 @@ class NetWorkUtil<T:BaseAPIBean> {
                     let bean = Mapper<T>().map(JSONObject: try response.mapJSON())
                     handler(bean!)
                 }catch {
+                    dPrint(message: "response:\(response)")
                     showToast(self.vc.view, CATCHMSG)
                 }
             case let .failure(error):

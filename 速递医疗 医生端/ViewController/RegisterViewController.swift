@@ -12,11 +12,10 @@ import Moya
 import ObjectMapper
 import SwiftHash
 
-let MsgSeconds = 30 // 设置验证码发送间隔时间
 
 class RegisterViewController: BaseTextViewController{
     //Mark:property
-    
+    let MsgSeconds = 30 // 设置验证码发送间隔时间
     @IBOutlet weak var photoTextField: UITextField!
     
     @IBOutlet weak var msgCodeTextField: UITextField!
@@ -66,7 +65,7 @@ class RegisterViewController: BaseTextViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // 初始化界面
-        initTextFieldDelegate(tv_source: [photoTextField, msgCodeTextField, password, password2],updateBtnState: updateBtnState)
+        initTextFieldDelegate(tv_source: [photoTextField, msgCodeTextField, password, password2],updateBtnState: updateButtonState)
         updateButtonState()
     }
     
@@ -180,6 +179,7 @@ class RegisterViewController: BaseTextViewController{
         let phoneText = photoTextField.text ?? ""
         let msgCode = msgCodeTextField.text ?? ""
         let passwordText = password.text ?? ""
+        registerButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
         registerButton.isEnabled = (!phoneText.isEmpty && !msgCode.isEmpty
             && !passwordText.isEmpty)
         sendMsgButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
