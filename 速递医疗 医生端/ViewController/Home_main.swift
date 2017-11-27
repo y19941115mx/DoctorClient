@@ -25,8 +25,6 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     
     @IBOutlet weak var sortByLocBtn: UIButton!
     
-    var lon:String = "0"
-    var lat:String = "0"
     
     var sortType:HomeType = HomeType.sortByPatient
     var sickBean:sickDetail?
@@ -40,14 +38,14 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         //初始化navigationBar,添加按钮事件
         initView()
         // 添加下拉刷新
-        initRefresh(scrollView: infoTableView, ApiMethod: .listsicks(self.selectedPage, lat, lon),  getMoreHandler: {
+        initRefresh(scrollView: infoTableView, ApiMethod: .listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon),  getMoreHandler: {
             switch self.sortType {
             case .sortByPatient:
-                self.getMoreMethod = API.listsicks(self.selectedPage, self.lat, self.lon)
+                self.getMoreMethod = API.listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
             case .sortByLoc:
-                self.getMoreMethod = API.listsicksBytype(self.selectedPage, 2, self.lat, self.lon)
+                self.getMoreMethod = API.listsicksBytype(self.selectedPage, 2, APPLICATION.lat, APPLICATION.lon)
             case .sortByTime:
-                self.getMoreMethod = API.listsicksBytype(self.selectedPage, 1, self.lat, self.lon)
+                self.getMoreMethod = API.listsicksBytype(self.selectedPage, 1, APPLICATION.lat, APPLICATION.lon)
             }
         })
         
@@ -102,7 +100,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             cleanButton()
             sortByPatientBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             //更新下拉刷新与加载
-            ApiMethod = API.listsicks(self.selectedPage, lat, lon)
+            ApiMethod = API.listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
             self.sortType = .sortByPatient
             
             self.header?.beginRefreshing()
@@ -112,7 +110,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             cleanButton()
             sortByTimeBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             //更新上拉刷新与加载
-            ApiMethod = API.listsicksBytype(self.selectedPage, 1, lat, lon)
+            ApiMethod = API.listsicksBytype(self.selectedPage, 1, APPLICATION.lat, APPLICATION.lon)
             self.sortType = .sortByTime
             self.header?.beginRefreshing()
             showToast(self.view, "按照时间排序")
@@ -121,7 +119,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             cleanButton()
             sortByLocBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             //更新上拉刷新与加载
-            ApiMethod = API.listsicksBytype(self.selectedPage, 2, lat, lon)
+            ApiMethod = API.listsicksBytype(self.selectedPage, 2, APPLICATION.lat, APPLICATION.lon)
             self.sortType = .sortByLoc
             self.header?.beginRefreshing()
             showToast(self.view, "按照地点排序")

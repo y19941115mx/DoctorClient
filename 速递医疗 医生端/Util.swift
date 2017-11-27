@@ -170,10 +170,12 @@ class AlertUtil: NSObject {
         for btn in btns {
             let action = UIAlertAction(title: btn, style: .default) { (UIAlertAction) -> Void in
                 handler(UIAlertAction.title!)
-                
             }
             alertController.addAction(action)
         }
+        // 添加Pad支持
+        alertController.popoverPresentationController?.sourceView = vc.view
+        alertController.popoverPresentationController?.sourceRect = CGRect.init(x: 0, y: 0, width: 1, height: 1)
         
         vc.present(alertController, animated: true, completion: nil)
     }
@@ -192,23 +194,18 @@ class AlertUtil: NSObject {
         alertController.addAction(okAction)
         vc.present(alertController, animated: true, completion: nil)
     }
-    // 弹出输入框
-    class func popTextFields(vc:UIViewController, okhandler: @escaping (_ textfields:[UITextField])->()) {
-        let alertController = UIAlertController(title: "输入内容",
+    // 弹出带文本输入框
+    class func popTextFields(vc:UIViewController,title:String, textfields:[UITextField], okhandler: @escaping (_ textfields:[UITextField])->()) {
+        let alertController = UIAlertController(title: title,
                                                 message: "", preferredStyle: .alert)
-        alertController.addTextField {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "姓名"
+        for item in textfields {
+            alertController.addTextField {
+                (textField: UITextField!) -> Void in
+                textField.placeholder = item.placeholder
+                textField.keyboardType = item.keyboardType
+            }
         }
-        alertController.addTextField {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "性别(男/女)"
-        }
-        alertController.addTextField {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "年龄"
-            textField.keyboardType = .numberPad
-        }
+        
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "确定", style: .default, handler: {
             action in

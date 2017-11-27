@@ -36,16 +36,16 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         ImageUtil.setAvator(path: user_default.pix.getStringValue()!, imageView: photoImageView)
 
     }
+    
     //MARK:- action
-    @IBAction func pickImageFromPhotoLib(_ sender: UIButton) {
-        let imagePickerController = UIImagePickerController()
-
-        // Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .photoLibrary
-
-        // Make sure ViewController is notified when the user picks an image.
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
+    @IBAction func pickImage(_ sender: UIButton) {
+        AlertUtil.popMenu(vc: self, title: "上传图片", msg: "上传图片", btns: ["拍照", "从图库选择"], handler: {btn in
+            if btn == "拍照" {
+                self.pickImageFromCamera()
+            }else {
+                self.pickImageFromPhotoLib()
+            }
+        })
 
     }
 
@@ -70,6 +70,32 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
 
+    }
+    
+    // MARK: - 私有方法
+    func pickImageFromPhotoLib() {
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+        
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+
+        
+    }
+    func pickImageFromCamera() {
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .camera
+        
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+        
+        
     }
 
     @IBAction func unwindToMine(sender: UIStoryboardSegue){

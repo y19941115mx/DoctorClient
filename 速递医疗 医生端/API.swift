@@ -17,6 +17,7 @@ public enum API {
     case getsickdetail(Int) // 获取病情详细信息
     case editpassword(String, String, String) // 重置密码
     case exit // 退出登录
+    case graborder(Int, Double) // 医生抢单
 
 }
 // 配置请求
@@ -44,6 +45,8 @@ extension API: TargetType {
             return "/editpassword"
         case .exit:
             return "/exit"
+        case .graborder:
+            return "/graborder"
 
         }
     }
@@ -70,7 +73,7 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon], encoding: URLEncoding.default)
 
         case .updatepix(let data):
-        return .uploadCompositeMultipart([MultipartFormData.init(provider: .data(data), name: "pictureFile", fileName: "photo.jpg", mimeType:"image/png")], urlParameters: ["docloginid": LOGINID!])
+        return .uploadCompositeMultipart([MultipartFormData.init(provider: .data(data), name: "docloginpix", fileName: "photo.jpg", mimeType:"image/png")], urlParameters: ["docloginid": LOGINID!])
 
         case .listsicksBytype(let page, let type, let lat, let lon):
             return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon, "type":type], encoding: URLEncoding.default)
@@ -80,6 +83,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginphone":phone, "docloginpwd":pass, "code":code], encoding: URLEncoding.default)
         case .exit:
             return .requestParameters(parameters: ["docloginid":LOGINID!], encoding: URLEncoding.default)
+        case .graborder(let sickId, let price):
+            return .requestParameters(parameters: ["docloginid":LOGINID!, "usersickid":sickId, "preorderprice": price], encoding: URLEncoding.default)
         }
     }
     

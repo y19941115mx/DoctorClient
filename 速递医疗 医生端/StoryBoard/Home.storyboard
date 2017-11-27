@@ -413,7 +413,7 @@
                         <outlet property="sortByLocBtn" destination="oIv-Ip-anP" id="WgY-u5-r6K"/>
                         <outlet property="sortByPatientBtn" destination="1G0-OH-ei5" id="O1z-vi-Lui"/>
                         <outlet property="sortByTimeBtn" destination="8jG-YP-R7c" id="gYG-fI-CiZ"/>
-                        <segue destination="dEe-b0-evy" kind="presentation" identifier="ShowDetail" animates="NO" id="TRD-yL-z3E"/>
+                        <segue destination="dEe-b0-evy" kind="presentation" identifier="ShowDetail" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="TRD-yL-z3E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nt6-uR-Evr" userLabel="First Responder" sceneMemberID="firstResponder"/>
