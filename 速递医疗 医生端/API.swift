@@ -18,6 +18,8 @@ public enum API {
     case editpassword(String, String, String) // 重置密码
     case exit // 退出登录
     case graborder(Int, Double) // 医生抢单
+    case listgraborders(Int) // 获取已抢订单
+    case listordertoconfirm(Int) // 获取选择我的订单
 
 }
 // 配置请求
@@ -47,6 +49,10 @@ extension API: TargetType {
             return "/exit"
         case .graborder:
             return "/graborder"
+        case .listgraborders:
+            return "/listgraborders"
+        case .listordertoconfirm:
+            return "/listordertoconfirm"
 
         }
     }
@@ -85,6 +91,10 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":LOGINID!], encoding: URLEncoding.default)
         case .graborder(let sickId, let price):
             return .requestParameters(parameters: ["docloginid":LOGINID!, "usersickid":sickId, "preorderprice": price], encoding: URLEncoding.default)
+        case .listgraborders(let page):
+            return .requestParameters(parameters: ["docloginid":LOGINID!, "page": page], encoding: URLEncoding.default)
+        case .listordertoconfirm(let page):
+            return .requestParameters(parameters: ["docloginid":LOGINID!, "page": page], encoding: URLEncoding.default)
         }
     }
     

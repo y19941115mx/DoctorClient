@@ -38,7 +38,16 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         //初始化navigationBar,添加按钮事件
         initView()
         // 添加下拉刷新
-        initRefresh(scrollView: infoTableView, ApiMethod: .listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon),  getMoreHandler: {
+        initRefresh(scrollView: infoTableView, ApiMethod: .listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon), refreshHandler: {
+            switch self.sortType {
+            case .sortByPatient:
+                self.ApiMethod = API.listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
+            case .sortByLoc:
+                self.ApiMethod = API.listsicksBytype(self.selectedPage, 2, APPLICATION.lat, APPLICATION.lon)
+            case .sortByTime:
+                self.ApiMethod = API.listsicksBytype(self.selectedPage, 1, APPLICATION.lat, APPLICATION.lon)
+            }
+        },  getMoreHandler: {
             switch self.sortType {
             case .sortByPatient:
                 self.getMoreMethod = API.listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon)

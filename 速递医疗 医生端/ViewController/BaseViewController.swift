@@ -94,7 +94,7 @@ class SegmentedSlideViewController: BaseViewController {
         slideSwitch?.show(in: self)
     }
     
-    func setUpSlideSwitchWithNavigation(titles:[String], vcs:[UIViewController])
+    func setUpSlideSwitchNoNavigation(titles:[String], vcs:[UIViewController])
     {
         let slideSwitch = XLSegmentedSlideSwitch(frame: CGRect(x: 0,  y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height - 64), titles: titles, viewControllers: vcs)
         slideSwitch?.tintColor = UIColor.APPColor
@@ -110,6 +110,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
     var scrollView:UIScrollView?
     var selectedPage = 1
     var getMoreHandler:()->Void = {}
+    var refreshHandler:(()->Void)?
     var ApiMethod:API?
     var getMoreMethod:API?
     var isTableView:Bool = true
@@ -118,9 +119,10 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         super.viewDidLoad()
     }
     
-    func initRefresh(scrollView:UIScrollView, ApiMethod:API, getMoreHandler:@escaping ()->Void, isTableView:Bool = true) {
+    func initRefresh(scrollView:UIScrollView, ApiMethod:API,refreshHandler:(()->Void)?,getMoreHandler:@escaping ()->Void, isTableView:Bool = true) {
         self.ApiMethod = ApiMethod
         self.isTableView = isTableView
+        self.refreshHandler = refreshHandler
         self.getMoreHandler = getMoreHandler
         self.scrollView = scrollView
         self.header = MJRefreshNormalHeader(refreshingBlock: self.refreshData)
@@ -162,43 +164,48 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         self.selectedPage = 1
         let Provider = MoyaProvider<API>()
         //刷新地理位置信息
-        MapUtil.singleLocation(successHandler: nil)
-        Provider.request(ApiMethod!) { result in
-            switch result {
-            case let .success(response):
-                do {
-                    self.header?.endRefreshing()
-                    let bean = Mapper<BaseListBean<T>>().map(JSONObject: try response.mapJSON())
-                    if bean?.code == 100 {
-                        if bean?.dataList == nil {
-                            bean?.dataList = [T]()
+        MapUtil.singleLocation { (location, regeocode) in
+            if self.refreshHandler != nil {
+                self.refreshHandler!()
+                Provider.request(self.ApiMethod!) { result in
+                    switch result {
+                    case let .success(response):
+                        do {
+                            self.header?.endRefreshing()
+                            let bean = Mapper<BaseListBean<T>>().map(JSONObject: try response.mapJSON())
+                            if bean?.code == 100 {
+                                if bean?.dataList == nil {
+                                    bean?.dataList = [T]()
+                                }
+                                self.data = (bean?.dataList)!
+                                if self.data.count == 0{
+                                    //隐藏tableView,添加刷新按钮
+                                    self.showRefreshBtn()
+                                }
+                                if self.isTableView {
+                                    let tableView = self.scrollView as! UITableView
+                                    tableView.reloadData()
+                                }else {
+                                    let collectionView = self.scrollView as! UICollectionView
+                                    collectionView.reloadData()
+                                }
+                                
+                            }else {
+                                showToast(self.view, (bean?.msg!)!)
+                            }
+                            
+                        }catch {
+                            showToast(self.view,CATCHMSG)
                         }
-                        self.data = (bean?.dataList)!
-                        if self.data.count == 0{
-                            //隐藏tableView,添加刷新按钮
-                            self.showRefreshBtn()
-                        }
-                        if self.isTableView {
-                            let tableView = self.scrollView as! UITableView
-                            tableView.reloadData()
-                        }else {
-                            let collectionView = self.scrollView as! UICollectionView
-                            collectionView.reloadData()
-                        }
-                        
-                    }else {
-                        showToast(self.view, (bean?.msg!)!)
+                    case let .failure(error):
+                        self.header?.endRefreshing()
+                        dPrint(message: "error:\(error)")
+                        showToast(self.view, ERRORMSG)
                     }
-                    
-                }catch {
-                    showToast(self.view,CATCHMSG)
                 }
-            case let .failure(error):
-                self.header?.endRefreshing()
-                dPrint(message: "error:\(error)")
-                showToast(self.view, ERRORMSG)
             }
         }
+        
         
     }
     

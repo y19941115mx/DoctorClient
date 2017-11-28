@@ -10,6 +10,12 @@
 		298DD5651FB2E0E700BBCE14 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298DD5641FB2E0E700BBCE14 /* Home.storyboard */; };
 		298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DD5661FB2E1D200BBCE14 /* Home_main.swift */; };
 		298DD5691FB2E1F100BBCE14 /* Home_detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DD5681FB2E1F100BBCE14 /* Home_detail.swift */; };
+		84031D0B1FCD43B50058D437 /* MyPatient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84031D0A1FCD43B40058D437 /* MyPatient.storyboard */; };
+		84031D0D1FCD44350058D437 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84031D0C1FCD44350058D437 /* BaseTableView.swift */; };
+		84031D0F1FCD44450058D437 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84031D0E1FCD44440058D437 /* BaseCollectionView.swift */; };
+		84031D111FCD44500058D437 /* MypatientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84031D101FCD444F0058D437 /* MypatientTableViewCell.swift */; };
+		84031D131FCD4A2A0058D437 /* Mypatient_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84031D121FCD4A2A0058D437 /* Mypatient_main.swift */; };
+		84031D151FCD4A860058D437 /* Mypatient_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84031D141FCD4A850058D437 /* Mypatient_page.swift */; };
 		840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647431FA6A259009B21C4 /* AppDelegate.swift */; };
 		840647461FA6A259009B21C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647451FA6A259009B21C4 /* ViewController.swift */; };
 		840647491FA6A259009B21C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840647471FA6A259009B21C4 /* Main.storyboard */; };
@@ -43,6 +49,12 @@
 		298DD5661FB2E1D200BBCE14 /* Home_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_main.swift; sourceTree = "<group>"; };
 		298DD5681FB2E1F100BBCE14 /* Home_detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_detail.swift; sourceTree = "<group>"; };
 		5B3FC993B61434C363F8356B /* Pods-速递医疗 医生端.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-速递医疗 医生端.debug.xcconfig"; path = "Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端.debug.xcconfig"; sourceTree = "<group>"; };
+		84031D0A1FCD43B40058D437 /* MyPatient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyPatient.storyboard; sourceTree = "<group>"; };
+		84031D0C1FCD44350058D437 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		84031D0E1FCD44440058D437 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
+		84031D101FCD444F0058D437 /* MypatientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypatientTableViewCell.swift; sourceTree = "<group>"; };
+		84031D121FCD4A2A0058D437 /* Mypatient_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mypatient_main.swift; sourceTree = "<group>"; };
+		84031D141FCD4A850058D437 /* Mypatient_page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mypatient_page.swift; sourceTree = "<group>"; };
 		840647401FA6A259009B21C4 /* 速递医疗 医生端.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "速递医疗 医生端.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		840647431FA6A259009B21C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		840647451FA6A259009B21C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +174,9 @@
 			isa = PBXGroup;
 			children = (
 				840647581FA6A49D009B21C4 /* CustomButton.swift */,
+				84031D0C1FCD44350058D437 /* BaseTableView.swift */,
+				84031D0E1FCD44440058D437 /* BaseCollectionView.swift */,
+				84031D101FCD444F0058D437 /* MypatientTableViewCell.swift */,
 				84165C1C1FC3042F00F32DF5 /* tableViewController.swift */,
 			);
 			path = View;
@@ -174,6 +189,8 @@
 				298DD5681FB2E1F100BBCE14 /* Home_detail.swift */,
 				84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */,
 				8491A4A11FC45B84008A7D09 /* Mine_setting.swift */,
+				84031D121FCD4A2A0058D437 /* Mypatient_main.swift */,
+				84031D141FCD4A850058D437 /* Mypatient_page.swift */,
 				84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */,
 				84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */,
 				843E71E81FC70E4D00829CA4 /* ResetViewController.swift */,
@@ -188,6 +205,7 @@
 			children = (
 				298DD5641FB2E0E700BBCE14 /* Home.storyboard */,
 				84165C1E1FC307D600F32DF5 /* Mine.storyboard */,
+				84031D0A1FCD43B40058D437 /* MyPatient.storyboard */,
 				84BB03C71FB2A9C0006FBCAF /* Login.storyboard */,
 			);
 			path = StoryBoard;
@@ -281,6 +299,7 @@
 			files = (
 				84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */,
 				298DD5651FB2E0E700BBCE14 /* Home.storyboard in Resources */,
+				84031D0B1FCD43B50058D437 /* MyPatient.storyboard in Resources */,
 				8406474E1FA6A259009B21C4 /* LaunchScreen.storyboard in Resources */,
 				84165C1F1FC307D600F32DF5 /* Mine.storyboard in Resources */,
 				84BB03C61FB2A92C006FBCAF /* Assets.xcassets in Resources */,
@@ -374,7 +393,9 @@
 				8406475E1FA6A49D009B21C4 /* BaseViewController.swift in Sources */,
 				8406475D1FA6A49D009B21C4 /* CustomButton.swift in Sources */,
 				84BB03CA1FB2A9E3006FBCAF /* LoginViewController.swift in Sources */,
+				84031D0F1FCD44450058D437 /* BaseCollectionView.swift in Sources */,
 				84BB03C31FB2A8F2006FBCAF /* XLSlideSwitch.m in Sources */,
+				84031D0D1FCD44350058D437 /* BaseTableView.swift in Sources */,
 				84165C1B1FC2E4BF00F32DF5 /* Mine_main.swift in Sources */,
 				840647461FA6A259009B21C4 /* ViewController.swift in Sources */,
 				84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */,
@@ -387,9 +408,12 @@
 				840647631FA6A4BD009B21C4 /* Util.swift in Sources */,
 				840647641FA6A4BD009B21C4 /* API.swift in Sources */,
 				840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */,
+				84031D151FCD4A860058D437 /* Mypatient_page.swift in Sources */,
 				843E71E91FC70E4D00829CA4 /* ResetViewController.swift in Sources */,
 				8491A4A21FC45B84008A7D09 /* Mine_setting.swift in Sources */,
+				84031D131FCD4A2A0058D437 /* Mypatient_main.swift in Sources */,
 				298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */,
+				84031D111FCD44500058D437 /* MypatientTableViewCell.swift in Sources */,
 				84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

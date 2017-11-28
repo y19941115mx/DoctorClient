@@ -33,18 +33,6 @@ class BaseListBean<T:Mappable>:BaseAPIBean {
     }
 }
 
-class DoctorListBean:BaseAPIBean {
-    var doctorDataList:[DoctorBean]?
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    
-    override func mapping(map: Map) {
-        super.mapping(map: map)
-        doctorDataList <- map["data"]
-    }
-}
-
 class DoctorBean:Mappable {
     var dept:String?
     var hospital:String?
@@ -112,20 +100,6 @@ class OrderBean: Mappable {
 
 
 
-class familyListBean:BaseAPIBean {
-    var familyDataList: [familyBean]?
-    
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    
-    override func mapping(map: Map) {
-        super.mapping(map: map)
-        familyDataList <- map["data"]
-    }
-    
-}
-
 class familyBean:Mappable {
     var familyid: Int = 0
     var familyname: String?
@@ -149,19 +123,6 @@ class familyBean:Mappable {
 }
 
 // 首页病情
-class sickListBean:BaseAPIBean {
-    
-    var sickDataList: [SickBean]?
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    override func mapping(map: Map) {
-        super.mapping(map: map)
-        sickDataList <- map["data"]
-    }
-    
-}
-
 class SickBean:Mappable {
     var usersickid: Int = 0 // 病情Id
     var usersickptime:String? // 发布时间
@@ -205,11 +166,9 @@ class sickDetailBean: BaseAPIBean {
 }
 
 
-
 //病情图片 usersickpic
 //病情一级部门 usersickprimarydept
 //病情二级部门 usersickseconddept
-
 
 class sickDetail:SickBean {
     var usersickpic:String?
@@ -226,9 +185,71 @@ class sickDetail:SickBean {
         usersickprimarydept <- map["usersickprimarydept"]
         usersickseconddept <- map["usersickseconddept"]
     }
-    
-
 }
+
+// 我的病人: 我选择的
+class mypatient_check:Mappable {
+    var usersickid:Int = 0
+    var preorderid:Int = 0
+    var userloginpix:String?
+    var userhuanxinaccount:String?
+    var familyname:String?
+    var familymale:String?
+    var familyage:Int = 0
+    var preordertime:String?
+    var usersickdesc:String?
+    var preorderprice:Double = 0.0
+    
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        usersickid <- map["usersickid"]
+        preorderid <- map["preorderid"]
+        userloginpix <- map["userloginpix"]
+        userhuanxinaccount <- map["userhuanxinaccount"]
+        familyage <- map["familyage"]
+        familymale <- map["familymale"]
+        familyname <- map["familyname"]
+        preordertime <- map["preordertime"]
+        usersickdesc <- map["usersickdesc"]
+        preorderprice <- map["preorderprice"]
+    }
+    
+}
+
+// 我的病人 选择我的
+class mypatient_checked:Mappable {
+    var userorderid:Int = 0
+    var userloginpix:String?
+    var userhuanxinaccount:String?
+    var familyname:String?
+    var familymale:String?
+    var familyage:Int = 0
+    var userorderptime:String?
+    var usersickdesc:String?
+    
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        userorderid <- map["userorderid"]
+        userloginpix <- map["userloginpix"]
+        userhuanxinaccount <- map["userhuanxinaccount"]
+        familyage <- map["familyage"]
+        familymale <- map["familymale"]
+        familyname <- map["familyname"]
+        userorderptime <- map["userorderptime"]
+        usersickdesc <- map["usersickdesc"]
+
+    }
+    
+}
+
 
 
 

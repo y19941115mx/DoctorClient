@@ -112,15 +112,14 @@
                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngm-TQ-5dL">
-                                        <rect key="frame" x="20" y="104" width="696" height="54"/>
-                                        <string key="text">病情描述：入院后，根据病史、体征，诊断为“双眼Vogt-小柳原田病”，予以抗炎、对症治疗，患者病情好转、稳定，眼底荧光造影（FFA）检查示：双眼葡萄膜炎。2010.02.23 出院时一般情况好，无特殊不适主诉。PE：视力：Vod0.2;Vos0.4，双眼无充血，角膜透明，前房清，瞳孔圆，对光反射</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="病情描述：入院后，根据病史、体征，诊断为“双眼Vogt-小柳原田病”" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngm-TQ-5dL">
+                                        <rect key="frame" x="20" y="104" width="696" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="就诊时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrz-kI-EAl">
-                                        <rect key="frame" x="20" y="160" width="80" height="21"/>
+                                        <rect key="frame" x="20" y="124" width="80" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="dK6-N6-e5y"/>
                                             <constraint firstAttribute="height" constant="21" id="kLp-Tr-7ur"/>
@@ -130,7 +129,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="2017年7月15日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfN-6q-l3w">
-                                        <rect key="frame" x="100" y="160" width="104" height="21"/>
+                                        <rect key="frame" x="100" y="124" width="104" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="750" constant="116" id="UCf-8i-HxU"/>
                                             <constraint firstAttribute="height" constant="21" id="z3U-BQ-ydO"/>
@@ -140,7 +139,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKY-fy-GRv">
-                                        <rect key="frame" x="310.5" y="325" width="115" height="30"/>
+                                        <rect key="frame" x="310.5" y="289" width="115" height="30"/>
                                         <color key="backgroundColor" red="0.38823529410000002" green="0.68235294120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="115" id="mwa-L5-YJd"/>
@@ -158,7 +157,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0FD-Js-N82">
-                                        <rect key="frame" x="20" y="198" width="692" height="101"/>
+                                        <rect key="frame" x="20" y="162" width="692" height="101"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="101" id="vGu-ju-4OU"/>
