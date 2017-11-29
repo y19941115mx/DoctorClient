@@ -7,10 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
-import SwiftyJSON
-import Moya
-import ObjectMapper
+
 
 
 class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -63,7 +60,6 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         // 显示选中的图片
         photoImageView.image = selectedImage
         //上传头像
-        SVProgressHUD.show()
         NetWorkUtil<BaseAPIBean>.init(method: API.updatepix(ImageUtil.image2Data(image: selectedImage)), vc: self).newRequest(handler: {bean in
             showToast(self.view, bean.msg!)
         })
