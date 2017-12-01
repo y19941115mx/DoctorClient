@@ -16,6 +16,9 @@
 		84031D111FCD44500058D437 /* MypatientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84031D101FCD444F0058D437 /* MypatientTableViewCell.swift */; };
 		84031D131FCD4A2A0058D437 /* Mypatient_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84031D121FCD4A2A0058D437 /* Mypatient_main.swift */; };
 		84031D151FCD4A860058D437 /* Mypatient_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84031D141FCD4A850058D437 /* Mypatient_page.swift */; };
+		84031D1D1FD14BCE0058D437 /* BPushCerResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84031D1A1FD14BCE0058D437 /* BPushCerResource.bundle */; };
+		84031D1E1FD14BCE0058D437 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84031D1B1FD14BCE0058D437 /* libBPush.a */; };
+		84031D1F1FD14BCE0058D437 /* test.caf in Resources */ = {isa = PBXBuildFile; fileRef = 84031D1C1FD14BCE0058D437 /* test.caf */; };
 		840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647431FA6A259009B21C4 /* AppDelegate.swift */; };
 		840647461FA6A259009B21C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647451FA6A259009B21C4 /* ViewController.swift */; };
 		840647491FA6A259009B21C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840647471FA6A259009B21C4 /* Main.storyboard */; };
@@ -55,6 +58,10 @@
 		84031D101FCD444F0058D437 /* MypatientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypatientTableViewCell.swift; sourceTree = "<group>"; };
 		84031D121FCD4A2A0058D437 /* Mypatient_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mypatient_main.swift; sourceTree = "<group>"; };
 		84031D141FCD4A850058D437 /* Mypatient_page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mypatient_page.swift; sourceTree = "<group>"; };
+		84031D191FD14BCE0058D437 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		84031D1A1FD14BCE0058D437 /* BPushCerResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BPushCerResource.bundle; sourceTree = "<group>"; };
+		84031D1B1FD14BCE0058D437 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		84031D1C1FD14BCE0058D437 /* test.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.caf; sourceTree = "<group>"; };
 		840647401FA6A259009B21C4 /* 速递医疗 医生端.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "速递医疗 医生端.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		840647431FA6A259009B21C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		840647451FA6A259009B21C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +79,7 @@
 		84165C1E1FC307D600F32DF5 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		843E71E81FC70E4D00829CA4 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		8491A4A11FC45B84008A7D09 /* Mine_setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_setting.swift; sourceTree = "<group>"; };
+		849CC0871FD179B20090D6B8 /* 速递医疗 医生端.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "速递医疗 医生端.entitlements"; sourceTree = "<group>"; };
 		84BB03B11FB2A66B006FBCAF /* ModelBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBean.swift; sourceTree = "<group>"; };
 		84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIBean.swift; sourceTree = "<group>"; };
 		84BB03B71FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSegmentedSlideSwitch.h; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84031D1E1FD14BCE0058D437 /* libBPush.a in Frameworks */,
 				F4DB150E0D1B56834269E74D /* Pods_________.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +130,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		84031D181FD14BCE0058D437 /* LibBPush */ = {
+			isa = PBXGroup;
+			children = (
+				84031D191FD14BCE0058D437 /* BPush.h */,
+				84031D1A1FD14BCE0058D437 /* BPushCerResource.bundle */,
+				84031D1B1FD14BCE0058D437 /* libBPush.a */,
+				84031D1C1FD14BCE0058D437 /* test.caf */,
+			);
+			path = LibBPush;
+			sourceTree = "<group>";
+		};
 		840647371FA6A259009B21C4 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +162,7 @@
 		840647421FA6A259009B21C4 /* 速递医疗 医生端 */ = {
 			isa = PBXGroup;
 			children = (
+				849CC0871FD179B20090D6B8 /* 速递医疗 医生端.entitlements */,
 				84BB03B01FB2A53C006FBCAF /* StoryBoard */,
 				840647551FA6A49D009B21C4 /* Model */,
 				840647571FA6A49D009B21C4 /* View */,
@@ -214,6 +235,7 @@
 		84BB03B51FB2A8F2006FBCAF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				84031D181FD14BCE0058D437 /* LibBPush */,
 				84BB03B61FB2A8F2006FBCAF /* XLSlideSwitch */,
 			);
 			path = Libs;
@@ -271,6 +293,14 @@
 					8406473F1FA6A259009B21C4 = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -297,9 +327,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84031D1F1FD14BCE0058D437 /* test.caf in Resources */,
 				84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */,
 				298DD5651FB2E0E700BBCE14 /* Home.storyboard in Resources */,
 				84031D0B1FCD43B50058D437 /* MyPatient.storyboard in Resources */,
+				84031D1D1FD14BCE0058D437 /* BPushCerResource.bundle in Resources */,
 				8406474E1FA6A259009B21C4 /* LaunchScreen.storyboard in Resources */,
 				84165C1F1FC307D600F32DF5 /* Mine.storyboard in Resources */,
 				84BB03C61FB2A92C006FBCAF /* Assets.xcassets in Resources */,
@@ -552,12 +584,17 @@
 			baseConfigurationReference = 5B3FC993B61434C363F8356B /* Pods-速递医疗 医生端.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "速递医疗 医生端/速递医疗 医生端.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4RH4DUFC64;
 				INFOPLIST_FILE = "速递医疗 医生端/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/速递医疗\\ 医生端/Libs/LibBPush",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.victor.DoctorClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -572,12 +609,17 @@
 			baseConfigurationReference = FA1985612B2760BFE0B76DB1 /* Pods-速递医疗 医生端.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "速递医疗 医生端/速递医疗 医生端.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4RH4DUFC64;
 				INFOPLIST_FILE = "速递医疗 医生端/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/速递医疗\\ 医生端/Libs/LibBPush",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.victor.DoctorClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

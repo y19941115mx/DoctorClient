@@ -23,6 +23,8 @@ struct StaticClass {
     static let RootIP = "http://1842719ny8.iok.la:14086"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
     static let GaodeAPIKey = "dc63bec745429fca2107bdd7e57f7e3c"
+    static let TuisongAPIKey = "uf3RsBMfrhLyZhD4G5GPrTxQa2huBIIS"
+    
 }
 //日志打印
 public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #function,lineNumber:Int = #line){
