@@ -22,4 +22,9 @@ target '速递医疗 医生端' do
     pod 'MJRefresh'
 	# 高德定位
     pod 'AMapLocation'
+    # 环信
+    pod 'Hyphenate'
+    # 环信UI
+    pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
+    
 end

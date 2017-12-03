@@ -76,25 +76,25 @@ extension API: TargetType {
         case .phonetest(let phone):
             return .requestParameters(parameters: ["docloginphone":phone], encoding: URLEncoding.default)
         case .listsicks(let page, let lat, let lon):
-            return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "lat":lat, "lon":lon], encoding: URLEncoding.default)
 
         case .updatepix(let data):
-        return .uploadCompositeMultipart([MultipartFormData.init(provider: .data(data), name: "docloginpix", fileName: "photo.jpg", mimeType:"image/png")], urlParameters: ["docloginid": LOGINID!])
+        return .uploadCompositeMultipart([MultipartFormData.init(provider: .data(data), name: "docloginpix", fileName: "photo.jpg", mimeType:"image/png")], urlParameters: ["docloginid": user_default.userId.getStringValue()!])
 
         case .listsicksBytype(let page, let type, let lat, let lon):
-            return .requestParameters(parameters: ["docloginid":LOGINID!, "page":page, "lat":lat, "lon":lon, "type":type], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "lat":lat, "lon":lon, "type":type], encoding: URLEncoding.default)
         case .getsickdetail(let sickId):
-            return .requestParameters(parameters: ["docloginid":LOGINID!, "usersickid": sickId], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "usersickid": sickId], encoding: URLEncoding.default)
         case .editpassword(let phone, let pass, let code):
             return .requestParameters(parameters: ["docloginphone":phone, "docloginpwd":pass, "code":code], encoding: URLEncoding.default)
         case .exit:
-            return .requestParameters(parameters: ["docloginid":LOGINID!], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         case .graborder(let sickId, let price):
-            return .requestParameters(parameters: ["docloginid":LOGINID!, "usersickid":sickId, "preorderprice": price], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "usersickid":sickId, "preorderprice": price], encoding: URLEncoding.default)
         case .listgraborders(let page):
-            return .requestParameters(parameters: ["docloginid":LOGINID!, "page": page], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page": page], encoding: URLEncoding.default)
         case .listordertoconfirm(let page):
-            return .requestParameters(parameters: ["docloginid":LOGINID!, "page": page], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page": page], encoding: URLEncoding.default)
         }
     }
     

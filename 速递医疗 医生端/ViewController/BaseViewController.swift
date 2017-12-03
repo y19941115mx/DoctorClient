@@ -109,8 +109,8 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
     var data = [T]()
     var scrollView:UIScrollView?
     var selectedPage = 1
-    var getMoreHandler:()->Void = {}
-    var refreshHandler:(()->Void)?
+    var getMoreHandler:()->Void = {} //动态改变 获取更多的API
+    var refreshHandler:(()->Void)? // 动态改变 刷新数据的API
     var ApiMethod:API?
     var getMoreMethod:API?
     var isTableView:Bool = true
@@ -167,6 +167,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         MapUtil.singleLocation { (location, regeocode) in
             if self.refreshHandler != nil {
                 self.refreshHandler!()
+            }
                 Provider.request(self.ApiMethod!) { result in
                     switch result {
                     case let .success(response):
@@ -203,7 +204,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
                         showToast(self.view, ERRORMSG)
                     }
                 }
-            }
+            
         }
         
         

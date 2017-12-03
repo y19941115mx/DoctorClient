@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var lon:String = "0"
     var lat:String = "0"
     
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        进度条设置
         SVProgressHUD.setDefaultStyle(.custom)
@@ -27,23 +26,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
 //      高德地图设置
         self.setUpMap()
-//      百度地图推送
+//      百度推送
         self.setUpBaiDuPush(application, didFinishLaunchingWithOptions: launchOptions)
+//        环信设置
+        let options = EMOptions.init(appkey: StaticClass.HuanxinAppkey)
+        EMClient.shared().initializeSDK(with: options)
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        EMClient.shared().applicationDidEnterBackground(application)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        EMClient.shared().applicationWillEnterForeground(application)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // 获取channel_id
                 let BaiDu_Channel_id = BPush.getChannelId()
                 dPrint(message: BaiDu_Channel_id)
-                UserDefaults.standard.set(BaiDu_Channel_id, forKey: "BaiDu_Channel_id")
+                user_default.setUserDefault(key: user_default.channel_id, value: BaiDu_Channel_id)
             }
         })
     }

@@ -58,7 +58,7 @@ class LoginViewController: BaseTextViewController {
                         let account = data["huanxinaccount"].stringValue
                         let pix = data["pix"].stringValue
                         let token = data["token"].stringValue
-                        let username = data["username"].stringValue
+                        let username = data["name"].stringValue
                         let title = data["title"].stringValue
                         user_default.setUserDefault(key: .userId, value: String(userId))
                         user_default.setUserDefault(key: .typename, value: typename)

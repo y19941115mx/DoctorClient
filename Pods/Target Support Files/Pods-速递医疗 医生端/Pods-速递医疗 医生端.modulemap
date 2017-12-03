@@ -1,6 +1,0 @@
-framework module Pods_________ {
-  umbrella header "Pods-速递医疗 医生端-umbrella.h"
-
-  export *
-  module * { export * }
-}

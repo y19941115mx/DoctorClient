@@ -9,13 +9,15 @@ import Alamofire
 import Moya
 import SVProgressHUD
 import ObjectMapper
+import SwiftyJSON
+
 
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 let APPLICATION = UIApplication.shared.delegate as! AppDelegate
 let ERRORMSG = "获取服务器数据失败"
 let CATCHMSG = "解析服务器数据失败"
-let LOGINID = Int(user_default.userId.getStringValue()!)
+
 
 // 全局变量
 struct StaticClass {
@@ -24,7 +26,7 @@ struct StaticClass {
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
     static let GaodeAPIKey = "dc63bec745429fca2107bdd7e57f7e3c"
     static let TuisongAPIKey = "uf3RsBMfrhLyZhD4G5GPrTxQa2huBIIS"
-    
+    static let HuanxinAppkey = "1133171107115421#medicalclient"
 }
 //日志打印
 public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #function,lineNumber:Int = #line){
@@ -130,7 +132,7 @@ class MapUtil {
 
 // UserDefault UserDefault相关的枚举值
 enum user_default:String {
-    case userId, typename, pix, token, username, title, account
+    case userId, typename, pix, token, username, title, account, channel_id
     func getStringValue()->String? {
         return UserDefaults.standard.string(forKey: self.rawValue)
     }
@@ -149,6 +151,7 @@ enum user_default:String {
         UserDefaults.standard.removeObject(forKey: "username")
         UserDefaults.standard.removeObject(forKey: "title")
         UserDefaults.standard.removeObject(forKey: "account")
+        UserDefaults.standard.removeObject(forKey: "channel_id")
     }
 }
 
@@ -334,6 +337,8 @@ class StringUTil {
     }
     
 }
+
+
 
 
 
