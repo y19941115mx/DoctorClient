@@ -10,6 +10,7 @@ import Moya
 import SVProgressHUD
 import ObjectMapper
 import SwiftyJSON
+import SwiftHash
 
 
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -41,6 +42,13 @@ public func showToast(_ view:UIView, _ message:String) {
     view.makeToast(message, duration: 2.0, position: .bottom, style:style)
 }
 
+public func Toast(_ message:String) {
+    var style = ToastStyle()
+    style.backgroundColor = UIColor.APPColor
+    let view = APPLICATION.window?.rootViewController?.view
+    view?.makeToast(message, duration: 2.0, position: .bottom, style:style)
+}
+
 // 网络请求
 class NetWorkUtil<T:BaseAPIBean> {
     var method:API?
@@ -63,7 +71,7 @@ class NetWorkUtil<T:BaseAPIBean> {
         }
     }
     
-    func newRequest(handler:@escaping (_ bean:T) -> Void) {
+    func newRequest(handler:@escaping (_ bean:T, _ JSONObj:JSON) -> Void) {
         let Provider = MoyaProvider<API>()
         SVProgressHUD.show()
         Provider.request(method!) { result in
@@ -71,8 +79,10 @@ class NetWorkUtil<T:BaseAPIBean> {
             case let .success(response):
                 do {
                     SVProgressHUD.dismiss()
-                    let bean = Mapper<T>().map(JSONObject: try response.mapJSON())
-                    handler(bean!)
+                    let jsonObj =  try response.mapJSON()
+                    let bean = Mapper<T>().map(JSONObject: jsonObj)
+                    let json = JSON(jsonObj)
+                    handler(bean!, json)
                 }catch {
                     dPrint(message: "response:\(response)")
                     showToast(self.vc.view, CATCHMSG)
@@ -132,7 +142,7 @@ class MapUtil {
 
 // UserDefault UserDefault相关的枚举值
 enum user_default:String {
-    case userId, typename, pix, token, username, title, account, channel_id
+    case userId, password, typename, pix, token, username, title, account, channel_id
     func getStringValue()->String? {
         return UserDefaults.standard.string(forKey: self.rawValue)
     }
@@ -152,6 +162,7 @@ enum user_default:String {
         UserDefaults.standard.removeObject(forKey: "title")
         UserDefaults.standard.removeObject(forKey: "account")
         UserDefaults.standard.removeObject(forKey: "channel_id")
+        UserDefaults.standard.removeObject(forKey: "password")
     }
 }
 
@@ -253,6 +264,11 @@ class ImageUtil{
 }
 
 class StringUTil {
+    
+    // 转换MD5值
+    class public func transformMD5(_ string:String)->String {
+        return MD5(string)
+    }
     
     // 将时间戳转换为时间字符串
     class public func timestamp2string(timeStamp:Int) -> String{

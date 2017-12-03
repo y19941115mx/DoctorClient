@@ -153,7 +153,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let patient = data[indexPath.row]
-    NetWorkUtil<sickDetailBean>.init(method:API.getsickdetail(patient.usersickid) , vc: self).newRequest(handler: {sick in
+        NetWorkUtil<sickDetailBean>.init(method:API.getsickdetail(patient.usersickid) , vc: self).newRequest(handler: {sick,json  in
             self.sickBean = sick.sickDetail
             self.performSegue(withIdentifier: "ShowDetail", sender: self)
         })

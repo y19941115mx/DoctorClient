@@ -60,7 +60,7 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         // 显示选中的图片
         photoImageView.image = selectedImage
         //上传头像
-        NetWorkUtil<BaseAPIBean>.init(method: API.updatepix(ImageUtil.image2Data(image: selectedImage)), vc: self).newRequest(handler: {bean in
+        NetWorkUtil<BaseAPIBean>.init(method: API.updatepix(ImageUtil.image2Data(image: selectedImage)), vc: self).newRequest(handler: {bean,json  in
             showToast(self.view, bean.msg!)
         })
         // Dismiss the picker.

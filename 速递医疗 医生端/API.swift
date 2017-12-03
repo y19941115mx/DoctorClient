@@ -9,6 +9,7 @@ import Moya
 public enum API {
     case doclogin(String, String) // 登录
     case docregister(String, String, String) // 注册
+    case huanxinregister // 环信注册
     case getmsgcode(String)  // 发送验证码
     case phonetest(String) //验证短信验证码
     case updatepix(Data) // 上传头像
@@ -18,8 +19,8 @@ public enum API {
     case editpassword(String, String, String) // 重置密码
     case exit // 退出登录
     case graborder(Int, Double) // 医生抢单
-    case listgraborders(Int) // 获取已抢订单
-    case listordertoconfirm(Int) // 获取选择我的订单
+    case listgraborders(Int) // 获取我选择的病人
+    case listordertoconfirm(Int) // 获取选择我的病人
 
 }
 // 配置请求
@@ -31,6 +32,8 @@ extension API: TargetType {
             return "/doclogin"
         case .docregister:
             return "/docregister"
+        case .huanxinregister:
+            return "/huanxinregister"
         case .getmsgcode:
             return "/getmsgcode"
         case .phonetest:
@@ -71,6 +74,8 @@ extension API: TargetType {
             return  .requestParameters(parameters: ["docloginphone":phone, "docloginpwd": pwd, "doclogindev":2], encoding: URLEncoding.default)
         case .docregister(let phone, let pwd, let code):
             return .requestParameters(parameters: ["docloginphone":phone, "docloginpwd":pwd, "code":code], encoding: URLEncoding.default)
+        case .huanxinregister:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docloginpwd":user_default.password.getStringValue()!], encoding: URLEncoding.default)
         case .getmsgcode(let phone):
             return .requestParameters(parameters: ["docloginphone":phone], encoding: URLEncoding.default)
         case .phonetest(let phone):

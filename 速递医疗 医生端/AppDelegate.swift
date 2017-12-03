@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //      百度推送
         self.setUpBaiDuPush(application, didFinishLaunchingWithOptions: launchOptions)
 //        环信设置
-        let options = EMOptions.init(appkey: StaticClass.HuanxinAppkey)
-        EMClient.shared().initializeSDK(with: options)
+        self.setupHuanxin()
         return true
     }
 
@@ -61,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if result != nil {
                 // 获取channel_id
                 let BaiDu_Channel_id = BPush.getChannelId()
-                dPrint(message: BaiDu_Channel_id)
                 user_default.setUserDefault(key: user_default.channel_id, value: BaiDu_Channel_id)
             }
         })
@@ -136,6 +134,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             BPush.handleNotification(userInfo as! [AnyHashable : Any])
         }
         
+    }
+    private func setupHuanxin() {
+        let options = EMOptions.init(appkey: StaticClass.HuanxinAppkey)
+        EMClient.shared().initializeSDK(with: options)
+        // 环信登录
+        let account = user_default.account.getStringValue()
+        let pass = user_default.password.getStringValue()
+        if account != nil && account != ""{
+            EMClient.shared().login(withUsername: account!, password: pass, completion: { (name, error) in
+                if error == nil {
+                    Toast("环信登录成功")
+                }else {
+                    Toast("环信登录失败，\(error.debugDescription)")
+                }
+            })
+        }
     }
 
 }

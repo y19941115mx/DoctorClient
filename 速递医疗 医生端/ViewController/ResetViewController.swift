@@ -76,7 +76,7 @@ class ResetViewController: BaseTextViewController {
             self.view.makeToast("请输入6-15位数字或字母")
         }else{
             //1.发送重置密码请求
-            NetWorkUtil<BaseAPIBean>.init(method: API.editpassword(phoneText, MD5(passwordText), msgCode), vc: self).newRequest(handler: {bean in
+            NetWorkUtil<BaseAPIBean>.init(method: API.editpassword(phoneText, MD5(passwordText), msgCode), vc: self).newRequest(handler: {bean,json  in
                 if bean.code == 100 {
                     // 重置成功，返回登录界面
                     showToast(self.view, "重置密码成功！")
@@ -102,10 +102,10 @@ class ResetViewController: BaseTextViewController {
         //开始倒计时
         isCounting = true
         //验证手机号码
-        NetWorkUtil<BaseAPIBean>.init(method: .phonetest(phoneNum), vc: self).newRequest(handler: {bean in
+        NetWorkUtil<BaseAPIBean>.init(method: .phonetest(phoneNum), vc: self).newRequest(handler: {bean,json  in
             if bean.code == 200 {
                 // 发送手机验证码
-                NetWorkUtil<BaseAPIBean>.init(method: API.getmsgcode(phoneNum), vc: self).newRequest(handler: {bean in
+                NetWorkUtil<BaseAPIBean>.init(method: API.getmsgcode(phoneNum), vc: self).newRequest(handler: {bean, json in
                     if bean.code == 100 {
                         showToast(self.view, "发送验证码成功")
                     }else {
