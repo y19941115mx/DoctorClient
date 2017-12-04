@@ -48,6 +48,7 @@
 		847C13931FD2AEFB00B32BB7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847C13921FD2AEF400B32BB7 /* CFNetwork.framework */; };
 		847C13951FD2AF0F00B32BB7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847C13941FD2AF0800B32BB7 /* CoreMotion.framework */; };
 		8491A4A21FC45B84008A7D09 /* Mine_setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491A4A11FC45B84008A7D09 /* Mine_setting.swift */; };
+		84B730881FD4CBD3004A36B9 /* HomeMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */; };
 		84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B11FB2A66B006FBCAF /* ModelBean.swift */; };
 		84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */; };
 		84BB03C01FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B81FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m */; };
@@ -108,6 +109,7 @@
 		847C13941FD2AF0800B32BB7 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8491A4A11FC45B84008A7D09 /* Mine_setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_setting.swift; sourceTree = "<group>"; };
 		849CC0871FD179B20090D6B8 /* 速递医疗 医生端.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "速递医疗 医生端.entitlements"; sourceTree = "<group>"; };
+		84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainTableViewCell.swift; sourceTree = "<group>"; };
 		84BB03B11FB2A66B006FBCAF /* ModelBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBean.swift; sourceTree = "<group>"; };
 		84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIBean.swift; sourceTree = "<group>"; };
 		84BB03B71FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSegmentedSlideSwitch.h; sourceTree = "<group>"; };
@@ -124,7 +126,7 @@
 		84BB03C71FB2A9C0006FBCAF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		C30DFDD6552B25E411F9EA08 /* Pods_________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_________.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C30DFDD6552B25E411F9EA08 /* Pods_________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_________.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1985612B2760BFE0B76DB1 /* Pods-速递医疗 医生端.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-速递医疗 医生端.release.xcconfig"; path = "Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +252,7 @@
 				84031D0E1FCD44440058D437 /* BaseCollectionView.swift */,
 				84031D101FCD444F0058D437 /* MypatientTableViewCell.swift */,
 				84165C1C1FC3042F00F32DF5 /* tableViewController.swift */,
+				84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				843E71E91FC70E4D00829CA4 /* ResetViewController.swift in Sources */,
 				8491A4A21FC45B84008A7D09 /* Mine_setting.swift in Sources */,
 				84031D131FCD4A2A0058D437 /* Mypatient_main.swift in Sources */,
+				84B730881FD4CBD3004A36B9 /* HomeMainTableViewCell.swift in Sources */,
 				298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */,
 				84031D111FCD44500058D437 /* MypatientTableViewCell.swift in Sources */,
 				84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */,

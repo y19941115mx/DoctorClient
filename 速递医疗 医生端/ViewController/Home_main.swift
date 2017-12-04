@@ -68,23 +68,11 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     //1,2,3,4,5分别是3 个label 1 个 UIimage
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let id = "reusedCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! HomeMainTableViewCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        let titleLabel = cell.viewWithTag(1) as! UILabel
-        let sexLabel = cell.viewWithTag(2) as! UILabel
-        let timeLabel = cell.viewWithTag(3) as! UILabel
-        let descLabel = cell.viewWithTag(4) as! UILabel
-        let patientImg = cell.viewWithTag(5) as! UIImageView
+        
         let result = data[indexPath.row]
-        titleLabel.text = result.familyname
-        sexLabel.text = result.familymale
-        if result.usersickptime == nil {
-            timeLabel.text = ""
-        }else {
-            timeLabel.text = StringUTil.getComparedTimeStr(str: result.usersickptime!)
-        }
-        descLabel.text = result.usersickdesc
-        ImageUtil.setAvator(path: result.userloginpix!, imageView: patientImg)
+        cell.updateViews(result: result, vc: self)
         return cell
     }
     
@@ -158,4 +146,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             self.performSegue(withIdentifier: "ShowDetail", sender: self)
         })
     }
+    
+    
+    
 }

@@ -23,7 +23,7 @@ class Mypatient_page_check: BaseRefreshController<mypatient_check>, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! MypatientTableViewCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         let res = data[indexPath.row]
-        cell.updateViews(modelBean: res)
+        cell.updateViews(modelBean: res, vc: self)
         return cell
     }
     
@@ -52,7 +52,7 @@ class Mypatient_page_checked: BaseRefreshController<mypatient_checked>, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! MypatientTableViewCell2
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         let res = data[indexPath.row]
-        cell.updateViews(modelBean: res)
+        cell.updateViews(modelBean: res, vc: self)
         return cell
     }
     

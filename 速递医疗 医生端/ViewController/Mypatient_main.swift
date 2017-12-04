@@ -17,15 +17,13 @@ class Mypatient_main: SegmentedSlideViewController {
         super.viewDidLoad()
         // 设置navigation
         setUpNavTitle(title: "我的病人")
-        // 设置分栏
-//        let vc1 = UIStoryboard.init(name: "Date", bundle: nil).instantiateViewController(withIdentifier: "order") as! Date_page
-//        vc1.type = 1
-//        let vc2 = UIStoryboard.init(name: "Date", bundle: nil).instantiateViewController(withIdentifier: "order") as! Date_page
-//        vc2.type = 2
-        
-//        vcs = [vc1, vc2]
+        let vc1 = UIStoryboard.init(name: "MyPatient", bundle: nil).instantiateViewController(withIdentifier: "mypatient_check") as! Mypatient_page_check
 
-        setUpSlideSwitch(titles: types, vcs: vcs)
+        let vc2 = UIStoryboard.init(name: "MyPatient", bundle: nil).instantiateViewController(withIdentifier: "mypatient_checked") as! Mypatient_page_checked
+        
+        vcs = [vc1, vc2]
+
+        setUpSlideSwitchNoNavigation(titles: ["我选择的", "选择我的"], vcs: [vc1, vc2])
     }
 
 }
