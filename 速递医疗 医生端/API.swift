@@ -21,6 +21,7 @@ public enum API {
     case graborder(Int, Double) // 医生抢单
     case listgraborders(Int) // 获取我选择的病人
     case listordertoconfirm(Int) // 获取选择我的病人
+    case cancelgraborder(Int) // 取消我选择的病人
 
 }
 // 配置请求
@@ -56,6 +57,8 @@ extension API: TargetType {
             return "/listgraborders"
         case .listordertoconfirm:
             return "/listordertoconfirm"
+        case .cancelgraborder:
+            return "/cancelgraborder"
 
         }
     }
@@ -100,6 +103,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page": page], encoding: URLEncoding.default)
         case .listordertoconfirm(let page):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page": page], encoding: URLEncoding.default)
+        case .cancelgraborder(let preorderid):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!,"preorderid":preorderid], encoding: URLEncoding.default)
         }
     }
     

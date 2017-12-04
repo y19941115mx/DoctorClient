@@ -43,7 +43,9 @@ class MypatientTableViewCell: UITableViewCell {
     }
     // 点击取消
     @IBAction func click_delete(_ sender: UIButton) {
-        AlertUtil.popAlert(vc: self.vc, msg: "确认取消", okhandler: {})
+        AlertUtil.popAlert(vc: self.vc, msg: "确认取消", okhandler: {
+            
+        })
     }
 }
 
