@@ -11,7 +11,7 @@ import UIKit
 class MypatientTableViewCell: UITableViewCell {
     var data:mypatient_check?
     var vc = BaseRefreshController<mypatient_check>()
-
+    
     
     
     @IBOutlet weak var pix_imv: UIImageView!
@@ -25,7 +25,7 @@ class MypatientTableViewCell: UITableViewCell {
     
     @IBOutlet weak var sexLabel: UILabel!
     
-   
+    
     @IBOutlet weak var descLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,7 +54,7 @@ class MypatientTableViewCell: UITableViewCell {
 
 class MypatientTableViewCell2: UITableViewCell {
     var data:mypatient_checked?
-    var vc = UIViewController()
+    var vc = BaseRefreshController<mypatient_checked>()
     
     
     
@@ -76,7 +76,7 @@ class MypatientTableViewCell2: UITableViewCell {
         // Initialization code
     }
     
-    public func updateViews(modelBean:mypatient_checked, vc:UIViewController) {
+    public func updateViews(modelBean:mypatient_checked, vc:BaseRefreshController<mypatient_checked>) {
         self.data = modelBean
         self.vc = vc
         ImageUtil.setAvator(path: modelBean.userloginpix!, imageView: pix_imv)
@@ -85,9 +85,17 @@ class MypatientTableViewCell2: UITableViewCell {
         sexLabel.text = modelBean.familymale
         descLabel.text = modelBean.usersickdesc
     }
+    // 点击确定
+    @IBAction func click_confirm(_ sender: Any) {
+        
+    }
     // 点击取消
     @IBAction func click_delete(_ sender: UIButton) {
-        AlertUtil.popAlert(vc: self.vc, msg: "确认取消", okhandler: {})
+        AlertUtil.popAlert(vc: self.vc, msg: "是否推荐给其他医生", okhandler: {})
+        NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid), vc: self.vc).newRequest { (bean, json) in
+            Toast(bean.msg!)
+            self.vc.refreshData()
+        }
     }
 }
 

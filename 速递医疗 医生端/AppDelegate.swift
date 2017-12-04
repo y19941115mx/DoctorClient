@@ -61,6 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // 获取channel_id
                 let BaiDu_Channel_id = BPush.getChannelId()
                 user_default.setUserDefault(key: user_default.channel_id, value: BaiDu_Channel_id)
+                NetWorkUtil<BaseAPIBean>.init(method: API.updatechannelid(BaiDu_Channel_id!), vc: (self.window?.rootViewController)!).newRequest(handler: { (bean, json) in
+                    Toast(bean.msg!)
+                })
             }
         })
     }

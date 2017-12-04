@@ -9,6 +9,7 @@ import Moya
 public enum API {
     case doclogin(String, String) // 登录
     case docregister(String, String, String) // 注册
+    case updatechannelid(String)
     case huanxinregister // 环信注册
     case getmsgcode(String)  // 发送验证码
     case phonetest(String) //验证短信验证码
@@ -22,6 +23,8 @@ public enum API {
     case listgraborders(Int) // 获取我选择的病人
     case listordertoconfirm(Int) // 获取选择我的病人
     case cancelgraborder(Int) // 取消我选择的病人
+    case refuseorder(Int) // 取消选择我的病人
+    
 
 }
 // 配置请求
@@ -35,6 +38,8 @@ extension API: TargetType {
             return "/docregister"
         case .huanxinregister:
             return "/huanxinregister"
+        case .updatechannelid:
+            return "/updatechannelid"
         case .getmsgcode:
             return "/getmsgcode"
         case .phonetest:
@@ -59,7 +64,8 @@ extension API: TargetType {
             return "/listordertoconfirm"
         case .cancelgraborder:
             return "/cancelgraborder"
-
+        case .refuseorder:
+            return "/refuseorder"
         }
     }
     public var method: Moya.Method {
@@ -79,6 +85,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginphone":phone, "docloginpwd":pwd, "code":code], encoding: URLEncoding.default)
         case .huanxinregister:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docloginpwd":user_default.password.getStringValue()!], encoding: URLEncoding.default)
+        case .updatechannelid(let id):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "channelid":id], encoding: URLEncoding.default)
         case .getmsgcode(let phone):
             return .requestParameters(parameters: ["docloginphone":phone], encoding: URLEncoding.default)
         case .phonetest(let phone):
@@ -105,6 +113,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page": page], encoding: URLEncoding.default)
         case .cancelgraborder(let preorderid):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!,"preorderid":preorderid], encoding: URLEncoding.default)
+        case .refuseorder(let orderId):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId], encoding: URLEncoding.default)
         }
     }
     

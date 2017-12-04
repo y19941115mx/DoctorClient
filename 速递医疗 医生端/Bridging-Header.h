@@ -15,7 +15,7 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
-# import <Hyphenate/Hyphenate.h>
+# import <HyphenateLite/HyphenateLite.h>
 #import <AlipaySDK/AlipaySDK.h>
 
 
