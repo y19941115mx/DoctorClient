@@ -10,7 +10,7 @@ import UIKit
 
 class MypatientTableViewCell: UITableViewCell {
     var data:mypatient_check?
-    var vc = UIViewController()
+    var vc = BaseRefreshController<mypatient_check>()
 
     
     
@@ -32,7 +32,7 @@ class MypatientTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    public func updateViews(modelBean:mypatient_check, vc:UIViewController) {
+    public func updateViews(modelBean:mypatient_check, vc:BaseRefreshController<mypatient_check>) {
         self.data = modelBean
         self.vc = vc
         ImageUtil.setAvator(path: modelBean.userloginpix!, imageView: pix_imv)
@@ -44,7 +44,10 @@ class MypatientTableViewCell: UITableViewCell {
     // 点击取消
     @IBAction func click_delete(_ sender: UIButton) {
         AlertUtil.popAlert(vc: self.vc, msg: "确认取消", okhandler: {
-            
+            NetWorkUtil<BaseAPIBean>.init(method: .cancelgraborder(self.data!.preorderid), vc: self.vc).newRequest(handler: { (bean, json) in
+                Toast(bean.msg!)
+                self.vc.refreshData()
+            })
         })
     }
 }
