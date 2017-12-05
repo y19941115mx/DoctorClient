@@ -56,15 +56,21 @@ class Mypatient_page_checked: BaseRefreshController<mypatient_checked>, UITableV
         return cell
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initRefresh(scrollView: tableView, ApiMethod: API.listordertoconfirm(selectedPage), refreshHandler: nil, getMoreHandler: {
             self.getMoreMethod = API.listordertoconfirm(self.selectedPage)
         })
-        
         self.header?.beginRefreshing()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCheckPatient" {
+            
+        }
+    }
     
 }
 

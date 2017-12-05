@@ -92,7 +92,7 @@ class MypatientTableViewCell2: UITableViewCell {
     // 点击取消
     @IBAction func click_delete(_ sender: UIButton) {
         AlertUtil.popAlert(vc: self.vc, msg: "是否推荐给其他医生", okhandler: {})
-        NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid), vc: self.vc).newRequest { (bean, json) in
+        NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid), vc: self.vc).newRequestWithoutHUD { (bean, json) in
             Toast(bean.msg!)
             self.vc.refreshData()
         }

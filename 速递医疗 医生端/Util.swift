@@ -95,6 +95,27 @@ class NetWorkUtil<T:BaseAPIBean> {
         }
     }
     
+    func newRequestWithoutHUD(handler:@escaping (_ bean:T, _ JSONObj:JSON) -> Void) {
+        let Provider = MoyaProvider<API>()
+        Provider.request(method!) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let jsonObj =  try response.mapJSON()
+                    let bean = Mapper<T>().map(JSONObject: jsonObj)
+                    let json = JSON(jsonObj)
+                    handler(bean!, json)
+                }catch {
+                    dPrint(message: "response:\(response)")
+                    showToast(self.vc.view, CATCHMSG)
+                }
+            case let .failure(error):
+                dPrint(message: "error:\(error)")
+                showToast(self.vc.view, ERRORMSG)
+            }
+        }
+    }
+    
     //获取科室数据
     class func getDepartMent(success : @escaping (_ response : [String : AnyObject])->(), failture : @escaping (_ error : Error)->()){
         getRequest(urlString: StaticClass.GetDept, params: [:], success: success, failture:failture)
