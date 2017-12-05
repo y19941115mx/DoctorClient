@@ -8,6 +8,6 @@
 
 import UIKit
 
-class Date_main: BaseViewController {
+class Date_main: SegmentedSlideViewController {
     
 }

@@ -61,7 +61,7 @@ class Home_detail: BaseViewController, UICollectionViewDataSource{
         priceTextField.keyboardType = .numberPad
         AlertUtil.popTextFields(vc: self, title: "输入参考价格", textfields: [priceTextField]){ textFields in
             let price = Double(textFields[0].text!)
-            NetWorkUtil<BaseAPIBean>.init(method: API.graborder((self.sickBean?.usersickid)!, price!), vc: self).newRequest(handler: {bean, json in
+            NetWorkUtil<BaseAPIBean>.init(method: API.graborder((self.sickBean?.usersickid)!, price!)).newRequest(handler: {bean, json in
                 self.dismiss(animated: false, completion: nil)
                 showToast((APPLICATION.window?.rootViewController?.view)!, bean.msg!)
             })

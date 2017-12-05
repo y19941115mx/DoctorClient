@@ -159,53 +159,63 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         
     }
     
+    func getData() {
+        //刷新数据
+        self.selectedPage = 1
+        
+        let Provider = MoyaProvider<API>()
+        if self.refreshHandler != nil {
+            self.refreshHandler!()
+        }
+        Provider.request(self.ApiMethod!) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    self.header?.endRefreshing()
+                    let bean = Mapper<BaseListBean<T>>().map(JSONObject: try response.mapJSON())
+                    if bean?.code == 100 {
+                        if bean?.dataList == nil {
+                            bean?.dataList = [T]()
+                        }
+                        self.data = (bean?.dataList)!
+                        if self.data.count == 0{
+                            //隐藏tableView,添加刷新按钮
+                            self.showRefreshBtn()
+                        }
+                        if self.isTableView {
+                            let tableView = self.scrollView as! UITableView
+                            tableView.reloadData()
+                        }else {
+                            let collectionView = self.scrollView as! UICollectionView
+                            collectionView.reloadData()
+                        }
+                        
+                    }else {
+                        showToast(self.view, (bean?.msg!)!)
+                    }
+                    
+                }catch {
+                    showToast(self.view,CATCHMSG)
+                }
+            case let .failure(error):
+                self.header?.endRefreshing()
+                dPrint(message: "error:\(error)")
+                showToast(self.view, ERRORMSG)
+            }
+        }
+    }
+    
+    
     func refreshData(){
         //刷新数据
         self.selectedPage = 1
         let Provider = MoyaProvider<API>()
         //刷新地理位置信息
-        MapUtil.singleLocation { (location, regeocode) in
-            if self.refreshHandler != nil {
-                self.refreshHandler!()
-            }
-                Provider.request(self.ApiMethod!) { result in
-                    switch result {
-                    case let .success(response):
-                        do {
-                            self.header?.endRefreshing()
-                            let bean = Mapper<BaseListBean<T>>().map(JSONObject: try response.mapJSON())
-                            if bean?.code == 100 {
-                                if bean?.dataList == nil {
-                                    bean?.dataList = [T]()
-                                }
-                                self.data = (bean?.dataList)!
-                                if self.data.count == 0{
-                                    //隐藏tableView,添加刷新按钮
-                                    self.showRefreshBtn()
-                                }
-                                if self.isTableView {
-                                    let tableView = self.scrollView as! UITableView
-                                    tableView.reloadData()
-                                }else {
-                                    let collectionView = self.scrollView as! UICollectionView
-                                    collectionView.reloadData()
-                                }
-                                
-                            }else {
-                                showToast(self.view, (bean?.msg!)!)
-                            }
-                            
-                        }catch {
-                            showToast(self.view,CATCHMSG)
-                        }
-                    case let .failure(error):
-                        self.header?.endRefreshing()
-                        dPrint(message: "error:\(error)")
-                        showToast(self.view, ERRORMSG)
-                    }
-                }
-            
-        }
+        MapUtil.singleLocation(successHandler: { (location, cgcode) in
+            self.getData()
+        }, failhandler: {
+            self.getData()
+        })
         
         
     }

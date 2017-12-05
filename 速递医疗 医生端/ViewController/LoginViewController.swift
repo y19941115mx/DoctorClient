@@ -36,7 +36,7 @@ class LoginViewController: BaseTextViewController {
         let passNum =  tv_pwd.text!
         // FIXME:  需要做字符串长度验证
         // 登录
-        NetWorkUtil<BaseAPIBean>.init(method: .doclogin(phoneNum, MD5(passNum)), vc: self).newRequest { (bean, json) in
+        NetWorkUtil<BaseAPIBean>.init(method: .doclogin(phoneNum, MD5(passNum))).newRequest { (bean, json) in
             if bean.code == 100 {
                 let data = json["data"]
                 let userId = data["id"].intValue
@@ -53,9 +53,13 @@ class LoginViewController: BaseTextViewController {
                 user_default.setUserDefault(key: .username, value: username)
                 user_default.setUserDefault(key: .title, value: title)
                 user_default.setUserDefault(key: .password, value: MD5(passNum))
+                // 上传channelid
+                NetWorkUtil<BaseAPIBean>.init(method: API.updatechannelid(user_default.channel_id.getStringValue()!)).newRequestWithoutHUD(handler: { (bean, json) in
+                    Toast(bean.msg!)
+                })
                 // 环信注册
                 if account == "" {
-                    NetWorkUtil<BaseAPIBean>.init(method: API.huanxinregister, vc: self).newRequest(handler: { (bean, json) in
+                    NetWorkUtil<BaseAPIBean>.init(method: API.huanxinregister).newRequest(handler: { (bean, json) in
                         account = "doc_\(userId)"
                     })
                 }

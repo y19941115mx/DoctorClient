@@ -61,17 +61,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // 获取channel_id
                 let BaiDu_Channel_id = BPush.getChannelId()
                 user_default.setUserDefault(key: user_default.channel_id, value: BaiDu_Channel_id)
-                NetWorkUtil<BaseAPIBean>.init(method: API.updatechannelid(BaiDu_Channel_id!), vc: (self.window?.rootViewController)!).newRequest(handler: { (bean, json) in
-                    Toast(bean.msg!)
-                })
+                
             }
         })
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
         // App 收到推送的通知
         BPush.handleNotification(userInfo)
-//        _ps_Type=userInfo["psType"].intValue;//自定义type消息（和后台约定）
+
         let manager = userInfo["aps"] as? [String:String]
         let message = manager!["alert"]
         
@@ -80,10 +79,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AlertUtil.popAlert(vc: (APPLICATION.window?.rootViewController)!, msg:message! , okhandler: {})
         }else {
             // 应用被杀死跳转页面
-            let vc = ViewController()
-            APPLICATION.window?.rootViewController = vc
+//            let vc = ViewController()
+//            APPLICATION.window?.rootViewController = vc
             
         }
+
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if reGeocode != nil {
                 showToast((APPLICATION.window?.rootViewController?.view)!, "定位成功："+(reGeocode?.country)! + (reGeocode?.city)! + (reGeocode?.aoiName)!)
             }
-        })
+        }, failhandler: {})
         
     }
     
@@ -131,12 +131,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        关闭地理推送
         BPush.disableLbs()
         
+        
         //        初始化百度推送
         let userInfo = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification]
         if userInfo != nil{
             BPush.handleNotification(userInfo as! [AnyHashable : Any])
         }
+        // 清空角标
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
+    
     }
     private func setupHuanxin() {
         let options = EMOptions.init(appkey: StaticClass.HuanxinAppkey)

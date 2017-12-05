@@ -41,7 +41,7 @@ class Mine_setting: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     
     private func logout() {
-        NetWorkUtil<BaseAPIBean>.init(method: .exit, vc: self).newRequest(handler: {bean,json  in
+        NetWorkUtil<BaseAPIBean>.init(method: .exit).newRequest(handler: {bean,json  in
             if bean.code == 100 {
                 user_default.clearUserDefault()
                 let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()

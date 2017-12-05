@@ -52,11 +52,9 @@ public func Toast(_ message:String) {
 // 网络请求
 class NetWorkUtil<T:BaseAPIBean> {
     var method:API?
-    var vc:UIViewController = UIViewController()
     
-    init(method:API, vc:UIViewController) {
+    init(method:API) {
         self.method = method
-        self.vc = vc
     }
     
     class func getRequest(urlString: String, params : [String : Any], success : @escaping (_ response : [String : AnyObject])->(), failture : @escaping (_ error : Error)->()) {
@@ -85,12 +83,12 @@ class NetWorkUtil<T:BaseAPIBean> {
                     handler(bean!, json)
                 }catch {
                     dPrint(message: "response:\(response)")
-                    showToast(self.vc.view, CATCHMSG)
+                    Toast(CATCHMSG)
                 }
             case let .failure(error):
                 SVProgressHUD.dismiss()
                 dPrint(message: "error:\(error)")
-                showToast(self.vc.view, ERRORMSG)
+                Toast(ERRORMSG)
             }
         }
     }
@@ -107,11 +105,11 @@ class NetWorkUtil<T:BaseAPIBean> {
                     handler(bean!, json)
                 }catch {
                     dPrint(message: "response:\(response)")
-                    showToast(self.vc.view, CATCHMSG)
+                    Toast(CATCHMSG)
                 }
             case let .failure(error):
                 dPrint(message: "error:\(error)")
-                showToast(self.vc.view, ERRORMSG)
+                Toast(ERRORMSG)
             }
         }
     }
@@ -124,7 +122,7 @@ class NetWorkUtil<T:BaseAPIBean> {
 
 //MARK: - 地图定位
 class MapUtil {
-    class func singleLocation(successHandler:((_ location:CLLocation, _ reGeocode:AMapLocationReGeocode?) -> Void)? ) {
+    class func singleLocation(successHandler:((_ location:CLLocation, _ reGeocode:AMapLocationReGeocode?) -> Void)?, failhandler:@escaping () -> Void  ) {
         APPLICATION.locationManager.requestLocation(withReGeocode: true, completionBlock: {(location: CLLocation?, reGeocode: AMapLocationReGeocode?, error: Error?) in
             
             if let error = error {
@@ -134,6 +132,7 @@ class MapUtil {
                     //定位错误：此时location和regeocode没有返回值，不进行annotation的添加
                     let msg = "定位错误:{\(error.code) - \(error.localizedDescription)};"
                     showToast((APPLICATION.window?.rootViewController?.view)!, msg)
+                    failhandler()
                     return
                 }
                 else if error.code == AMapLocationErrorCode.reGeocodeFailed.rawValue
@@ -145,14 +144,15 @@ class MapUtil {
                     
                     //逆地理错误：在带逆地理的单次定位中，逆地理过程可能发生错误，此时location有返回值，regeocode无返回值，进行annotation的添加
                     let msg = "逆地理错误:{\(error.code) - \(error.localizedDescription)};"
-                    showToast((APPLICATION.window?.rootViewController?.view)!, msg)
+                    failhandler()
+                    Toast(msg)
                 }
             }
             if let location = location  {
                 APPLICATION.lon = String(location.coordinate.longitude)
                 APPLICATION.lat = String(location.coordinate.latitude)
                 if successHandler != nil {
-                successHandler!(location, reGeocode)
+                    successHandler!(location, reGeocode)
                 }
             }
             
@@ -182,7 +182,6 @@ enum user_default:String {
         UserDefaults.standard.removeObject(forKey: "username")
         UserDefaults.standard.removeObject(forKey: "title")
         UserDefaults.standard.removeObject(forKey: "account")
-        UserDefaults.standard.removeObject(forKey: "channel_id")
         UserDefaults.standard.removeObject(forKey: "password")
     }
 }
