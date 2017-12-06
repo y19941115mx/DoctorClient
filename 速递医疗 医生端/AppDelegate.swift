@@ -71,16 +71,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // App 收到推送的通知
         BPush.handleNotification(userInfo)
 
-        let manager = userInfo["aps"] as? [String:String]
-        let message = manager!["alert"]
+//        let manager = userInfo["aps"] as? [String:String]
+//        let message = manager!["alert"]
         
         //        应用在前台或者后台，不跳转页面，让用户选择。
         if application.applicationState == .active || application.applicationState == .background{
-            AlertUtil.popAlert(vc: (APPLICATION.window?.rootViewController)!, msg:message! , okhandler: {})
+            let vc = ViewController()
+            APPLICATION.window?.rootViewController = vc
         }else {
             // 应用被杀死跳转页面
-//            let vc = ViewController()
-//            APPLICATION.window?.rootViewController = vc
+            let vc = ViewController()
+            APPLICATION.window?.rootViewController = vc
             
         }
 

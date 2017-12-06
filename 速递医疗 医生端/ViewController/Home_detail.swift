@@ -34,10 +34,10 @@ class Home_detail: BaseViewController, UICollectionViewDataSource{
                 sick.usersickdesc = ""
             }
             describeLabel.text = "病情描述： " + sick.usersickdesc!
-            if sick.usersickpic == nil {
-                sick.usersickpic = ""
+            if sick.usersickpic != nil {
+                self.images = StringUTil.splitImage(str: sick.usersickpic!)
             }
-            self.images = StringUTil.splitImage(str: sick.usersickpic!)
+
         }
         
     }

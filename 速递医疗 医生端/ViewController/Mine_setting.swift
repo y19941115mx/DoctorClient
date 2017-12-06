@@ -45,6 +45,14 @@ class Mine_setting: BaseViewController, UITableViewDataSource, UITableViewDelega
             if bean.code == 100 {
                 user_default.clearUserDefault()
                 let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
+                EMClient.shared().logout(false, completion: { (error)
+                    in
+                    if error == nil {
+                        Toast("环信退出成功")
+                    }else {
+                        Toast("环信退出失败")
+                    }
+                })
                 APPLICATION.window?.rootViewController = vc_login
             }else {
                 showToast(self.view, bean.msg!)
