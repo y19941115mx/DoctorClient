@@ -149,7 +149,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         self.scrollView?.isHidden = true
         let button = UIButton()
         //label
-        button.setTitle("无内容，点击刷新", for: .normal)
+        button.setTitle("数据加载失败，点击重新加载", for: .normal)
         button.setTitleColor(UIColor.lightGray, for: .normal)
         button.addTarget(self, action: #selector(refreshBtn(button:)), for: .touchUpInside)
         self.view.addSubview(button)
@@ -191,15 +191,17 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
                         }
                         
                     }else {
+                        self.showRefreshBtn()
                         showToast(self.view, (bean?.msg!)!)
                     }
                     
                 }catch {
+                    self.showRefreshBtn()
                     showToast(self.view,CATCHMSG)
                 }
             case let .failure(error):
-                self.header?.endRefreshing()
                 dPrint(message: "error:\(error)")
+                self.showRefreshBtn()
                 showToast(self.view, ERRORMSG)
             }
         }
@@ -209,7 +211,6 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
     func refreshData(){
         //刷新数据
         self.selectedPage = 1
-        let Provider = MoyaProvider<API>()
         //刷新地理位置信息
         MapUtil.singleLocation(successHandler: { (location, cgcode) in
             self.getData()
@@ -265,7 +266,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         // 点击刷新
         self.scrollView?.isHidden = false
         button.removeFromSuperview()
-        self.header?.beginRefreshing()
+        self.refreshData()
     }
     
     
