@@ -87,6 +87,9 @@ class MypatientTableViewCell2: UITableViewCell {
     }
     // 点击确定
     @IBAction func click_confirm(_ sender: Any) {
+        AlertUtil.popAlert(vc: self.vc, msg: "是否确认订单", okhandler: {
+            
+        })
         
     }
     // 点击取消

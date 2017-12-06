@@ -24,6 +24,7 @@ public enum API {
     case listordertoconfirm(Int) // 获取选择我的病人
     case cancelgraborder(Int) // 取消我选择的病人
     case refuseorder(Int) // 取消选择我的病人
+    case confirmorder(Int,Int,Int,Int,Int,Int,Int,Int) // 确认选择我的订单
     
 
 }
@@ -66,6 +67,8 @@ extension API: TargetType {
             return "/cancelgraborder"
         case .refuseorder:
             return "/refuseorder"
+        case .confirmorder:
+            return "/confirmorder"
         }
     }
     public var method: Moya.Method {
@@ -115,6 +118,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!,"preorderid":preorderid], encoding: URLEncoding.default)
         case .refuseorder(let orderId):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId], encoding: URLEncoding.default)
+        case .confirmorder(let orderId,let orderPrice, let trafficType, let trafficPrice, let hotelType, let hotelPrice, let foodType, let foodPrice):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId, "userorderdprice":orderPrice, "userordertpricetype":trafficType, "userordertprice":trafficPrice,"userorderapricetype":hotelType, "userorderaprice":hotelPrice, "userorderepricetype":foodType, "userordereprice":foodPrice], encoding: URLEncoding.default)
         }
     }
     
