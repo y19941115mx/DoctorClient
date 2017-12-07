@@ -20,13 +20,45 @@ public enum API {
     case editpassword(String, String, String) // 重置密码
     case exit // 退出登录
     case graborder(Int, Double) // 医生抢单
+    // 我的病人
     case listgraborders(Int) // 获取我选择的病人
     case listordertoconfirm(Int) // 获取选择我的病人
     case cancelgraborder(Int) // 取消我选择的病人
-    case refuseorder(Int) // 取消选择我的病人
-    case confirmorder(Int,Int,Int,Int,Int,Int,Int,Int) // 确认选择我的订单
+    case refuseorder(Int, Int) // 取消选择我的病人, 后面参数不为0时，推荐给其他医生
+    case getdoctorbyname(String) // 根据名字获取医生
+    // 我的日程
+    case confirmorder(Int,Int,Int,Int,Int,Int,Int,Int) // 确认选择我的病人
+    case getorder(Int, Int) // 获取我的日程 1 待确定 2 正在进行
+    case cancelorder(Int) // 取消 待确认的订单
+    case finishorder(Int, Bool) // 结束 进行中的订单
+    // 我的会诊
+    case listconsultation(Int, Int) // 获取我的会诊 1会诊申请，2 待确认会诊,3为进行中的会诊,4为已完成的会诊，5为历史会诊
+    case cancelconsultation(Int) // 取消会诊
+    case getconsultationdetail(Int) // 获取会诊详情
+    case confirmconsultation(Int,Int,Int,Int,Int,Int,Int,Int) //确认会诊
+    // 我的
+    case getfirstinfo //获取个人信息 第一页
+    case updatefirstinfo(String, String, Bool, Int, String, String, String, String, String, String) //更新个人信息 第一页
+    case getsecondinfo // 获取个人信息 第二页
+    case updatesecondinfo(Int, [Data]) // 更新个人信息 第二页 type 1为身份证照片，2为职称照片，3为行医资格证照片，4为工作证照片，5为其他照片
+    case reviewinfo // 提交审核
     
-
+    case getinfo // 我的介绍 获取简介和擅长疾病
+    case getalladdress // 我的介绍 获取全部常用地址
+    case setaddress(Int) // 我的介绍 设置默认出诊地点
+    case addcalendar(String, String,String, Int) // 我的介绍 添加坐诊计划
+    
+    case listhistoryorder // 获取历史订单
+    case getbalance //获取我的钱包
+    
+    case listreceivenotification(Int) // 获取我的消息
+    case getorderdetail(Int) // 读取消息具体信息
+    
+    case getalipayaccount // 获取支付宝账号
+    case updatealipayaccount(String) // 修改支付宝账号
+    
+    
+    
 }
 // 配置请求
 extension API: TargetType {
@@ -69,6 +101,28 @@ extension API: TargetType {
             return "/refuseorder"
         case .confirmorder:
             return "/confirmorder"
+        case .getorder:
+            return "/getorder"
+        case .finishorder:
+            return "/finishorder"
+        case .listconsultation:
+            return "/listconsultation"
+        case .cancelconsultation:
+            return "/cancelconsultation"
+        case .getconsultationdetail:
+            return "/getconsultationdetail"
+        case .confirmconsultation:
+            return "/confirmconsultation"
+        case .getfirstinfo:
+            return "/getfirstinfo"
+        case .updatefirstinfo:
+            return "/updatefirstinfo"
+        case .getsecondinfo:
+            return "/getsecondinfo"
+        case .updatesecondinfo:
+            return "/updatesecondinfo"
+        case .reviewinfo:
+            return "/reviewinfo"
         }
     }
     public var method: Moya.Method {
@@ -116,10 +170,42 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page": page], encoding: URLEncoding.default)
         case .cancelgraborder(let preorderid):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!,"preorderid":preorderid], encoding: URLEncoding.default)
-        case .refuseorder(let orderId):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId], encoding: URLEncoding.default)
+        case .refuseorder(let orderId, let doctorId):
+            if doctorId == 0 {
+                return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId], encoding: URLEncoding.default)
+            }else{
+                return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId, "redocloginid":doctorId], encoding: URLEncoding.default)
+            }
+            
         case .confirmorder(let orderId,let orderPrice, let trafficType, let trafficPrice, let hotelType, let hotelPrice, let foodType, let foodPrice):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId, "userorderdprice":orderPrice, "userordertpricetype":trafficType, "userordertprice":trafficPrice,"userorderapricetype":hotelType, "userorderaprice":hotelPrice, "userorderepricetype":foodType, "userordereprice":foodPrice], encoding: URLEncoding.default)
+        case .getorder(let page, let type):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "type":type], encoding: URLEncoding.default)
+        case .finishorder(let orderId, let ishospital):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId, "userorderhstate":ishospital], encoding: URLEncoding.default)
+        case .listconsultation(let page, let type):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "type":type], encoding: URLEncoding.default)
+        case .cancelconsultation(let orderId):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "hosporderid":orderId], encoding: URLEncoding.default)
+        case .getconsultationdetail(let orderId):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "hosporderid":orderId], encoding: URLEncoding.default)
+        case .confirmconsultation(let orderId,let orderPrice, let trafficType, let trafficPrice, let hotelType, let hotelPrice, let foodType, let foodPrice):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "hosporderid":orderId, "orderdoctorprice":orderPrice, "orderdoctortpricetype":trafficType, "orderdoctortprice":trafficPrice,"orderdoctorapricetype":hotelType, "orderdoctoraprice":hotelPrice, "orderdoctorepricetype":foodType, "orderdoctoreprice":foodPrice], encoding: URLEncoding.default)
+        case .getfirstinfo:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .updatefirstinfo(let dochosp, let hosplevel, let docallday, let docage, let docmale, let doccardnum, let docname, let docprimarydept, let docseconddept, let doctitle):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "dochosp":dochosp, "hosplevel":hosplevel, "docallday":docallday, "docage":docage,"docmale":docmale, "doccardnum":doccardnum, "docname":docname, "docprimarydept":docprimarydept, "docseconddept":docseconddept, "doctitle":doctitle], encoding: URLEncoding.default)
+        case .getsecondinfo:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .updatesecondinfo(let type, let datas):
+            let formDatas = [MultipartFormData]()
+            for (i, data) in datas!.enumerated() {
+                let formData = MultipartFormData.init(provider: .data(data), name: "picture", fileName: "picture\(i).jpg", mimeType: "image/png")
+                formDatas.append(formData)
+            }
+            return .uploadCompositeMultipart(formDatas, urlParameters: ["docloginid": user_default.userId.getStringValue()!, "type":type])
+        case .reviewinfo:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         }
     }
     

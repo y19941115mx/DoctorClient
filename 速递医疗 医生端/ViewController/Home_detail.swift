@@ -34,7 +34,7 @@ class Home_detail: BaseViewController, UICollectionViewDataSource{
                 sick.usersickdesc = ""
             }
             describeLabel.text = "病情描述： " + sick.usersickdesc!
-            if sick.usersickpic != nil {
+            if sick.usersickpic != nil &&  sick.usersickpic != ""{
                 self.images = StringUTil.splitImage(str: sick.usersickpic!)
             }
 
