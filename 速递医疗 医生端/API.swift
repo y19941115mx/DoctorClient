@@ -48,7 +48,7 @@ public enum API {
     case setaddress(Int) // 我的介绍 设置默认出诊地点
     case addcalendar(String, String,String, Int) // 我的介绍 添加坐诊计划
     
-    case listhistoryorder // 获取历史订单
+    case listhistoryorder(Int) // 获取历史订单
     case getbalance //获取我的钱包
     
     case listreceivenotification(Int) // 获取我的消息
@@ -123,6 +123,30 @@ extension API: TargetType {
             return "/updatesecondinfo"
         case .reviewinfo:
             return "/reviewinfo"
+        case .getinfo:
+            return "/getinfo"
+        case .getalladdress:
+            return "/getalladdress"
+        case .setaddress:
+            return "/setaddress"
+        case .addcalendar:
+            return "/addcalendar"
+        case .listhistoryorder:
+            return "/listhistoryorder"
+        case .getbalance:
+            return "/getbalance"
+        case .listreceivenotification:
+            return "/listreceivenotification"
+        case .getorderdetail:
+            return "/getorderdetail"
+        case .getalipayaccount:
+            return "/getalipayaccount"
+        case .updatealipayaccount:
+            return "/updatealipayaccount"
+        case .getdoctorbyname:
+            return "/getdoctorbyname"
+        case .cancelorder:
+            return "/cancelorder"
         }
     }
     public var method: Moya.Method {
@@ -198,14 +222,38 @@ extension API: TargetType {
         case .getsecondinfo:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         case .updatesecondinfo(let type, let datas):
-            let formDatas = [MultipartFormData]()
-            for (i, data) in datas!.enumerated() {
+            var formDatas = [MultipartFormData]()
+            for (i, data) in datas.enumerated() {
                 let formData = MultipartFormData.init(provider: .data(data), name: "picture", fileName: "picture\(i).jpg", mimeType: "image/png")
                 formDatas.append(formData)
             }
             return .uploadCompositeMultipart(formDatas, urlParameters: ["docloginid": user_default.userId.getStringValue()!, "type":type])
         case .reviewinfo:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .getdoctorbyname(let name):
+            return .requestParameters(parameters: ["docname":name], encoding: URLEncoding.default)
+        case .cancelorder(let orderId):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!,"userorderid":orderId], encoding: URLEncoding.default)
+        case .getinfo:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .getalladdress:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .setaddress(let id):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddressid":id], encoding: URLEncoding.default)
+        case .addcalendar(let date, let time, let event, let addressid):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarday":time,"docaddressid":addressid, "doccalendaraffair":event, "doccalendarday":date], encoding: URLEncoding.default)
+        case .listhistoryorder(let page):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
+        case .getbalance:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .listreceivenotification(let page):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
+        case .getorderdetail(let orderId):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId], encoding: URLEncoding.default)
+        case .getalipayaccount:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .updatealipayaccount(let account):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "alipayaccount":account], encoding: URLEncoding.default)
         }
     }
     
