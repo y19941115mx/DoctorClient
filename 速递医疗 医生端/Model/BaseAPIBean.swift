@@ -250,6 +250,9 @@ class mypatient_checked:Mappable {
     
 }
 
+// 我的 个人信息
+
+
 
 
 

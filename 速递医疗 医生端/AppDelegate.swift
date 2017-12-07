@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationManager:AMapLocationManager = AMapLocationManager()
     var lon:String = "0"
     var lat:String = "0"
+    var departData = [String:[String]]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        进度条设置
@@ -24,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setBackgroundColor(UIColor.clear)
         SVProgressHUD.setDefaultMaskType(.none) // 可点击取消
         SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
+//        获取基本数据
+        self.initData()
 //      高德地图设置
         self.setUpMap()
 //      百度推送
@@ -158,6 +162,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             })
         }
+    }
+    private func initData() {
+        // 获取部门数据
+        NetWorkUtil.getDepartMent(success: { response in
+            let json = JSON(response)
+            let data = json["data"].arrayValue
+            for i in 0..<data.count{
+                // 处理数据
+                let one = data[i]["first"].stringValue
+                let two = data[i]["second"].arrayObject as! [String]
+                if one != "" {
+                    self.departData[one] = two
+                }
+            }
+        }, failture:{ error in dPrint(message: error)
+        })
     }
 
 }
