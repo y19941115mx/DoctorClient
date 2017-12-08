@@ -158,9 +158,9 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         self.view.addSubview(button)
         self.view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            make.center.equalTo(self.view)
-            make.height.equalTo(250)
-            make.width.equalTo(200)
+            make.center.equalTo((APPLICATION.window?.rootViewController?.view)!)
+            make.height.equalTo(125)
+            make.width.equalTo(100)
         }
         button.snp.makeConstraints { (make) in
             make.top.equalTo(imageView.snp.bottom)

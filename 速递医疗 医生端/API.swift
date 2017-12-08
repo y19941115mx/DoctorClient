@@ -53,6 +53,8 @@ public enum API {
     
     case listreceivenotification(Int) // 获取我的消息
     case getorderdetail(Int) // 读取消息具体信息
+    case updateallnotificationtoread //将所有消息置为已读
+    case updatenotificationtoread(Int) //将单个消息置为已读
     
     case getalipayaccount // 获取支付宝账号
     case updatealipayaccount(String) // 修改支付宝账号
@@ -147,6 +149,10 @@ extension API: TargetType {
             return "/getdoctorbyname"
         case .cancelorder:
             return "/cancelorder"
+        case .updatenotificationtoread:
+            return "/updatenotificationtoread"
+        case .updateallnotificationtoread:
+            return "/updateallnotificationtoread"
         }
     }
     public var method: Moya.Method {
@@ -255,6 +261,10 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         case .updatealipayaccount(let account):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "alipayaccount":account], encoding: URLEncoding.default)
+        case .updateallnotificationtoread:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .updatenotificationtoread(let msgId):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "notificationid":msgId], encoding: URLEncoding.default)
         }
     }
     

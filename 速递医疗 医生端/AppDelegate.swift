@@ -24,14 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultStyle(.custom)
         SVProgressHUD.setForegroundColor(UIColor.APPColor)
         SVProgressHUD.setBackgroundColor(UIColor.clear)
-        SVProgressHUD.setDefaultMaskType(.none) // 可点击取消
+        SVProgressHUD.setDefaultMaskType(.clear) // 可点击取消
         SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
 //        获取基本数据
         self.initData()
 //      高德地图设置
-        self.setUpMap()
+//        self.setUpMap()
 //      百度推送
-        self.setUpBaiDuPush(application, didFinishLaunchingWithOptions: launchOptions)
+//        self.setUpBaiDuPush(application, didFinishLaunchingWithOptions: launchOptions)
 //        环信设置
         self.setupHuanxin()
         return true
