@@ -22,8 +22,8 @@ let CATCHMSG = "解析服务器数据失败"
 
 // 全局变量
 struct StaticClass {
-    // static let RootIP = "http://1842719ny8.iok.la:14086"
-    static let RootIP = "http://192.168.2.2:8080"
+     static let RootIP = "http://1842719ny8.iok.la:14086"
+//    static let RootIP = "http://192.168.2.2:8080"
     static let BaseApi = RootIP + "/internetmedical/doctor"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
     static let GaodeAPIKey = "dc63bec745429fca2107bdd7e57f7e3c"
@@ -275,7 +275,7 @@ class ImageUtil{
     static public func setAvator(path:String, imageView:UIImageView) {
         let url = URL(string: path)
         //        imageView.kf.setImage(with: url)
-        imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "default"), options: nil, progressBlock: nil, completionHandler: nil)
+        imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "photo_loading"), options: nil, progressBlock: nil, completionHandler: nil)
     }
     
     // 图片转为Data类型

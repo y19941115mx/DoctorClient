@@ -29,6 +29,15 @@
 		840647631FA6A4BD009B21C4 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647601FA6A4BD009B21C4 /* Util.swift */; };
 		840647641FA6A4BD009B21C4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647611FA6A4BD009B21C4 /* API.swift */; };
 		840647651FA6A4BD009B21C4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840647621FA6A4BD009B21C4 /* Extension.swift */; };
+		8408B6F51FDAA7CA004403F4 /* Mine_info_one.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6ED1FDAA7C8004403F4 /* Mine_info_one.swift */; };
+		8408B6F61FDAA7CA004403F4 /* Mine_info_photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6EE1FDAA7C8004403F4 /* Mine_info_photo.swift */; };
+		8408B6F71FDAA7CA004403F4 /* Mine_info_two.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6EF1FDAA7C8004403F4 /* Mine_info_two.swift */; };
+		8408B6F91FDAA7CA004403F4 /* MyPatient_detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6F11FDAA7C9004403F4 /* MyPatient_detail.swift */; };
+		8408B6FA1FDAA7CA004403F4 /* Mine_introduce_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6F21FDAA7C9004403F4 /* Mine_introduce_main.swift */; };
+		8408B6FB1FDAA7CA004403F4 /* Mypatient_confirmOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6F31FDAA7CA004403F4 /* Mypatient_confirmOrder.swift */; };
+		8408B6FC1FDAA7CA004403F4 /* Date_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6F41FDAA7CA004403F4 /* Date_main.swift */; };
+		8408B6FE1FDAC0A3004403F4 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6FD1FDAC0A2004403F4 /* EditViewController.swift */; };
+		8408B7001FDAD698004403F4 /* SetDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6FF1FDAD698004403F4 /* SetDateViewController.swift */; };
 		84165C1B1FC2E4BF00F32DF5 /* Mine_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */; };
 		84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84165C1C1FC3042F00F32DF5 /* tableViewController.swift */; };
 		84165C1F1FC307D600F32DF5 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84165C1E1FC307D600F32DF5 /* Mine.storyboard */; };
@@ -89,6 +98,15 @@
 		840647601FA6A4BD009B21C4 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		840647611FA6A4BD009B21C4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		840647621FA6A4BD009B21C4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8408B6ED1FDAA7C8004403F4 /* Mine_info_one.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_info_one.swift; sourceTree = "<group>"; };
+		8408B6EE1FDAA7C8004403F4 /* Mine_info_photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_info_photo.swift; sourceTree = "<group>"; };
+		8408B6EF1FDAA7C8004403F4 /* Mine_info_two.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_info_two.swift; sourceTree = "<group>"; };
+		8408B6F11FDAA7C9004403F4 /* MyPatient_detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPatient_detail.swift; sourceTree = "<group>"; };
+		8408B6F21FDAA7C9004403F4 /* Mine_introduce_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_introduce_main.swift; sourceTree = "<group>"; };
+		8408B6F31FDAA7CA004403F4 /* Mypatient_confirmOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mypatient_confirmOrder.swift; sourceTree = "<group>"; };
+		8408B6F41FDAA7CA004403F4 /* Date_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_main.swift; sourceTree = "<group>"; };
+		8408B6FD1FDAC0A2004403F4 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		8408B6FF1FDAD698004403F4 /* SetDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDateViewController.swift; sourceTree = "<group>"; };
 		84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_main.swift; sourceTree = "<group>"; };
 		84165C1C1FC3042F00F32DF5 /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
 		84165C1E1FC307D600F32DF5 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
@@ -260,6 +278,14 @@
 		840647591FA6A49D009B21C4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8408B6F41FDAA7CA004403F4 /* Date_main.swift */,
+				8408B6ED1FDAA7C8004403F4 /* Mine_info_one.swift */,
+				8408B6EE1FDAA7C8004403F4 /* Mine_info_photo.swift */,
+				8408B6EF1FDAA7C8004403F4 /* Mine_info_two.swift */,
+				8408B6F21FDAA7C9004403F4 /* Mine_introduce_main.swift */,
+				8408B6FD1FDAC0A2004403F4 /* EditViewController.swift */,
+				8408B6F31FDAA7CA004403F4 /* Mypatient_confirmOrder.swift */,
+				8408B6F11FDAA7C9004403F4 /* MyPatient_detail.swift */,
 				298DD5661FB2E1D200BBCE14 /* Home_main.swift */,
 				298DD5681FB2E1F100BBCE14 /* Home_detail.swift */,
 				84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */,
@@ -272,6 +298,7 @@
 				8406475A1FA6A49D009B21C4 /* BaseViewController.swift */,
 				8406475B1FA6A49D009B21C4 /* MainViewController.swift */,
 				842875B01FD267310004587B /* ChatViewController.swift */,
+				8408B6FF1FDAD698004403F4 /* SetDateViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -427,8 +454,9 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/EaseUI/EaseUI.framework",
-				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.7/HyphenateFullSDK/Hyphenate.framework",
+				"${BUILT_PRODUCTS_DIR}/Daysquare/Daysquare.framework",
+				"${BUILT_PRODUCTS_DIR}/EaseUILite/EaseUILite.framework",
+				"${PODS_ROOT}/HyphenateLite/ios_IM_HyphenateLite_sdk_3.3.7/HyphenateSDK/HyphenateLite.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -447,8 +475,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EaseUI.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyphenate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Daysquare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EaseUILite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HyphenateLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -493,7 +522,9 @@
 				840647651FA6A4BD009B21C4 /* Extension.swift in Sources */,
 				298DD5691FB2E1F100BBCE14 /* Home_detail.swift in Sources */,
 				8406475E1FA6A49D009B21C4 /* BaseViewController.swift in Sources */,
+				8408B6FB1FDAA7CA004403F4 /* Mypatient_confirmOrder.swift in Sources */,
 				8406475D1FA6A49D009B21C4 /* CustomButton.swift in Sources */,
+				8408B7001FDAD698004403F4 /* SetDateViewController.swift in Sources */,
 				84BB03CA1FB2A9E3006FBCAF /* LoginViewController.swift in Sources */,
 				84031D0F1FCD44450058D437 /* BaseCollectionView.swift in Sources */,
 				84BB03C31FB2A8F2006FBCAF /* XLSlideSwitch.m in Sources */,
@@ -502,21 +533,28 @@
 				840647461FA6A259009B21C4 /* ViewController.swift in Sources */,
 				842875B11FD267310004587B /* ChatViewController.swift in Sources */,
 				84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */,
+				8408B6FC1FDAA7CA004403F4 /* Date_main.swift in Sources */,
+				8408B6F91FDAA7CA004403F4 /* MyPatient_detail.swift in Sources */,
 				84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */,
 				84BB03C11FB2A8F2006FBCAF /* XLSlideSegmented.m in Sources */,
 				8406475F1FA6A49D009B21C4 /* MainViewController.swift in Sources */,
 				84BB03C21FB2A8F2006FBCAF /* XLSlideSegmentedItem.m in Sources */,
+				8408B6FA1FDAA7CA004403F4 /* Mine_introduce_main.swift in Sources */,
 				84BB03CC1FB2A9EC006FBCAF /* RegisterViewController.swift in Sources */,
 				84BB03C01FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m in Sources */,
 				840647631FA6A4BD009B21C4 /* Util.swift in Sources */,
 				840647641FA6A4BD009B21C4 /* API.swift in Sources */,
 				840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */,
+				8408B6FE1FDAC0A3004403F4 /* EditViewController.swift in Sources */,
 				84031D151FCD4A860058D437 /* Mypatient_page.swift in Sources */,
 				843E71E91FC70E4D00829CA4 /* ResetViewController.swift in Sources */,
 				8491A4A21FC45B84008A7D09 /* Mine_setting.swift in Sources */,
 				84031D131FCD4A2A0058D437 /* Mypatient_main.swift in Sources */,
 				84B730881FD4CBD3004A36B9 /* HomeMainTableViewCell.swift in Sources */,
 				298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */,
+				8408B6F71FDAA7CA004403F4 /* Mine_info_two.swift in Sources */,
+				8408B6F61FDAA7CA004403F4 /* Mine_info_photo.swift in Sources */,
+				8408B6F51FDAA7CA004403F4 /* Mine_info_one.swift in Sources */,
 				84031D111FCD44500058D437 /* MypatientTableViewCell.swift in Sources */,
 				84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */,
 			);

@@ -44,6 +44,8 @@ public enum API {
     case reviewinfo // 提交审核
     
     case getinfo // 我的介绍 获取简介和擅长疾病
+    case updateintroduce(String) // 更新我的介绍
+    case updateexpert(String) // 更新我的擅长
     case getalladdress // 我的介绍 获取全部常用地址
     case setaddress(Int) // 我的介绍 设置默认出诊地点
     case addcalendar(String, String,String, Int) // 我的介绍 添加坐诊计划
@@ -153,6 +155,10 @@ extension API: TargetType {
             return "/updatenotificationtoread"
         case .updateallnotificationtoread:
             return "/updateallnotificationtoread"
+        case .updateexpert:
+            return "/updateinfo"
+        case .updateintroduce:
+            return "/updateinfo"
         }
     }
     public var method: Moya.Method {
@@ -265,6 +271,10 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         case .updatenotificationtoread(let msgId):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "notificationid":msgId], encoding: URLEncoding.default)
+        case .updateintroduce(let str):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docabs":str], encoding: URLEncoding.default)
+        case .updateexpert(let str):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docexpert":str], encoding: URLEncoding.default)
         }
     }
     

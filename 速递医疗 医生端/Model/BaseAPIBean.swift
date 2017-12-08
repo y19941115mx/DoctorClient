@@ -66,17 +66,7 @@ class DoctorBean:Mappable {
     }
 }
 
-class OrderListBean:BaseAPIBean {
-    var OrderDataList:[OrderBean]?
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    
-    override func mapping(map: Map) {
-        super.mapping(map: map)
-        OrderDataList <- map["data"]
-    }
-}
+
 
 class OrderBean: Mappable {
     var userorderappointment: String? // 订单预约医生时间
@@ -250,7 +240,42 @@ class mypatient_checked:Mappable {
     
 }
 
-// 我的 个人信息
+// 我的 地点信息
+
+class MineLocationBean:Mappable {
+    var docaddressid = 0
+    var docaddresslocation:String?
+    var docaddressprovince:String?
+    var docaddresscity:String?
+    var docaddressarea:String?
+    var docaddressother:String?
+    var docaddresslon:String?
+    var docaddresslat:String?
+    var docloginid = 0
+    var docaddresstype = false
+    var docaddresschecked = false
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        docaddressid <- map["docaddressid"]
+        docaddresslocation <- map["docaddresslocation"]
+        docaddressprovince <- map["docaddressprovince"]
+        docaddresscity <- map["docaddresscity"]
+        docaddressarea <- map["docaddressarea"]
+        docaddressother <- map["docaddressother"]
+        docaddresslon <- map["docaddresslon"]
+        docaddresslat <- map["docaddresslat"]
+        docloginid <- map["docloginid"]
+        docaddresstype <- map["docaddresstype"]
+        docaddresschecked <- map["docaddresschecked"]
+    }
+    
+    
+    
+}
 
 
 

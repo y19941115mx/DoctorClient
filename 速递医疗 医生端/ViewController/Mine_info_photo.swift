@@ -16,7 +16,7 @@ class Mine_info_photo: UIViewController,UICollectionViewDataSource, UICollection
     var showImgSource = [String]()
 //    type 1为身份证照片，2为职称照片，3为行医资格证照片，4为工作证照片，5为其他照片
     var type = 0
-    var imgResource = [#imageLiteral(resourceName: "add")]
+    var imgResource = [#imageLiteral(resourceName: "add_picture")]
     let Title = ["身份证照片", "工作证照片","行医资格证照片","职称照片","其他照片"]
     
     @IBOutlet weak var label: UILabel!
