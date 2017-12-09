@@ -253,6 +253,11 @@ class AlertUtil: NSObject {
         vc.present(alertController, animated: true, completion: nil)
     }
     
+    //TODO: - 弹出自定义弹出框
+    class func popCustomAlerm(vc:UIViewController,title:String,Views:[UIView], addViewConstrans: @escaping () -> Void, okhandler: @escaping ([UIView]) -> Void) {
+        
+    }
+    
 }
 
 class ImageUtil{

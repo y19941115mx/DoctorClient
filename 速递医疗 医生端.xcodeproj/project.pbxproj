@@ -57,6 +57,8 @@
 		847C13931FD2AEFB00B32BB7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847C13921FD2AEF400B32BB7 /* CFNetwork.framework */; };
 		847C13951FD2AF0F00B32BB7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847C13941FD2AF0800B32BB7 /* CoreMotion.framework */; };
 		8491A4A21FC45B84008A7D09 /* Mine_setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491A4A11FC45B84008A7D09 /* Mine_setting.swift */; };
+		8491F3001FDBBA960061702C /* SetDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F2FF1FDBBA960061702C /* SetDateCollectionViewCell.swift */; };
+		8491F3021FDBE7A30061702C /* AddDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F3011FDBE7A30061702C /* AddDateViewController.swift */; };
 		84B730881FD4CBD3004A36B9 /* HomeMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */; };
 		84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B11FB2A66B006FBCAF /* ModelBean.swift */; };
 		84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */; };
@@ -126,6 +128,8 @@
 		847C13921FD2AEF400B32BB7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		847C13941FD2AF0800B32BB7 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8491A4A11FC45B84008A7D09 /* Mine_setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_setting.swift; sourceTree = "<group>"; };
+		8491F2FF1FDBBA960061702C /* SetDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDateCollectionViewCell.swift; sourceTree = "<group>"; };
+		8491F3011FDBE7A30061702C /* AddDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateViewController.swift; sourceTree = "<group>"; };
 		849CC0871FD179B20090D6B8 /* 速递医疗 医生端.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "速递医疗 医生端.entitlements"; sourceTree = "<group>"; };
 		84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainTableViewCell.swift; sourceTree = "<group>"; };
 		84BB03B11FB2A66B006FBCAF /* ModelBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBean.swift; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 				84031D101FCD444F0058D437 /* MypatientTableViewCell.swift */,
 				84165C1C1FC3042F00F32DF5 /* tableViewController.swift */,
 				84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */,
+				8491F2FF1FDBBA960061702C /* SetDateCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 				8406475B1FA6A49D009B21C4 /* MainViewController.swift */,
 				842875B01FD267310004587B /* ChatViewController.swift */,
 				8408B6FF1FDAD698004403F4 /* SetDateViewController.swift */,
+				8491F3011FDBE7A30061702C /* AddDateViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -555,8 +561,10 @@
 				8408B6F71FDAA7CA004403F4 /* Mine_info_two.swift in Sources */,
 				8408B6F61FDAA7CA004403F4 /* Mine_info_photo.swift in Sources */,
 				8408B6F51FDAA7CA004403F4 /* Mine_info_one.swift in Sources */,
+				8491F3021FDBE7A30061702C /* AddDateViewController.swift in Sources */,
 				84031D111FCD44500058D437 /* MypatientTableViewCell.swift in Sources */,
 				84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */,
+				8491F3001FDBBA960061702C /* SetDateCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,35 +7,43 @@
 //
 
 import UIKit
-import Daysquare
+import SnapKit
 
-class SetDateViewController: UIViewController {
-
-    @IBOutlet weak var CalendarView: DAYCalendarView!
+class SetDateViewController: BaseRefreshController<MineCalendarBean>, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SetDateCollectionViewCell
+        cell.updateView(data: data[indexPath.row], vc: self)
+        return cell
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initRefresh(scrollView: collectionView, ApiMethod: .getcalendar(self.selectedPage), refreshHandler: nil, getMoreHandler: {
+            self.getMoreMethod = API.getcalendar(self.selectedPage)
+        }, isTableView: false)
         // Do any additional setup after loading the view.
-        CalendarView.addTarget(self, action: #selector(self.CalendarChanged), for: .valueChanged)
-    }
-
-    
-    @objc func CalendarChanged() {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = " YYYY - MM - dd"
-        let dateString = dateformatter.string(from: self.CalendarView.selectedDate)
-        AlertUtil.popAlert(vc: self, msg: dateString, okhandler: {})
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.header?.beginRefreshing()
     }
-    */
-
+    
+    @IBAction func ButtonAcion(_ sender: UIButton) {
+        if sender.tag == 666 {
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: SCREEN_WIDTH - 20, height: 150)
+    }
+    
+    
 }

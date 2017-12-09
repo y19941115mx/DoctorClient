@@ -12,7 +12,7 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var tableView: BaseTableView!
     let titles = [["我的简介"],["擅长疾病"],["出诊计划","默认出诊地点","常用地址"]]
     var info = "选择坐诊地点"
-    var infos = [String]()
+    var infos = [MineLocationBean]()
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +52,26 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
             vc.flag = 1
             self.present(vc, animated: false, completion: nil)
         default:
-            performSegue(withIdentifier: "SetDate", sender: self)
+            switch indexPath.row {
+            case 0:
+                performSegue(withIdentifier: "SetDate", sender: self)
+            case 1:
+                var btns = [String]()
+                for item in infos {
+                    btns.append(item.docaddresslocation!)
+                }
+                AlertUtil.popMenu(vc: self, title: "设置默认出诊地点", msg: "", btns: btns, handler: { (str) in
+                    let index = btns.index(of: str)
+                    let addressidid = self.infos[index!].docaddressid
+                    NetWorkUtil.init(method: API.setaddress(addressidid)).newRequest(handler: { (bean, josn) in
+                        showToast(self.view, bean.msg!)
+                    })
+                })
+            default:
+                dPrint(message: "error")
+            }
+            
+            
         }
     }
     
@@ -73,8 +92,9 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
                 for data in datas! {
                     if data.docaddresschecked {
                         self.info = data.docaddresslocation!
+                        self.tableView.reloadRows(at: [IndexPath.init(row: 1, section: 2)], with: .none)
                     }
-                    self.infos.append(data.docaddresslocation!)
+                    self.infos.append(data)
                 }
             }
             showToast(self.view, bean.msg!)

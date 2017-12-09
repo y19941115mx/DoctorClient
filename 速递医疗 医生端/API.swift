@@ -49,6 +49,8 @@ public enum API {
     case getalladdress // 我的介绍 获取全部常用地址
     case setaddress(Int) // 我的介绍 设置默认出诊地点
     case addcalendar(String, String,String, Int) // 我的介绍 添加坐诊计划
+    case deletecalendar(Int)  // 删除坐诊计划
+    case getcalendar(Int) // 获取日程表
     
     case listhistoryorder(Int) // 获取历史订单
     case getbalance //获取我的钱包
@@ -159,6 +161,10 @@ extension API: TargetType {
             return "/updateinfo"
         case .updateintroduce:
             return "/updateinfo"
+        case .deletecalendar(_):
+            return "/deletecalendar"
+        case .getcalendar(_):
+            return "/getcalendar"
         }
     }
     public var method: Moya.Method {
@@ -254,7 +260,7 @@ extension API: TargetType {
         case .setaddress(let id):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddressid":id], encoding: URLEncoding.default)
         case .addcalendar(let date, let time, let event, let addressid):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarday":time,"docaddressid":addressid, "doccalendaraffair":event, "doccalendarday":date], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarday":date,"docaddressid":addressid, "doccalendaraffair":event, "doccalendartime":time], encoding: URLEncoding.default)
         case .listhistoryorder(let page):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
         case .getbalance:
@@ -275,6 +281,10 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docabs":str], encoding: URLEncoding.default)
         case .updateexpert(let str):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docexpert":str], encoding: URLEncoding.default)
+        case .deletecalendar(let id):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarid":id], encoding: URLEncoding.default)
+        case .getcalendar(let page):
+           return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
         }
     }
     

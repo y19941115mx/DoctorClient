@@ -273,6 +273,30 @@ class MineLocationBean:Mappable {
         docaddresschecked <- map["docaddresschecked"]
     }
     
+}
+
+// 我的 日程信息
+
+class MineCalendarBean:Mappable {
+    var doccalendarid = 0
+    var doccalendaradressid = 0
+    var docaddresslocation:String?
+    var doccalendarday:String?
+    var doccalendaraffair:String?
+    var doccalendartime:String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        doccalendarid <- map["doccalendarid"]
+        doccalendaradressid <- map["doccalendaradressid"]
+        docaddresslocation <- map["docaddresslocation"]
+        doccalendarday <- map["doccalendarday"]
+        doccalendaraffair <- map["doccalendaraffair"]
+        doccalendartime <- map["doccalendartime"]
+    }
     
     
 }
