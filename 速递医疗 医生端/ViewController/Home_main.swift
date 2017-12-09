@@ -121,18 +121,16 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     
     }
     
-    
     //MARK: - navigation Methond
-    @IBAction func unwindToHome(sender: UIStoryboardSegue){
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            let indexPath = infoTableView.indexPathForSelectedRow!
+            let patient = data[indexPath.row]
+            let vc = segue.destination as! Home_detail
+            vc.patientId = patient.usersickid
+            self.infoTableView.deselectRow(at: indexPath, animated: false)
+        }
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let patient = data[indexPath.row]
-        let vc = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Detail") as! Home_detail
-        vc.patientId = patient.usersickid
-        self.present(vc, animated: false, completion: nil)
-    }
     
 }

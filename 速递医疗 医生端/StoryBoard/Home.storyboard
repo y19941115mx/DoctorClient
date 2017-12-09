@@ -41,7 +41,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
-                                            <action selector="click_btn:" destination="dEe-b0-evy" eventType="touchUpInside" id="mde-MO-Un1"/>
+                                            <action selector="click_btn:" destination="dEe-b0-evy" eventType="touchUpInside" id="KGI-fG-5K7"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -308,7 +308,7 @@
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reusedCell" rowHeight="80" id="wcx-wZ-g2d" customClass="HomeMainTableViewCell" customModule="速递医疗_医生端" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="reusedCell" rowHeight="80" id="wcx-wZ-g2d" customClass="HomeMainTableViewCell" customModule="速递医疗_医生端" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wcx-wZ-g2d" id="z2o-Fi-Jbe">
@@ -385,6 +385,7 @@
                                             <outlet property="pixImageView" destination="CqQ-bM-Uat" id="x1G-BH-5t4"/>
                                             <outlet property="sexLabel" destination="tSO-S1-iJh" id="QYh-Ie-Zh5"/>
                                             <outlet property="timeLabel" destination="BYU-X8-Nba" id="HGz-Ix-Xh8"/>
+                                            <segue destination="dEe-b0-evy" kind="presentation" identifier="ShowDetail" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="2GB-sf-9Pl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

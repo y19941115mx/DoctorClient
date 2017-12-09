@@ -26,10 +26,7 @@ class Mypatient_main: SegmentedSlideViewController {
         setUpSlideSwitchNoNavigation(titles: ["我选择的", "选择我的"], vcs: [vc1, vc2])
     }
     
-    //MARK: - navigation Methond
-    @IBAction func unwindToMyPatient(sender: UIStoryboardSegue){
-        
-    }
+    
 
 }
 

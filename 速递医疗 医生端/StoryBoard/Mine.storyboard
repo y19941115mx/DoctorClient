@@ -141,7 +141,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="HCc-75-Z0L" kind="presentation" animates="NO" id="cXf-5s-d9z"/>
+                                            <segue destination="HCc-75-Z0L" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="cXf-5s-d9z"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -327,11 +327,11 @@
                                     <constraint firstItem="a2s-rM-854" firstAttribute="top" secondItem="Zzd-Zk-Zf5" secondAttribute="top" constant="20" id="Xfw-bG-Vlq"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mgR-ej-wLK" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mgR-ej-wLK" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="320" height="305"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="rHa-bg-wJ2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="44" id="rHa-bg-wJ2">
                                         <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rHa-bg-wJ2" id="me5-Ea-RZY">
@@ -339,13 +339,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的简介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVh-7f-oRU">
-                                                    <rect key="frame" x="15" y="10.5" width="70" height="21"/>
+                                                    <rect key="frame" x="15" y="11.5" width="70" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxX-o3-lMp">
-                                                    <rect key="frame" x="277" y="31.5" width="0.0" height="0.0"/>
+                                                    <rect key="frame" x="277" y="32.5" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="STSong" family="STSong" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -477,7 +477,7 @@
                                     <segue destination="zrn-rf-uHE" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="nct-h4-qPf"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bUH-nD-Rre" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bUH-nD-Rre" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="120" width="320" height="169"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -517,13 +517,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否全天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-BZ-hXU">
-                                                    <rect key="frame" x="15" y="10.5" width="70" height="21"/>
+                                                    <rect key="frame" x="15" y="11.5" width="70" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TTr-a1-rUN">
-                                                    <rect key="frame" x="256" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="256" y="6.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -619,7 +619,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DZD-g8-0rd" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DZD-g8-0rd" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="98.5" width="320" height="230"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -751,11 +751,11 @@
                                     <constraint firstAttribute="bottom" secondItem="BCw-CB-RzO" secondAttribute="bottom" constant="12" id="qOK-9S-kxl"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PHI-RF-knz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PHI-RF-knz">
                                 <rect key="frame" x="0.0" y="74" width="320" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="1XH-YI-zpr" detailTextLabel="MTV-3a-fwD" style="IBUITableViewCellStyleSubtitle" id="9Y8-T9-rGW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="1XH-YI-zpr" detailTextLabel="MTV-3a-fwD" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="9Y8-T9-rGW">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Y8-T9-rGW" id="bYZ-UK-p0n">
@@ -809,8 +809,6 @@
         <!--View Controller-->
         <scene sceneID="zVx-Dj-VGr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rD2-gA-a9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="bIj-tC-tll" userLabel="Exit" sceneMemberID="exit"/>
                 <viewController id="lHz-jZ-aWp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o5R-mW-sLV"/>
@@ -861,14 +859,14 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rD2-gA-a9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bIj-tC-tll" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2878" y="-2263"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="lcC-Nr-hi3">
             <objects>
-                <exit id="8NO-Xc-yAG" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DYt-32-aUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="yCu-Tz-VyS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kqE-6D-4PR"/>
@@ -919,6 +917,8 @@
                         </constraints>
                     </view>
                 </viewController>
+                <exit id="8NO-Xc-yAG" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DYt-32-aUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2925" y="-2877"/>
         </scene>
@@ -944,7 +944,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-yg-GhP">
-                                        <rect key="frame" x="277" y="26.5" width="33" height="32"/>
+                                        <rect key="frame" x="277" y="27" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="保存">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -954,7 +954,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkJ-bT-vh3">
-                                        <rect key="frame" x="8" y="30.5" width="47" height="22"/>
+                                        <rect key="frame" x="8" y="31" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="buttonAction:" destination="lZI-yl-Wdh" eventType="touchUpInside" id="n0B-7z-ObX"/>
