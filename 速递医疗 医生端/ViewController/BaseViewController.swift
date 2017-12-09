@@ -223,14 +223,8 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
     func refreshData(){
         //刷新数据
         self.selectedPage = 1
-        //刷新地理位置信息
-        MapUtil.singleLocation(successHandler: { (location, cgcode) in
-            self.getData()
-        }, failhandler: {
-            self.getData()
-        })
-        
-        
+        //FIXME: - 刷新地理位置信息
+        getData()
     }
     
     private func getMoreData(){

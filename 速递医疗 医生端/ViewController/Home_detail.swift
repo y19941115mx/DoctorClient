@@ -11,6 +11,8 @@ import UIKit
 class Home_detail: BaseViewController, UICollectionViewDataSource{
     var sickBean:sickDetail?
     
+    var patientId:Int?
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var patientName: UILabel!
@@ -26,20 +28,26 @@ class Home_detail: BaseViewController, UICollectionViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         imageLayout.dataSource = self
-        if let sick = sickBean {
-            titleLabel.text = sick.usersickdesc
-            timeLabel.text =  sick.usersickptime
-            patientName.text = sick.familyname
-            if sick.usersickdesc == nil {
-                sick.usersickdesc = ""
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NetWorkUtil<sickDetailBean>.init(method:API.getsickdetail(self.patientId!) ).newRequest(handler: {sick,json  in
+            self.sickBean = sick.sickDetail
+            if let sick = self.sickBean {
+                self.titleLabel.text = sick.usersickdesc
+                self.timeLabel.text =  sick.usersickptime
+                self.patientName.text = sick.familyname
+                if sick.usersickdesc == nil {
+                    sick.usersickdesc = ""
+                }
+                self.describeLabel.text = "病情描述： " + sick.usersickdesc!
+                if sick.usersickpic != nil &&  sick.usersickpic != ""{
+                    self.images = StringUTil.splitImage(str: sick.usersickpic!)
+                    self.imageLayout.reloadData()
+                }
+                
             }
-            describeLabel.text = "病情描述： " + sick.usersickdesc!
-            if sick.usersickpic != nil &&  sick.usersickpic != ""{
-                self.images = StringUTil.splitImage(str: sick.usersickpic!)
-            }
-
-        }
-        
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -56,6 +64,10 @@ class Home_detail: BaseViewController, UICollectionViewDataSource{
     
     // MARK: - 点击事件
     @IBAction func click_btn(_ sender: UIButton) {
+        if sender.tag == 666{
+            self.dismiss(animated: false, completion: nil)
+            return
+        }
         let priceTextField = UITextField()
         priceTextField.placeholder = "参考价格"
         priceTextField.keyboardType = .numberPad

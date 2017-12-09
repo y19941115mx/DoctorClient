@@ -27,14 +27,11 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     
     
     var sortType:HomeType = HomeType.sortByPatient
-    var sickBean:sickDetail?
      
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavTitle(title: "首页")
-        // 去除多余列表
-        infoTableView.tableFooterView = UIView()
         //初始化navigationBar,添加按钮事件
         initView()
         // 添加下拉刷新
@@ -69,8 +66,6 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let id = "reusedCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! HomeMainTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        
         let result = data[indexPath.row]
         cell.updateViews(result: result, vc: self)
         return cell
@@ -132,21 +127,12 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetail" {
-            let vc = segue.destination as! Home_detail
-            vc.sickBean = self.sickBean
-        }
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let patient = data[indexPath.row]
-        NetWorkUtil<sickDetailBean>.init(method:API.getsickdetail(patient.usersickid) ).newRequest(handler: {sick,json  in
-            self.sickBean = sick.sickDetail
-            self.performSegue(withIdentifier: "ShowDetail", sender: self)
-        })
+        let vc = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Detail") as! Home_detail
+        vc.patientId = patient.usersickid
+        self.present(vc, animated: false, completion: nil)
     }
-    
-    
     
 }

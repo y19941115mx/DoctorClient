@@ -11,6 +11,7 @@ import SVProgressHUD
 import ObjectMapper
 import SwiftyJSON
 import SwiftHash
+import SnapKit
 
 
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -242,7 +243,6 @@ class AlertUtil: NSObject {
                 textField.keyboardType = item.keyboardType
             }
         }
-        
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "确定", style: .default, handler: {
             action in
@@ -252,6 +252,7 @@ class AlertUtil: NSObject {
         alertController.addAction(okAction)
         vc.present(alertController, animated: true, completion: nil)
     }
+    
 }
 
 class ImageUtil{

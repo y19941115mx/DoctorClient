@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pAx-Yc-Bfj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pAx-Yc-Bfj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                                         <color key="textColor" red="0.96371272470000002" green="0.95316042430000003" blue="0.95234662219999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dr-bS-Mbf">
+                                    <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dr-bS-Mbf">
                                         <rect key="frame" x="0.0" y="20" width="80" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Et1-Mw-fNn"/>
@@ -41,31 +41,21 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
-                                            <segue destination="Ntr-Fm-Xaa" kind="unwind" unwindAction="unwindToHomeWithSender:" id="Tl4-K0-Uoe"/>
+                                            <action selector="click_btn:" destination="dEe-b0-evy" eventType="touchUpInside" id="mde-MO-Un1"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cP-pN-uNY">
-                                        <rect key="frame" x="325" y="20" width="50" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="DeL-TY-6eM"/>
-                                        </constraints>
-                                        <state key="normal" title=" " image="message"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.38823529410000002" green="0.68235294120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="0Fd-fF-Lfd" secondAttribute="bottom" constant="12" id="1i4-MN-ubS"/>
                                     <constraint firstItem="0Fd-fF-Lfd" firstAttribute="top" secondItem="DCB-hG-gH7" secondAttribute="top" constant="32" id="Dx0-My-2Nz"/>
-                                    <constraint firstAttribute="bottom" secondItem="1cP-pN-uNY" secondAttribute="bottom" id="Gyq-qV-2Wn"/>
                                     <constraint firstAttribute="bottom" secondItem="5Dr-bS-Mbf" secondAttribute="bottom" id="H1U-9w-EGu"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="ICk-z1-HeG"/>
                                     <constraint firstAttribute="bottom" secondItem="5Dr-bS-Mbf" secondAttribute="bottom" id="IHb-jR-pLm"/>
                                     <constraint firstItem="5Dr-bS-Mbf" firstAttribute="leading" secondItem="DCB-hG-gH7" secondAttribute="leading" id="QEg-iL-Os3"/>
                                     <constraint firstItem="5Dr-bS-Mbf" firstAttribute="top" secondItem="DCB-hG-gH7" secondAttribute="top" constant="20" id="VuU-Ea-cgt"/>
                                     <constraint firstItem="5Dr-bS-Mbf" firstAttribute="leading" secondItem="DCB-hG-gH7" secondAttribute="leading" id="crt-rM-ZTH"/>
-                                    <constraint firstAttribute="trailing" secondItem="1cP-pN-uNY" secondAttribute="trailing" id="e03-sp-F09"/>
                                     <constraint firstItem="0Fd-fF-Lfd" firstAttribute="centerX" secondItem="DCB-hG-gH7" secondAttribute="centerX" id="kEl-1f-jlP"/>
-                                    <constraint firstItem="1cP-pN-uNY" firstAttribute="top" secondItem="DCB-hG-gH7" secondAttribute="top" constant="20" id="kWA-UD-ikH"/>
                                     <constraint firstAttribute="height" constant="64" id="p5d-r1-Y2y"/>
                                 </constraints>
                             </view>
@@ -139,7 +129,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKY-fy-GRv">
-                                        <rect key="frame" x="114.5" y="307" width="115" height="30"/>
+                                        <rect key="frame" x="114.5" y="306" width="115" height="30"/>
                                         <color key="backgroundColor" red="0.38823529410000002" green="0.68235294120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="115" id="mwa-L5-YJd"/>
@@ -157,10 +147,10 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0FD-Js-N82">
-                                        <rect key="frame" x="20" y="180" width="303" height="101"/>
+                                        <rect key="frame" x="20" y="180" width="303" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="101" id="vGu-ju-4OU"/>
+                                            <constraint firstAttribute="height" constant="100" id="vGu-ju-4OU"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="HkX-PE-O5o">
                                             <size key="itemSize" width="100" height="100"/>
@@ -194,7 +184,6 @@
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="dKY-fy-GRv" firstAttribute="top" secondItem="0FD-Js-N82" secondAttribute="bottom" constant="26" id="4I8-lt-AA7"/>
-                                    <constraint firstItem="0FD-Js-N82" firstAttribute="centerX" secondItem="1ck-z6-L9z" secondAttribute="centerX" id="5wq-E4-RT2"/>
                                     <constraint firstItem="nzl-dJ-RE8" firstAttribute="leading" secondItem="1ck-z6-L9z" secondAttribute="leading" id="6Vy-TF-Mf3"/>
                                     <constraint firstItem="atb-Xu-Wuj" firstAttribute="top" secondItem="KDo-zC-gwf" secondAttribute="bottom" id="8KX-Eq-qR1"/>
                                     <constraint firstItem="0FD-Js-N82" firstAttribute="leading" secondItem="1ck-z6-L9z" secondAttribute="leading" constant="20" id="BZk-Ee-655"/>
@@ -246,9 +235,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iUl-fK-GCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Ntr-Fm-Xaa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1040.8" y="-2079.3103448275865"/>
+            <point key="canvasLocation" x="-1111" y="-2080"/>
         </scene>
         <!--Home main-->
         <scene sceneID="xJl-eg-16W">
@@ -314,13 +302,13 @@
                                     <color key="titleColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zDb-iZ-hvc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zDb-iZ-hvc" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99" width="375" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusedCell" rowHeight="80" id="wcx-wZ-g2d" customClass="HomeMainTableViewCell" customModule="速递医疗_医生端" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reusedCell" rowHeight="80" id="wcx-wZ-g2d" customClass="HomeMainTableViewCell" customModule="速递医疗_医生端" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wcx-wZ-g2d" id="z2o-Fi-Jbe">
@@ -328,13 +316,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="杜猪精" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QE1-hp-jcF">
-                                                    <rect key="frame" x="100" y="11" width="49" height="19.5"/>
+                                                    <rect key="frame" x="100" y="8" width="49" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20分钟前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYU-X8-Nba">
-                                                    <rect key="frame" x="303" y="15" width="52" height="14.5"/>
+                                                    <rect key="frame" x="303" y="12" width="52" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -353,13 +341,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSO-S1-iJh">
-                                                    <rect key="frame" x="154" y="15" width="12.5" height="14.5"/>
+                                                    <rect key="frame" x="154" y="12" width="12.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="似懂非懂是防守打法第三方撒打发斯蒂芬sad范德萨发生非" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYA-aQ-OiX">
-                                                    <rect key="frame" x="100" y="40.5" width="265" height="31.5"/>
+                                                    <rect key="frame" x="100" y="37.5" width="265" height="31.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -432,7 +420,6 @@
                         <outlet property="sortByLocBtn" destination="oIv-Ip-anP" id="WgY-u5-r6K"/>
                         <outlet property="sortByPatientBtn" destination="1G0-OH-ei5" id="O1z-vi-Lui"/>
                         <outlet property="sortByTimeBtn" destination="8jG-YP-R7c" id="gYG-fI-CiZ"/>
-                        <segue destination="dEe-b0-evy" kind="presentation" identifier="ShowDetail" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="TRD-yL-z3E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nt6-uR-Evr" userLabel="First Responder" sceneMemberID="firstResponder"/>
