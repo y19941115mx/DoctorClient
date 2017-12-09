@@ -49,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xQ-ti-q0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="727" y="-152"/>
+            <point key="canvasLocation" x="1020" y="-154"/>
         </scene>
         <!--Mypatient page check-->
         <scene sceneID="1bZ-CY-aRc">
@@ -372,7 +372,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wqz-p9-USJ">
-                                        <rect key="frame" x="295" y="20" width="80" height="44"/>
+                                        <rect key="frame" x="295" y="19.5" width="80" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8Bu-He-2bV"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="IHA-41-tQC"/>
@@ -477,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vil-YU-81w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="1287"/>
+            <point key="canvasLocation" x="1055" y="1287"/>
         </scene>
     </scenes>
     <resources>

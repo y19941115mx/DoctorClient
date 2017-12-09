@@ -10,7 +10,7 @@ import UIKit
 import Daysquare
 
 class AddDateViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-
+    
 
 
     
@@ -47,6 +47,7 @@ class AddDateViewController: UIViewController,UITableViewDelegate, UITableViewDa
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
         case 1:
+            self.btns =  [String]()
             NetWorkUtil<BaseListBean<MineLocationBean>>.init(method: .getalladdress).newRequest(handler: { (bean, json) in
                 if bean.code == 100 {
                     self.locMsg = bean.dataList

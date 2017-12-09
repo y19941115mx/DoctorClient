@@ -27,12 +27,13 @@ class SetDateViewController: BaseRefreshController<MineCalendarBean>, UICollecti
         self.initRefresh(scrollView: collectionView, ApiMethod: .getcalendar(self.selectedPage), refreshHandler: nil, getMoreHandler: {
             self.getMoreMethod = API.getcalendar(self.selectedPage)
         }, isTableView: false)
+        self.header?.beginRefreshing()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.header?.beginRefreshing()
+        self.refreshData()
     }
     
     @IBAction func ButtonAcion(_ sender: UIButton) {
@@ -42,7 +43,7 @@ class SetDateViewController: BaseRefreshController<MineCalendarBean>, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: SCREEN_WIDTH - 20, height: 150)
+        return CGSize(width: SCREEN_WIDTH - 20, height: 100)
     }
     
     

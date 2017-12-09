@@ -67,24 +67,23 @@ class DoctorBean:Mappable {
 }
 
 
-
 class OrderBean: Mappable {
-    var userorderappointment: String? // 订单预约医生时间
-    var familyname: String? // 用户姓名
+    var userorderetime: String? // 订单时间
+    var usersickdesc:String? // 病情描述
+    var familyname: String? // 就诊人姓名
     var userorderid: Int = 0 //订单Id
-    var usersickdesc: String? // 病情描述
-    var userorderstateid: Int = 0 // 订单状态
+    var userorderstatename: String? // 订单状态描述
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        userorderappointment <- map["userorderappointment"]
+        userorderetime <- map["userorderetime"]
         familyname <- map["familyname"]
         userorderid <- map["userorderid"]
         usersickdesc <- map["usersickdesc"]
-        userorderstateid <- map["userorderstateid"]
+        userorderstatename <- map["userorderstatename"]
     }
 }
 

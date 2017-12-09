@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        获取基本数据
         self.initData()
 //      高德地图设置
-        self.setUpMap()
+//        self.setUpMap()
 //      百度推送
-        self.setUpBaiDuPush(application, didFinishLaunchingWithOptions: launchOptions)
+//        self.setUpBaiDuPush(application, didFinishLaunchingWithOptions: launchOptions)
 //        环信设置
         self.setupHuanxin()
         return true

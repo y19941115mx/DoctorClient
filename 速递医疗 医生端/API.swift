@@ -260,7 +260,7 @@ extension API: TargetType {
         case .setaddress(let id):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddressid":id], encoding: URLEncoding.default)
         case .addcalendar(let date, let time, let event, let addressid):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarday":date,"docaddressid":addressid, "doccalendaraffair":event, "doccalendartime":time], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarday":date,"doccalendaradressid":addressid, "doccalendaraffair":event, "doccalendartime":time], encoding: URLEncoding.default)
         case .listhistoryorder(let page):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
         case .getbalance:
