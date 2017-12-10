@@ -279,5 +279,50 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
     
 }
 
+// 信息填写
+class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITableViewDelegate {
+    var tableTiles = [[String]]()
+    var tableInfo = [String]()
+    var mTableView:UITableView?
+    var clickHandler:((IndexPath)->Void)?
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return tableTiles.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableTiles[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let label_title = cell.viewWithTag(1) as! UILabel
+        let label_info = cell.viewWithTag(2) as! UILabel
+        label_title.text = tableTiles[indexPath.section][indexPath.row]
+        label_info.text = tableInfo[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.clickHandler != nil {
+            clickHandler!(indexPath)
+        }
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    func initViewController(tableTiles: [[String]], tableInfo:[String],tableView:UITableView, clickHandler:((IndexPath)->Void)?) {
+        self.mTableView = tableView
+        self.tableInfo = tableInfo
+        self.tableTiles = tableTiles
+        self.clickHandler = clickHandler
+        self.mTableView?.dataSource = self
+        self.mTableView?.delegate = self
+    }
+}
+
 
 
