@@ -296,11 +296,57 @@ class MineCalendarBean:Mappable {
         doccalendaraffair <- map["doccalendaraffair"]
         doccalendartime <- map["doccalendartime"]
     }
+}
+
+// 我的 交易记录
+class MineTradeBean:Mappable {
+    var payorderid:Int?
+    var paymodename:String? // 支付方式
+    var paycreattime:String? // 时间
+    var paytotalamount:Double? // 金额
+    var paysendername:String? // 收款人
     
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        payorderid <- map["payorderid"]
+        paymodename <- map["paymodename"]
+        paycreattime <- map["paycreattime"]
+        paytotalamount <- map["paytotalamount"]
+        paysendername <- map["paysendername"]
+    }
     
 }
 
+// 我的 通知
+//"notificationwords": "六角恐龙医生接受了您的订单",
+//"notificationid": 410,
+//"notificationread": false,
+//"notificationtitle": "等待确认",
+//"notificationcreatetime": "2017-12-09 22:28:24"
 
+class NotificationBean:Mappable {
+    var notificationwords:String?
+    var notificationid:Int?
+    var notificationread:Bool?
+    var notificationtitle:String?
+    var notificationcreatetime:String?
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        notificationwords <- map["notificationwords"]
+        notificationid <- map["notificationid"]
+        notificationread <- map["notificationread"]
+        notificationtitle <- map["notificationtitle"]
+        notificationcreatetime <- map["notificationcreatetime"]
+    }
+    
+}
 
 
 

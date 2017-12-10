@@ -62,6 +62,11 @@
 		8491F3041FDC20640061702C /* Mine_historyOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F3031FDC20640061702C /* Mine_historyOrder.swift */; };
 		8491F3071FDC26DD0061702C /* MinePocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F3051FDC26DD0061702C /* MinePocketCollectionViewCell.swift */; };
 		8491F3081FDC26DD0061702C /* MinePocketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8491F3061FDC26DD0061702C /* MinePocketCollectionViewCell.xib */; };
+		8491F30B1FDCE08B0061702C /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F3091FDCE08B0061702C /* InfoTableViewCell.swift */; };
+		8491F30C1FDCE08B0061702C /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8491F30A1FDCE08B0061702C /* InfoTableViewCell.xib */; };
+		8491F30E1FDCE35D0061702C /* Mine_pocket_one.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F30D1FDCE35D0061702C /* Mine_pocket_one.swift */; };
+		8491F3101FDCE5350061702C /* Mine_pocket_two.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F30F1FDCE5350061702C /* Mine_pocket_two.swift */; };
+		8491F3121FDCF04B0061702C /* Mine_msg_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F3111FDCF04B0061702C /* Mine_msg_main.swift */; };
 		84B730881FD4CBD3004A36B9 /* HomeMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */; };
 		84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B11FB2A66B006FBCAF /* ModelBean.swift */; };
 		84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03B31FB2A673006FBCAF /* BaseAPIBean.swift */; };
@@ -136,6 +141,11 @@
 		8491F3031FDC20640061702C /* Mine_historyOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_historyOrder.swift; sourceTree = "<group>"; };
 		8491F3051FDC26DD0061702C /* MinePocketCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinePocketCollectionViewCell.swift; sourceTree = "<group>"; };
 		8491F3061FDC26DD0061702C /* MinePocketCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MinePocketCollectionViewCell.xib; sourceTree = "<group>"; };
+		8491F3091FDCE08B0061702C /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		8491F30A1FDCE08B0061702C /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
+		8491F30D1FDCE35D0061702C /* Mine_pocket_one.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_pocket_one.swift; sourceTree = "<group>"; };
+		8491F30F1FDCE5350061702C /* Mine_pocket_two.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_pocket_two.swift; sourceTree = "<group>"; };
+		8491F3111FDCF04B0061702C /* Mine_msg_main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_msg_main.swift; sourceTree = "<group>"; };
 		849CC0871FD179B20090D6B8 /* 速递医疗 医生端.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "速递医疗 医生端.entitlements"; sourceTree = "<group>"; };
 		84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainTableViewCell.swift; sourceTree = "<group>"; };
 		84BB03B11FB2A66B006FBCAF /* ModelBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBean.swift; sourceTree = "<group>"; };
@@ -284,6 +294,8 @@
 				8491F2FF1FDBBA960061702C /* SetDateCollectionViewCell.swift */,
 				8491F3051FDC26DD0061702C /* MinePocketCollectionViewCell.swift */,
 				8491F3061FDC26DD0061702C /* MinePocketCollectionViewCell.xib */,
+				8491F3091FDCE08B0061702C /* InfoTableViewCell.swift */,
+				8491F30A1FDCE08B0061702C /* InfoTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,17 +304,21 @@
 			isa = PBXGroup;
 			children = (
 				8408B6F41FDAA7CA004403F4 /* Date_main.swift */,
+				84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */,
 				8408B6ED1FDAA7C8004403F4 /* Mine_info_one.swift */,
 				8408B6EE1FDAA7C8004403F4 /* Mine_info_photo.swift */,
 				8408B6EF1FDAA7C8004403F4 /* Mine_info_two.swift */,
+				8491F30D1FDCE35D0061702C /* Mine_pocket_one.swift */,
+				8491F30F1FDCE5350061702C /* Mine_pocket_two.swift */,
+				8491F3111FDCF04B0061702C /* Mine_msg_main.swift */,
+				8491A4A11FC45B84008A7D09 /* Mine_setting.swift */,
 				8408B6F21FDAA7C9004403F4 /* Mine_introduce_main.swift */,
+				8491F3031FDC20640061702C /* Mine_historyOrder.swift */,
 				8408B6FD1FDAC0A2004403F4 /* EditViewController.swift */,
 				8408B6F31FDAA7CA004403F4 /* Mypatient_confirmOrder.swift */,
 				8408B6F11FDAA7C9004403F4 /* MyPatient_detail.swift */,
 				298DD5661FB2E1D200BBCE14 /* Home_main.swift */,
 				298DD5681FB2E1F100BBCE14 /* Home_detail.swift */,
-				84165C1A1FC2E4BF00F32DF5 /* Mine_main.swift */,
-				8491A4A11FC45B84008A7D09 /* Mine_setting.swift */,
 				84031D121FCD4A2A0058D437 /* Mypatient_main.swift */,
 				84031D141FCD4A850058D437 /* Mypatient_page.swift */,
 				84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */,
@@ -313,7 +329,6 @@
 				842875B01FD267310004587B /* ChatViewController.swift */,
 				8408B6FF1FDAD698004403F4 /* SetDateViewController.swift */,
 				8491F3011FDBE7A30061702C /* AddDateViewController.swift */,
-				8491F3031FDC20640061702C /* Mine_historyOrder.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -427,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				847C137B1FD2ACB800B32BB7 /* AlipaySDK.bundle in Resources */,
+				8491F30C1FDCE08B0061702C /* InfoTableViewCell.xib in Resources */,
 				84031D1F1FD14BCE0058D437 /* test.caf in Resources */,
 				84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */,
 				298DD5651FB2E0E700BBCE14 /* Home.storyboard in Resources */,
@@ -546,6 +562,7 @@
 				8491F3041FDC20640061702C /* Mine_historyOrder.swift in Sources */,
 				84BB03C31FB2A8F2006FBCAF /* XLSlideSwitch.m in Sources */,
 				84031D0D1FCD44350058D437 /* BaseTableView.swift in Sources */,
+				8491F30E1FDCE35D0061702C /* Mine_pocket_one.swift in Sources */,
 				84165C1B1FC2E4BF00F32DF5 /* Mine_main.swift in Sources */,
 				840647461FA6A259009B21C4 /* ViewController.swift in Sources */,
 				842875B11FD267310004587B /* ChatViewController.swift in Sources */,
@@ -555,7 +572,9 @@
 				84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */,
 				84BB03C11FB2A8F2006FBCAF /* XLSlideSegmented.m in Sources */,
 				8406475F1FA6A49D009B21C4 /* MainViewController.swift in Sources */,
+				8491F30B1FDCE08B0061702C /* InfoTableViewCell.swift in Sources */,
 				84BB03C21FB2A8F2006FBCAF /* XLSlideSegmentedItem.m in Sources */,
+				8491F3121FDCF04B0061702C /* Mine_msg_main.swift in Sources */,
 				8408B6FA1FDAA7CA004403F4 /* Mine_introduce_main.swift in Sources */,
 				84BB03CC1FB2A9EC006FBCAF /* RegisterViewController.swift in Sources */,
 				84BB03C01FB2A8F2006FBCAF /* XLSegmentedSlideSwitch.m in Sources */,
@@ -572,6 +591,7 @@
 				298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */,
 				8408B6F71FDAA7CA004403F4 /* Mine_info_two.swift in Sources */,
 				8408B6F61FDAA7CA004403F4 /* Mine_info_photo.swift in Sources */,
+				8491F3101FDCE5350061702C /* Mine_pocket_two.swift in Sources */,
 				8408B6F51FDAA7CA004403F4 /* Mine_info_one.swift in Sources */,
 				8491F3021FDBE7A30061702C /* AddDateViewController.swift in Sources */,
 				84031D111FCD44500058D437 /* MypatientTableViewCell.swift in Sources */,

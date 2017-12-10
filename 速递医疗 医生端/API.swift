@@ -54,6 +54,7 @@ public enum API {
     
     case listhistoryorder(Int) // 获取历史订单
     case getbalance //获取我的钱包
+    case listtraderecord(Int) // 获取交易记录
     
     case listreceivenotification(Int) // 获取我的消息
     case getorderdetail(Int) // 读取消息具体信息
@@ -165,6 +166,8 @@ extension API: TargetType {
             return "/deletecalendar"
         case .getcalendar(_):
             return "/getcalendar"
+        case .listtraderecord:
+            return "/listtraderecord"
         }
     }
     public var method: Moya.Method {
@@ -285,6 +288,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarid":id], encoding: URLEncoding.default)
         case .getcalendar(let page):
            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
+        case .listtraderecord(let page):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
         }
     }
     

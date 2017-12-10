@@ -295,12 +295,13 @@ class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let label_title = cell.viewWithTag(1) as! UILabel
-        let label_info = cell.viewWithTag(2) as! UILabel
-        label_title.text = tableTiles[indexPath.section][indexPath.row]
-        label_info.text = tableInfo[indexPath.row]
-        return cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? InfoTableViewCell
+        if cell == nil {
+            cell =  Bundle.main.loadNibNamed("InfoTableViewCell", owner: nil, options: nil)?.last as? InfoTableViewCell
+        }
+        cell?.titleLabel.text = tableTiles[indexPath.section][indexPath.row]
+        cell?.infoLabel.text = tableInfo[indexPath.row]
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -972,10 +972,10 @@
             </objects>
             <point key="canvasLocation" x="-2878.125" y="-2263.2042253521126"/>
         </scene>
-        <!--View Controller-->
+        <!--Mine pocket one-->
         <scene sceneID="lcC-Nr-hi3">
             <objects>
-                <viewController id="yCu-Tz-VyS" sceneMemberID="viewController">
+                <viewController id="yCu-Tz-VyS" customClass="Mine_pocket_one" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kqE-6D-4PR"/>
                         <viewControllerLayoutGuide type="bottom" id="eSb-EQ-hV2"/>
@@ -1009,7 +1009,7 @@
                                         <rect key="frame" x="236" y="25" width="74" height="34"/>
                                         <state key="normal" title="余额记录"/>
                                         <connections>
-                                            <segue destination="oBv-YA-wnw" kind="presentation" id="npu-xV-8Gb"/>
+                                            <segue destination="oBv-YA-wnw" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="npu-xV-8Gb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1057,6 +1057,9 @@
                             <constraint firstItem="4La-Qd-aEb" firstAttribute="top" secondItem="IgH-5y-EAz" secondAttribute="bottom" constant="20" id="v1N-Qg-pAj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="balance" destination="Mcl-Yb-q5f" id="PwL-rn-NqG"/>
+                    </connections>
                 </viewController>
                 <exit id="8NO-Xc-yAG" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DYt-32-aUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1233,7 +1236,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNI-SL-r6l">
-                                        <rect key="frame" x="277" y="26.5" width="33" height="32"/>
+                                        <rect key="frame" x="277" y="27" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="保存">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1243,7 +1246,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-jq-gj1">
-                                        <rect key="frame" x="8" y="30.5" width="47" height="22"/>
+                                        <rect key="frame" x="8" y="31" width="47" height="22"/>
                                         <state key="normal" title="返回" image="button:CNv-jq-gj1:image"/>
                                         <connections>
                                             <action selector="Back_acion:" destination="cEa-yB-2cX" eventType="touchUpInside" id="cMR-yl-OMY"/>
@@ -1311,7 +1314,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKp-fT-Z1k">
-                                        <rect key="frame" x="277" y="27" width="33" height="32"/>
+                                        <rect key="frame" x="277" y="26.5" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="添加">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1321,7 +1324,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ml-Xf-oiY">
-                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="ButtonAcion:" destination="1dg-xc-fyh" eventType="touchUpInside" id="cy9-mZ-9h3"/>
@@ -1698,10 +1701,10 @@
             </objects>
             <point key="canvasLocation" x="-2878.125" y="-3434.6830985915494"/>
         </scene>
-        <!--View Controller-->
+        <!--Mine pocket two-->
         <scene sceneID="L30-zm-yUt">
             <objects>
-                <viewController id="oBv-YA-wnw" sceneMemberID="viewController">
+                <viewController id="oBv-YA-wnw" customClass="Mine_pocket_two" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kAM-4E-u1f"/>
                         <viewControllerLayoutGuide type="bottom" id="z8U-Fd-NI3"/>
@@ -1751,16 +1754,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jIM-Ev-z5J">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1773,7 +1767,13 @@
                             <constraint firstAttribute="trailing" secondItem="I5H-Yq-GL1" secondAttribute="trailing" id="fd7-t0-KTe"/>
                             <constraint firstAttribute="trailing" secondItem="TKY-hb-u27" secondAttribute="trailing" id="oyO-Ln-WPX"/>
                         </constraints>
+                        <connections>
+                            <outlet property="collectionView" destination="TKY-hb-u27" id="hxd-nq-sJo"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="TKY-hb-u27" id="Tvr-ox-3Xb"/>
+                    </connections>
                 </viewController>
                 <exit id="lpV-0S-vdV" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0b-1d-96N" userLabel="First Responder" sceneMemberID="firstResponder"/>
