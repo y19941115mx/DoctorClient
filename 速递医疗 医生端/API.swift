@@ -60,6 +60,7 @@ public enum API {
     case getorderdetail(Int) // 读取消息具体信息
     case updateallnotificationtoread //将所有消息置为已读
     case updatenotificationtoread(Int) //将单个消息置为已读
+    case deleteallreceivenotification // 删除收到的所有消息
     
     case getalipayaccount // 获取支付宝账号
     case updatealipayaccount(String) // 修改支付宝账号
@@ -168,6 +169,8 @@ extension API: TargetType {
             return "/getcalendar"
         case .listtraderecord:
             return "/listtraderecord"
+        case .deleteallreceivenotification:
+            return "/deleteallreceivenotification"
         }
     }
     public var method: Moya.Method {
@@ -290,6 +293,8 @@ extension API: TargetType {
            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
         case .listtraderecord(let page):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
+        case .deleteallreceivenotification:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         }
     }
     

@@ -22,7 +22,7 @@ class MinePocketCollectionViewCell: UICollectionViewCell {
     func updataView(bean:MineTradeBean) {
         label_name.text = bean.paysendername
         label_payway.text = bean.paymodename
-        label_money.text = String(describing: bean.paytotalamount)
+        label_money.text = "\(bean.paytotalamount!)"
         Label_time.text = bean.paycreattime
     }
 
