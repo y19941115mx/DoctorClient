@@ -33,6 +33,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         super.viewDidLoad()
         setUpNavTitle(title: "首页")
         //初始化navigationBar,添加按钮事件
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "message"), style: .plain, target: self, action: #selector(self.showContantList))
         initView()
         // 添加下拉刷新
         initRefresh(scrollView: infoTableView, ApiMethod: .listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon), refreshHandler: {
@@ -130,6 +131,13 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             vc.patientId = patient.usersickid
             self.infoTableView.deselectRow(at: indexPath, animated: false)
         }
+    }
+    
+    // 显示环信会话列表
+    @objc private func showContantList() {
+        let viewController = ConversationListViewController()
+        viewController.setUpNavTitle(title: "会话列表")
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     

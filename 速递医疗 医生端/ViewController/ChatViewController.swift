@@ -17,10 +17,6 @@ class ChatViewController: EaseMessageViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func setUpNavTitle(title:String) {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 44))
@@ -30,7 +26,26 @@ class ChatViewController: EaseMessageViewController {
         navigationItem.titleView = label
     }
     
+}
 
-   
-
+class ConversationListViewController: EaseConversationListViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.
+        self.showRefreshHeader = true;
+        //首次进入加载数据
+        self.tableViewDidTriggerHeaderRefresh()
+    }
+    
+    
+    func setUpNavTitle(title:String) {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 44))
+        label.text = title
+        label.backgroundColor = UIColor.clear
+        label.textColor = UIColor.white
+        navigationItem.titleView = label
+    }
+    
 }

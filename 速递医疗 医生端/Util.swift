@@ -124,6 +124,7 @@ class NetWorkUtil<T:BaseAPIBean> {
 
 //MARK: - 地图定位
 class MapUtil {
+    
     class func singleLocation(successHandler:((_ location:CLLocation, _ reGeocode:AMapLocationReGeocode?) -> Void)?, failhandler:@escaping () -> Void  ) {
         APPLICATION.locationManager.requestLocation(withReGeocode: true, completionBlock: {(location: CLLocation?, reGeocode: AMapLocationReGeocode?, error: Error?) in
             

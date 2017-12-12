@@ -66,20 +66,26 @@ class DoctorBean:Mappable {
     }
 }
 
+// 我的日程
 
 class OrderBean: Mappable {
-    var userorderetime: String? // 订单时间
+    var userorderprice:Double? // 订单价格
+    var docaddresslocation:String? // 地点
+    var userorderappointment: String? // 订单时间
     var usersickdesc:String? // 病情描述
     var familyname: String? // 就诊人姓名
     var userorderid: Int = 0 //订单Id
     var userorderstatename: String? // 订单状态描述
+    var userorderetime: String? // 订单时间
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        userorderetime <- map["userorderetime"]
+        userorderappointment <- map["userorderappointment"]
+        userorderprice <- map["userorderprice"]
+        docaddresslocation <- map["docaddresslocation"]
         familyname <- map["familyname"]
         userorderid <- map["userorderid"]
         usersickdesc <- map["usersickdesc"]
@@ -239,6 +245,42 @@ class mypatient_checked:Mappable {
     
 }
 
+// 我的会诊 列表页
+//"hospname": "安徽省安医大二附院",
+// ordertotalhospprice
+//"hosploginid": 14,
+//"hosporderid": 62,
+//"hosplevelname": "一级甲等",
+//"hosphuanxinaccount": "hosp_14",
+//"orderstime": "2017-12-21 上午",
+//"hosploginpix": "http://oytv6cmyw.bkt.clouddn.com/20171103064014944735.jpg",
+
+class ConsultationBean:Mappable {
+    var hospname:String?
+    var hosploginid:Int?
+    var hosporderid:Int?
+    var hosplevelname:String?
+    var hosphuanxinaccount:String?
+    var orderstime:String?
+    var hosploginpix:String?
+    var ordertotalhospprice:Double?
+    required init?(map: Map) {
+        
+    }
+    func mapping(map: Map) {
+        hospname <- map["hospname"]
+        hosploginid <- map["hosploginid"]
+        hosporderid <- map["hosporderid"]
+        hosplevelname <- map["hosplevelname"]
+        hosphuanxinaccount <- map["hosphuanxinaccount"]
+        orderstime <- map["orderstime"]
+        hosploginpix <- map["hosploginpix"]
+        ordertotalhospprice <- map["ordertotalhospprice"]
+    }
+    
+    
+}
+
 // 我的 地点信息
 
 class MineLocationBean:Mappable {
@@ -297,6 +339,7 @@ class MineCalendarBean:Mappable {
         doccalendartime <- map["doccalendartime"]
     }
 }
+
 
 // 我的 交易记录
 class MineTradeBean:Mappable {

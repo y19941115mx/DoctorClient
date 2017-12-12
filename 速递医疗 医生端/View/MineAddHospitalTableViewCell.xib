@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="60" id="KGk-i7-Jjw" customClass="MineAddHospitalTableViewCell" customModule="速递医疗_医生端" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="338" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="338" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安徽医科第二附属医院" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMS-bd-mLs">
+                        <rect key="frame" x="20" y="5" width="174" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="蜀山区紫西路112号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bF1-g6-fKV">
+                        <rect key="frame" x="20" y="31" width="130" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K02-LW-snq">
+                        <rect key="frame" x="282" y="25" width="46" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="1vT-gh-JZw"/>
+                        </constraints>
+                        <state key="normal" title="删除"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.014965149570000001" green="0.47698318960000002" blue="0.98540872339999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="delAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5b2-pm-h2f"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="K02-LW-snq" firstAttribute="baseline" secondItem="bF1-g6-fKV" secondAttribute="baseline" id="Nm0-yM-s1w"/>
+                    <constraint firstItem="bF1-g6-fKV" firstAttribute="top" secondItem="VMS-bd-mLs" secondAttribute="bottom" constant="5" id="T4K-ax-3k2"/>
+                    <constraint firstItem="bF1-g6-fKV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Xiu-8J-IWt"/>
+                    <constraint firstItem="VMS-bd-mLs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="cYq-Tb-UZW"/>
+                    <constraint firstItem="VMS-bd-mLs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ptq-oa-EjU"/>
+                    <constraint firstAttribute="trailing" secondItem="K02-LW-snq" secondAttribute="trailing" constant="10" id="urY-ea-LTH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="detailLocationLabel" destination="bF1-g6-fKV" id="DvG-oF-Js1"/>
+                <outlet property="locationLabel" destination="VMS-bd-mLs" id="qvl-Qi-p4x"/>
+            </connections>
+            <point key="canvasLocation" x="43" y="106.5"/>
+        </tableViewCell>
+    </objects>
+</document>

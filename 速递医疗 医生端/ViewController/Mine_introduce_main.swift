@@ -68,7 +68,8 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
                     })
                 })
             default:
-                dPrint(message: "error")
+                // 常用地址
+                performSegue(withIdentifier: "AddHospital", sender: self)
             }
             
             

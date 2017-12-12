@@ -22,6 +22,7 @@ class Mypatient_page_check: BaseRefreshController<mypatient_check>, UITableViewD
         let id = "reuseIdentifier"
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! MypatientTableViewCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+
         let res = data[indexPath.row]
         cell.updateViews(modelBean: res, vc: self)
         return cell

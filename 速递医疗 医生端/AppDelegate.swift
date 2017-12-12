@@ -77,17 +77,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        let manager = userInfo["aps"] as? [String:String]
 //        let message = manager!["alert"]
+        let vc = UIStoryboard.init(name: "Mine", bundle: nil).instantiateViewController(withIdentifier: "mineMsg") as! Mine_msg_main
+        APPLICATION.window?.rootViewController = vc
         
         //        应用在前台或者后台，不跳转页面，让用户选择。
-        if application.applicationState == .active || application.applicationState == .background{
-            let vc = ViewController()
-            APPLICATION.window?.rootViewController = vc
-        }else {
-            // 应用被杀死跳转页面
-            let vc = ViewController()
-            APPLICATION.window?.rootViewController = vc
-            
-        }
+//        if application.applicationState == .active || application.applicationState == .background{
+//
+//        }else {
+//            // 应用被杀死跳转页面
+//            let vc = ViewController()
+//            APPLICATION.window?.rootViewController = vc
+//
+//        }
 
     }
     

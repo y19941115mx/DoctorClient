@@ -407,6 +407,7 @@
                         <outlet property="tableView" destination="mgR-ej-wLK" id="0Wr-Mw-x6T"/>
                         <segue destination="cEa-yB-2cX" kind="presentation" id="OLK-Qa-M2h"/>
                         <segue destination="1dg-xc-fyh" kind="presentation" identifier="SetDate" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="dnr-O0-JOz"/>
+                        <segue destination="8K8-jk-1y1" kind="presentation" identifier="AddHospital" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="MI1-dP-lWl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiA-bc-2dN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1006,7 +1007,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-ED-1Sz">
-                                        <rect key="frame" x="236" y="25" width="74" height="34"/>
+                                        <rect key="frame" x="236" y="24.5" width="74" height="34"/>
                                         <state key="normal" title="余额记录"/>
                                         <connections>
                                             <segue destination="oBv-YA-wnw" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="npu-xV-8Gb"/>
@@ -1088,7 +1089,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-yg-GhP">
-                                        <rect key="frame" x="277" y="27" width="33" height="32"/>
+                                        <rect key="frame" x="277" y="26.5" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="保存">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1098,7 +1099,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkJ-bT-vh3">
-                                        <rect key="frame" x="8" y="31" width="47" height="22"/>
+                                        <rect key="frame" x="8" y="30.5" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="buttonAction:" destination="lZI-yl-Wdh" eventType="touchUpInside" id="n0B-7z-ObX"/>
@@ -1246,7 +1247,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-jq-gj1">
-                                        <rect key="frame" x="15" y="31" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="Back_acion:" destination="cEa-yB-2cX" eventType="touchUpInside" id="cMR-yl-OMY"/>
@@ -1262,7 +1263,7 @@
                                     <constraint firstAttribute="trailing" secondItem="hNI-SL-r6l" secondAttribute="trailing" constant="10" id="gbH-fe-cUF"/>
                                     <constraint firstAttribute="bottom" secondItem="gtg-MU-EjJ" secondAttribute="bottom" constant="12" id="lUC-FZ-djs"/>
                                     <constraint firstAttribute="height" constant="64" id="n3n-TH-avC"/>
-                                    <constraint firstItem="CNv-jq-gj1" firstAttribute="leading" secondItem="Frm-uP-F9c" secondAttribute="leading" constant="15" id="yec-Kx-Y2F"/>
+                                    <constraint firstItem="CNv-jq-gj1" firstAttribute="leading" secondItem="Frm-uP-F9c" secondAttribute="leading" constant="10" id="yec-Kx-Y2F"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ViA-6E-hqs">
@@ -1314,7 +1315,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKp-fT-Z1k">
-                                        <rect key="frame" x="277" y="27" width="33" height="32"/>
+                                        <rect key="frame" x="277" y="26.5" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="添加">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1324,7 +1325,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ml-Xf-oiY">
-                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="ButtonAcion:" destination="1dg-xc-fyh" eventType="touchUpInside" id="cy9-mZ-9h3"/>
@@ -1584,7 +1585,7 @@
         <!--Mine msg main-->
         <scene sceneID="Gj4-iS-ib2">
             <objects>
-                <viewController id="FhE-bD-1ym" customClass="Mine_msg_main" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mineMsg" id="FhE-bD-1ym" customClass="Mine_msg_main" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZFe-BO-Tb1"/>
                         <viewControllerLayoutGuide type="bottom" id="KGW-Bz-bhp"/>
@@ -1782,6 +1783,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0b-1d-96N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2031" y="-2844"/>
+        </scene>
+        <!--Mine add hospital-->
+        <scene sceneID="6Ow-bG-79U">
+            <objects>
+                <viewController id="8K8-jk-1y1" customClass="Mine_add_hospital" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="br9-yE-jKp"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ucv-fw-jTT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aAu-vY-vG5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="369"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNA-bL-tsE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlP-qJ-fp3">
+                                        <rect key="frame" x="123.5" y="32" width="74" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRZ-LQ-5Lf">
+                                        <rect key="frame" x="277" y="26.5" width="33" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="添加">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addAction:" destination="8K8-jk-1y1" eventType="touchUpInside" id="OSn-kz-XXZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSk-uj-aNK">
+                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
+                                        <state key="normal" title="返回" image="back"/>
+                                        <connections>
+                                            <action selector="backAcion:" destination="8K8-jk-1y1" eventType="touchUpInside" id="Uhn-WA-qNr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.38823529410000002" green="0.68235294120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ZlP-qJ-fp3" firstAttribute="top" secondItem="NNA-bL-tsE" secondAttribute="top" constant="32" id="CYX-Rs-bPZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="iRZ-LQ-5Lf" secondAttribute="trailing" constant="10" id="F0L-hD-Slq"/>
+                                    <constraint firstAttribute="height" constant="64" id="I1h-nc-n69"/>
+                                    <constraint firstItem="ZlP-qJ-fp3" firstAttribute="centerX" secondItem="NNA-bL-tsE" secondAttribute="centerX" id="I6K-pu-O0H"/>
+                                    <constraint firstItem="xSk-uj-aNK" firstAttribute="leading" secondItem="NNA-bL-tsE" secondAttribute="leading" constant="10" id="LnI-ox-6d3"/>
+                                    <constraint firstItem="xSk-uj-aNK" firstAttribute="baseline" secondItem="ZlP-qJ-fp3" secondAttribute="baseline" id="UU9-OK-Ok8"/>
+                                    <constraint firstItem="iRZ-LQ-5Lf" firstAttribute="baseline" secondItem="ZlP-qJ-fp3" secondAttribute="baseline" id="uQ4-5S-wGH"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZlP-qJ-fp3" secondAttribute="bottom" constant="12" id="vUn-Cb-dBK"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lPu-GH-uow" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="256"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8K8-jk-1y1" id="uPn-BY-Kic"/>
+                                    <outlet property="delegate" destination="8K8-jk-1y1" id="p2b-SH-XZW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="NNA-bL-tsE" firstAttribute="leading" secondItem="aAu-vY-vG5" secondAttribute="leading" id="3Qx-1Q-u70"/>
+                            <constraint firstItem="lPu-GH-uow" firstAttribute="leading" secondItem="aAu-vY-vG5" secondAttribute="leading" id="Jr9-0P-B5t"/>
+                            <constraint firstItem="NNA-bL-tsE" firstAttribute="top" secondItem="aAu-vY-vG5" secondAttribute="top" id="ODX-2S-Ird"/>
+                            <constraint firstAttribute="trailing" secondItem="NNA-bL-tsE" secondAttribute="trailing" id="SbC-7X-8iR"/>
+                            <constraint firstItem="Ucv-fw-jTT" firstAttribute="top" secondItem="lPu-GH-uow" secondAttribute="bottom" id="hht-tJ-Wqy"/>
+                            <constraint firstAttribute="trailing" secondItem="lPu-GH-uow" secondAttribute="trailing" id="ki1-jL-EVY"/>
+                            <constraint firstItem="lPu-GH-uow" firstAttribute="top" secondItem="NNA-bL-tsE" secondAttribute="bottom" id="xbV-eT-oIr"/>
+                        </constraints>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tabelView" destination="lPu-GH-uow" id="c4U-yQ-XFY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZc-I2-Gwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1764.375" y="-797.00704225352115"/>
         </scene>
     </scenes>
     <resources>
