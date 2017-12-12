@@ -26,8 +26,9 @@ public enum API {
     case cancelgraborder(Int) // 取消我选择的病人
     case refuseorder(Int, Int) // 取消选择我的病人, 后面参数不为0时，推荐给其他医生
     case getdoctorbyname(String) // 根据名字获取医生
+    case confirmorder(Int,Double,Int,Double,Int,Double,Int,Double) // 确认选择我的病人
+    
     // 我的日程
-    case confirmorder(Int,Int,Int,Int,Int,Int,Int,Int) // 确认选择我的病人
     case getorder(Int, Int) // 获取我的日程 1 待确定 2 正在进行
     case cancelorder(Int) // 取消 待确认的订单
     case finishorder(Int, Bool) // 结束 进行中的订单
@@ -36,6 +37,8 @@ public enum API {
     case cancelconsultation(Int) // 取消会诊
     case getconsultationdetail(Int) // 获取会诊详情
     case confirmconsultation(Int,Int,Int,Int,Int,Int,Int,Int) //确认会诊
+    
+    
     // 我的
     case getfirstinfo //获取个人信息 第一页
     case updatefirstinfo(String, String, String, String, String, String, String, String, String, Bool) //更新个人信息 第一页

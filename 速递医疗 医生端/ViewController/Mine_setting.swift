@@ -8,37 +8,44 @@
 
 import UIKit
 
-class Mine_setting: BaseViewController, UITableViewDataSource, UITableViewDelegate{
+class Mine_setting: BaseTableInfoViewController{
     
     @IBOutlet weak var tableView: UITableView!
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let label1 = cell.viewWithTag(1) as! UILabel
-        let label2 = cell.viewWithTag(2) as! UILabel
-        label1.text = "退出登录"
-        label2.text = "点击回到登录界面"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            logout()
-        default:
-            dPrint(message: "error")
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        // Do any additional setup after loading the view.
+        let titles = [["绑定支付宝"],["意见反馈", "关于我们"], ["退出登录"]]
+        let infos:[[String]] = [[""], ["", ""], [""]]
+        initViewController(tableTiles: titles, tableInfo: infos, tableView: tableView) { (indexpath) in
+            self.handler(indexPath: indexpath)
+        }
+        
     }
-    
+    private func handler(indexPath:IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let textField = UITextField()
+            textField.placeholder = "输入支付宝账号"
+            // 绑定支付宝
+            AlertUtil.popTextFields(vc: self, title: "输入支付宝账号", textfields: [textField], okhandler: { (textFields) in
+                let account = textFields[0].text ?? ""
+                if account == "" {
+                    showToast(self.view, "请填写账号")
+                }else {
+                    NetWorkUtil.init(method: API.updatealipayaccount(account)).newRequest(handler: { (bean, json) in
+                        showToast(self.view, bean.msg!)
+                    })
+                }
+                
+            })
+        case 1:
+            showToast(self.view, "功能完善中")
+        default:
+            // 退出登录
+            logout()
+        }
+    }
     
     private func logout() {
         NetWorkUtil<BaseAPIBean>.init(method: .exit).newRequest(handler: {bean,json  in

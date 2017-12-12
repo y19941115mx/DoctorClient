@@ -88,18 +88,53 @@ class MypatientTableViewCell2: UITableViewCell {
     // 点击确定
     @IBAction func click_confirm(_ sender: Any) {
         AlertUtil.popAlert(vc: self.vc, msg: "是否确认订单", okhandler: {
-            
+            // 跳转到确认页面
         })
         
     }
     // 点击取消
     @IBAction func click_delete(_ sender: UIButton) {
-        AlertUtil.popAlert(vc: self.vc, msg: "是否推荐给其他医生", okhandler: {})
-        NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, 0)).newRequestWithoutHUD { (bean, json) in
-            Toast(bean.msg!)
-            self.vc.refreshData()
-        }
+        AlertUtil.popAlertWithDelAction(vc: self.vc, msg: "是否推荐给其他医生", okhandler: {
+            let textField = UITextField()
+            textField.placeholder = "请输入医生完整姓名"
+            AlertUtil.popTextFields(vc: self.vc, title: "输入医生姓名", textfields: [textField], okhandler: { (textFields) in
+                let text = textFields[0].text ?? ""
+                if text == "" {
+                    Toast("输入信息不能为空")
+                }else {
+                    NetWorkUtil<BaseListBean<DoctorBean>>.init(method: API.getdoctorbyname(text)).newRequest(handler: { (bean, json) in
+                        if bean.code == 100 {
+                            let mdata = bean.dataList
+                            var docnames = [String]()
+                            if mdata == nil {
+                                Toast("无该医生信息")
+                            }else {
+                                for item in mdata! {
+                                    docnames.append(item.name!)
+                                }
+                                AlertUtil.popMenu(vc: self.vc, title: "选择医生", msg: "", btns: docnames, handler: { (str) in
+                                    let index = docnames.index(of: str)
+                                    let doc = mdata![index!]
+                                    NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, doc.docId)).newRequestWithoutHUD { (bean, json) in
+                                        Toast(bean.msg!)
+                                        self.vc.refreshData()
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }
+            })
+            
+        }, delhandler: {
+            NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, 0)).newRequestWithoutHUD { (bean, json) in
+                Toast(bean.msg!)
+                self.vc.refreshData()
+            }
+        })
     }
+    
+
 }
 
 

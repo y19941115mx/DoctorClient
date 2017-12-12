@@ -26,7 +26,7 @@ class AddDateViewController: BaseTableInfoViewController {
         case 0:
             AlertUtil.popMenu(vc: self, title: "选择坐诊时间", msg: "", btns: ["上午", "下午"], handler: { (str) in
                 self.flag1 = true
-                self.tableInfo[indexPath.row] = str
+                self.tableInfo[indexPath.section][indexPath.row] = str
                 self.tableView.reloadRows(at: [indexPath], with: .none)
             })
         case 1:
@@ -42,7 +42,7 @@ class AddDateViewController: BaseTableInfoViewController {
                             self.btns.append(item.docaddresslocation!)
                         }
                         AlertUtil.popMenu(vc: self, title: "选择坐诊地点", msg: "", btns: self.btns, handler: { (str) in
-                            self.tableInfo[indexPath.row] = str
+                            self.tableInfo[indexPath.section][indexPath.row] = str
                             self.tableView.reloadRows(at: [indexPath], with: .none)
                             self.flag2 = true
                         })
@@ -57,7 +57,7 @@ class AddDateViewController: BaseTableInfoViewController {
             textField.placeholder = "请输入简介"
             textField.keyboardType = .namePhonePad
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
-                self.tableInfo[indexPath.row] = textFields[0].text ?? ""
+                self.tableInfo[indexPath.section][indexPath.row] = textFields[0].text ?? ""
                 self.tableView.reloadRows(at: [indexPath], with: .none)
                 self.flag3 = true
             })
@@ -71,7 +71,7 @@ class AddDateViewController: BaseTableInfoViewController {
     // MARK: - view
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tableData:[String] = ["请选择坐诊时间","请选择坐诊地点","请输入备注"]
+        let tableData = [["请选择坐诊时间","请选择坐诊地点","请输入备注"]]
         let tableTitle = [["坐诊时间", "坐诊地点", "备注"]]
         initViewController(tableTiles: tableTitle, tableInfo: tableData, tableView: tableView, clickHandler: {indexpath in
             self.clickTable(indexPath: indexpath)
@@ -92,12 +92,12 @@ class AddDateViewController: BaseTableInfoViewController {
             }
             if flag1 && flag2 && flag3 {
                 // 保存
-                let locindex = btns.index(of: tableInfo[1])
+                let locindex = btns.index(of: tableInfo[0][1])
                 let locBean = locMsg![locindex!]
                 let dateformatter = DateFormatter()
                 dateformatter.dateFormat = " YYYY-MM-dd"
                 let dateString = dateformatter.string(from: self.CalendarView.selectedDate)
-                NetWorkUtil.init(method: .addcalendar(dateString, self.tableInfo[0], tableInfo[2], locBean.docaddressid)).newRequest(handler: { (bean, json) in
+                NetWorkUtil.init(method: .addcalendar(dateString, self.tableInfo[0][0], tableInfo[0][2], locBean.docaddressid)).newRequest(handler: { (bean, json) in
                     showToast(self.view, bean.msg!)
                     if bean.code == 100 {
                         self.dismiss(animated: false, completion: nil)

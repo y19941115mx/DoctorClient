@@ -232,6 +232,23 @@ class AlertUtil: NSObject {
         alertController.addAction(okAction)
         vc.present(alertController, animated: true, completion: nil)
     }
+    class func popAlertWithDelAction(vc:UIViewController, msg:String, okhandler: @escaping ()->(), delhandler: @escaping ()->())
+    {
+        // 弹出提示框
+        let alertController = UIAlertController(title: "提示",
+                                                message: msg, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: { action in
+            delhandler()
+        })
+        let okAction = UIAlertAction(title: "确认", style: .default, handler: {
+            action in
+            okhandler()
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        vc.present(alertController, animated: true, completion: nil)
+    }
+    
     // 弹出带文本输入框
     class func popTextFields(vc:UIViewController,title:String, textfields:[UITextField], okhandler: @escaping (_ textfields:[UITextField])->()) {
         let alertController = UIAlertController(title: title,

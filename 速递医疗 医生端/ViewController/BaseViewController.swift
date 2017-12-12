@@ -282,7 +282,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
 // 信息填写
 class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITableViewDelegate {
     var tableTiles = [[String]]()
-    var tableInfo = [String]()
+    var tableInfo = [[String]]()
     var mTableView:UITableView?
     var clickHandler:((IndexPath)->Void)?
     
@@ -300,7 +300,7 @@ class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITab
             cell =  Bundle.main.loadNibNamed("InfoTableViewCell", owner: nil, options: nil)?.last as? InfoTableViewCell
         }
         cell?.titleLabel.text = tableTiles[indexPath.section][indexPath.row]
-        cell?.infoLabel.text = tableInfo[indexPath.row]
+        cell?.infoLabel.text = tableInfo[indexPath.section][indexPath.row]
         return cell!
     }
     
@@ -315,7 +315,7 @@ class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITab
         super.viewDidLoad()
     }
     
-    func initViewController(tableTiles: [[String]], tableInfo:[String],tableView:UITableView, clickHandler:((IndexPath)->Void)?) {
+    func initViewController(tableTiles: [[String]], tableInfo:[[String]],tableView:UITableView, clickHandler:((IndexPath)->Void)?) {
         self.mTableView = tableView
         self.tableInfo = tableInfo
         self.tableTiles = tableTiles

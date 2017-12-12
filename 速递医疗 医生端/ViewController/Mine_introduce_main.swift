@@ -80,8 +80,6 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.contentInset = UIEdgeInsetsMake(-35+10, 0, 0, 0)
-
         // Do any additional setup after loading the view.
     }
     
