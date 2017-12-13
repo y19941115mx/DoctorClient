@@ -40,6 +40,7 @@ class HomeMainTableViewCell: UITableViewCell {
     @IBAction func BeginChat(_ sender: Any) {
         let viewController = ChatViewController.init(conversationChatter: sickBean?.userhuanxinaccount, conversationType: EMConversationTypeChat)
         viewController?.setUpNavTitle(title: (sickBean?.familyname)!)
+        viewController?.hidesBottomBarWhenPushed = true
         self.vc.navigationController?.pushViewController(viewController!, animated: false)
     }
     

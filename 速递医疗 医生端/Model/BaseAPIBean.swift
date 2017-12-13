@@ -300,6 +300,16 @@ class MineLocationBean:Mappable {
         
     }
     
+    init(name:String,province:String,city:String, distinct:String,adress:String,lon:String,lat:String) {
+        docaddresslocation = name
+        docaddressprovince = province
+        docaddresscity = city
+        docaddressarea = distinct
+        docaddressother = adress
+        docaddresslon = lon
+        docaddresslat = lat
+    }
+    
     func mapping(map: Map) {
         docaddressid <- map["docaddressid"]
         docaddresslocation <- map["docaddresslocation"]

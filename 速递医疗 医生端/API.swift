@@ -51,7 +51,7 @@ public enum API {
     case updateintroduce(String) // 更新我的介绍
     case updateexpert(String) // 更新我的擅长
     case getalladdress // 我的介绍 获取全部常用地址
-    case addaddress(String, String, String, String, String) // 我的介绍 添加常用地址
+    case addaddress(String, String, String, String, String, String, String) // 我的介绍 添加常用地址
     case deleteaddress(Int) // 删除常用地址
     case setaddress(Int) // 我的介绍 设置默认出诊地点
     case addcalendar(String, String,String, Int) // 我的介绍 添加坐诊计划
@@ -305,8 +305,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
         case .deleteallreceivenotification:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
-        case .addaddress(let location, let province, let city, let lon, let lat):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddresslocation":location, "docaddressprovince":province, "docaddresscity":city, "docaddresslon":lon, "docaddresslat":lat], encoding: URLEncoding.default)
+        case .addaddress(let location, let province, let city,let docaddressarea, let docaddressother, let lon, let lat):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddresslocation":location, "docaddressprovince":province, "docaddresscity":city, "docaddresslon":lon, "docaddresslat":lat,"docaddressarea":docaddressarea, "docaddressother":docaddressother], encoding: URLEncoding.default)
         case .deleteaddress(let placeId):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddressid":placeId], encoding: URLEncoding.default)
         }

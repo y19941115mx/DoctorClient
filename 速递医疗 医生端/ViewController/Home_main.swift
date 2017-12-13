@@ -137,6 +137,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     @objc private func showContantList() {
         let viewController = ConversationListViewController()
         viewController.setUpNavTitle(title: "会话列表")
+        viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
