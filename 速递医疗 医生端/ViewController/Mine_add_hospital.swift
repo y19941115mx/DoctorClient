@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60

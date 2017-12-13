@@ -12,6 +12,7 @@
 # import <AMapFoundationKit/AMapFoundationKit.h>
 # import <AMapLocationKit/AMapLocationKit.h>
 # import <AMapSearchKit/AMapSearchKit.h>
+# import <AMapSearchKit/AMapSearchAPI.h>
 
 # import "BPush.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
