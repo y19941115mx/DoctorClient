@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultStyle(.custom)
         SVProgressHUD.setForegroundColor(UIColor.APPColor)
         SVProgressHUD.setBackgroundColor(UIColor.clear)
-        SVProgressHUD.setDefaultMaskType(.clear) // 可点击取消
+        SVProgressHUD.setDefaultMaskType(.black) // 可点击取消
         SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
 //        获取基本数据
         self.initData()
@@ -79,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let message = manager!["alert"]
         let vc = UIStoryboard.init(name: "Mine", bundle: nil).instantiateViewController(withIdentifier: "mineMsg") as! Mine_msg_main
         APPLICATION.window?.rootViewController = vc
+        // 清空角标
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
         //        应用在前台或者后台，不跳转页面，让用户选择。
 //        if application.applicationState == .active || application.applicationState == .background{

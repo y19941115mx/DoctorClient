@@ -54,9 +54,12 @@ class LoginViewController: BaseTextViewController {
                 user_default.setUserDefault(key: .title, value: title)
                 user_default.setUserDefault(key: .password, value: MD5(passNum))
                 // 上传channelid
-                NetWorkUtil<BaseAPIBean>.init(method: API.updatechannelid(user_default.channel_id.getStringValue()!)).newRequestWithoutHUD(handler: { (bean, json) in
-                    Toast(bean.msg!)
-                })
+                if user_default.channel_id.getStringValue() != nil {
+                    NetWorkUtil<BaseAPIBean>.init(method: API.updatechannelid(user_default.channel_id.getStringValue()!)).newRequestWithoutHUD(handler: { (bean, json) in
+                        Toast(bean.msg!)
+                    })
+                }
+                
                 // 环信注册
                 if account == "" {
                     NetWorkUtil<BaseAPIBean>.init(method: API.huanxinregister).newRequest(handler: { (bean, json) in

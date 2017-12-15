@@ -16,12 +16,16 @@ class MyDateTableViewCell: UITableViewCell {
     @IBOutlet weak var hospitalLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var button: UIButton!
     var vc:BaseRefreshController<OrderBean>?
     var data:OrderBean?
     var flag = 1 // 1 待确认 2 进行中
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        if flag == 2 {
+            button.setTitle("完成", for: .normal)
+        }
     }
     
     func updateViews(vc:BaseRefreshController<OrderBean>, data:OrderBean) {

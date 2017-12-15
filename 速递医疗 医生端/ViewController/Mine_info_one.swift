@@ -197,14 +197,17 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             Toast(bean.msg!)
             let data = json["data"]
             if data != JSON.null {
-                let name = data["docname"].stringValue
-                let title = data["doctitle"].stringValue
-                let cardNum = data["doccardnum"].stringValue
-                let sex = data["docmale"].stringValue
-                let age = data["docage"].stringValue
-                let hospital = data["dochosp"].stringValue
-                let level = data["hosplevel"].stringValue
-                let depart = "\(data["docprimarydept"].stringValue) - \(data["docseconddept"].stringValue)"
+                let name = data["docname"].string ?? self.tableData[0]
+                let title = data["doctitle"].string ?? self.tableData[1]
+                let cardNum = data["doccardnum"].string ?? self.tableData[2]
+                let sex = data["docmale"].string ?? self.tableData[3]
+                let age = data["docage"].string ?? self.tableData[4]
+                let hospital = data["dochosp"].string ?? self.tableData[5]
+                let level = data["hosplevel"].string ?? self.tableData[6]
+                var depart = self.tableData[7]
+                if data["docprimarydept"].string != nil {
+                    depart = "\(data["docprimarydept"].stringValue) - \(data["docseconddept"].stringValue)"
+                }
                 let flag = data["docallday"].boolValue
                 
                 self.tableData = [name, title, cardNum, sex, age, hospital, level, depart, flag]

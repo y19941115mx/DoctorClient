@@ -136,6 +136,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="button" destination="Yas-ap-I8R" id="dNj-yJ-P6C"/>
                 <outlet property="descLabel" destination="oWh-H7-5XD" id="dLU-0z-1nv"/>
                 <outlet property="hospitalLabel" destination="x3N-38-fNz" id="jHa-pn-BMQ"/>
                 <outlet property="nameLabel" destination="hlC-rj-a6S" id="NcT-f4-qXQ"/>
