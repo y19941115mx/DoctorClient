@@ -63,7 +63,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let info = tableData[indexPath.row]
         let label_title = cell.viewWithTag(1) as! UILabel
         let label_info = cell.viewWithTag(2) as! UILabel
-        label_info.text = info as? String
+        label_info.text = "\(info)"
         label_title.text = title
         return cell
     }
@@ -200,7 +200,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let title = data["doctitle"].string ?? self.tableData[1]
                 let cardNum = data["doccardnum"].string ?? self.tableData[2]
                 let sex = data["docmale"].string ?? self.tableData[3]
-                let age = data["docage"].string ?? self.tableData[4]
+                let age = data["docage"].int ?? self.tableData[4]
                 let hospital = data["dochosp"].string ?? self.tableData[5]
                 let level = data["hosplevel"].string ?? self.tableData[6]
                 var depart = self.tableData[7]

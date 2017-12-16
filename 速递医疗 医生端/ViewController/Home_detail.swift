@@ -9,7 +9,7 @@
 import UIKit
 import HJPhotoBrowser
 
-class Home_detail: BaseViewController, UICollectionViewDataSource,UICollectionViewDelegate,HJPhotoBrowserDelegate{
+class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSource{
     
     
     var sickBean:sickDetail?
@@ -29,12 +29,12 @@ class Home_detail: BaseViewController, UICollectionViewDataSource,UICollectionVi
     
     @IBOutlet weak var imageLayout: UICollectionView!
     
-    var images = [String]()
+//    var images = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initViewController(mCollectionView: imageLayout)
         imageLayout.dataSource = self
-        imageLayout.delegate = self
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -51,7 +51,7 @@ class Home_detail: BaseViewController, UICollectionViewDataSource,UICollectionVi
                 }
                 self.describeLabel.text = sick.usersickdesc!
                 if sick.usersickpic != nil &&  sick.usersickpic != ""{
-                    self.images = StringUTil.splitImage(str: sick.usersickpic!)
+                    self.picArray = StringUTil.splitImage(str: sick.usersickpic!)
                     self.imageLayout.reloadData()
                 }
                 ImageUtil.setAvator(path: sick.userloginpix!, imageView: self.pixImgView)
@@ -61,34 +61,15 @@ class Home_detail: BaseViewController, UICollectionViewDataSource,UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return picArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cellIdentifilter = "reusedCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifilter, for: indexPath)
         let imageView = cell.viewWithTag(1) as! UIImageView
-        ImageUtil.setAvator(path: images[indexPath.row], imageView: imageView)
+        ImageUtil.setAvator(path: picArray[indexPath.row], imageView: imageView)
         return cell
     }
-    
-    func photoBrowser(_ browser: HJPhotoBrowser!, highQualityImageURLFor index: Int) -> URL! {
-        return URL.init(string: images[index])
-    }
-    
-    func photoBrowser(_ browser: HJPhotoBrowser!, placeholderImageFor index: Int) -> UIImage! {
-        return #imageLiteral(resourceName: "photo_default")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let count = images.count;
-        let browser = HJPhotoBrowser()
-        browser.sourceImagesContainerView = self.imageLayout
-        browser.imageCount = count
-        browser.currentImageIndex = indexPath.row;
-        browser.delegate = self
-        browser.show()
-    }
-
     
     // MARK: - 点击事件
     @IBAction func click_btn(_ sender: UIButton) {

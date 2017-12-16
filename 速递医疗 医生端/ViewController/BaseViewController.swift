@@ -7,6 +7,7 @@ import MJRefresh
 import Moya
 import SnapKit
 import ObjectMapper
+import HJPhotoBrowser
 
 
 // 基本
@@ -325,5 +326,41 @@ class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITab
     }
 }
 
+class  BasicCollectionViewBrowserController:BaseViewController, UICollectionViewDelegate, HJPhotoBrowserDelegate {
+    
+    var picArray = [String]()
+    
+    var mCollectionView:UICollectionView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    public func initViewController(mCollectionView:UICollectionView) {
+        mCollectionView.delegate = self
+    }
+    
+    func photoBrowser(_ browser: HJPhotoBrowser!, highQualityImageURLFor index: Int) -> URL! {
+        return URL.init(string: picArray[index])
+    }
+    
+    func photoBrowser(_ browser: HJPhotoBrowser!, placeholderImageFor index: Int) -> UIImage! {
+        return #imageLiteral(resourceName: "photo_default")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let count = picArray.count;
+        let browser = HJPhotoBrowser()
+        browser.sourceImagesContainerView = collectionView
+        browser.imageCount = count
+        browser.currentImageIndex = indexPath.row;
+        browser.delegate = self
+        browser.show()
+    }
+    
+    
+    
+}
 
 
