@@ -31,7 +31,9 @@ public enum API {
     // 我的日程
     case getorder(Int, Int) // 获取我的日程 1 待确定 2 正在进行
     case cancelorder(Int) // 取消 待确认的订单
-    case finishorder(Int, Bool) // 结束 进行中的订单
+    case finishorder(Int, Bool, Int) // 结束 进行中的订单
+    case gethospital(String) // 模糊查询医院
+    
     
     // 我的会诊
     case listconsultation(Int, Int) // 获取我的会诊 1会诊申请，2 待确认会诊,3为进行中的会诊,4为已完成的会诊，5为历史会诊
@@ -181,6 +183,8 @@ extension API: TargetType {
             return "/addaddress"
         case .deleteaddress:
             return "/deleteaddress"
+        case .gethospital(_):
+            return "/gethospital"
         }
     }
     public var method: Moya.Method {
@@ -239,8 +243,12 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId, "userorderdprice":orderPrice, "userordertpricetype":trafficType, "userordertprice":trafficPrice,"userorderapricetype":hotelType, "userorderaprice":hotelPrice, "userorderepricetype":foodType, "userordereprice":foodPrice], encoding: URLEncoding.default)
         case .getorder(let page, let type):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "type":type], encoding: URLEncoding.default)
-        case .finishorder(let orderId, let ishospital):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId, "userorderhstate":ishospital], encoding: URLEncoding.default)
+        case .finishorder(let orderId, let ishospital, let hospitalId):
+            if ishospital {
+                return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId, "userorderhstate":ishospital, "userorderhospid":hospitalId], encoding: URLEncoding.default)
+            }else{
+             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId, "userorderhstate":ishospital], encoding: URLEncoding.default)
+            }
         case .listconsultation(let page, let type):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "type":type], encoding: URLEncoding.default)
         case .cancelconsultation(let orderId):
@@ -309,6 +317,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddresslocation":location, "docaddressprovince":province, "docaddresscity":city, "docaddresslon":lon, "docaddresslat":lat,"docaddressarea":docaddressarea, "docaddressother":docaddressother], encoding: URLEncoding.default)
         case .deleteaddress(let placeId):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddressid":placeId], encoding: URLEncoding.default)
+        case .gethospital(let str):
+            return .requestParameters(parameters: ["hospname": str], encoding: URLEncoding.default)
         }
     }
     

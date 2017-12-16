@@ -47,6 +47,9 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
             })
         })
     }
-   
+    @IBAction func BackAcion(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
 }
 

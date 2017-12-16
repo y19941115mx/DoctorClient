@@ -24,7 +24,7 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textField.keyboardType = .numberPad
-        let titiles = [["出差价格"],["交通类型", "交通价格"],["住宿类型", "住宿价格"],["餐饮类型", "餐饮价格"]]
+        let titiles = [["出诊价格"],["交通类型", "交通价格"],["住宿类型", "住宿价格"],["餐饮类型", "餐饮价格"]]
         let info = [["0.0"],["自理", "0.0"],["自理", "0.0"],["0.0", "自理"]]
         initViewController(tableTiles: titiles, tableInfo: info, tableView: tableView) { (indexPath) in
             self.handleCheck(indexPath: indexPath)

@@ -107,7 +107,6 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case 5:
             let textField = UITextField()
             textField.placeholder = "请输入医院名称"
-            textField.keyboardType = .numberPad
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                 self.tableData[indexPath.row] = textFields[0].text ?? ""
                 tableView.reloadRows(at: [indexPath], with: .none)

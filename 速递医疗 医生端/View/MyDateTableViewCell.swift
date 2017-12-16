@@ -17,6 +17,7 @@ class MyDateTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var button: UIButton!
+    var textField = UITextField()
     var vc:BaseRefreshController<OrderBean>?
     var data:OrderBean?
     var flag = 1 // 1 待确认 2 进行中
@@ -53,15 +54,46 @@ class MyDateTableViewCell: UITableViewCell {
             }else {
                 AlertUtil.popMenu(vc: self.vc!, title: "是否住院", msg: "", btns: ["是", "否"], handler: { (str) in
                     var isHospital = false
+                    // 选择医院
                     if str == "是" {
+                        self.textField.placeholder = "输入医院名称"
                         isHospital = true
+                        AlertUtil.popTextFields(vc: self.vc!, title: "输入信息", textfields: [self.textField], okhandler: { (textFields) in
+                            let text = textFields[0].text ?? ""
+                            NetWorkUtil<BaseListBean<HospitalBean>>.init(method: API.gethospital(text)).newRequest(handler: { (bean, json) in
+                                if bean.code == 100 {
+                                    let list = bean.dataList
+                                    var mBtns = [String]()
+                                    if list != nil {
+                                        for item in list! {
+                                            mBtns.append(item.hospname!)
+                                        }
+                                    }
+                                    AlertUtil.popMenu(vc: self.vc!, title: "选择医院", msg: "", btns: mBtns, handler: { (str) in
+                                        let index = mBtns.index(of: str)
+                                        let hospital = list![index!]
+                                        let id = hospital.hosploginid!
+                                        NetWorkUtil.init(method: API.finishorder(self.data!.userorderid, isHospital, id)).newRequest(handler: { (bean, json) in
+                                            Toast(bean.msg!)
+                                            if bean.code == 100 {
+                                                self.vc?.refreshData()
+                                            }
+                                        })
+                                    })
+                                }
+                                
+                            })
+                            
+                        })
+                    }else {
+                        NetWorkUtil.init(method: API.finishorder(self.data!.userorderid, isHospital,0)).newRequest(handler: { (bean, json) in
+                            if bean.code == 100 {
+                                self.vc?.refreshData()
+                            }
+                            Toast(bean.msg!)
+                        })
                     }
-                    NetWorkUtil.init(method: API.finishorder(self.data!.userorderid, isHospital)).newRequest(handler: { (bean, json) in
-                        if bean.code == 100 {
-                            self.vc?.refreshData()
-                        }
-                        Toast(bean.msg!)
-                    })
+                    
                 })
             }
         }

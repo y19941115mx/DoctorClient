@@ -89,6 +89,10 @@ class MypatientTableViewCell2: UITableViewCell {
     @IBAction func click_confirm(_ sender: Any) {
         AlertUtil.popAlert(vc: self.vc, msg: "是否确认订单", okhandler: {
             // 跳转到确认页面
+            let viewController = UIStoryboard.init(name: "Consultation", bundle: nil).instantiateViewController(withIdentifier: "confirmOrder") as! MypatientConfirmOrder
+            viewController.orderId = self.data?.userorderid
+            self.vc.present(viewController, animated: false, completion: nil)
+            
         })
         
     }

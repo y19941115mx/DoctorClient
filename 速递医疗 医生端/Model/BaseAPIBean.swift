@@ -161,11 +161,9 @@ class sickDetailBean: BaseAPIBean {
 }
 
 
-//病情图片 usersickpic
-//病情一级部门 usersickprimarydept
-//病情二级部门 usersickseconddept
 
 class sickDetail:SickBean {
+    
     var usersickpic:String?
     var usersickprimarydept:String?
     var usersickseconddept:String?
@@ -401,5 +399,34 @@ class NotificationBean:Mappable {
     
 }
 
-
+// 医院信息
+//"hospabs": "",
+//"hospfeature": "",
+//"hospname": "安徽第一人民医院",
+//"hosplevelname": null,
+//"hospadrother": "",
+//"hosphuanxinaccount": "hosp_1",
+//"hospadrlat": "",
+//"hospadrprovince": "",
+//"hospadrcity": "",
+//"hosploginpix": "http://oytv6cmyw.bkt.clouddn.com/20171103064014944735.jpg",
+//"hospadrarea": "",
+//"hospadrlon": ""
+class HospitalBean:Mappable {
+    var hospname:String?
+    var hosploginid:Int?
+    var hosplevelname:String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        hospname <- map["hospname"]
+        hosploginid <- map["hosploginid"]
+        hosplevelname <- map["hosplevelname"]
+    }
+    
+    
+}
 

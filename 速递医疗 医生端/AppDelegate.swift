@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let manager = userInfo["aps"] as? [String:String]
 //        let message = manager!["alert"]
         let vc = UIStoryboard.init(name: "Mine", bundle: nil).instantiateViewController(withIdentifier: "mineMsg") as! Mine_msg_main
-        APPLICATION.window?.rootViewController = vc
+        APPLICATION.window?.rootViewController?.present(vc, animated: false, completion: nil)
         // 清空角标
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setUpMap() {
-        AMapServices.shared().apiKey = StaticClass.GaodeAPIKey
+        AMapServices.shared().apiKey = StaticClass.GaodeAPIKfey
         
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         

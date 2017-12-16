@@ -27,7 +27,7 @@ struct StaticClass {
 //    static let RootIP = "http://192.168.2.2:8080"
     static let BaseApi = RootIP + "/internetmedical/doctor"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
-    static let GaodeAPIKey = "dc63bec745429fca2107bdd7e57f7e3c"
+    static let GaodeAPIKfey = "dc63bec745429fca2107bdd7e57f7e3c"
     static let TuisongAPIKey = "uf3RsBMfrhLyZhD4G5GPrTxQa2huBIIS"
     static let HuanxinAppkey = "1133171107115421#medicalclient"
 }
@@ -298,8 +298,7 @@ class ImageUtil{
     
     static public func setAvator(path:String, imageView:UIImageView) {
         let url = URL(string: path)
-        //        imageView.kf.setImage(with: url)
-        imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "photo_loading"), options: nil, progressBlock: nil, completionHandler: nil)
+        imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "photo"), options: nil, progressBlock: nil, completionHandler: nil)
     }
     
     // 图片转为Data类型

@@ -11,7 +11,7 @@ import UIKit
 class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: BaseTableView!
-    let tableTitle = ["身份证照片", "工作证照片","行医资格证照片","职称照片","其他照片"]
+    let tableTitle = ["身份证照片","职称照片", "行医资格证照片","工作证照片","其他照片"]
     
     var tableData = [String]()
     
@@ -52,7 +52,7 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let qualCard = data["docqualphoto"].stringValue
             let titleCard = data["doctitlephoto"].stringValue
             let otherPhoto = data["docotherphoto"].stringValue
-            self.tableData = [IdCard, workCard, qualCard, titleCard, otherPhoto]
+            self.tableData = [IdCard, titleCard, qualCard, workCard, otherPhoto]
             self.tableView.reloadData()
         }
         
@@ -70,8 +70,18 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         }
     }
+    
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func updateInfo(_ sender: Any) {
+        NetWorkUtil.init(method: .reviewinfo).newRequest { (bean, json) in
+            if bean.code == 100 {
+                self.dismiss(animated: false, completion: nil)
+            }
+            Toast(bean.msg!)
+        }
     }
     
 

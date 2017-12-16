@@ -38,6 +38,10 @@ class HomeMainTableViewCell: UITableViewCell {
     }
     
     @IBAction func BeginChat(_ sender: Any) {
+        if sickBean?.userhuanxinaccount == nil ||  sickBean?.userhuanxinaccount == "" {
+            Toast("该聊天账户不存在")
+            return
+        }
         let viewController = ChatViewController.init(conversationChatter: sickBean?.userhuanxinaccount, conversationType: EMConversationTypeChat)
         viewController?.setUpNavTitle(title: (sickBean?.familyname)!)
         viewController?.hidesBottomBarWhenPushed = true

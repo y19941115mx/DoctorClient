@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HJPhotoBrowser
 @IBDesignable
 class BaseCollectionView: UICollectionView {
     
@@ -39,6 +40,40 @@ class BaseCollectionView: UICollectionView {
         self.collectionViewLayout = flowLayout
         self.backgroundColor = UIColor.white
         self.register(UINib.init(nibName: self.nibName, bundle: nil), forCellWithReuseIdentifier: "cell")
+    }
+    
+}
+
+
+class BasePhotoCollectionView: UICollectionView,UICollectionViewDelegate,HJPhotoBrowserDelegate {
+    
+    func photoBrowser(_ browser: HJPhotoBrowser!, highQualityImageURLFor index: Int) -> URL! {
+        return URL.init(string: picArray[index])
+    }
+    
+    func photoBrowser(_ browser: HJPhotoBrowser!, placeholderImageFor index: Int) -> UIImage! {
+        return #imageLiteral(resourceName: "photo_error")
+    }
+    
+    var picArray = [String]()
+    //MARK: Initialization
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.delegate = self
+    }
+    
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: layout)
+        self.delegate = self
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let count = picArray.count;
+        let browser = HJPhotoBrowser()
+        browser.sourceImagesContainerView = self
+        browser.imageCount = count
+        browser.currentImageIndex = indexPath.row;
+        browser.delegate = self
+        browser.show()
     }
     
 }

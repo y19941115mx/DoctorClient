@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import HJPhotoBrowser
 
-class Home_detail: BaseViewController, UICollectionViewDataSource{
+class Home_detail: BaseViewController, UICollectionViewDataSource,UICollectionViewDelegate,HJPhotoBrowserDelegate{
+    
+    
     var sickBean:sickDetail?
     
     var patientId:Int?
     
-    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var patientName: UILabel!
     
+    @IBOutlet weak var deptLabel: UILabel!
+    @IBOutlet weak var sexLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var pixImgView: UIImageView!
     @IBOutlet weak var describeLabel: UILabel!
     
     @IBOutlet weak var imageLayout: UICollectionView!
@@ -28,32 +34,35 @@ class Home_detail: BaseViewController, UICollectionViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         imageLayout.dataSource = self
+        imageLayout.delegate = self
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NetWorkUtil<sickDetailBean>.init(method:API.getsickdetail(self.patientId!) ).newRequest(handler: {sick,json  in
             self.sickBean = sick.sickDetail
             if let sick = self.sickBean {
-                self.titleLabel.text = sick.usersickdesc
-                self.timeLabel.text =  sick.usersickptime
                 self.patientName.text = sick.familyname
+                self.sexLabel.text = sick.familymale
+                self.ageLabel.text = "\(sick.familyage)"
+                self.deptLabel.text = "\(sick.usersickprimarydept ?? "") \(sick.usersickseconddept ?? "")"
+                self.timeLabel.text =  sick.usersickptime
                 if sick.usersickdesc == nil {
                     sick.usersickdesc = ""
                 }
-                self.describeLabel.text = "病情描述： " + sick.usersickdesc!
+                self.describeLabel.text = sick.usersickdesc!
                 if sick.usersickpic != nil &&  sick.usersickpic != ""{
                     self.images = StringUTil.splitImage(str: sick.usersickpic!)
                     self.imageLayout.reloadData()
                 }
+                ImageUtil.setAvator(path: sick.userloginpix!, imageView: self.pixImgView)
                 
             }
         })
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cellIdentifilter = "reusedCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifilter, for: indexPath)
@@ -61,6 +70,25 @@ class Home_detail: BaseViewController, UICollectionViewDataSource{
         ImageUtil.setAvator(path: images[indexPath.row], imageView: imageView)
         return cell
     }
+    
+    func photoBrowser(_ browser: HJPhotoBrowser!, highQualityImageURLFor index: Int) -> URL! {
+        return URL.init(string: images[index])
+    }
+    
+    func photoBrowser(_ browser: HJPhotoBrowser!, placeholderImageFor index: Int) -> UIImage! {
+        return #imageLiteral(resourceName: "photo_default")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let count = images.count;
+        let browser = HJPhotoBrowser()
+        browser.sourceImagesContainerView = self.imageLayout
+        browser.imageCount = count
+        browser.currentImageIndex = indexPath.row;
+        browser.delegate = self
+        browser.show()
+    }
+
     
     // MARK: - 点击事件
     @IBAction func click_btn(_ sender: UIButton) {
