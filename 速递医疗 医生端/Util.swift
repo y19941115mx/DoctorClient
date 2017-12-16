@@ -280,6 +280,16 @@ class AlertUtil: NSObject {
 
 class ImageUtil{
     
+    class func URLToImg(url:URL) -> UIImage {
+        var img = UIImage.init()
+        do {
+            let data = try Data.init(contentsOf: url)
+            img = UIImage.init(data: data)!
+        }catch {
+            img = #imageLiteral(resourceName: "photo_default")
+        }
+        return img
+    }
     
     class func color2img(color:UIColor) -> UIImage{
         //  颜色转换为背景图片

@@ -65,8 +65,11 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let vc = segue.destination as! Mine_info_photo
             vc.type = row! + 1
             if string != "" {
-                let images = StringUTil.splitImage(str: string)
-                vc.showImgSource = images
+                var images = [UIImage]()
+                for str in StringUTil.splitImage(str: string) {
+                    images.append(ImageUtil.URLToImg(url: URL.init(string: str)!))
+                }
+                vc.imgResource = images
             }
         }
     }
