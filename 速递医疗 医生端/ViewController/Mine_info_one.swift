@@ -253,5 +253,5 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
         deptPicker.dataSource = self
         deptPicker.backgroundColor = UIColor.white
     }
-
+    
 }

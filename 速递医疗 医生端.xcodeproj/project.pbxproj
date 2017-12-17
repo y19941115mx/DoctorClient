@@ -67,6 +67,7 @@
 		8491F30E1FDCE35D0061702C /* Mine_pocket_one.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F30D1FDCE35D0061702C /* Mine_pocket_one.swift */; };
 		8491F3101FDCE5350061702C /* Mine_pocket_two.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F30F1FDCE5350061702C /* Mine_pocket_two.swift */; };
 		8491F3121FDCF04B0061702C /* Mine_msg_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F3111FDCF04B0061702C /* Mine_msg_main.swift */; };
+		8496F8081FE60C3F0038D39E /* address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8496F8071FE60C3F0038D39E /* address.plist */; };
 		84B730881FD4CBD3004A36B9 /* HomeMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */; };
 		84B8EDEA1FDFAA5700E27B41 /* ConsultationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EDE81FDFAA5700E27B41 /* ConsultationTableViewCell.swift */; };
 		84B8EDEB1FDFAA5700E27B41 /* ConsultationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B8EDE91FDFAA5700E27B41 /* ConsultationTableViewCell.xib */; };
@@ -160,6 +161,7 @@
 		8491F30D1FDCE35D0061702C /* Mine_pocket_one.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_pocket_one.swift; sourceTree = "<group>"; };
 		8491F30F1FDCE5350061702C /* Mine_pocket_two.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_pocket_two.swift; sourceTree = "<group>"; };
 		8491F3111FDCF04B0061702C /* Mine_msg_main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_msg_main.swift; sourceTree = "<group>"; };
+		8496F8071FE60C3F0038D39E /* address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = address.plist; sourceTree = "<group>"; };
 		849CC0871FD179B20090D6B8 /* 速递医疗 医生端.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "速递医疗 医生端.entitlements"; sourceTree = "<group>"; };
 		84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainTableViewCell.swift; sourceTree = "<group>"; };
 		84B8EDE81FDFAA5700E27B41 /* ConsultationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationTableViewCell.swift; sourceTree = "<group>"; };
@@ -192,7 +194,7 @@
 		84BB03C71FB2A9C0006FBCAF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		C30DFDD6552B25E411F9EA08 /* Pods_________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_________.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C30DFDD6552B25E411F9EA08 /* Pods_________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_________.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1985612B2760BFE0B76DB1 /* Pods-速递医疗 医生端.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-速递医疗 医生端.release.xcconfig"; path = "Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,6 +283,7 @@
 		840647421FA6A259009B21C4 /* 速递医疗 医生端 */ = {
 			isa = PBXGroup;
 			children = (
+				8496F8071FE60C3F0038D39E /* address.plist */,
 				849CC0871FD179B20090D6B8 /* 速递医疗 医生端.entitlements */,
 				84BB03B01FB2A53C006FBCAF /* StoryBoard */,
 				840647551FA6A49D009B21C4 /* Model */,
@@ -488,6 +491,7 @@
 				84B8EDEF1FDFB61B00E27B41 /* MyDateTableViewCell.xib in Resources */,
 				847C137B1FD2ACB800B32BB7 /* AlipaySDK.bundle in Resources */,
 				84B8EDF11FDFC4A500E27B41 /* Date.storyboard in Resources */,
+				8496F8081FE60C3F0038D39E /* address.plist in Resources */,
 				8491F30C1FDCE08B0061702C /* InfoTableViewCell.xib in Resources */,
 				84031D1F1FD14BCE0058D437 /* test.caf in Resources */,
 				84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */,
