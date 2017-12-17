@@ -124,7 +124,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             make.bottom.equalTo(0)
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.height.equalTo(SCREEN_HEIGHT/2)
+            make.height.equalTo(SCREEN_HEIGHT/3)
         }
         self.view.addSubview(self.myToolBar)
         myToolBar.snp.makeConstraints { (make) in

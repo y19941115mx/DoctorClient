@@ -15,6 +15,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     @IBOutlet weak var tableView: BaseTableView!
     var tableData:[Any] = ["请输入真实的中文姓名","请选择昵称","请输入真实的身份证号","请选择性别","请输入年龄","请输入常驻医院", "请选择医院级别", "请选择所属科室", false]
+    var flags = [false,false,false,false,false,false,false,false]
     // 科室信息
     var proIndex:Int = 0
     var oneDepart = ""
@@ -69,17 +70,24 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        flags[indexPath.row] = false
         switch indexPath.row {
         case 0:
             let textField = UITextField()
             textField.placeholder = "请输入你的姓名"
             textField.keyboardType = .namePhonePad
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
-                self.tableData[indexPath.row] = textFields[0].text ?? ""
-                tableView.reloadRows(at: [indexPath], with: .none)
+                let text = textFields[0].text ?? ""
+                if text != "" {
+                    self.flags[0] = true
+                    self.tableData[indexPath.row] = text
+                    tableView.reloadRows(at: [indexPath], with: .none)
+                }
+
             })
         case 1:
             AlertUtil.popMenu(vc: self, title: "选择职称", msg: "", btns: ["住院医师", "主治医师", "副主任医师", "主任医师"], handler: { (str) in
+                self.flags[1] = true
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -88,11 +96,16 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             textField.placeholder = "请输入你的身份证"
             textField.keyboardType = .namePhonePad
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
-                self.tableData[indexPath.row] = textFields[0].text ?? ""
-                tableView.reloadRows(at: [indexPath], with: .none)
+                let text = textFields[0].text ?? ""
+                if text != "" {
+                    self.flags[2] = true
+                    self.tableData[indexPath.row] = text
+                    tableView.reloadRows(at: [indexPath], with: .none)
+                }
             })
         case 3:
             AlertUtil.popMenu(vc: self, title: "选择职称", msg: "", btns: ["男", "女"], handler: { (str) in
+                self.flags[3] = true
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -101,18 +114,27 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             textField.placeholder = "请输入你的年龄"
             textField.keyboardType = .numberPad
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
-                self.tableData[indexPath.row] = textFields[0].text ?? ""
-                tableView.reloadRows(at: [indexPath], with: .none)
+                let text = textFields[0].text ?? ""
+                if text != "" {
+                    self.flags[4] = true
+                    self.tableData[indexPath.row] = text
+                    tableView.reloadRows(at: [indexPath], with: .none)
+                }
             })
         case 5:
             let textField = UITextField()
             textField.placeholder = "请输入医院名称"
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
-                self.tableData[indexPath.row] = textFields[0].text ?? ""
-                tableView.reloadRows(at: [indexPath], with: .none)
+                let text = textFields[0].text ?? ""
+                if text != "" {
+                    self.flags[5] = true
+                    self.tableData[indexPath.row] = text
+                    tableView.reloadRows(at: [indexPath], with: .none)
+                }
             })
         case 6:
             AlertUtil.popMenu(vc: self, title: "选择医院级别", msg: "", btns: ["一级甲等", "一级乙等","一级丙等","二级甲等","二级乙等","二级丙等","三级甲等","三级乙等","三级丙等"], handler: { (str) in
+                self.flags[6] = true
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -179,6 +201,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self.oneDepart = oneDepart
             self.tableData[7] = oneDepart
         }
+        self.flags[7] = true
         tableView.reloadRows(at: [IndexPath.init(row: 7, section: 0)], with: .none)
         
     }
@@ -218,6 +241,12 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     @IBAction func click_save(_ sender: UIButton) {
+        for flag in flags {
+            if !flag {
+                showToast(self.view, "请填写完整信息")
+                return
+            }
+        }
         NetWorkUtil<BaseAPIBean>.init(method: .updatefirstinfo(tableData[0] as! String, tableData[1] as! String, tableData[2] as! String, tableData[3] as! String, tableData[4] as! String, tableData[5] as! String, tableData[6] as! String,self.oneDepart, self.twoDepart,  tableData[8] as! Bool)).newRequest { (bean, json) in
             showToast(self.view, bean.msg!)
         }
@@ -238,7 +267,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             make.bottom.equalTo(0)
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.height.equalTo(SCREEN_HEIGHT/2)
+            make.height.equalTo(SCREEN_HEIGHT/3)
         }
         self.view.addSubview(self.myToolBar)
         myToolBar.snp.makeConstraints { (make) in
