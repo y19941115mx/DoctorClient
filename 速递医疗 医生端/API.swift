@@ -15,7 +15,8 @@ public enum API {
     case phonetest(String) //验证短信验证码
     case updatepix(Data) // 上传头像
     case listsicks(Int, String, String) // 获取首页推荐病情数据
-    case listsicksBytype(Int, Int, String, String) //  首页分类显示
+    case listsicksBytime(Int, String, String) //  首页分类显示
+    case listsicksByLoc(Int,String,String,String,String,String)// 按照地点排序
     case getsickdetail(Int) // 获取病情详细信息
     case editpassword(String, String, String) // 重置密码
     case exit // 退出登录
@@ -43,6 +44,7 @@ public enum API {
     
     
     // 我的
+    case getreviewinfo // 获取审核状态
     case getfirstinfo //获取个人信息 第一页
     case updatefirstinfo(String, String, String, String, String, String, String, String, String, Bool) //更新个人信息 第一页
     case getsecondinfo // 获取个人信息 第二页
@@ -93,11 +95,9 @@ extension API: TargetType {
             return "/getmsgcode"
         case .phonetest:
             return "/phonetest"
-        case .listsicks:
-            return "/listsicks"
         case .updatepix:
             return "/updatepix"
-        case .listsicksBytype:
+        case .listsicksBytime, .listsicksByLoc, .listsicks:
             return "/listsicks"
         case .getsickdetail:
             return "/getsickdetail"
@@ -185,6 +185,8 @@ extension API: TargetType {
             return "/deleteaddress"
         case .gethospital(_):
             return "/gethospital"
+        case .getreviewinfo:
+            return "/getreviewinfo"
         }
     }
     public var method: Moya.Method {
@@ -216,8 +218,10 @@ extension API: TargetType {
         case .updatepix(let data):
         return .uploadCompositeMultipart([MultipartFormData.init(provider: .data(data), name: "docloginpix", fileName: "photo.jpg", mimeType:"image/png")], urlParameters: ["docloginid": user_default.userId.getStringValue()!])
 
-        case .listsicksBytype(let page, let type, let lat, let lon):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "lat":lat, "lon":lon, "type":type], encoding: URLEncoding.default)
+        case .listsicksBytime(let page, let lat, let lon):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "lat":lat, "lon":lon, "type":1], encoding: URLEncoding.default)
+        case .listsicksByLoc(let page, let lat, let lon, let provice, let city, let area):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "lat":lat, "lon":lon, "type":2, "city":city, "provice":provice,"area":area], encoding: URLEncoding.default)
         case .getsickdetail(let sickId):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "usersickid": sickId], encoding: URLEncoding.default)
         case .editpassword(let phone, let pass, let code):
@@ -319,6 +323,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddressid":placeId], encoding: URLEncoding.default)
         case .gethospital(let str):
             return .requestParameters(parameters: ["hospname": str], encoding: URLEncoding.default)
+        case .getreviewinfo:
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         }
     }
     

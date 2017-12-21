@@ -26,6 +26,8 @@ class MineAddHospitalTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func updateViews(vc:BaseRefreshController<MineLocationBean>, data:MineLocationBean) {
+        self.vc = vc
+        self.data = data
         locationLabel.text = data.docaddresslocation!
         detailLocationLabel.text = "\(data.docaddressprovince!)\(data.docaddresscity!)\(data.docaddressarea ?? "")\(data.docaddressother ?? "")"
     }

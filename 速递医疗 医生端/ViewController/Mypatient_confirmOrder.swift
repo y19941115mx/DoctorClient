@@ -16,16 +16,16 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
     // 传进来的refreashController
     var vc:BaseRefreshController<mypatient_checked>?
     let textField = UITextField()
-    var trafficType:Int?
-    var hotelType:Int?
-    var foodType:Int?
+    var trafficType:Int = 1
+    var hotelType:Int = 1
+    var foodType:Int = 1
     
     let popTitle = ["自理", "医院方付", "病人支付"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textField.keyboardType = .numberPad
         let titiles = [["出诊价格"],["交通类型", "交通价格"],["住宿类型", "住宿价格"],["餐饮类型", "餐饮价格"]]
-        let info = [["0.0"],["自理", "0.0"],["自理", "0.0"],["0.0", "自理"]]
+        let info = [["0.0"],["自理", "0.0"],["自理", "0.0"],["自理", "0.0"]]
         initViewController(tableTiles: titiles, tableInfo: info, tableView: tableView) { (indexPath) in
             self.handleCheck(indexPath: indexPath)
         }
@@ -37,7 +37,7 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
             Toast("出诊价格不能为0")
         }else {
             AlertUtil.popAlert(vc: self, msg: "确认提交订单，操作不可撤销", okhandler: {
-                NetWorkUtil.init(method: .confirmorder(self.orderId!, Double(self.tableInfo[0][0])!, self.trafficType!, Double(self.tableInfo[1][1])!, self.hotelType!, Double(self.tableInfo[2][1])!, self.foodType!, Double(self.tableInfo[3][1])!)).newRequest(handler: { (bean, json) in
+                NetWorkUtil.init(method: .confirmorder(self.orderId!, Double(self.tableInfo[0][0])!, self.trafficType, Double(self.tableInfo[1][1])!, self.hotelType, Double(self.tableInfo[2][1])!, self.foodType, Double(self.tableInfo[3][1])!)).newRequest(handler: { (bean, json) in
                     if bean.code == 100 {
                         self.dismiss(animated: false, completion: nil)
                         self.vc?.header?.beginRefreshing()
@@ -61,6 +61,7 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                 let text = textFields[0].text ?? "0.0"
                 self.tableInfo[indexPath.section][indexPath.row] = text
+                self.tableView.reloadRows(at: [indexPath], with: .none)
             })
         case 1:
             switch indexPath.row {
@@ -70,7 +71,7 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
                     let index = self.popTitle.index(of: str)
                     self.trafficType = index! + 1
                     self.tableInfo[indexPath.section][indexPath.row] = str
-                    
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 })
             default:
                 // 交通价格
@@ -78,6 +79,7 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
                 AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                     let text = textFields[0].text ?? "0.0"
                     self.tableInfo[indexPath.section][indexPath.row] = text
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 })
             }
         case 2:
@@ -88,6 +90,7 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
                     let index = self.popTitle.index(of: str)
                     self.hotelType = index! + 1
                     self.tableInfo[indexPath.section][indexPath.row] = str
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 })
             default:
                 // 住宿价格
@@ -95,6 +98,7 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
                 AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                     let text = textFields[0].text ?? "0.0"
                     self.tableInfo[indexPath.section][indexPath.row] = text
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 })
             }
         default:
@@ -105,6 +109,7 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
                     let index = self.popTitle.index(of: str)
                     self.foodType = index! + 1
                     self.tableInfo[indexPath.section][indexPath.row] = str
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 })
             default:
                     // 餐饮价格
@@ -112,10 +117,11 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
                     AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                     let text = textFields[0].text ?? "0.0"
                     self.tableInfo[indexPath.section][indexPath.row] = text
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                     })
                 }
             }
-            self.tableView.reloadRows(at: [indexPath], with: .none)
+
         }
         
         

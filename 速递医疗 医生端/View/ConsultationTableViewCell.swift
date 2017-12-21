@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class ConsultationTableViewCell: UITableViewCell {
-    var type = 0 // 默认只有取消按钮 1 时取消加确认按钮
+    var type:Int = 0 // 默认只有取消按钮 1 时取消加确认按钮
     var data:ConsultationBean?
     var vc:BaseRefreshController<ConsultationBean>?
     
@@ -20,6 +20,7 @@ class ConsultationTableViewCell: UITableViewCell {
     @IBOutlet weak var pix: UIImageView!
     
     func updateViews(vc:BaseRefreshController<ConsultationBean>, bean:ConsultationBean) {
+        setUpButton()
         self.vc = vc
         self.data = bean
         priceLabel.text = "\(bean.ordertotalhospprice!)"
@@ -30,20 +31,21 @@ class ConsultationTableViewCell: UITableViewCell {
     }
     
     // 动态添加按钮
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    private func setUpButton() {
         if type == 0 {
             let delButton = UIButton()
             delButton.layer.cornerRadius = 5
             delButton.layer.borderColor = UIColor.orange.cgColor
             delButton.layer.borderWidth = 1
             delButton.setTitle("取消", for: .normal)
+            delButton.setTitleColor(.orange, for: .normal)
             self.contentView.addSubview(delButton)
             delButton.snp.makeConstraints { (make) in
-                make.width.equalTo(40)
-                make.bottom.equalTo(10)
-                make.right.equalTo(10)
+                make.width.equalTo(50)
+                make.height.equalTo(30)
+                make.bottom.equalTo(-10)
+                make.right.equalTo(-10)
             }
             delButton.addTarget(self, action: #selector(self.delAction(button:)), for: .touchUpInside)
         } else if type == 1 {
@@ -51,25 +53,29 @@ class ConsultationTableViewCell: UITableViewCell {
             let delButton = UIButton()
             
             delButton.layer.cornerRadius = 5
-            delButton.layer.borderColor = UIColor.blue.cgColor
+            delButton.layer.borderColor = UIColor.orange.cgColor
             delButton.layer.borderWidth = 1
             delButton.setTitle("取消", for: .normal)
+            delButton.setTitleColor(.orange, for: .normal)
             self.contentView.addSubview(delButton)
             
             confirmButton.layer.cornerRadius = 5
             confirmButton.layer.borderColor = UIColor.blue.cgColor
             confirmButton.layer.borderWidth = 1
             confirmButton.setTitle("确定", for: .normal)
+            confirmButton.setTitleColor(.blue, for: .normal)
             self.contentView.addSubview(confirmButton)
             
             confirmButton.snp.makeConstraints { (make) in
-                make.width.equalTo(40)
-                make.bottom.equalTo(10)
-                make.right.equalTo(10)
+                make.width.equalTo(50)
+                make.height.equalTo(30)
+                make.bottom.equalTo(-10)
+                make.right.equalTo(-10)
             }
             delButton.snp.makeConstraints { (make) in
-                make.width.equalTo(40)
-                make.bottom.equalTo(10)
+                make.width.equalTo(50)
+                make.height.equalTo(30)
+                make.bottom.equalTo(-10)
                 make.right.equalTo(confirmButton.snp.left).offset(-10)
             }
             confirmButton.addTarget(self, action: #selector(self.ConfirmAction(button:)), for: .touchUpInside)
@@ -77,14 +83,18 @@ class ConsultationTableViewCell: UITableViewCell {
         }
         
     }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        self.selectionStyle = .none
+    }
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
-    
     
     //    点击取消
     @objc private func delAction(button:UIButton) {

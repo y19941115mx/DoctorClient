@@ -13,9 +13,10 @@ import SnapKit
 class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
+    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var tableView: BaseTableView!
-    var tableData:[Any] = ["请输入真实的中文姓名","请选择昵称","请输入真实的身份证号","请选择性别","请输入年龄","请输入常驻医院", "请选择医院级别", "请选择所属科室", false]
-    var flags = [false,false,false,false,false,false,false,false]
+//    var tableData:[Any] = ["请输入真实的中文姓名","请选择昵称","请输入真实的身份证号","请选择性别","请输入年龄","请输入常驻医院", "请选择医院级别", "请选择所属科室", false]
+    var tableData:[Any] = ["","","","","","", "", "", false]
     // 科室信息
     var proIndex:Int = 0
     var oneDepart = ""
@@ -70,7 +71,6 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        flags[indexPath.row] = false
         switch indexPath.row {
         case 0:
             let textField = UITextField()
@@ -79,7 +79,6 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                 let text = textFields[0].text ?? ""
                 if text != "" {
-                    self.flags[0] = true
                     self.tableData[indexPath.row] = text
                     tableView.reloadRows(at: [indexPath], with: .none)
                 }
@@ -87,7 +86,6 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             })
         case 1:
             AlertUtil.popMenu(vc: self, title: "选择职称", msg: "", btns: ["住院医师", "主治医师", "副主任医师", "主任医师"], handler: { (str) in
-                self.flags[1] = true
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -98,14 +96,12 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                 let text = textFields[0].text ?? ""
                 if text != "" {
-                    self.flags[2] = true
                     self.tableData[indexPath.row] = text
                     tableView.reloadRows(at: [indexPath], with: .none)
                 }
             })
         case 3:
             AlertUtil.popMenu(vc: self, title: "选择职称", msg: "", btns: ["男", "女"], handler: { (str) in
-                self.flags[3] = true
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -116,7 +112,6 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                 let text = textFields[0].text ?? ""
                 if text != "" {
-                    self.flags[4] = true
                     self.tableData[indexPath.row] = text
                     tableView.reloadRows(at: [indexPath], with: .none)
                 }
@@ -127,14 +122,12 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                 let text = textFields[0].text ?? ""
                 if text != "" {
-                    self.flags[5] = true
                     self.tableData[indexPath.row] = text
                     tableView.reloadRows(at: [indexPath], with: .none)
                 }
             })
         case 6:
             AlertUtil.popMenu(vc: self, title: "选择医院级别", msg: "", btns: ["一级甲等", "一级乙等","一级丙等","二级甲等","二级乙等","二级丙等","三级甲等","三级乙等","三级丙等"], handler: { (str) in
-                self.flags[6] = true
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -201,7 +194,6 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self.oneDepart = oneDepart
             self.tableData[7] = oneDepart
         }
-        self.flags[7] = true
         tableView.reloadRows(at: [IndexPath.init(row: 7, section: 0)], with: .none)
         
     }
@@ -209,26 +201,28 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: - view
     override func viewDidLoad() {
         super.viewDidLoad()
+        nextBtn.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        nextBtn.isEnabled = false
         // 加载数据
         NetWorkUtil.init(method: .getfirstinfo).newRequest { (bean, json) in
             Toast(bean.msg!)
             let data = json["data"]
             if data != JSON.null {
-                let name = data["docname"].string ?? self.tableData[0]
-                let title = data["doctitle"].string ?? self.tableData[1]
-                let cardNum = data["doccardnum"].string ?? self.tableData[2]
-                let sex = data["docmale"].string ?? self.tableData[3]
-                let age = data["docage"].int ?? self.tableData[4]
-                let hospital = data["dochosp"].string ?? self.tableData[5]
-                let level = data["hosplevel"].string ?? self.tableData[6]
+                let name = data["docname"].stringValue
+                let title = data["doctitle"].stringValue
+                let cardNum = data["doccardnum"].stringValue
+                let sex = data["docmale"].stringValue
+                let age = "\(data["docage"].intValue)"
+                let hospital = data["dochosp"].stringValue
+                let level = data["hosplevel"].stringValue
                 var depart = self.tableData[7]
                 if data["docprimarydept"].string != nil {
-                    depart = "\(data["docprimarydept"].stringValue) - \(data["docseconddept"].stringValue)"
+                    depart = "\(data["docprimarydept"].stringValue) \(data["docseconddept"].stringValue)"
                 }
                 let flag = data["docallday"].boolValue
                 
@@ -241,12 +235,13 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     @IBAction func click_save(_ sender: UIButton) {
-        for flag in flags {
-            if !flag {
+        for i in 0 ..< tableData.count - 1  {
+            if tableData[i] as! String == "" {
                 showToast(self.view, "请填写完整信息")
                 return
             }
         }
+        nextBtn.isEnabled = true
         NetWorkUtil<BaseAPIBean>.init(method: .updatefirstinfo(tableData[0] as! String, tableData[1] as! String, tableData[2] as! String, tableData[3] as! String, tableData[4] as! String, tableData[5] as! String, tableData[6] as! String,self.oneDepart, self.twoDepart,  tableData[8] as! Bool)).newRequest { (bean, json) in
             showToast(self.view, bean.msg!)
         }

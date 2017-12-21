@@ -24,12 +24,12 @@ class MyDateTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        if flag == 2 {
-            button.setTitle("完成", for: .normal)
-        }
     }
     
     func updateViews(vc:BaseRefreshController<OrderBean>, data:OrderBean) {
+        if flag == 2 {
+            button.setTitle("完成", for: .normal)
+        }
         nameLabel.text = data.familyname!
         descLabel.text = data.usersickdesc!
         priceLabel.text = "\(data.userorderprice!)"

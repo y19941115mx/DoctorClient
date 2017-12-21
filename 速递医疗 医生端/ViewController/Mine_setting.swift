@@ -20,6 +20,19 @@ class Mine_setting: BaseTableInfoViewController{
         initViewController(tableTiles: titles, tableInfo: infos, tableView: tableView) { (indexpath) in
             self.handler(indexPath: indexpath)
         }
+        NetWorkUtil.init(method: .getalipayaccount).newRequestWithOutHUD { (bean, json) in
+            let data = json["data"]
+            let str = data["alipayaccount"].stringValue
+            if str != "" {
+                self.tableInfo[0][0] = str
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
     }
     private func handler(indexPath:IndexPath) {
@@ -35,6 +48,10 @@ class Mine_setting: BaseTableInfoViewController{
                 }else {
                     NetWorkUtil.init(method: API.updatealipayaccount(account)).newRequest(handler: { (bean, json) in
                         showToast(self.view, bean.msg!)
+                        if bean.code == 100 {
+                            self.tableInfo[0][0] = account
+                            self.tableView.reloadData()
+                        }
                     })
                 }
                 

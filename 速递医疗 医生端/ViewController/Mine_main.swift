@@ -29,9 +29,19 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         }
         careerLable.text = user_default.title.getStringValue()
         typeLabel.text = user_default.typename.getStringValue()
-        idLabel.text = user_default.userId.getStringValue()
+        idLabel.text = "id: \(user_default.userId.getStringValue()!)"
         ImageUtil.setAvator(path: user_default.pix.getStringValue()!, imageView: photoImageView)
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // 更新账号审核状态
+        NetWorkUtil.init(method: .getreviewinfo).newRequestWithoutHUD { (bean, json) in
+            let data = json["data"]
+            let msg = data["typename"].stringValue
+            self.typeLabel.text = "\(msg)"
+        }
+        
     }
     
     //MARK:- action

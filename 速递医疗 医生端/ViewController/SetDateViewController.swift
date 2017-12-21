@@ -33,7 +33,7 @@ class SetDateViewController: BaseRefreshController<MineCalendarBean>, UICollecti
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.refreshData()
+        self.refreshBtn()
     }
     
     @IBAction func ButtonAcion(_ sender: UIButton) {

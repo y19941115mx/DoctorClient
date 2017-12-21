@@ -9,10 +9,11 @@
 import UIKit
 import SVProgressHUD
 import SwiftyJSON
+import Bugly
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     var locationManager:AMapLocationManager = AMapLocationManager()
     var lon:String = "0"
@@ -20,39 +21,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var departData = [String:[String]]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        进度条设置
+        // bugly 配置
+        Bugly.start(withAppId: StaticClass.BuglyAPPID)
+        //        进度条设置
         SVProgressHUD.setDefaultStyle(.custom)
         SVProgressHUD.setForegroundColor(UIColor.APPColor)
         SVProgressHUD.setBackgroundColor(UIColor.clear)
         SVProgressHUD.setDefaultMaskType(.black) // 可点击取消
         SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
-//        获取基本数据
+        //        获取基本数据
         self.initData()
-//      高德地图设置
+        //      高德地图设置
         self.setUpMap()
-//      百度推送
+        //      百度推送
         self.setUpBaiDuPush(application, didFinishLaunchingWithOptions: launchOptions)
-//        环信设置
+        //        环信设置
         self.setupHuanxin()
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         EMClient.shared().applicationDidEnterBackground(application)
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         EMClient.shared().applicationWillEnterForeground(application)
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
@@ -65,39 +68,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // 获取channel_id
                 let BaiDu_Channel_id = BPush.getChannelId()
                 user_default.setUserDefault(key: user_default.channel_id, value: BaiDu_Channel_id)
+                dPrint(message: BaiDu_Channel_id)
                 
             }
         })
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        
-        // App 收到推送的通知
-        BPush.handleNotification(userInfo)
-
-//        let manager = userInfo["aps"] as? [String:String]
-//        let message = manager!["alert"]
-        let vc = UIStoryboard.init(name: "Mine", bundle: nil).instantiateViewController(withIdentifier: "mineMsg") as! Mine_msg_main
-        APPLICATION.window?.rootViewController?.present(vc, animated: false, completion: nil)
+        //        let manager = userInfo["aps"] as? [String:String]
+        //        let message = manager!["alert"]
         // 清空角标
         UIApplication.shared.applicationIconBadgeNumber = 0
+        if user_default.userId.getStringValue() == nil {
+            let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
+            APPLICATION.window?.rootViewController = vc_login
+        }else {
+            AlertUtil.popAlert(vc: (APPLICATION.window?.rootViewController!)!, msg: "有新的消息，点击查看", okhandler: {
+                let vc = UIStoryboard.init(name: "Mine", bundle: nil).instantiateViewController(withIdentifier: "mineMsg") as! Mine_msg_main
+                APPLICATION.window?.rootViewController?.present(vc, animated: false, completion: nil)
+            })
+        }
+        // App 收到推送的通知
+        BPush.handleNotification(userInfo)
         
-        //        应用在前台或者后台，不跳转页面，让用户选择。
-//        if application.applicationState == .active || application.applicationState == .background{
-//
-//        }else {
-//            // 应用被杀死跳转页面
-//            let vc = ViewController()
-//            APPLICATION.window?.rootViewController = vc
-//
-//        }
-
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         dPrint(message: error)
     }
-
+    
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         application.registerForRemoteNotifications()
     }
@@ -130,15 +129,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else if (UIDevice.current.systemVersion as NSString).floatValue >= 8.0 {
             let userSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound],
                                                           categories: nil)
-         UIApplication.shared.registerUserNotificationSettings(userSettings)
+            UIApplication.shared.registerUserNotificationSettings(userSettings)
         }else {
             
         }
-
+        
         BPush.registerChannel([:], apiKey:StaticClass.TuisongAPIKey , pushMode: BPushMode.development, withFirstAction: "打开", withSecondAction: "关闭", withCategory: "test", useBehaviorTextInput: true, isDebug: true)
         //        关闭地理推送
         BPush.disableLbs()
-        
         
         //        初始化百度推送
         let userInfo = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification]
@@ -148,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 清空角标
         UIApplication.shared.applicationIconBadgeNumber = 0
         
-    
+        
     }
     private func setupHuanxin() {
         let options = EMOptions.init(appkey: StaticClass.HuanxinAppkey)
@@ -182,6 +180,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }, failture:{ error in dPrint(message: error)
         })
     }
-
+    
 }
 

@@ -60,25 +60,34 @@ class LoginViewController: BaseTextViewController {
                     })
                 }
                 
-                // 环信注册
+                // 服务器环信注册失败 重新注册
                 if account == "" {
-                    NetWorkUtil<BaseAPIBean>.init(method: API.huanxinregister).newRequest(handler: { (bean, json) in
+                    NetWorkUtil<BaseAPIBean>.init(method: API.huanxinregister).newRequestWithoutHUD(handler: { (bean, json) in
                         account = "doc_\(userId)"
+                        // 注册后登录
+                        EMClient.shared().login(withUsername: account, password: MD5(passNum), completion: { (name, error) in
+                            if error == nil {
+                                user_default.setUserDefault(key: .account, value: account)
+                                Toast("环信登录成功")
+                            }else {
+                                Toast("环信登录失败")
+                            }
+                        })
+                    })
+                } else {
+                    // 环信直接登录
+                    EMClient.shared().login(withUsername: account, password: MD5(passNum), completion: { (name, error) in
+                        if error == nil {
+                            Toast("环信登录成功")
+                        }else {
+                            Toast("环信登录失败")
+                        }
                     })
                 }
-                user_default.setUserDefault(key: .account, value: account)
                 
-                // 环信登录
-                EMClient.shared().login(withUsername: account, password: MD5(passNum), completion: { (name, error) in
-                    if error == nil {
-                        Toast("环信登录成功")
-                    }else {
-                        Toast("环信登录失败")
-                    }
-                })
                 let vc_main = MainViewController()
                 APPLICATION.window?.rootViewController = vc_main
-
+                
             }else {
                 showToast(self.view, bean.msg!)
             }

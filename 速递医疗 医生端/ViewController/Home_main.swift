@@ -28,9 +28,9 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     
     @IBOutlet weak var sortByLocBtn: UIButton!
     
-    var city:String?
-    var province:String?
-    var area:String?
+    var city = ""
+    var province = ""
+    var area = ""
     
     //所以地址数据集合
     var addressArray = [[String: AnyObject]]()
@@ -64,18 +64,18 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             case .sortByPatient:
                 self.ApiMethod = API.listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
             case .sortByLoc:
-                self.ApiMethod = API.listsicksBytype(self.selectedPage, 2, APPLICATION.lat, APPLICATION.lon)
+                self.ApiMethod = API.listsicksByLoc(self.selectedPage,  APPLICATION.lat, APPLICATION.lon, self.province, self.city, self.area)
             case .sortByTime:
-                self.ApiMethod = API.listsicksBytype(self.selectedPage, 1, APPLICATION.lat, APPLICATION.lon)
+                self.ApiMethod = API.listsicksBytime(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
             }
         },  getMoreHandler: {
             switch self.sortType {
             case .sortByPatient:
                 self.getMoreMethod = API.listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
             case .sortByLoc:
-                self.getMoreMethod = API.listsicksBytype(self.selectedPage, 2, APPLICATION.lat, APPLICATION.lon)
+                self.getMoreMethod = API.listsicksByLoc(self.selectedPage,  APPLICATION.lat, APPLICATION.lon, self.province, self.city, self.area)
             case .sortByTime:
-                self.getMoreMethod = API.listsicksBytype(self.selectedPage, 1, APPLICATION.lat, APPLICATION.lon)
+                self.getMoreMethod = API.listsicksBytime(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
             }
         })
         
@@ -146,17 +146,22 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         switch button.tag {
         // 推荐病人
         case 10001:
+            self.cityPicker.isHidden = true
+            self.myToolBar.isHidden = true
+            self.refreshBtn()
             cleanButton()
             sortByPatientBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             self.sortType = .sortByPatient
-            self.header?.beginRefreshing()
+//            self.header?.beginRefreshing()
             showToast(self.view, "按照推荐病人排序")
         // 时间
         case 10002:
+            self.refreshBtn()
+            self.cityPicker.isHidden = true
+            self.myToolBar.isHidden = true
             cleanButton()
             sortByTimeBtn.setTitleColor(UIColor.LightSkyBlue, for: .normal)
             self.sortType = .sortByTime
-            self.header?.beginRefreshing()
             showToast(self.view, "按照时间排序")
         // 地点
         case 10003:
@@ -165,7 +170,6 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             self.sortType = .sortByLoc
             // 显示地点选择器
             showUIPickView()
-            self.header?.beginRefreshing()
             showToast(self.view, "按照地点排序")
         default:
             // 完成地点选择
@@ -173,15 +177,17 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             self.myToolBar.isHidden = true
             //获取选中的省
             let p = self.addressArray[provinceIndex]
-            province = p["state"]! as? String
+            province = p["state"]! as! String
             //获取选中的市
             let c = (p["cities"] as! NSArray)[cityIndex] as! [String: AnyObject]
-            city = c["city"] as? String
+            city = c["city"] as! String
             //获取选中的县（地区）
             area = ""
             if (c["areas"] as! [String]).count > 0 {
                 area = (c["areas"] as! [String])[areaIndex]
             }
+            // 刷新数据
+            self.refreshBtn()
         }
     }
     

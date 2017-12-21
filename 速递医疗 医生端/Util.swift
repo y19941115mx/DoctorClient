@@ -24,12 +24,15 @@ let CATCHMSG = "解析服务器数据失败"
 // 全局变量
 struct StaticClass {
 //     static let RootIP = "http://1842719ny8.iok.la:14086"
-    static let RootIP = "http://120.77.32.15:8080"
+     static let RootIP = "http://118.89.172.204:8080"
+//    static let RootIP = "http://120.77.32.15:8080"
     static let BaseApi = RootIP + "/internetmedical/doctor"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
     static let GaodeAPIKfey = "dc63bec745429fca2107bdd7e57f7e3c"
     static let TuisongAPIKey = "uf3RsBMfrhLyZhD4G5GPrTxQa2huBIIS"
     static let HuanxinAppkey = "1133171107115421#medicalclient"
+    static let BuglyAPPID = "4ec5df48d6"
+    static let ShareSDKAPPKey = "2336f7199e004"
 }
 //日志打印
 public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #function,lineNumber:Int = #line){
@@ -37,6 +40,7 @@ public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #fun
         print("------ BEGIN \n\(fileName as NSString)\n方法:\(methodName)\n行号:\(lineNumber)\n打印信息:\(message)\n------ end");
     #endif
 }
+
 // Toast 打印
 public func showToast(_ view:UIView, _ message:String) {
     var style = ToastStyle()
@@ -68,6 +72,27 @@ class NetWorkUtil<T:BaseAPIBean> {
                 case .failure(let error):
                     failture(error)
                 }
+        }
+    }
+    
+    func newRequestWithOutHUD(handler:@escaping (_ bean:T, _ JSONObj:JSON) -> Void) {
+        let Provider = MoyaProvider<API>()
+        Provider.request(method!) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let jsonObj =  try response.mapJSON()
+                    let bean = Mapper<T>().map(JSONObject: jsonObj)
+                    let json = JSON(jsonObj)
+                    handler(bean!, json)
+                }catch {
+                    dPrint(message: "response:\(response)")
+                    Toast(CATCHMSG)
+                }
+            case let .failure(error):
+                dPrint(message: "error:\(error)")
+                Toast(ERRORMSG)
+            }
         }
     }
     
@@ -291,6 +316,11 @@ class ImageUtil{
         return img
     }
     
+    // 设置按钮不可用灰色
+    class func setButtonDisabledImg(button:UIButton){
+        button.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
+    }
+    
     class func color2img(color:UIColor) -> UIImage{
         //  颜色转换为背景图片
         let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
@@ -308,7 +338,7 @@ class ImageUtil{
     
     static public func setAvator(path:String, imageView:UIImageView) {
         let url = URL(string: path)
-        imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "photo"), options: nil, progressBlock: nil, completionHandler: nil)
+        imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "photo_loading"), options: nil, progressBlock: nil, completionHandler: nil)
     }
     
     // 图片转为Data类型

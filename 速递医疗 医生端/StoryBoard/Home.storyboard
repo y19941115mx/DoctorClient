@@ -224,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iUl-fK-GCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1285.5999999999999" y="-2079.3103448275865"/>
+            <point key="canvasLocation" x="-1009" y="-2079"/>
         </scene>
         <!--Home main-->
         <scene sceneID="xJl-eg-16W">
@@ -315,7 +315,7 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CqQ-bM-Uat">
+                                                <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CqQ-bM-Uat">
                                                     <rect key="frame" x="20" y="10" width="60" height="60"/>
                                                     <gestureRecognizers/>
                                                     <constraints>

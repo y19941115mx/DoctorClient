@@ -356,6 +356,7 @@ class MineTradeBean:Mappable {
     var paycreattime:String? // 时间
     var paytotalamount:Double? // 金额
     var paysendername:String? // 收款人
+    var paystatename: String? // 订单状态描述
     
     
     required init?(map: Map) {
@@ -368,6 +369,8 @@ class MineTradeBean:Mappable {
         paycreattime <- map["paycreattime"]
         paytotalamount <- map["paytotalamount"]
         paysendername <- map["paysendername"]
+        payorderstatename <- map["payorderstatename"]
+        paystatename <- mpa["paystatename"]
     }
     
 }

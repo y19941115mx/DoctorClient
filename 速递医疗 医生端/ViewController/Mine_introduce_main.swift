@@ -65,6 +65,10 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
                     let addressidid = self.infos[index!].docaddressid
                     NetWorkUtil.init(method: API.setaddress(addressidid)).newRequest(handler: { (bean, josn) in
                         showToast(self.view, bean.msg!)
+                        if bean.code == 100 {
+                            self.info = str
+                            self.tableView.reloadRows(at: [IndexPath.init(row: 1, section: 2)], with: .none)
+                        }
                     })
                 })
             default:
@@ -77,7 +81,7 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,7 +89,9 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        NetWorkUtil<BaseListBean<MineLocationBean>>.init(method: .getalladdress).newRequestWithoutHUD { (bean, json) in
+        self.infos.removeAll()
+        NetWorkUtil<BaseListBean<MineLocationBean>>.init(method: .getalladdress)
+            .newRequestWithoutHUD { (bean, json) in
             let datas = bean.dataList
             if datas != nil {
                 for data in datas! {
@@ -99,7 +105,7 @@ class Mine_introduce_main: UIViewController, UITableViewDataSource, UITableViewD
             showToast(self.view, bean.msg!)
         }
     }
-
-   
-
+    
+    
+    
 }

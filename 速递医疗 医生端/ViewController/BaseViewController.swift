@@ -155,7 +155,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         //label
         button.setTitle("数据为空，点击重新加载", for: .normal)
         button.setTitleColor(UIColor.lightGray, for: .normal)
-        button.addTarget(self, action: #selector(refreshBtn(mybutton:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.refreshBtn), for: .touchUpInside)
         self.view.addSubview(button)
         self.view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
@@ -270,7 +270,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         
     }
 
-    @objc func refreshBtn(mybutton:UIButton) {
+    @objc func refreshBtn() {
         button.isHidden = true
         imageView.isHidden = true
         self.scrollView?.isHidden = false
