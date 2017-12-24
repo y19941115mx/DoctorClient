@@ -17,7 +17,6 @@ class AddDateViewController: BaseTableInfoViewController {
     var btns = [String]()
     var flag1 = false
     var flag2 = false
-    var flag3 = false
     
     // MARK: - UItableView
     
@@ -59,7 +58,6 @@ class AddDateViewController: BaseTableInfoViewController {
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                 self.tableInfo[indexPath.section][indexPath.row] = textFields[0].text ?? ""
                 self.tableView.reloadRows(at: [indexPath], with: .none)
-                self.flag3 = true
             })
         default:
             dPrint(message: "error")
@@ -71,7 +69,7 @@ class AddDateViewController: BaseTableInfoViewController {
     // MARK: - view
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tableData = [["请选择坐诊时间","请选择坐诊地点","请输入备注"]]
+        let tableData = [["请选择坐诊时间","请选择坐诊地点",""]]
         let tableTitle = [["坐诊时间", "坐诊地点", "备注"]]
         initViewController(tableTiles: tableTitle, tableInfo: tableData, tableView: tableView, clickHandler: {indexpath in
             self.clickTable(indexPath: indexpath)
@@ -90,7 +88,7 @@ class AddDateViewController: BaseTableInfoViewController {
                 showToast(self.view, "请选择日期")
                 return
             }
-            if flag1 && flag2 && flag3 {
+            if flag1 && flag2  {
                 // 保存
                 let locindex = btns.index(of: tableInfo[0][1])
                 let locBean = locMsg![locindex!]

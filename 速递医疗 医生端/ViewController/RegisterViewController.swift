@@ -15,7 +15,7 @@ import SwiftHash
 
 class RegisterViewController: BaseTextViewController{
     //Mark:property
-    let MsgSeconds = 30 // 设置验证码发送间隔时间
+    let MsgSeconds = 120 // 设置验证码发送间隔时间
     @IBOutlet weak var photoTextField: UITextField!
     
     @IBOutlet weak var msgCodeTextField: UITextField!
@@ -72,7 +72,7 @@ class RegisterViewController: BaseTextViewController{
     //MARK: action register
     
     @IBAction func clickRegister(_ sender: UIButton) {
-        SVProgressHUD.show()
+        self.view.endEditing(true)
         let phoneText = photoTextField.text ?? ""
         let msgCode = msgCodeTextField.text ?? ""
         let passwordText = password.text ?? ""
@@ -83,94 +83,40 @@ class RegisterViewController: BaseTextViewController{
         }else if passwordText.count < 6 ||  passwordText.count > 15{
             self.view.makeToast("请输入6-15位数字或字母")
         }else{
-            //1.发送注册请求
-            let Provider = MoyaProvider<API>()
-            
-            Provider.request(API.docregister(phoneText, MD5(passwordText), msgCode)) { result in
-                switch result {
-                case let .success(response):
-                    do {
-                        SVProgressHUD.dismiss()
-                        let bean = Mapper<BaseAPIBean>().map(JSONObject: try response.mapJSON())
-                        if bean?.code == 100 {
-                            // 注册成功返回登录界面
-                            let vc = self.presentingViewController as! LoginViewController
-                            vc.tv_phone.text = phoneText
-                            self.dismiss(animated: false, completion: nil)
-                        } else {
-                            SVProgressHUD.dismiss()
-                            self.view.makeToast((bean?.msg)!)
-                        }
-                    }catch {
-                        SVProgressHUD.dismiss()
-                        self.view.makeToast(CATCHMSG)
-                    }
-                case let .failure(error):
-                    SVProgressHUD.dismiss()
-                    dPrint(message: "error:\(error)")
-                    self.view.makeToast(ERRORMSG)
+//            //1.发送注册请求
+            NetWorkUtil.init(method: API.docregister(phoneText, MD5(passwordText), msgCode)).newRequest(handler: { (bean, json) in
+                if bean.code == 100 {
+                    let vc = self.presentingViewController as! LoginViewController
+                    vc.tv_phone.text = phoneText
+                    self.dismiss(animated: false, completion: nil)
+                    showToast(vc.view, bean.msg!)
+                }else {
+                    showToast(self.view, bean.msg!)
                 }
-            }
-            
+            })
+
         }
     }
     
     @IBAction func sendMsg(_ sender: Any) {
-        for textField in tv_source {
-            textField.resignFirstResponder()
+        self.view.endEditing(true)
+        if self.photoTextField.text == "" ||  self.photoTextField.text == nil {
+            showToast(self.view, "号码为空")
+            return
         }
         let phoneNum = photoTextField.text!
-        //开始倒计时
-        isCounting = true
-        SVProgressHUD.show()
-        //验证手机号码
-        let provider = MoyaProvider<API>()
-        provider.request(API.phonetest(phoneNum)) { result in
-            switch result {
-            case let .success(response):
-                do {
-                    let bean = Mapper<BaseAPIBean>().map(JSONObject: try response.mapJSON())
-                    if bean?.code == 100 {
-                        // 发送验证码
-                        let pvovider2 = MoyaProvider<API>()
-                        pvovider2.request(API.getmsgcode(phoneNum)) { result in
-                            switch result {
-                            case let .success(response):
-                                do{
-                                    SVProgressHUD.dismiss()
-                                    let bean2 = Mapper<BaseAPIBean>().map(JSONObject: try response.mapJSON())
-                                    if bean2?.code == 100 {
-                                        SVProgressHUD.dismiss()
-                                        self.view.makeToast("发送验证码成功")
-                                    }else {
-                                        SVProgressHUD.dismiss()
-                                        self.view.makeToast((bean2?.msg)!)
-                                    }
-                                }catch {
-                                    SVProgressHUD.dismiss()
-                                    self.view.makeToast(CATCHMSG)
-                                }
-                            case let .failure(error):
-                                SVProgressHUD.dismiss()
-                                dPrint(message: "error:\(error)")
-                                self.view.makeToast("发送短信验证码失败")
-                            }
-                            
-                        }
-                    }else {
-                        SVProgressHUD.dismiss()
-                        self.view.makeToast("手机号已被注册")
-                    }
-                }catch {
-                    SVProgressHUD.dismiss()
-                    self.view.makeToast(CATCHMSG)
-                }
-            case let .failure(error):
-                SVProgressHUD.dismiss()
-                dPrint(message: "error:\(error)")
-                self.view.makeToast(ERRORMSG)
+        NetWorkUtil.init(method: .phonetest(phoneNum)).newRequest { (bean, json) in
+            showToast(self.view, bean.msg!)
+            // 发送验证码
+            if bean.code == 100 {
+                //开始倒计时
+                self.isCounting = true
+                NetWorkUtil.init(method: API.getmsgcode(phoneNum)).newRequest(handler: { (bean, json) in
+                    showToast(self.view, bean.msg!)
+                })
             }
         }
+        
     }
     
     //MARK: - private method
@@ -182,8 +128,8 @@ class RegisterViewController: BaseTextViewController{
         registerButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
         registerButton.isEnabled = (!phoneText.isEmpty && !msgCode.isEmpty
             && !passwordText.isEmpty)
-        sendMsgButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
-        sendMsgButton.isEnabled = !phoneText.isEmpty
+//        sendMsgButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
+//        sendMsgButton.isEnabled = !phoneText.isEmpty
     }
     
     @objc private func updateTime(timer: Timer) {

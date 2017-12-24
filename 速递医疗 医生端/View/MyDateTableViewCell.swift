@@ -27,6 +27,8 @@ class MyDateTableViewCell: UITableViewCell {
     }
     
     func updateViews(vc:BaseRefreshController<OrderBean>, data:OrderBean) {
+        self.vc = vc
+        self.data = data
         if flag == 2 {
             button.setTitle("完成", for: .normal)
         }

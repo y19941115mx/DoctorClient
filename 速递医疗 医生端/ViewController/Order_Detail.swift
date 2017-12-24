@@ -1,14 +1,14 @@
 //
-//  MyPatient_detail.swift
+//  Order_Detail.swift
 //  速递医疗 医生端
 //
-//  Created by hongyiting on 2017/12/5.
+//  Created by admin on 2017/12/24.
 //  Copyright © 2017年 victor. All rights reserved.
 //
 
 import UIKit
 
-class MyPatient_detail: UIViewController {
+class Order_Detail: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

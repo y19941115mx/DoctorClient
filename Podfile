@@ -24,18 +24,15 @@ target '速递医疗 医生端' do
     pod 'AMapLocation'
     pod 'AMapSearch'
     # 环信
-    pod 'HyphenateLite'
+    pod 'Hyphenate'
     # 环信UI
-    pod 'EaseUILite', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
+    pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
     # 日历插件
     pod 'Daysquare', :git => 'https://github.com/unixzii/Daysquare.git'
     # 图片浏览
     pod 'HJPhotoBrowser'
 	# bug收集
 	pod 'Bugly'
-# 平台SDK模块(对照一下平台，需要的加上。如果只需要QQ、微信、新浪微博，只需要以下3行)
-    pod 'mob_sharesdk'
-    pod 'mob_sharesdk/ShareSDKUI'
-	pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
-	pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'
+    # 自定义alert
+    pod 'LEEAlert'
 end

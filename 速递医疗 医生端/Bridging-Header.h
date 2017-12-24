@@ -18,20 +18,9 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
-# import <HyphenateLite/HyphenateLite.h>
+# import <Hyphenate/Hyphenate.h>
 #import <AlipaySDK/AlipaySDK.h>
 
-// 社交分享
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKUI/ShareSDK+SSUI.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
-
-//腾讯SDK头文件
-#import <TencentOpenAPI/TencentOAuth.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-
-//微信SDK头文件
-#import "WXApi.h"
 
 
 

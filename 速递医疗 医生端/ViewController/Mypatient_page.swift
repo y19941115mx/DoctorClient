@@ -10,7 +10,7 @@ import UIKit
 import Moya
 import ObjectMapper
 
-class Mypatient_page_check: BaseRefreshController<mypatient_check>, UITableViewDataSource {
+class Mypatient_page_check: BaseRefreshController<mypatient_check>, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: BaseTableView!
     
     // MARK: - Table view data source
@@ -27,6 +27,13 @@ class Mypatient_page_check: BaseRefreshController<mypatient_check>, UITableViewD
         cell.updateViews(modelBean: res, vc: self)
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Detail") as! Home_detail
+        let bean = data[indexPath.row]
+        let id = bean.usersickid
+        vc.patientId = id
+        self.present(vc, animated: false, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +41,12 @@ class Mypatient_page_check: BaseRefreshController<mypatient_check>, UITableViewD
             self.getMoreMethod = API.listgraborders(self.selectedPage)
         })
         
-        self.header?.beginRefreshing()
     }
 
 
 }
 
-class Mypatient_page_checked: BaseRefreshController<mypatient_checked>, UITableViewDataSource {
+class Mypatient_page_checked: BaseRefreshController<mypatient_checked>, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: BaseTableView!
     
     // MARK: - Table view data source
@@ -56,6 +62,13 @@ class Mypatient_page_checked: BaseRefreshController<mypatient_checked>, UITableV
         cell.updateViews(modelBean: res, vc: self)
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Detail") as! Home_detail
+        let bean = data[indexPath.row]
+        let id = bean.usersickid
+        vc.patientId = id
+        self.present(vc, animated: false, completion: nil)
+    }
     
     
     
@@ -64,14 +77,9 @@ class Mypatient_page_checked: BaseRefreshController<mypatient_checked>, UITableV
         initRefresh(scrollView: tableView, ApiMethod: API.listordertoconfirm(selectedPage), refreshHandler: nil, getMoreHandler: {
             self.getMoreMethod = API.listordertoconfirm(self.selectedPage)
         })
-        self.header?.beginRefreshing()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showCheckPatient" {
-            
-        }
-    }
+    
     
 }
 

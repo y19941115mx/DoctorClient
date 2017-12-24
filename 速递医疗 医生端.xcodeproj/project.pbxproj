@@ -32,7 +32,6 @@
 		8408B6F51FDAA7CA004403F4 /* Mine_info_one.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6ED1FDAA7C8004403F4 /* Mine_info_one.swift */; };
 		8408B6F61FDAA7CA004403F4 /* Mine_info_photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6EE1FDAA7C8004403F4 /* Mine_info_photo.swift */; };
 		8408B6F71FDAA7CA004403F4 /* Mine_info_two.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6EF1FDAA7C8004403F4 /* Mine_info_two.swift */; };
-		8408B6F91FDAA7CA004403F4 /* MyPatient_detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6F11FDAA7C9004403F4 /* MyPatient_detail.swift */; };
 		8408B6FA1FDAA7CA004403F4 /* Mine_introduce_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6F21FDAA7C9004403F4 /* Mine_introduce_main.swift */; };
 		8408B6FB1FDAA7CA004403F4 /* Mypatient_confirmOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6F31FDAA7CA004403F4 /* Mypatient_confirmOrder.swift */; };
 		8408B6FC1FDAA7CA004403F4 /* Date_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408B6F41FDAA7CA004403F4 /* Date_main.swift */; };
@@ -93,6 +92,7 @@
 		84BB03C81FB2A9C0006FBCAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BB03C71FB2A9C0006FBCAF /* Login.storyboard */; };
 		84BB03CA1FB2A9E3006FBCAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */; };
 		84BB03CC1FB2A9EC006FBCAF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */; };
+		84F4DF861FEFB23B000855B0 /* Order_Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4DF851FEFB23B000855B0 /* Order_Detail.swift */; };
 		F4DB150E0D1B56834269E74D /* Pods_________.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C30DFDD6552B25E411F9EA08 /* Pods_________.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,7 +126,6 @@
 		8408B6ED1FDAA7C8004403F4 /* Mine_info_one.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_info_one.swift; sourceTree = "<group>"; };
 		8408B6EE1FDAA7C8004403F4 /* Mine_info_photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_info_photo.swift; sourceTree = "<group>"; };
 		8408B6EF1FDAA7C8004403F4 /* Mine_info_two.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_info_two.swift; sourceTree = "<group>"; };
-		8408B6F11FDAA7C9004403F4 /* MyPatient_detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPatient_detail.swift; sourceTree = "<group>"; };
 		8408B6F21FDAA7C9004403F4 /* Mine_introduce_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine_introduce_main.swift; sourceTree = "<group>"; };
 		8408B6F31FDAA7CA004403F4 /* Mypatient_confirmOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mypatient_confirmOrder.swift; sourceTree = "<group>"; };
 		8408B6F41FDAA7CA004403F4 /* Date_main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_main.swift; sourceTree = "<group>"; };
@@ -194,7 +193,8 @@
 		84BB03C71FB2A9C0006FBCAF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		84BB03C91FB2A9E3006FBCAF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84BB03CB1FB2A9EC006FBCAF /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		C30DFDD6552B25E411F9EA08 /* Pods_________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_________.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F4DF851FEFB23B000855B0 /* Order_Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order_Detail.swift; sourceTree = "<group>"; };
+		C30DFDD6552B25E411F9EA08 /* Pods_________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_________.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1985612B2760BFE0B76DB1 /* Pods-速递医疗 医生端.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-速递医疗 医生端.release.xcconfig"; path = "Pods/Target Support Files/Pods-速递医疗 医生端/Pods-速递医疗 医生端.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -355,7 +355,6 @@
 				8491F3031FDC20640061702C /* Mine_historyOrder.swift */,
 				8408B6FD1FDAC0A2004403F4 /* EditViewController.swift */,
 				8408B6F31FDAA7CA004403F4 /* Mypatient_confirmOrder.swift */,
-				8408B6F11FDAA7C9004403F4 /* MyPatient_detail.swift */,
 				298DD5661FB2E1D200BBCE14 /* Home_main.swift */,
 				298DD5681FB2E1F100BBCE14 /* Home_detail.swift */,
 				84031D121FCD4A2A0058D437 /* Mypatient_main.swift */,
@@ -372,6 +371,7 @@
 				84B8EDFA1FDFFCF300E27B41 /* Consultation_confirmOrder.swift */,
 				8406475B1FA6A49D009B21C4 /* MainViewController.swift */,
 				84B8EE021FE0162200E27B41 /* Mine_add_hospital.swift */,
+				84F4DF851FEFB23B000855B0 /* Order_Detail.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -538,10 +538,11 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/Daysquare/Daysquare.framework",
-				"${BUILT_PRODUCTS_DIR}/EaseUILite/EaseUILite.framework",
+				"${BUILT_PRODUCTS_DIR}/EaseUI/EaseUI.framework",
 				"${BUILT_PRODUCTS_DIR}/HJPhotoBrowser/HJPhotoBrowser.framework",
-				"${PODS_ROOT}/HyphenateLite/ios_IM_HyphenateLite_sdk_3.3.7/HyphenateSDK/HyphenateLite.framework",
+				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.7/HyphenateFullSDK/Hyphenate.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/LEEAlert/LEEAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
@@ -560,10 +561,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Daysquare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EaseUILite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EaseUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJPhotoBrowser.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HyphenateLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyphenate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LEEAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
@@ -625,10 +627,10 @@
 				84165C1B1FC2E4BF00F32DF5 /* Mine_main.swift in Sources */,
 				840647461FA6A259009B21C4 /* ViewController.swift in Sources */,
 				842875B11FD267310004587B /* ChatViewController.swift in Sources */,
+				84F4DF861FEFB23B000855B0 /* Order_Detail.swift in Sources */,
 				84BB03B21FB2A66B006FBCAF /* ModelBean.swift in Sources */,
 				8408B6FC1FDAA7CA004403F4 /* Date_main.swift in Sources */,
 				84B8EDFE1FE0087600E27B41 /* MineAddHospitalTableViewCell.swift in Sources */,
-				8408B6F91FDAA7CA004403F4 /* MyPatient_detail.swift in Sources */,
 				84B8EE031FE0162200E27B41 /* Mine_add_hospital.swift in Sources */,
 				84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */,
 				84BB03C11FB2A8F2006FBCAF /* XLSlideSegmented.m in Sources */,

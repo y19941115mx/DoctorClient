@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import EaseUILite
+import EaseUI
 
 class ChatViewController: EaseMessageViewController {
 

@@ -40,13 +40,16 @@ class Mine_setting: BaseTableInfoViewController{
         case 0:
             let textField = UITextField()
             textField.placeholder = "输入支付宝账号"
+            let textField2 = UITextField()
+            textField2.placeholder = "输入支付宝认证的姓名"
             // 绑定支付宝
-            AlertUtil.popTextFields(vc: self, title: "输入支付宝账号", textfields: [textField], okhandler: { (textFields) in
+            AlertUtil.popTextFields(vc: self, title: "输入支付宝信息", textfields: [textField, textField2], okhandler: { (textFields) in
                 let account = textFields[0].text ?? ""
-                if account == "" {
-                    showToast(self.view, "请填写账号")
+                let name = textFields[1].text ?? ""
+                if account == "" || name == "" {
+                    showToast(self.view, "账号或姓名为空")
                 }else {
-                    NetWorkUtil.init(method: API.updatealipayaccount(account)).newRequest(handler: { (bean, json) in
+                    NetWorkUtil.init(method: API.updatealipayaccount(account, name)).newRequest(handler: { (bean, json) in
                         showToast(self.view, bean.msg!)
                         if bean.code == 100 {
                             self.tableInfo[0][0] = account

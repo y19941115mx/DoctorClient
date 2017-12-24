@@ -73,7 +73,7 @@ public enum API {
     case deleteallreceivenotification // 删除收到的所有消息
     
     case getalipayaccount // 获取支付宝账号
-    case updatealipayaccount(String) // 修改支付宝账号
+    case updatealipayaccount(String,String) // 修改支付宝账号
     
     
     
@@ -299,8 +299,8 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "userorderid":orderId], encoding: URLEncoding.default)
         case .getalipayaccount:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
-        case .updatealipayaccount(let account):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "alipayaccount":account], encoding: URLEncoding.default)
+        case .updatealipayaccount(let account, let name):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "alipayaccount":account, "alipayname":name], encoding: URLEncoding.default)
         case .updateallnotificationtoread:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         case .updatenotificationtoread(let msgId):

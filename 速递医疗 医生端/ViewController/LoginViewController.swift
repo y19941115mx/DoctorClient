@@ -28,10 +28,12 @@ class LoginViewController: BaseTextViewController {
         updateButtonState()
         // 界面设置
         initTextFieldDelegate(tv_source: [tv_pwd, tv_phone], updateBtnState: updateButtonState)
+        
     }
     
     //MARK: - action
     @IBAction func click_login(_ sender: Any) {
+        self.view.endEditing(true)
         let phoneNum = tv_phone.text!
         let passNum =  tv_pwd.text!
         // FIXME:  需要做字符串长度验证
@@ -84,10 +86,9 @@ class LoginViewController: BaseTextViewController {
                         }
                     })
                 }
-                
                 let vc_main = MainViewController()
                 APPLICATION.window?.rootViewController = vc_main
-                
+                user_default.setUserDefault(key: .phoneNum, value: phoneNum)
             }else {
                 showToast(self.view, bean.msg!)
             }

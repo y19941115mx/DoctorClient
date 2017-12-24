@@ -24,7 +24,7 @@ let CATCHMSG = "解析服务器数据失败"
 // 全局变量
 struct StaticClass {
 //     static let RootIP = "http://1842719ny8.iok.la:14086"
-     static let RootIP = "http://118.89.172.204:8080"
+     static let RootIP = "http://118.89.172.204:8081"
 //    static let RootIP = "http://120.77.32.15:8080"
     static let BaseApi = RootIP + "/internetmedical/doctor"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
@@ -191,7 +191,7 @@ class MapUtil {
 
 // UserDefault UserDefault相关的枚举值
 enum user_default:String {
-    case userId, password, typename, pix, token, username, title, account, channel_id
+    case userId, password, typename, pix, token, username, title, account, channel_id, phoneNum
     func getStringValue()->String? {
         return UserDefaults.standard.string(forKey: self.rawValue)
     }

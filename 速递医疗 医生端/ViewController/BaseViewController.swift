@@ -122,6 +122,11 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.refresh()
+    }
+    
     func initRefresh(scrollView:UIScrollView, ApiMethod:API,refreshHandler:(()->Void)?,getMoreHandler:@escaping ()->Void, isTableView:Bool = true) {
         self.ApiMethod = ApiMethod
         self.isTableView = isTableView
@@ -207,6 +212,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
                     }
                     
                 }catch {
+                    self.showRefreshBtn()
                     showToast(self.view,CATCHMSG)
                 }
             case let .failure(error):
@@ -275,6 +281,12 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         imageView.isHidden = true
         self.scrollView?.isHidden = false
         self.header?.beginRefreshing()
+    }
+    func refresh() {
+        button.isHidden = true
+        imageView.isHidden = true
+        self.scrollView?.isHidden = false
+        self.refreshData()
     }
     
     
