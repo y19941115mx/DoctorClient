@@ -24,12 +24,14 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
         titleLabel.text = bean.notificationtitle
         descLabel.text = bean.notificationwords
         timeLabel.text = bean.notificationcreatetime
+        cell.selectionStyle = .none
         return cell
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+         UIApplication.shared.applicationIconBadgeNumber = 0
         self.tableView.dataSource = self
         
         initRefresh(scrollView: tableView, ApiMethod: .listreceivenotification(self.selectedPage), refreshHandler: nil, getMoreHandler: {

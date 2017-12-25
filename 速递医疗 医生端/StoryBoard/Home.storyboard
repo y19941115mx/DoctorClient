@@ -177,9 +177,9 @@
                                     <constraint firstItem="7os-ky-hQ3" firstAttribute="leading" secondItem="SH2-u4-Srw" secondAttribute="trailing" constant="20" id="K9z-Wp-XOa"/>
                                     <constraint firstItem="g9S-v0-leh" firstAttribute="baseline" secondItem="7os-ky-hQ3" secondAttribute="baseline" id="LFg-qe-3XY"/>
                                     <constraint firstItem="o36-pi-iw0" firstAttribute="leading" secondItem="1ck-z6-L9z" secondAttribute="leading" constant="20" id="M80-us-rrH"/>
-                                    <constraint firstItem="dKY-fy-GRv" firstAttribute="top" secondItem="0FD-Js-N82" secondAttribute="bottom" constant="20" id="Mmi-hQ-Rr0"/>
                                     <constraint firstItem="SH2-u4-Srw" firstAttribute="leading" secondItem="1ck-z6-L9z" secondAttribute="leading" constant="20" id="P20-P5-zZd"/>
                                     <constraint firstItem="ijJ-sO-R4a" firstAttribute="leading" secondItem="SH2-u4-Srw" secondAttribute="trailing" constant="20" id="byR-Fu-7dY"/>
+                                    <constraint firstItem="dKY-fy-GRv" firstAttribute="top" secondItem="ngm-TQ-5dL" secondAttribute="bottom" constant="140" id="cd7-5c-VJ6"/>
                                     <constraint firstItem="g9S-v0-leh" firstAttribute="leading" secondItem="7os-ky-hQ3" secondAttribute="trailing" constant="5" id="dgK-hF-XEq"/>
                                     <constraint firstAttribute="trailing" secondItem="atb-Xu-Wuj" secondAttribute="trailing" constant="10" id="jex-Ba-ZvL"/>
                                     <constraint firstItem="7os-ky-hQ3" firstAttribute="top" secondItem="ijJ-sO-R4a" secondAttribute="bottom" constant="5" id="l2b-zv-dL6"/>
@@ -215,6 +215,7 @@
                         <outlet property="ageLabel" destination="7os-ky-hQ3" id="s1Y-qp-LpW"/>
                         <outlet property="deptLabel" destination="o36-pi-iw0" id="FTI-cC-NMi"/>
                         <outlet property="describeLabel" destination="ngm-TQ-5dL" id="MjB-WG-z5c"/>
+                        <outlet property="height" destination="cd7-5c-VJ6" id="OnT-L2-KvE"/>
                         <outlet property="imageLayout" destination="0FD-Js-N82" id="5sK-8C-lDA"/>
                         <outlet property="patientName" destination="ijJ-sO-R4a" id="Fiq-uf-LJo"/>
                         <outlet property="pixImgView" destination="SH2-u4-Srw" id="hd9-jF-Moz"/>

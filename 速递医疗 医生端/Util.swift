@@ -48,6 +48,12 @@ public func showToast(_ view:UIView, _ message:String) {
     view.makeToast(message, duration: 2.0, position: .bottom, style:style)
 }
 
+public func showError(_ view:UIView, _ message:String) {
+    var style = ToastStyle()
+    style.backgroundColor = UIColor.red
+    view.makeToast(message, duration: 2.0, position: .bottom, style:style)
+}
+
 public func Toast(_ message:String) {
     var style = ToastStyle()
     style.backgroundColor = UIColor.APPColor

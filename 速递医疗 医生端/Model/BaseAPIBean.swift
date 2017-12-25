@@ -88,7 +88,7 @@ class OrderBean: Mappable {
     var usersickdesc:String? // 病情描述
     var usersickpic:String?
     var familyname: String? // 就诊人姓名
-    var familyage:String?
+    var familyage:Int?
     var userorderid: Int = 0 //订单Id
     var userorderstatename: String? // 订单状态描述
     var userorderetime: String? // 订单时间
@@ -105,6 +105,7 @@ class OrderBean: Mappable {
     }
     
     func mapping(map: Map) {
+        userorderetime <- map["userorderetime"]
         userloginpix <- map["userloginpix"]
         usersickpic <- map["usersickpic"]
         familyage <- map["familyage"]

@@ -29,6 +29,12 @@ class Date_page: BaseRefreshController<OrderBean>, UITableViewDataSource,UITable
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard.init(name: "Date", bundle: nil).instantiateViewController(withIdentifier: "OrderDetail") as! Order_Detail
+        vc.userorderId = data[indexPath.row].userorderid
+        self.present(vc, animated: false, completion: nil)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

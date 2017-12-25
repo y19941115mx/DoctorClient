@@ -342,16 +342,16 @@ class  BasicCollectionViewBrowserController:BaseViewController, UICollectionView
     
     var picArray = [String]()
     
-    var mCollectionView:UICollectionView?
+//    var mCollectionView:UICollectionView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     
-    public func initViewController(mCollectionView:UICollectionView) {
-        mCollectionView.delegate = self
-    }
+//    public func initViewController(mCollectionView:UICollectionView) {
+//        mCollectionView.delegate = self
+//    }
     
     func photoBrowser(_ browser: HJPhotoBrowser!, highQualityImageURLFor index: Int) -> URL! {
         return URL.init(string: picArray[index])
@@ -371,7 +371,63 @@ class  BasicCollectionViewBrowserController:BaseViewController, UICollectionView
         browser.show()
     }
     
+}
+class BasePickImgViewController:BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var handler:((UIImage) -> Void)?
+    
+    // MARK: - pickImage
+    
+    func updatePicture() {
+        AlertUtil.popMenu(vc: self, title: "请选择", msg: "", btns: ["从图库选择", "拍照"]) { (str) in
+            if str == "拍照" {
+                self.pickImage(1)
+            }else {
+                self.pickImage(0)
+            }
+        }
+    }
+    
+    func pickImage(_ type: Int) {
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken.
+        if type == 0{
+            imagePickerController.sourceType = .photoLibrary
+        }else {
+            imagePickerController.sourceType = .camera
+        }
+        
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+        
+    }
+    
+    //MARK:- UIImagePickerControllerDelegate
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        // Dismiss the picker if the user canceled.
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        if handler != nil {
+            self.handler!(selectedImage)
+        }
+        
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
 }
 

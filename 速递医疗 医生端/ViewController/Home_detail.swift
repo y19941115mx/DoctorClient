@@ -27,13 +27,12 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
     @IBOutlet weak var pixImgView: UIImageView!
     @IBOutlet weak var describeLabel: UILabel!
     
+    @IBOutlet weak var height: NSLayoutConstraint!
     @IBOutlet weak var imageLayout: UICollectionView!
-    
-//    var images = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initViewController(mCollectionView: imageLayout)
+        imageLayout.delegate = self
         imageLayout.dataSource = self
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +52,9 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
                 if sick.usersickpic != nil &&  sick.usersickpic != ""{
                     self.picArray = StringUTil.splitImage(str: sick.usersickpic!)
                     self.imageLayout.reloadData()
+                } else {
+                    self.imageLayout.isHidden = true
+                    self.height.constant -= 100
                 }
                 ImageUtil.setAvator(path: sick.userloginpix!, imageView: self.pixImgView)
                 
