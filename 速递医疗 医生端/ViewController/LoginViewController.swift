@@ -28,6 +28,9 @@ class LoginViewController: BaseTextViewController {
         updateButtonState()
         // 界面设置
         initTextFieldDelegate(tv_source: [tv_pwd, tv_phone], updateBtnState: updateButtonState)
+        if user_default.phoneNum.getStringValue() != nil {
+            tv_phone.text = user_default.phoneNum.getStringValue()
+        }
         
     }
     
@@ -86,9 +89,9 @@ class LoginViewController: BaseTextViewController {
                         }
                     })
                 }
+                user_default.setUserDefault(key: .phoneNum, value: phoneNum)
                 let vc_main = MainViewController()
                 APPLICATION.window?.rootViewController = vc_main
-                user_default.setUserDefault(key: .phoneNum, value: phoneNum)
             }else {
                 showToast(self.view, bean.msg!)
             }
