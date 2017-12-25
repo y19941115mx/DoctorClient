@@ -298,10 +298,28 @@ class ConsultationBean:Mappable {
     var orderstime:String?
     var hosploginpix:String?
     var ordertotalhospprice:Double?
+    
+    var orderhospprice:Double?
+    
+    var orderhosptpricetypename:String?
+    var orderhosptprice:Double?
+    var orderhospapricetypename:String?
+    var orderhospaprice:Double?
+    var orderhospepricetypename:String?
+    var orderhospeprice:Double?
+    
     required init?(map: Map) {
         
     }
     func mapping(map: Map) {
+        orderhospprice <- map["orderhospprice"]
+        orderhosptprice <- map ["orderhosptprice"]
+        orderhosptpricetypename <- map["orderhosptpricetypename"]
+        orderhospapricetypename <- map["orderhospapricetypename"]
+        orderhospaprice <- map["orderhospaprice"]
+        orderhospepricetypename <- map["orderhospepricetypename"]
+        orderhospeprice <- map["orderhospeprice"]
+        
         hospname <- map["hospname"]
         hosploginid <- map["hosploginid"]
         hosporderid <- map["hosporderid"]

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class ConsultationTableViewCell: UITableViewCell {
-    var type:Int = 0 // 默认只有取消按钮 1 时取消加确认按钮
+    var type:Int? // 默认只有取消按钮 1 时取消加确认按钮
     var data:ConsultationBean?
     var vc:BaseRefreshController<ConsultationBean>?
     
@@ -33,7 +33,7 @@ class ConsultationTableViewCell: UITableViewCell {
     // 动态添加按钮
     
     private func setUpButton() {
-        if type == 0 {
+        if type == 2 {
             let delButton = UIButton()
             delButton.layer.cornerRadius = 5
             delButton.layer.borderColor = UIColor.orange.cgColor

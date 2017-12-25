@@ -164,6 +164,7 @@
                         <viewLayoutGuide key="safeArea" id="nw2-fr-ZBc"/>
                     </view>
                     <connections>
+                        <outlet property="saveBtn" destination="Vi8-Sf-fHa" id="1YH-Jg-ppP"/>
                         <outlet property="tableView" destination="Bul-0R-QQM" id="afi-VN-y5m"/>
                     </connections>
                 </viewController>

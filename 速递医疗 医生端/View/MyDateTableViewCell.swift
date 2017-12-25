@@ -45,7 +45,7 @@ class MyDateTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func delAction(_ sender: UIButton) {
-        AlertUtil.popAlert(vc: self.vc!, msg: "确认取消订单，取消后不可撤销") {
+        AlertUtil.popAlert(vc: self.vc!, msg: "确认执行该操作，该操作不可撤销") {
             if self.flag == 1 {
                 NetWorkUtil.init(method: API.cancelorder(self.data!.userorderid)).newRequest(handler: { (bean, json) in
                     if bean.code == 100 {

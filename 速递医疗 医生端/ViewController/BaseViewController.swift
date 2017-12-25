@@ -304,6 +304,9 @@ class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableTiles.count == 0 {
+            return 0
+        }
         return tableTiles[section].count
     }
     

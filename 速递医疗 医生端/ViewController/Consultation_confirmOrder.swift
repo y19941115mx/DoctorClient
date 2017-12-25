@@ -9,40 +9,57 @@
 import UIKit
 
 class Consultation_confirmOrder: BaseTableInfoViewController {
-
+    
     @IBOutlet weak var tableView: BaseGropTableView!
     // 传进来的订单id
     var orderId:Int?
     // 传进来的refreashController
-    var vc:BaseRefreshController<mypatient_checked>?
+    var vc:BaseRefreshController<ConsultationBean>?
     let textField = UITextField()
     var trafficType:Int = 1
     var hotelType:Int = 1
     var foodType:Int = 1
     
+    var flag:Int?
+    
+    @IBOutlet weak var saveBtn: UIButton!
     let popTitle = ["自理", "医院方付", "病人支付"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.textField.keyboardType = .numberPad
+        self.textField.keyboardType = .decimalPad
         let titiles = [["出诊价格"],["交通类型", "交通价格"],["住宿类型", "住宿价格"],["餐饮类型", "餐饮价格"]]
         let info = [["0.0"],["自理", "0.0"],["自理", "0.0"],["自理", "0.0"]]
-        initViewController(tableTiles: titiles, tableInfo: info, tableView: tableView) { (indexPath) in
+        self.initViewController(tableTiles: titiles, tableInfo: info, tableView: self.tableView) { (indexPath) in
             self.handleCheck(indexPath: indexPath)
         }
+        if flag != nil {
+            saveBtn.isHidden = true
+            self.tableView.allowsSelection = false
+            NetWorkUtil<BaseBean<ConsultationBean>>.init(method: API.getconsultationdetail(self.orderId!)).newRequest(handler: { (bean, json) in
+                if bean.code == 100 && bean.data != nil {
+                    let res = bean.data!
+                    self.tableInfo = [["\(res.orderhospprice!)"],["\(res.orderhosptpricetypename!)", "\(res.orderhosptprice!)"],["\(res.orderhospapricetypename!)", "\(res.orderhospaprice!)"],["\(res.orderhospepricetypename!)", "\(res.orderhospeprice!)"]]
+                    self.tableView.reloadData()
+                }
+                
+            })
+            
+        }
+        
     }
     
     
     @IBAction func click_save(_ sender: UIButton) {
         if self.tableInfo[0][0] == "0.0" {
-            Toast("出诊价格不能为0")
+            showToast(self.view, "出诊价格不能为0")
         }else {
             AlertUtil.popAlert(vc: self, msg: "确认提交订单，操作不可撤销", okhandler: {
-                NetWorkUtil.init(method: .confirmorder(self.orderId!, Double(self.tableInfo[0][0])!, self.trafficType, Double(self.tableInfo[1][1])!, self.hotelType, Double(self.tableInfo[2][1])!, self.foodType, Double(self.tableInfo[3][1])!)).newRequest(handler: { (bean, json) in
+                NetWorkUtil.init(method: .confirmconsultation(self.orderId!, Double(self.tableInfo[0][0])!, self.trafficType, Double(self.tableInfo[1][1])!, self.hotelType, Double(self.tableInfo[2][1])!, self.foodType, Double(self.tableInfo[3][1])!)).newRequest(handler: { (bean, json) in
                     if bean.code == 100 {
                         self.dismiss(animated: false, completion: nil)
                         self.vc?.header?.beginRefreshing()
                     }
-                    Toast(bean.msg!)
+                    showError(self.view, bean.msg!)
                 })
             })
         }
@@ -123,5 +140,5 @@ class Consultation_confirmOrder: BaseTableInfoViewController {
         }
         
     }
-
+    
 }
