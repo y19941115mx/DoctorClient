@@ -46,7 +46,7 @@ public enum API {
     // 我的
     case getreviewinfo // 获取审核状态
     case getfirstinfo //获取个人信息 第一页
-    case updatefirstinfo(String, String, String, String, String, String, String, String, String, Bool) //更新个人信息 第一页
+    case updatefirstinfo(String, String, String, String, String, String, String, String, String, Bool, String, String, String , String, String) //更新个人信息 第一页
     case getsecondinfo // 获取个人信息 第二页
     case updatesecondinfo(Int, [Data]) // 更新个人信息 第二页 type 1为身份证照片，2为职称照片，3为行医资格证照片，4为工作证照片，5为其他照片
     case reviewinfo // 提交审核
@@ -264,8 +264,8 @@ extension API: TargetType {
         case .getfirstinfo:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
 //            hosplevel dochosp
-        case .updatefirstinfo(let docname, let doctitle , let doccardnum, let docmale, let docage, let dochosp, let hosplevel, let docprimarydept, let docseconddept, let docallday):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "dochosp":dochosp, "hosplevel":hosplevel, "docallday":docallday, "docage":docage,"docmale":docmale, "doccardnum":doccardnum, "docname":docname, "docprimarydept":docprimarydept, "docseconddept":docseconddept, "doctitle":doctitle], encoding: URLEncoding.default)
+        case .updatefirstinfo(let docname, let doctitle , let doccardnum, let docmale, let docage, let dochosp, let hosplevel, let docprimarydept, let docseconddept, let docallday, let province, let city, let area, let lon, let lat):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "dochosp":dochosp, "hosplevel":hosplevel, "docallday":docallday, "docage":docage,"docmale":docmale, "doccardnum":doccardnum, "docname":docname, "docprimarydept":docprimarydept, "docseconddept":docseconddept, "doctitle":doctitle,"dochospprovince": province, "dochospcity":city, "dochosparea":area, "dochosplon":lon, "dochosplat":lat], encoding: URLEncoding.default)
         case .getsecondinfo:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         case .updatesecondinfo(let type, let datas):

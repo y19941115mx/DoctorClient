@@ -10,8 +10,10 @@ import UIKit
 import SwiftyJSON
 import SnapKit
 
-class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, AMapSearchDelegate {
     
+    var search: AMapSearchAPI!
+    var bean:MineLocationBean?
     
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var tableView: BaseTableView!
@@ -119,12 +121,13 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             })
         case 5:
             let textField = UITextField()
-            textField.placeholder = "请输入医院名称"
+            textField.placeholder = "请输入查找医院的名称"
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                 let text = textFields[0].text ?? ""
-                if text != "" {
-                    self.tableData[indexPath.row] = text
-                    tableView.reloadRows(at: [indexPath], with: .none)
+                if text == "" {
+                    Toast("输入信息不能为空")
+                }else {
+                    self.searchPOI(withKeyword: text)
                 }
             })
         case 6:
@@ -208,6 +211,9 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // 初始化POI
+        search = AMapSearchAPI()
+        search.delegate = self
         nextBtn.isEnabled = false
         // 加载数据
         NetWorkUtil.init(method: .getfirstinfo).newRequest { (bean, json) in
@@ -247,7 +253,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 return
             }
         }
-        NetWorkUtil<BaseAPIBean>.init(method: .updatefirstinfo(tableData[0] as! String, tableData[1] as! String, tableData[2] as! String, tableData[3] as! String, tableData[4] as! String, tableData[5] as! String, tableData[6] as! String,self.oneDepart, self.twoDepart,  tableData[8] as! Bool)).newRequest { (bean, json) in
+        NetWorkUtil<BaseAPIBean>.init(method: .updatefirstinfo(tableData[0] as! String, tableData[1] as! String, tableData[2] as! String, tableData[3] as! String, tableData[4] as! String, tableData[5] as! String, tableData[6] as! String,self.oneDepart, self.twoDepart,  tableData[8] as! Bool, (bean?.docaddressprovince)!, (bean?.docaddresscity)!, (bean?.docaddressarea)!, (bean?.docaddresslon)!, (bean?.docaddresslat)!)).newRequest { (bean, json) in
             if bean.code == 100 {
                 self.nextBtn.isEnabled = true
             }
@@ -296,6 +302,54 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self.tableData[7] = oneDepart
         }
         tableView.reloadRows(at: [IndexPath.init(row: 7, section: 0)], with: .none)
+    }
+    
+    //MARK: - Action
+    
+    func searchPOI(withKeyword keyword: String?) {
+        
+        if keyword == nil || keyword! == "" {
+            return
+        }
+        
+        let request = AMapPOIKeywordsSearchRequest()
+        request.keywords = keyword
+        request.requireExtension = true
+        //        request.city = "北京"
+        search.aMapPOIKeywordsSearch(request)
+    }
+    
+    //MARK: - AMapSearchDelegate
+    
+    func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {
+        Toast("Error:\(error)")
+    }
+    
+    func onPOISearchDone(_ request: AMapPOISearchBaseRequest!, response: AMapPOISearchResponse!) {
+        
+        if response.count == 0 {
+            showToast(self.view, "未查询到相关医院")
+            return
+        }
+        var POIS = [MineLocationBean]()
+        for aPOI in response.pois {
+            let bean = MineLocationBean.init(name: aPOI.name, province: aPOI.province, city: aPOI.city, distinct: aPOI.district, adress: aPOI.address, lon: "\(aPOI.location.longitude)", lat: "\(aPOI.location.latitude)")
+            POIS.append(bean)
+        }
+        var btns = [String]()
+        if POIS.count != 0 {
+            for item in POIS {
+                btns.append(item.docaddresslocation!)
+            }
+        }
+        AlertUtil.popMenu(vc: self, title: "选择医院", msg: "", btns: btns) { (str) in
+            let index = btns.index(of: str)
+            self.bean = POIS[index!]
+            self.tableData[5] = (self.bean?.docaddresslocation)!
+            self.tableView.reloadRows(at: [IndexPath.init(row: 5, section: 0)], with: .none)
+        }
+        
+        
     }
     
 }
