@@ -84,6 +84,7 @@ class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDele
     func onPOISearchDone(_ request: AMapPOISearchBaseRequest!, response: AMapPOISearchResponse!) {
         
         if response.count == 0 {
+            showToast(self.view, "未查询到相关地址")
             return
         }
         var POIS = [MineLocationBean]()
@@ -104,7 +105,7 @@ class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDele
                 if bean.code == 100 {
                     self.refreshData()
                 }
-                Toast(bean.msg!)
+                showToast(self.view, bean.msg!)
             })
         }
         

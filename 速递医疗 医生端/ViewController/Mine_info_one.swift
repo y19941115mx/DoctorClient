@@ -36,6 +36,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let label_title = cell2.viewWithTag(1) as! UILabel
             let mySwitch = cell2.viewWithTag(2) as! UISwitch
             self.mSwitch = mySwitch
+            mySwitch.isEnabled = false
             label_title.text = "是否全天"
             mySwitch.isOn = tableData[indexPath.row] as! Bool
             return cell2
@@ -220,9 +221,14 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let age = "\(data["docage"].intValue)"
                 let hospital = data["dochosp"].stringValue
                 let level = data["hosplevel"].stringValue
-                var depart = self.tableData[7]
+                var depart = ""
                 if data["docprimarydept"].string != nil {
-                    depart = "\(data["docprimarydept"].stringValue) \(data["docseconddept"].stringValue)"
+                    depart = "\(data["docprimarydept"].stringValue)"
+                    self.oneDepart = depart
+                }
+                if data["docseconddept"].string != nil {
+                    self.twoDepart = data["docseconddept"].stringValue
+                    depart += " \(self.twoDepart)"
                 }
                 let flag = data["docallday"].boolValue
                 
@@ -241,8 +247,10 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 return
             }
         }
-        nextBtn.isEnabled = true
         NetWorkUtil<BaseAPIBean>.init(method: .updatefirstinfo(tableData[0] as! String, tableData[1] as! String, tableData[2] as! String, tableData[3] as! String, tableData[4] as! String, tableData[5] as! String, tableData[6] as! String,self.oneDepart, self.twoDepart,  tableData[8] as! Bool)).newRequest { (bean, json) in
+            if bean.code == 100 {
+                self.nextBtn.isEnabled = true
+            }
             showToast(self.view, bean.msg!)
         }
     }
@@ -276,6 +284,18 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
         deptPicker.delegate = self
         deptPicker.dataSource = self
         deptPicker.backgroundColor = UIColor.white
+        // 默认显示
+        let oneDepart = Array(APPLICATION.departData.keys)[0]
+        let twoDeparts = APPLICATION.departData[oneDepart]
+        if  twoDeparts?.count != 0{
+            self.oneDepart = oneDepart
+            self.twoDepart = (twoDeparts?[0])!
+            self.tableData[7] = "\(oneDepart) \(twoDeparts?[0] ?? "")"
+        }else{
+            self.oneDepart = oneDepart
+            self.tableData[7] = oneDepart
+        }
+        tableView.reloadRows(at: [IndexPath.init(row: 7, section: 0)], with: .none)
     }
     
 }

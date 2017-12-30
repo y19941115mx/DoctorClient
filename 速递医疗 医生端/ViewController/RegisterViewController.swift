@@ -80,7 +80,7 @@ class RegisterViewController: BaseTextViewController{
         if passwordText != passwordText2 {
             SVProgressHUD.dismiss()
             self.view.makeToast("两次密码输入不一致")
-        }else if passwordText.count < 6 ||  passwordText.count > 15{
+        }else if StringUTil.trimmingCharactersWithWhiteSpaces(passwordText).count < 6 ||  StringUTil.trimmingCharactersWithWhiteSpaces(passwordText).count > 15{
             self.view.makeToast("请输入6-15位数字或字母")
         }else{
 //            //1.发送注册请求

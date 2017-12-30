@@ -24,7 +24,7 @@ let CATCHMSG = "解析服务器数据失败"
 // 全局变量
 struct StaticClass {
 //     static let RootIP = "http://1842719ny8.iok.la:14086"
-     static let RootIP = "http://118.89.172.204:8081"
+     static let RootIP = "http://118.89.172.204:6221"
 //    static let RootIP = "http://120.77.32.15:8080"
     static let BaseApi = RootIP + "/internetmedical/doctor"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
@@ -58,7 +58,7 @@ public func Toast(_ message:String) {
     var style = ToastStyle()
     style.backgroundColor = UIColor.APPColor
     let view = APPLICATION.window?.rootViewController?.view
-    view?.makeToast(message, duration: 2.0, position: .bottom, style:style)
+    view!.makeToast(message, duration: 2.0, position: .bottom, style:style)
 }
 
 // 网络请求
@@ -354,6 +354,15 @@ class ImageUtil{
 }
 
 class StringUTil {
+    // 消除空格
+    class public func trimmingCharactersWithWhiteSpaces(_ str:String) -> String{
+        return str.trimmingCharacters(in: .whitespaces)
+    }
+    
+    class func isEarlyThanNow(_ date:Date)->Bool {
+        let now = NSDate()
+        return now.isLaterThanDate(date)
+    }
     
     // 转换MD5值
     class public func transformMD5(_ string:String)->String {

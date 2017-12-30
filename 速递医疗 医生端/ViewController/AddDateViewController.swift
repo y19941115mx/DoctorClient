@@ -88,6 +88,10 @@ class AddDateViewController: BaseTableInfoViewController {
                 showToast(self.view, "请选择日期")
                 return
             }
+            if StringUTil.isEarlyThanNow(self.CalendarView.selectedDate) {
+                showToast(self.view, "请选择正确的日期")
+                return
+            }
             if flag1 && flag2  {
                 // 保存
                 let locindex = btns.index(of: tableInfo[0][1])
