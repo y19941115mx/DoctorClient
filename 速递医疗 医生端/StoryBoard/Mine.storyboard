@@ -1013,7 +1013,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-ED-1Sz">
-                                        <rect key="frame" x="330" y="24.666666666666671" width="74" height="34"/>
+                                        <rect key="frame" x="330" y="25" width="74" height="34"/>
                                         <state key="normal" title="余额记录"/>
                                         <connections>
                                             <segue destination="oBv-YA-wnw" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="npu-xV-8Gb"/>
@@ -1607,7 +1607,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22E-nA-8ID">
-                                        <rect key="frame" x="367" y="24.333333333333329" width="37" height="34"/>
+                                        <rect key="frame" x="367" y="24.666666666666671" width="37" height="34"/>
                                         <state key="normal" title="清空"/>
                                         <connections>
                                             <action selector="cleanMsgAction:" destination="FhE-bD-1ym" eventType="touchUpInside" id="lmm-q1-dIN"/>
@@ -1662,6 +1662,19 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbx-iF-zdu">
+                                                    <rect key="frame" x="45" y="5" width="10" height="10"/>
+                                                    <color key="backgroundColor" red="1" green="0.29509252320000001" blue="0.15338867110000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="10" id="7cP-sB-kY4"/>
+                                                        <constraint firstAttribute="height" constant="10" id="M5u-n0-L3k"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Gu3-br-bEr" firstAttribute="top" secondItem="nZh-hb-R2e" secondAttribute="top" constant="10" id="5zv-Qb-hU3"/>
@@ -1671,7 +1684,9 @@
                                                 <constraint firstItem="8FQ-XZ-Ox5" firstAttribute="leading" secondItem="nZh-hb-R2e" secondAttribute="leading" constant="10" id="ehS-Ml-jPC"/>
                                                 <constraint firstAttribute="trailing" secondItem="ySf-dg-5fW" secondAttribute="trailing" constant="8" id="h87-gM-x0m"/>
                                                 <constraint firstItem="Gu3-br-bEr" firstAttribute="leading" secondItem="8FQ-XZ-Ox5" secondAttribute="trailing" constant="8" id="nFn-Qz-FaS"/>
+                                                <constraint firstItem="Gu3-br-bEr" firstAttribute="leading" secondItem="fbx-iF-zdu" secondAttribute="trailing" constant="3" id="pBh-wL-dJ0"/>
                                                 <constraint firstAttribute="trailing" secondItem="608-zl-6aO" secondAttribute="trailing" constant="8" id="svI-Fw-cO4"/>
+                                                <constraint firstItem="fbx-iF-zdu" firstAttribute="top" secondItem="nZh-hb-R2e" secondAttribute="top" constant="5" id="vx3-PJ-9Cc"/>
                                                 <constraint firstItem="8FQ-XZ-Ox5" firstAttribute="top" secondItem="nZh-hb-R2e" secondAttribute="top" constant="10" id="zTf-XP-KlX"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1696,7 +1711,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NNe-vx-I3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2878.125" y="-3434.6830985915494"/>
+            <point key="canvasLocation" x="-2878.2608695652175" y="-3434.91847826087"/>
         </scene>
         <!--Mine pocket two-->
         <scene sceneID="L30-zm-yUt">

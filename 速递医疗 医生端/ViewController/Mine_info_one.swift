@@ -239,6 +239,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let flag = data["docallday"].boolValue
                 
                 self.tableData = [name, title, cardNum, sex, age, hospital, level, depart, flag]
+                self.bean = MineLocationBean.init(name: "", province: data["dochospprovince"].stringValue, city: data["dochospcity"].stringValue, distinct: data["dochosparea"].stringValue, adress: data["dochospother"].stringValue, lon: APPLICATION.lon, lat: APPLICATION.lat)
                 self.tableView.reloadData()
             }
         }

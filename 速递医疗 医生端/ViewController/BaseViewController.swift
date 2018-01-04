@@ -178,8 +178,6 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
     
     func getData() {
         //刷新数据
-        self.selectedPage = 1
-        
         let Provider = MoyaProvider<API>()
         if self.refreshHandler != nil {
             self.refreshHandler!()
@@ -230,7 +228,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
     func refreshData(){
         //刷新数据
         self.selectedPage = 1
-        //FIXME: - 刷新地理位置信息
+        //FIXME: - 刷新地理位置信息 
         getData()
     }
     

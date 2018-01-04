@@ -78,7 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        let manager = userInfo["aps"] as? [String:String]
         //        let message = manager!["alert"]
         // 清空角标
-        UIApplication.shared.applicationIconBadgeNumber = 0
         if user_default.userId.getStringValue() == nil {
             let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
             APPLICATION.window?.rootViewController = vc_login
@@ -143,10 +142,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userInfo != nil{
             BPush.handleNotification(userInfo as! [AnyHashable : Any])
         }
-        // 清空角标
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        
-        
     }
     private func setupHuanxin() {
         let options = EMOptions.init(appkey: StaticClass.HuanxinAppkey)
@@ -160,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     Toast("环信登录成功")
                 }else {
                     dPrint(message: error)
-                    Toast("环信登录失败，\(error.debugDescription)")
+                    Toast("环信登录失败，\(error?.code)")
                 }
             })
         }
