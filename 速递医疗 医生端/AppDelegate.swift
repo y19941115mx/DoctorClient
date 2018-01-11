@@ -150,14 +150,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let account = user_default.account.getStringValue()
         let pass = user_default.password.getStringValue()
         if account != nil && account != ""{
-            EMClient.shared().login(withUsername: account!, password: pass, completion: { (name, error) in
+            EMClient.shared().login(withUsername: account, password: pass, completion: { (name, error) in
                 if error == nil {
                     Toast("环信登录成功")
                 }else {
-                    dPrint(message: error)
-                    Toast("环信登录失败，\(error?.code)")
+                    dPrint(message:"环信错误码:\(error?.code.rawValue)")
+                    Toast("环信登录失败")
+                    //                    EMErrorCode
                 }
             })
+            
         }
     }
     private func initData() {

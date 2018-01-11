@@ -91,7 +91,6 @@ class LoginViewController: BaseTextViewController {
                         if error == nil {
                             Toast("环信登录成功")
                         }else {
-                            dPrint(message: error)
                             Toast("环信登录失败，\(error?.code)")
                         }
                     })

@@ -33,6 +33,6 @@ target '速递医疗 医生端' do
     pod 'HJPhotoBrowser'
 	# bug收集
 	pod 'Bugly'
-    # 自定义alert
-    pod 'LEEAlert'
+    # 本地数据库
+    pod 'RealmSwift'
 end
