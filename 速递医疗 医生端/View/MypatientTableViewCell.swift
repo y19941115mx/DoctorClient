@@ -98,7 +98,7 @@ class MypatientTableViewCell2: UITableViewCell {
     }
     // 点击取消
     @IBAction func click_delete(_ sender: UIButton) {
-        AlertUtil.popAlertWithDelAction(vc: self.vc, msg: "是否推荐给其他医生", okhandler: {
+        AlertUtil.popAlertWithDelAction(vc: self.vc, msg: "是否推荐给其他医生", oktitle: "是", deltitle: "否", okhandler: {
             let textField = UITextField()
             textField.placeholder = "请输入医生完整姓名"
             AlertUtil.popTextFields(vc: self.vc, title: "输入医生姓名", textfields: [textField], okhandler: { (textFields) in

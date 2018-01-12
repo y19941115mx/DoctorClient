@@ -285,20 +285,22 @@ class AlertUtil: NSObject {
         alertController.addAction(okAction)
         vc.present(alertController, animated: true, completion: nil)
     }
-    class func popAlertWithDelAction(vc:UIViewController, msg:String, okhandler: @escaping ()->(), delhandler: @escaping ()->())
+    class func popAlertWithDelAction(vc:UIViewController, msg:String, oktitle:String,deltitle:String,okhandler: @escaping ()->(), delhandler: @escaping ()->())
     {
         // 弹出提示框
         let alertController = UIAlertController(title: "提示",
                                                 message: msg, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: { action in
+        let delAction = UIAlertAction(title: deltitle, style: .destructive, handler: { action in
             delhandler()
         })
-        let okAction = UIAlertAction(title: "确认", style: .default, handler: {
+        let okAction = UIAlertAction(title: oktitle, style: .default, handler: {
             action in
             okhandler()
         })
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
+        alertController.addAction(delAction)
         vc.present(alertController, animated: true, completion: nil)
     }
     

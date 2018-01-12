@@ -1013,7 +1013,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-ED-1Sz">
-                                        <rect key="frame" x="330" y="25" width="74" height="34"/>
+                                        <rect key="frame" x="330" y="24.333333333333329" width="74" height="34"/>
                                         <state key="normal" title="余额记录"/>
                                         <connections>
                                             <segue destination="oBv-YA-wnw" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="npu-xV-8Gb"/>
@@ -1238,7 +1238,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-jq-gj1">
-                                        <rect key="frame" x="10" y="30.333333333333329" width="50" height="22"/>
+                                        <rect key="frame" x="10" y="30.666666666666671" width="50" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="Back_acion:" destination="cEa-yB-2cX" eventType="touchUpInside" id="cMR-yl-OMY"/>
@@ -1316,7 +1316,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ml-Xf-oiY">
-                                        <rect key="frame" x="10" y="30.666666666666671" width="50" height="22"/>
+                                        <rect key="frame" x="10" y="31" width="50" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="ButtonAcion:" destination="1dg-xc-fyh" eventType="touchUpInside" id="cy9-mZ-9h3"/>
@@ -1607,10 +1607,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22E-nA-8ID">
-                                        <rect key="frame" x="367" y="24.666666666666671" width="37" height="34"/>
-                                        <state key="normal" title="清空"/>
+                                        <rect key="frame" x="374" y="16.666666666666671" width="30" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title=". . ."/>
                                         <connections>
-                                            <action selector="cleanMsgAction:" destination="FhE-bD-1ym" eventType="touchUpInside" id="lmm-q1-dIN"/>
+                                            <action selector="ListAction:" destination="FhE-bD-1ym" eventType="touchUpInside" id="L55-XM-Mp5"/>
                                         </connections>
                                     </button>
                                 </subviews>

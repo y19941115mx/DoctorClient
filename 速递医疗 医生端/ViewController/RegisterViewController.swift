@@ -106,7 +106,6 @@ class RegisterViewController: BaseTextViewController{
         }
         let phoneNum = photoTextField.text!
         NetWorkUtil.init(method: .phonetest(phoneNum)).newRequest { (bean, json) in
-            showToast(self.view, bean.msg!)
             // 发送验证码
             if bean.code == 100 {
                 //开始倒计时
@@ -114,6 +113,8 @@ class RegisterViewController: BaseTextViewController{
                 NetWorkUtil.init(method: API.getmsgcode(phoneNum)).newRequest(handler: { (bean, json) in
                     showToast(self.view, bean.msg!)
                 })
+            }else {
+                showToast(self.view, bean.msg!)
             }
         }
         

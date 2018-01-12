@@ -441,6 +441,7 @@ class NotificationBean:Mappable {
     var notificationread:Bool?
     var notificationtitle:String?
     var notificationcreatetime:String?
+    var notificationdata:String?
     required init?(map: Map) {
         
     }
@@ -451,6 +452,7 @@ class NotificationBean:Mappable {
         notificationread <- map["notificationread"]
         notificationtitle <- map["notificationtitle"]
         notificationcreatetime <- map["notificationcreatetime"]
+        notificationdata <- map["notificationdata"]
     }
     
 }
