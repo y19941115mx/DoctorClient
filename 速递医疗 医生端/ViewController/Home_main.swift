@@ -78,9 +78,16 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
                 self.getMoreMethod = API.listsicksBytime(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
             }
         })
-        
+        // 环信登录
+        self.loginHuanxin()
+        // 获取数据
         self.header?.beginRefreshing()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -95,7 +102,149 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         return cell
     }
     
+    //MARK: - 重写父类方法 保存数据库
+    
+    override func getData() {
+        //刷新数据
+        self.selectedPage = 1
+        let Provider = MoyaProvider<API>()
+        if self.refreshHandler != nil {
+            self.refreshHandler!()
+        }
+        Provider.request(self.ApiMethod!) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    self.header?.endRefreshing()
+                    let bean = Mapper<BaseListBean<SickBean>>().map(JSONObject: try response.mapJSON())
+                    if bean?.code == 100 {
+                        if bean?.dataList == nil {
+                            bean?.dataList = [SickBean]()
+                        }
+                        self.data = (bean?.dataList)!
+                        if self.data.count == 0{
+                            //隐藏tableView,添加刷新按钮
+                            self.showRefreshBtn()
+                        }else {
+                            // 保存数据库
+                            for bean in self.data {
+                                UserInfo.updateUserInfo(user_id: bean.userhuanxinaccount!, nick_name: bean.familyname!, user_photo: bean.userloginpix!)
+                            }
+                        }
+                        
+                        if self.isTableView {
+                            let tableView = self.scrollView as! UITableView
+                            tableView.reloadData()
+                        }else {
+                            let collectionView = self.scrollView as! UICollectionView
+                            collectionView.reloadData()
+                        }
+                        
+                    }else {
+                        showToast(self.view, (bean?.msg!)!)
+                    }
+                    
+                }catch {
+                    //隐藏tableView,添加刷新按钮
+                    if self.data.count == 0{
+                        self.showRefreshBtn()
+                    }
+                    showToast(self.view,CATCHMSG)
+                }
+            case let .failure(error):
+                self.header?.endRefreshing()
+                if self.data.count == 0{
+                    self.showRefreshBtn()
+                }
+                dPrint(message: "error:\(error)")
+                showToast(self.view, ERRORMSG)
+            }
+        }
+    }
+    
+    override func getMoreData() {
+        self.selectedPage += 1
+        
+        //获取更多数据
+        getMoreHandler()
+        let Provider = MoyaProvider<API>()
+        Provider.request(self.getMoreMethod!) { result in
+            switch result {
+            case let .success(response):
+                self.footer?.endRefreshing()
+                do {
+                    let bean = Mapper<BaseListBean<SickBean>>().map(JSONObject: try response.mapJSON())
+                    if bean?.code == 100 {
+                        if bean?.dataList?.count == 0 || bean?.dataList == nil{
+                            showToast(self.view, "已经到底了")
+                            return
+                        } else {
+                            // 保存数据库
+                            for bean in (bean?.dataList)! {
+                                UserInfo.updateUserInfo(user_id: bean.userhuanxinaccount!, nick_name: bean.familyname!, user_photo: bean.userloginpix!)
+                            }
+                        }
+                        self.data += (bean?.dataList)!
+                        
+                        if self.isTableView {
+                            let tableView = self.scrollView as! UITableView
+                            tableView.reloadData()
+                        }else {
+                            let CollectionView = self.scrollView as! UICollectionView
+                            CollectionView.reloadData()
+                        }
+                        
+                    }else {
+                        showToast(self.view, (bean?.msg!)!)
+                    }
+                }catch {
+                    self.footer?.endRefreshing()
+                    showToast(self.view, CATCHMSG)
+                }
+            case let .failure(error):
+                self.footer?.endRefreshing()
+                dPrint(message: "error:\(error)")
+                showToast(self.view, ERRORMSG)
+            }
+        }
+    }
+    
     // MARK: - private method
+    private func loginHuanxin() {
+        // 环信登录
+        let account = user_default.account.getStringValue()
+        let pass = user_default.password.getStringValue()
+        
+        EMClient.shared().login(withUsername: account!, password: pass, completion: { (name, error) in
+            if error == nil {
+                Toast("环信登录成功")
+                self.updateView()
+            }else {
+                dPrint(message:"环信错误码:\(error?.code.rawValue)")
+                Toast("环信登录失败")
+            }
+        })
+        
+        
+    }
+    
+    func updateView(){
+        // 获取所有会话
+        let conversations:([EMConversation])? = EMClient.shared().chatManager.getAllConversations() as? [EMConversation]
+        if conversations != nil {
+            var count:Int32 = 0
+            for conversation in conversations! {
+                count += conversation.unreadMessagesCount
+            }
+            if count == 0 {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "message"), style: .plain, target: self, action: #selector(self.showContantList))
+            }else {
+                let buttonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "potMsg"), style: .plain, target: self, action: #selector(self.showContantList))
+                buttonItem.tintColor = UIColor.red
+                self.navigationItem.rightBarButtonItem = buttonItem
+            }
+        }
+    }
     private func initView(){
         sortByLocBtn.addTarget(self, action: #selector(clickBtn(button:)), for: .touchUpInside)
         sortByTimeBtn.addTarget(self, action: #selector(clickBtn(button:)), for: .touchUpInside)

@@ -12,6 +12,7 @@ import ObjectMapper
 import SwiftyJSON
 import SwiftHash
 import SnapKit
+import RealmSwift
 
 
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -155,8 +156,7 @@ class NetWorkUtil<T:BaseAPIBean> {
 
 //MARK: - 地图定位
 class MapUtil {
-    
-    class func singleLocation(successHandler:((_ location:CLLocation, _ reGeocode:AMapLocationReGeocode?) -> Void)?, failhandler:@escaping () -> Void  ) {
+    class func singleLocation(successHandler:((_ location:CLLocation, _ reGeocode:AMapLocationReGeocode?) -> Void)?, failHandler:@escaping () -> Void ) {
         APPLICATION.locationManager.requestLocation(withReGeocode: true, completionBlock: {(location: CLLocation?, reGeocode: AMapLocationReGeocode?, error: Error?) in
             
             if let error = error {
@@ -165,8 +165,8 @@ class MapUtil {
                 if error.code == AMapLocationErrorCode.locateFailed.rawValue {
                     //定位错误：此时location和regeocode没有返回值，不进行annotation的添加
                     let msg = "定位错误:{\(error.code) - \(error.localizedDescription)};"
-                    showToast((APPLICATION.window?.rootViewController?.view)!, msg)
-                    failhandler()
+                    Toast(msg)
+                    failHandler()
                     return
                 }
                 else if error.code == AMapLocationErrorCode.reGeocodeFailed.rawValue
@@ -177,14 +177,14 @@ class MapUtil {
                     || error.code == AMapLocationErrorCode.cannotConnectToHost.rawValue {
                     
                     //逆地理错误：在带逆地理的单次定位中，逆地理过程可能发生错误，此时location有返回值，regeocode无返回值，进行annotation的添加
-                    let msg = "逆地理错误:{\(error.code) - \(error.localizedDescription)};"
-                    failhandler()
+                    let msg = "获取地理位置失败，请检查GPS设置;"
+                    failHandler()
                     Toast(msg)
                 }
             }
             if let location = location  {
-                APPLICATION.lon = String(location.coordinate.longitude)
-                APPLICATION.lat = String(location.coordinate.latitude)
+                APPLICATION.lon = location.coordinate.longitude.description
+                APPLICATION.lat = location.coordinate.latitude.description
                 if successHandler != nil {
                     successHandler!(location, reGeocode)
                 }
@@ -217,6 +217,27 @@ enum user_default:String {
         UserDefaults.standard.removeObject(forKey: "title")
         UserDefaults.standard.removeObject(forKey: "account")
         UserDefaults.standard.removeObject(forKey: "password")
+    }
+    // 退出登录
+    static func logout(_ msg:String) {
+        let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
+        APPLICATION.window?.rootViewController = vc_login
+        NetWorkUtil<BaseAPIBean>.init(method: .exit).newRequestWithOutHUD { (bean, json) in
+            if bean.code == 100 {
+                user_default.clearUserDefault()
+                EMClient.shared().logout(false, completion: { (error)
+                    in
+                    if error == nil {
+                        Toast("\(msg)账号退出成功")
+                    }else {
+                        Toast("\(msg)账号退出失败")
+                    }
+                })
+            }else {
+                Toast(bean.msg!)
+            }
+        }
+        
     }
 }
 
@@ -451,6 +472,33 @@ class StringUTil {
         return str.components(separatedBy: ",")
     }
     
+}
+
+public class DBHelper:NSObject {
+    // 初始化数据库
+    class public func setUpDB() {
+        /* Realm 数据库配置，用于数据库的迭代更新 */
+        let schemaVersion: UInt64 = 0
+        let config = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: { migration, oldSchemaVersion in
+            
+            /* 什么都不要做！Realm 会自行检测新增和需要移除的属性，然后自动更新硬盘上的数据库架构 */
+            if (oldSchemaVersion < schemaVersion) {}
+        })
+        Realm.Configuration.defaultConfiguration = config
+        Realm.asyncOpen { (realm, error) in
+            
+            /* Realm 成功打开，迁移已在后台线程中完成 */
+            if let _ = realm {
+                
+                print("Realm 数据库配置成功")
+            }
+                /* 处理打开 Realm 时所发生的错误 */
+            else if let error = error {
+                
+                print("Realm 数据库配置失败：\(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 

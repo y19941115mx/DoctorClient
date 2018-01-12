@@ -63,30 +63,9 @@ class Mine_setting: BaseTableInfoViewController{
             showToast(self.view, "功能完善中")
         default:
             // 退出登录
-            logout()
+            user_default.logout("")
         }
     }
     
-    private func logout() {
-        let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
-        APPLICATION.window?.rootViewController = vc_login
-        NetWorkUtil<BaseAPIBean>.init(method: .exit).newRequestWithOutHUD(handler: {bean,json  in
-            if bean.code == 100 {
-                user_default.clearUserDefault()
-                EMClient.shared().logout(false, completion: { (error)
-                    in
-                    if error == nil {
-                        Toast("环信退出成功")
-                    }else {
-                        Toast("环信退出失败")
-                    }
-                })
-
-            }else {
-                showToast(self.view, bean.msg!)
-            }
-            
-        })
-    }
     
 }

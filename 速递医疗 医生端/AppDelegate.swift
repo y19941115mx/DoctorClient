@@ -12,7 +12,7 @@ import SwiftyJSON
 import Bugly
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
     
     var window: UIWindow?
     var locationManager:AMapLocationManager = AMapLocationManager()
@@ -37,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setUpBaiDuPush(application, didFinishLaunchingWithOptions: launchOptions)
         //        环信设置
         self.setupHuanxin()
+        //  本地数据库设置
+        DBHelper.setUpDB()
         return true
     }
     
@@ -100,6 +102,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
     }
     
+    // 强制退出 回调
+    func userAccountDidLoginFromOtherDevice() {
+        user_default.logout("账号在其他设备登录")
+    }
+    
+    func userAccountDidRemoveFromServer() {
+        user_default.logout("账号异常")
+    }
+    
     private func setUpMap() {
         AMapServices.shared().apiKey = StaticClass.GaodeAPIKfey
         
@@ -113,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if reGeocode != nil {
                 showToast((APPLICATION.window?.rootViewController?.view)!, "定位成功："+(reGeocode?.country)! + (reGeocode?.city)! + (reGeocode?.aoiName)!)
             }
-        }, failhandler: {})
+        }, failHandler: {})
         
     }
     
@@ -143,24 +154,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             BPush.handleNotification(userInfo as! [AnyHashable : Any])
         }
     }
+    
     private func setupHuanxin() {
         let options = EMOptions.init(appkey: StaticClass.HuanxinAppkey)
         EMClient.shared().initializeSDK(with: options)
-        // 环信登录
-        let account = user_default.account.getStringValue()
-        let pass = user_default.password.getStringValue()
-        if account != nil && account != ""{
-            EMClient.shared().login(withUsername: account, password: pass, completion: { (name, error) in
-                if error == nil {
-                    Toast("环信登录成功")
-                }else {
-                    dPrint(message:"环信错误码:\(error?.code.rawValue)")
-                    Toast("环信登录失败")
-                    //                    EMErrorCode
-                }
-            })
-            
-        }
+        EMClient.shared().add(self, delegateQueue: nil)
+        
     }
     private func initData() {
         // 获取部门数据
