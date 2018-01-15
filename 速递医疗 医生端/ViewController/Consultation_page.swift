@@ -35,7 +35,7 @@ class Consultation_page: BaseRefreshController<ConsultationBean>, UITableViewDat
         cell?.type = flag
         let bean = data[indexPath.row]
         cell?.updateViews(vc: self, bean: bean)
-        
+        cell?.selectionStyle = .none
         return cell!
     }
     

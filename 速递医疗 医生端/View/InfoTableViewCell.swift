@@ -11,7 +11,7 @@ import UIKit
 class InfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: RedPointLabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

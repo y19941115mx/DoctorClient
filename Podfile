@@ -28,7 +28,9 @@ target '速递医疗 医生端' do
     # 环信UI
     pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
     # 日历插件
-    pod 'Daysquare', :git => 'https://github.com/unixzii/Daysquare.git'
+    pod 'FSCalendar'
+    # 时间选择器
+    pod 'PGDatePicker'
     # 图片浏览
     pod 'HJPhotoBrowser'
 	# bug收集

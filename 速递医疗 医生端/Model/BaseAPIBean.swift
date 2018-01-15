@@ -379,6 +379,20 @@ class MineLocationBean:Mappable {
 }
 
 // 我的 日程信息
+//
+
+//"doccalendarprice": 0.00,
+//"doccalendaradressid": 21,
+//"docaddresslocation": "安徽医科大学",
+//"docaddresscity": "合肥市",
+//"docaddresslat": "31.770739203559",
+//"doccalendartime": "上午",
+//"doccalendarday": "2018-01-07",
+//"docaddressother": "",
+//"docaddressprovince": "安徽省",
+//"docaddressarea": "蜀山区",
+//"docaddresslon": "117.186059299045",
+//"doccalendaraffair": ""
 
 class MineCalendarBean:Mappable {
     var doccalendarid = 0
@@ -387,6 +401,10 @@ class MineCalendarBean:Mappable {
     var doccalendarday:String?
     var doccalendaraffair:String?
     var doccalendartime:String?
+    
+    var doccalendartimeinterval:String?
+    var doccalendarprice:Double?
+    
     
     required init?(map: Map) {
         
@@ -399,9 +417,40 @@ class MineCalendarBean:Mappable {
         doccalendarday <- map["doccalendarday"]
         doccalendaraffair <- map["doccalendaraffair"]
         doccalendartime <- map["doccalendartime"]
+        doccalendartimeinterval <- map["doccalendartimeinterval"]
+        doccalendarprice <- map["doccalendarprice"]
     }
 }
 
+//"pursetypename": "转入",
+//"docpursetypeid": 1,
+//"docpurseamount": 0.01,
+//"payid": 94,
+//"docpursetime": "2017-12-28 15:12:42",
+//"docpurseid": 37,
+//"docpursebalance": 0.01
+
+
+// 我的余额记录
+class MineBlanceBean: Mappable {
+    var pursetypename:String?
+    var docpursetypeid:Int?
+    var docpurseamount:Double?
+    var docpursetime:String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        pursetypename <- map["pursetypename"]
+        docpursetypeid <- map["docpursetypeid"]
+        docpurseamount <- map["docpurseamount"]
+        docpursetime <- map["docpursetime"]
+    }
+    
+    
+}
 
 // 我的 交易记录
 class MineTradeBean:Mappable {

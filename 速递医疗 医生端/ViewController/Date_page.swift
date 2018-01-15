@@ -26,6 +26,7 @@ class Date_page: BaseRefreshController<OrderBean>, UITableViewDataSource,UITable
         cell?.flag = flag
         let bean = data[indexPath.row]
         cell?.updateViews(vc: self, data: bean)
+        cell?.selectionStyle = .none
         return cell!
     }
     

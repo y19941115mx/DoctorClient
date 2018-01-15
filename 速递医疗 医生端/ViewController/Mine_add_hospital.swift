@@ -26,6 +26,7 @@ class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDele
         }
         let bean = data[indexPath.row]
         cell?.updateViews(vc: self, data: bean)
+        cell?.selectionStyle = .none
         return cell!
     }
     

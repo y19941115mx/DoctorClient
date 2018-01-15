@@ -42,6 +42,7 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
             self.typeLabel.text = "\(msg)"
         }
         
+        
     }
     
     //MARK:- action

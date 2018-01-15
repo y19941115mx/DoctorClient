@@ -122,10 +122,6 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.refresh()
-    }
     
     func initRefresh(scrollView:UIScrollView, ApiMethod:API,refreshHandler:(()->Void)?,getMoreHandler:@escaping ()->Void, isTableView:Bool = true) {
         self.ApiMethod = ApiMethod
@@ -283,14 +279,6 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
         self.scrollView?.isHidden = false
         self.header?.beginRefreshing()
     }
-    func refresh() {
-        button.isHidden = true
-        imageView.isHidden = true
-        self.scrollView?.isHidden = false
-        self.refreshData()
-    }
-    
-    
 }
 
 // 信息填写
@@ -299,6 +287,11 @@ class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITab
     var tableInfo = [[String]]()
     var mTableView:UITableView?
     var clickHandler:((IndexPath)->Void)?
+    var flags:([[Bool]])? = nil {
+        didSet {
+            self.mTableView?.reloadData()
+        }
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableTiles.count
@@ -316,8 +309,14 @@ class BaseTableInfoViewController:BaseViewController,UITableViewDataSource,UITab
         if cell == nil {
             cell =  Bundle.main.loadNibNamed("InfoTableViewCell", owner: nil, options: nil)?.last as? InfoTableViewCell
         }
+        if let flags = flags {
+            let redPointFlag = flags[indexPath.section][indexPath.row]
+            cell?.titleLabel.isRedPoint = redPointFlag
+        }
+
         cell?.titleLabel.text = tableTiles[indexPath.section][indexPath.row]
         cell?.infoLabel.text = tableInfo[indexPath.section][indexPath.row]
+        cell?.selectionStyle = .none
         return cell!
     }
     

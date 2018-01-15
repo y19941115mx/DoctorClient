@@ -40,7 +40,7 @@ class Mypatient_page_check: BaseRefreshController<mypatient_check>, UITableViewD
         initRefresh(scrollView: tableView, ApiMethod: API.listgraborders(selectedPage), refreshHandler: nil, getMoreHandler: {
             self.getMoreMethod = API.listgraborders(self.selectedPage)
         })
-        
+        self.header?.beginRefreshing()
     }
 
 
@@ -77,6 +77,7 @@ class Mypatient_page_checked: BaseRefreshController<mypatient_checked>, UITableV
         initRefresh(scrollView: tableView, ApiMethod: API.listordertoconfirm(selectedPage), refreshHandler: nil, getMoreHandler: {
             self.getMoreMethod = API.listordertoconfirm(self.selectedPage)
         })
+        self.header?.beginRefreshing()
     }
     
     

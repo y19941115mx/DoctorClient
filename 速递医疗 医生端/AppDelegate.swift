@@ -77,10 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        //        let manager = userInfo["aps"] as? [String:String]
-        //        let message = manager!["alert"]
-        // 清空角标
-        if user_default.userId.getStringValue() == nil {
+        if user_default.username.getStringValue() == nil {
             let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
             APPLICATION.window?.rootViewController = vc_login
         }else {

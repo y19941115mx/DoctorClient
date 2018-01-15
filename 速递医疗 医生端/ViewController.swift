@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // 界面控制
-        let userid =  user_default.userId.getStringValue()
+        let userid =  user_default.username.getStringValue()
         if (userid == nil)  {
             // 跳转到登录页面
             let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class EditViewController: BaseViewController {
+class EditViewController: BaseViewController,UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var flagLabel: UILabel!
     var msg:String = ""
     // 传过来的值
     var flag:Int = 0 // 0 是自我介绍 1 是擅长病情
@@ -17,8 +18,20 @@ class EditViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.text = "立即编辑信息"
+        textView.delegate = self
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        flagLabel.isHidden = true
+    }
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        if StringUTil.trimmingCharactersWithWhiteSpaces(textView.text).count == 0 {
+//            flagLabel.isHidden = false
+//        }else {
+//            flagLabel.isHidden = true
+//        }
+    
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -30,9 +43,8 @@ class EditViewController: BaseViewController {
                 self.msg = data["docexpert"].stringValue
             }
             if self.msg != "" {
+                self.flagLabel.isHidden = true
                 self.textView.text = self.msg
-            }else {
-                self.textView.text = "立即编辑信息"
             }
         }
         

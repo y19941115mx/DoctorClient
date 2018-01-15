@@ -58,13 +58,20 @@ public enum API {
     case addaddress(String, String, String, String, String, String, String) // 我的介绍 添加常用地址
     case deleteaddress(Int) // 删除常用地址
     case setaddress(Int) // 我的介绍 设置默认出诊地点
-    case addcalendar(String, String,String, Int) // 我的介绍 添加坐诊计划
+    case addcalendar(String, Double,String, Int, String,String,String) // 我的介绍 添加坐诊计划
+    case getcalendarbymonth(Int,Int) // 根据年月获取出诊计划
+    
+    
+    
     case deletecalendar(Int)  // 删除坐诊计划
     case getcalendar(Int) // 获取日程表
     
     case listhistoryorder(Int) // 获取历史订单
     case getbalance //获取我的钱包
     case listtraderecord(Int) // 获取交易记录
+    case listbalancerecord(Int) // 获取明细
+    
+    case updateprice(Double) // 上传默认出诊价格
     
     case listreceivenotification(Int) // 获取我的消息
     case getorderdetail(Int) // 读取消息具体信息
@@ -74,6 +81,8 @@ public enum API {
     
     case getalipayaccount // 获取支付宝账号
     case updatealipayaccount(String,String) // 修改支付宝账号
+    
+    case getprice //获取医生出诊价格
     
     
     
@@ -187,6 +196,14 @@ extension API: TargetType {
             return "/gethospital"
         case .getreviewinfo:
             return "/getreviewinfo"
+        case .getprice:
+            return "/getprice"
+        case .updateprice:
+            return "/updateprice"
+        case .listbalancerecord:
+            return "/listbalancerecord"
+        case .getcalendarbymonth:
+            return "/getcalendarbymonth"
         }
     }
     public var method: Moya.Method {
@@ -287,8 +304,9 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         case .setaddress(let id):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddressid":id], encoding: URLEncoding.default)
-        case .addcalendar(let date, let time, let event, let addressid):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarday":date,"doccalendaradressid":addressid, "doccalendaraffair":event, "doccalendartime":time], encoding: URLEncoding.default)
+        case .addcalendar(let dateArray, let price, let event, let addressid, let morning, let afternoon, let evening):
+            
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendardays":dateArray,"doccalendaradressid":addressid, "doccalendarprice":price, "doccalendaraffair":event, "doccalendarmorning":morning, "doccalendarafternoon":afternoon, "doccalendarnight":evening], encoding:URLEncoding.default)
         case .listhistoryorder(let page):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
         case .getbalance:
@@ -313,8 +331,9 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarid":id], encoding: URLEncoding.default)
         case .getcalendar(let page):
            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
-        case .listtraderecord(let page):
+        case .listtraderecord(let page), .listbalancerecord(let page):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page], encoding: URLEncoding.default)
+        
         case .deleteallreceivenotification:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
         case .addaddress(let location, let province, let city,let docaddressarea, let docaddressother, let lon, let lat):
@@ -323,8 +342,13 @@ extension API: TargetType {
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docaddressid":placeId], encoding: URLEncoding.default)
         case .gethospital(let str):
             return .requestParameters(parameters: ["hospname": str], encoding: URLEncoding.default)
-        case .getreviewinfo:
+        case .getreviewinfo, .getprice:
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!], encoding: URLEncoding.default)
+        case .updateprice(let price):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "docprice":price], encoding: URLEncoding.default)
+        case .getcalendarbymonth(let year, let month):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "year":year, "month":month], encoding: URLEncoding.default)
+            
         }
     }
     

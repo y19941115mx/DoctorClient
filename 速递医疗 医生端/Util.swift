@@ -24,9 +24,9 @@ let CATCHMSG = "解析服务器数据失败"
 
 // 全局变量
 struct StaticClass {
-//     static let RootIP = "http://1842719ny8.iok.la:14086"
-     static let RootIP = "http://118.89.172.204:6221"
-//    static let RootIP = "http://120.77.32.15:8080"
+    //     static let RootIP = "http://1842719ny8.iok.la:14086"
+    static let RootIP = "http://118.89.172.204:6221"
+    //    static let RootIP = "http://120.77.32.15:8080"
     static let BaseApi = RootIP + "/internetmedical/doctor"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
     static let GaodeAPIKfey = "dc63bec745429fca2107bdd7e57f7e3c"
@@ -209,7 +209,6 @@ enum user_default:String {
     
     //UserDefaults 清空数据
     static func clearUserDefault(){
-        UserDefaults.standard.removeObject(forKey: "userId")
         UserDefaults.standard.removeObject(forKey: "typename")
         UserDefaults.standard.removeObject(forKey: "pix")
         UserDefaults.standard.removeObject(forKey: "token")
@@ -377,19 +376,46 @@ class ImageUtil{
 }
 
 class StringUTil {
+    
     // 消除空格
     class public func trimmingCharactersWithWhiteSpaces(_ str:String) -> String{
         return str.trimmingCharacters(in: .whitespaces)
     }
     
-    class func isEarlyThanNow(_ date:Date)->Bool {
+    class public func isEarlyThanNow(_ date:Date)->Bool {
         let now = NSDate()
         return now.isLaterThanDate(date)
+        
     }
     
     // 转换MD5值
     class public func transformMD5(_ string:String)->String {
         return MD5(string)
+    }
+    // 字符串转 Date
+    class public func StringToDate(_ dateStr:String,_ dformatter:DateFormatter) -> Date? {
+        return dformatter.date(from: dateStr)
+    }
+    
+    class public func isDateEqual(_ date1:Date, _ date2:Date)->Bool {
+        let date = date1 as! NSDate
+        return date.isEqual(to: date2)
+    }
+    
+    class public func isDateLater(_ date1:Date, _ date2:Date)->Bool {
+        let date = date1 as! NSDate
+        return date.isLaterThanDate(date2)
+    }
+    
+    // Date转字符串
+    class public func DateToString(_ date:Date,_ dformatter:DateFormatter) -> String {
+        return dformatter.string(from: date)
+    }
+    
+    // 根据date 获取年月日
+    class public func DateToComponents(_ data:Date) -> DateComponents {
+        let calendar = Calendar.current
+        return  calendar.dateComponents([.year,.month, .day, .hour,.minute,.second], from: data )
     }
     
     // 将时间戳转换为时间字符串
@@ -473,7 +499,12 @@ class StringUTil {
     class func splitImage(str:String) -> [String] {
         return str.components(separatedBy: ",")
     }
-    
+}
+
+extension Array {
+    static func ArraytoString(array:Array<String>,separator:String) -> String{
+        return array.joined(separator: separator)
+    }
 }
 
 public class DBHelper:NSObject {

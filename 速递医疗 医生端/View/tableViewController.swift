@@ -8,27 +8,24 @@
 
 import UIKit
 
-class tableViewController: UITableViewController {
+class MineTableViewController: UITableViewController {
 
+    @IBOutlet weak var pocketimgView: RedPointImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsetsMake(-35+8, 0, 0, 0)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NetWorkUtil.init(method: .getalipayaccount).newRequestWithOutHUD { (bean, json) in
+            let data = json["data"]
+            let str = data["alipayaccount"].stringValue
+            if str == "" {
+                self.pocketimgView.isRedPoint = true
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

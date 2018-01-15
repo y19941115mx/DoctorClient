@@ -15,56 +15,16 @@ class Mine_setting: BaseTableInfoViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        let titles = [["绑定支付宝"],["意见反馈", "关于我们"], ["退出登录"]]
+        let titles = [["退出登录"]]
         let infos:[[String]] = [[""], ["", ""], [""]]
         initViewController(tableTiles: titles, tableInfo: infos, tableView: tableView) { (indexpath) in
             self.handler(indexPath: indexpath)
         }
-        NetWorkUtil.init(method: .getalipayaccount).newRequestWithOutHUD { (bean, json) in
-            let data = json["data"]
-            let str = data["alipayaccount"].stringValue
-            if str != "" {
-                self.tableInfo[0][0] = str
-                self.tableView.reloadData()
-            }
-        }
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
     private func handler(indexPath:IndexPath) {
-        switch indexPath.section {
-        case 0:
-            let textField = UITextField()
-            textField.placeholder = "输入支付宝账号"
-            let textField2 = UITextField()
-            textField2.placeholder = "输入支付宝认证的姓名"
-            // 绑定支付宝
-            AlertUtil.popTextFields(vc: self, title: "输入支付宝信息", textfields: [textField, textField2], okhandler: { (textFields) in
-                let account = textFields[0].text ?? ""
-                let name = textFields[1].text ?? ""
-                if account == "" || name == "" {
-                    showToast(self.view, "账号或姓名为空")
-                }else {
-                    NetWorkUtil.init(method: API.updatealipayaccount(account, name)).newRequest(handler: { (bean, json) in
-                        showToast(self.view, bean.msg!)
-                        if bean.code == 100 {
-                            self.tableInfo[0][0] = account
-                            self.tableView.reloadData()
-                        }
-                    })
-                }
-                
-            })
-        case 1:
-            showToast(self.view, "功能完善中")
-        default:
-            // 退出登录
             user_default.logout("")
-        }
     }
     
     
