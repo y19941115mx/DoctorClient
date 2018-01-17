@@ -238,7 +238,7 @@ extension API: TargetType {
         case .listsicksBytime(let page, let lat, let lon):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "lat":lat, "lon":lon, "type":1], encoding: URLEncoding.default)
         case .listsicksByLoc(let page, let lat, let lon, let provice, let city, let area):
-            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "lat":lat, "lon":lon, "type":2, "city":city, "provice":provice,"area":area], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "page":page, "lat":lat, "lon":lon, "type":2, "city":city, "province":provice,"area":area], encoding: URLEncoding.default)
         case .getsickdetail(let sickId):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "usersickid": sickId], encoding: URLEncoding.default)
         case .editpassword(let phone, let pass, let code):

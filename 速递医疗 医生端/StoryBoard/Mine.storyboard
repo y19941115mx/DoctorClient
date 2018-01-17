@@ -1045,7 +1045,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-ED-1Sz">
-                                        <rect key="frame" x="328" y="24.5" width="37" height="34"/>
+                                        <rect key="frame" x="328" y="25" width="37" height="34"/>
                                         <state key="normal" title="明细"/>
                                         <connections>
                                             <segue destination="7G6-EL-ZSq" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="Hci-2U-f3W"/>
@@ -1144,7 +1144,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-yg-GhP">
-                                        <rect key="frame" x="332" y="26.5" width="33" height="32"/>
+                                        <rect key="frame" x="332" y="27" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="保存">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1154,7 +1154,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkJ-bT-vh3">
-                                        <rect key="frame" x="8" y="31" width="47" height="22"/>
+                                        <rect key="frame" x="8" y="30.5" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="buttonAction:" destination="lZI-yl-Wdh" eventType="touchUpInside" id="n0B-7z-ObX"/>
@@ -1277,7 +1277,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNI-SL-r6l">
-                                        <rect key="frame" x="332" y="26.5" width="33" height="32"/>
+                                        <rect key="frame" x="332" y="27" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="保存">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1287,7 +1287,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-jq-gj1">
-                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="Back_acion:" destination="cEa-yB-2cX" eventType="touchUpInside" id="cMR-yl-OMY"/>
@@ -1364,7 +1364,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKp-fT-Z1k">
-                                        <rect key="frame" x="332" y="27" width="33" height="32"/>
+                                        <rect key="frame" x="332" y="26.5" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="添加">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1374,7 +1374,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ml-Xf-oiY">
-                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="ButtonAcion:" destination="1dg-xc-fyh" eventType="touchUpInside" id="cy9-mZ-9h3"/>
@@ -1929,7 +1929,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRZ-LQ-5Lf">
-                                        <rect key="frame" x="332" y="26.5" width="33" height="32"/>
+                                        <rect key="frame" x="332" y="27" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="添加">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1939,7 +1939,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSk-uj-aNK">
-                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="backAcion:" destination="8K8-jk-1y1" eventType="touchUpInside" id="Uhn-WA-qNr"/>

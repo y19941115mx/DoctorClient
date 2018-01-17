@@ -46,7 +46,21 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     
     
     
-    var sortType:HomeType = HomeType.sortByPatient
+    var sortType:HomeType = HomeType.sortByPatient {
+        didSet {
+            switch sortType {
+            case .sortByPatient:
+                self.ApiMethod = API.listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
+                self.getMoreMethod = API.listsicks(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
+            case .sortByLoc:
+                self.ApiMethod = API.listsicksByLoc(self.selectedPage,  APPLICATION.lat, APPLICATION.lon, self.province, self.city, self.area)
+                self.getMoreMethod = API.listsicksByLoc(self.selectedPage,  APPLICATION.lat, APPLICATION.lon, self.province, self.city, self.area)
+            case .sortByTime:
+                self.ApiMethod = API.listsicksBytime(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
+                self.getMoreMethod = API.listsicksBytime(self.selectedPage, APPLICATION.lat, APPLICATION.lon)
+            }
+        }
+    }
      
     
     override func viewDidLoad() {
@@ -326,10 +340,10 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             self.myToolBar.isHidden = true
             //获取选中的省
             let p = self.addressArray[provinceIndex]
-            province = p["state"]! as! String
+            province = "\(p["state"]! as! String)省"
             //获取选中的市
             let c = (p["cities"] as! NSArray)[cityIndex] as! [String: AnyObject]
-            city = c["city"] as! String
+            city = "\((c["city"] as? String)!)市"
             //获取选中的县（地区）
             area = ""
             if (c["areas"] as! [String]).count > 0 {
