@@ -16,7 +16,16 @@ class LoginViewController: BaseTextViewController {
     
     //MARK: - property
     
-    
+    lazy var resetVc:ResetViewController = {
+        let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "reset") as! ResetViewController
+        vc.LoginVc = self
+        return vc
+    }()
+    lazy var registerVc:RegisterViewController = {
+        let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "register") as! RegisterViewController
+        vc.LoginVc = self
+        return vc
+    }()
     @IBOutlet weak var tv_phone: UITextField!
     
     @IBOutlet weak var tv_pwd: UITextField!
@@ -83,11 +92,15 @@ class LoginViewController: BaseTextViewController {
         }
     }
     
-    //MARK: - navigation
-    @IBAction func unwindToLogin (segue: UIStoryboardSegue) {
-        //nothing goes here
-        
+    @IBAction func resetAction(_ sender: Any) {
+        NavigationUtil.setRootViewController(vc: self.resetVc)
     }
+    
+    @IBAction func registerAction(_ sender: Any) {
+        NavigationUtil.setRootViewController(vc: self.registerVc)
+    }
+    
+    
     
     //MARK: - private method
     private func updateButtonState() {

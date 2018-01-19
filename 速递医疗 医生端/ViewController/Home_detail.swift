@@ -86,7 +86,12 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
     // MARK: - 点击事件
     @IBAction func click_btn(_ sender: UIButton) {
         if sender.tag == 666{
-            self.navigationController?.popViewController(animated: false)
+            if let nav = self.navigationController {
+                nav.popViewController(animated: false)
+            }else {
+                self.dismiss(animated: false, completion: nil)
+            }
+            
             return
         }
         let priceTextField = UITextField()

@@ -15,7 +15,8 @@ import SwiftHash
 
 class RegisterViewController: BaseTextViewController{
     //Mark:property
-    let MsgSeconds = 120 // 设置验证码发送间隔时间
+    let MsgSeconds = 90 // 设置验证码发送间隔时间
+    var LoginVc:LoginViewController!
     @IBOutlet weak var photoTextField: UITextField!
     
     @IBOutlet weak var msgCodeTextField: UITextField!
@@ -131,6 +132,10 @@ class RegisterViewController: BaseTextViewController{
             && !passwordText.isEmpty)
 //        sendMsgButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
 //        sendMsgButton.isEnabled = !phoneText.isEmpty
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        NavigationUtil.setRootViewController(vc: self.LoginVc)
     }
     
     @objc private func updateTime(timer: Timer) {
