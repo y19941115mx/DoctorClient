@@ -11,19 +11,19 @@ import UIKit
 class Mypatient_main: SegmentedSlideViewController {
 
     private let types = ["我选择的", "选择我的"]
-    private var vcs = [UIViewController]()
+    lazy var vcs:[UIViewController] = {
+        let vc1 = UIStoryboard.init(name: "MyPatient", bundle: nil).instantiateViewController(withIdentifier: "mypatient_check") as! Mypatient_page_check
+        
+        let vc2 = UIStoryboard.init(name: "MyPatient", bundle: nil).instantiateViewController(withIdentifier: "mypatient_checked") as! Mypatient_page_checked
+        
+        return [vc1, vc2]
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置navigation
         setUpNavTitle(title: "我的病人")
-        let vc1 = UIStoryboard.init(name: "MyPatient", bundle: nil).instantiateViewController(withIdentifier: "mypatient_check") as! Mypatient_page_check
-
-        let vc2 = UIStoryboard.init(name: "MyPatient", bundle: nil).instantiateViewController(withIdentifier: "mypatient_checked") as! Mypatient_page_checked
-        
-        vcs = [vc1, vc2]
-
-        setUpSlideSwitchNoNavigation(titles: ["我选择的", "选择我的"], vcs: [vc1, vc2])
+        setUpSlideSwitchNoNavigation(titles: ["我选择的", "选择我的"], vcs: vcs)
     }
     
     

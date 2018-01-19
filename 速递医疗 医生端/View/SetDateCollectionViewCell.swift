@@ -38,7 +38,7 @@ class SetDateCollectionViewCell: UICollectionViewCell {
                 }
                 vc.collectionView.reloadData()
             }else {
-                速递医疗_医生端.showToast((self.vc?.view)!, bean.msg!)
+                DoctorClient.showToast((self.vc?.view)!, bean.msg!)
             }
         }
         

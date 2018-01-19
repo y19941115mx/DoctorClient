@@ -12,6 +12,7 @@ import SnapKit
 
 class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, AMapSearchDelegate {
     
+    @IBOutlet weak var saveBtn: UIButton!
     var search: AMapSearchAPI!
     var bean:MineLocationBean?
     
@@ -88,7 +89,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
             })
         case 1:
-            AlertUtil.popMenu(vc: self, title: "选择职称", msg: "", btns: ["住院医师", "主治医师", "副主任医师", "主任医师"], handler: { (str) in
+            AlertUtil.popMenu(vc: self, title: "选择职称", msg: "", btns: ["助理医师", "执业医师","主治医师", "副主任医师", "主任医师"], handler: { (str) in
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -214,7 +215,15 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
         // 初始化POI
         search = AMapSearchAPI()
         search.delegate = self
-        nextBtn.isEnabled = false
+        let msg = user_default.typename.getStringValue()
+        if msg == "审核中" || msg == "已审核" {
+            saveBtn.isHidden = true
+            self.tableView.allowsSelection = false
+        }else {
+            saveBtn.isHidden = false
+            self.tableView.allowsSelection = true
+        }
+        
         // 加载数据
         NetWorkUtil.init(method: .getfirstinfo).newRequest { (bean, json) in
             Toast(bean.msg!)

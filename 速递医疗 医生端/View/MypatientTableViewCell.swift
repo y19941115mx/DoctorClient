@@ -91,6 +91,7 @@ class MypatientTableViewCell2: UITableViewCell {
             // 跳转到确认页面
             let viewController = UIStoryboard.init(name: "MyPatient", bundle: nil).instantiateViewController(withIdentifier: "ConfirmOrder") as! MypatientConfirmOrder
             viewController.orderId = self.data?.userorderid
+            viewController.vc = self.vc
             self.vc.present(viewController, animated: false, completion: nil)
             
         })

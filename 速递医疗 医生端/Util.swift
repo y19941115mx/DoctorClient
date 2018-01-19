@@ -18,6 +18,8 @@ import RealmSwift
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 let APPLICATION = UIApplication.shared.delegate as! AppDelegate
+let APPVERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+
 let ERRORMSG = "获取服务器数据失败"
 let CATCHMSG = "解析服务器数据失败"
 
@@ -529,6 +531,22 @@ public class DBHelper:NSObject {
                 
                 print("Realm 数据库配置失败：\(error.localizedDescription)")
             }
+        }
+    }
+}
+
+public class NavigationUtil<T>:NSObject{
+    class public func setTabBarSonController(index:Int, handler:((T)->Void)?,nvcIndex:Int = 0){
+        var vc = APPLICATION.tabBarController?.viewControllers![index]
+        if vc is UINavigationController {
+            let nvc = vc as! UINavigationController
+            vc = nvc.viewControllers[nvcIndex]
+        }
+        if let vc = vc as? T{
+            if let handler = handler {
+                handler(vc)
+            }
+            APPLICATION.tabBarController?.selectedIndex = index
         }
     }
 }

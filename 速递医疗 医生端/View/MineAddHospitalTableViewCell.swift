@@ -39,7 +39,7 @@ class MineAddHospitalTableViewCell: UITableViewCell {
                 if bean.code == 100 {
                     self.vc?.refreshData()
                 }
-                速递医疗_医生端.showToast(self.vc!.view, bean.msg!)
+                DoctorClient.showToast(self.vc!.view, bean.msg!)
             })
         }
     }

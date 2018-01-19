@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
     var lon:String = "0"
     var lat:String = "0"
     var departData = [String:[String]]()
-    
+    var tabBarController:UITabBarController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // bugly 配置
         Bugly.start(withAppId: StaticClass.BuglyAPPID)

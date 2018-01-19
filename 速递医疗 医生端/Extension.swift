@@ -12,6 +12,7 @@ extension UIColor {
     static let APPGrey = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
 }
 
+
 @IBDesignable
 extension UIView{
     @IBInspectable var cornerRadius:CGFloat{

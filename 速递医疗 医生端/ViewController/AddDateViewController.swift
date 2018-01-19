@@ -96,10 +96,10 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
             
         default:
             let textField = UITextField()
-            textField.placeholder = "请输入简介"
+            textField.placeholder = "请输入备注"
             textField.keyboardType = .namePhonePad
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
-                self.tableInfo[indexPath.section][indexPath.row] = textFields[0].text ?? ""
+                self.tableInfo[indexPath.section][indexPath.row] = "已填写"
                 self.tableView.reloadRows(at: [indexPath], with: .none)
             })
         }
@@ -144,6 +144,7 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
                 NetWorkUtil.init(method: .addcalendar(dateStr, self.price, tableInfo[0][5], locBean.docaddressid, tableInfo[0][2], tableInfo[0][3], tableInfo[0][4])).newRequest(handler: { (bean, json) in
                     if bean.code == 100 {
                         self.dismiss(animated: false, completion: nil)
+                        showToast((self.presentingViewController?.view)!, bean.msg!)
                     }else {
                         showToast(self.view, bean.msg!)
                     }

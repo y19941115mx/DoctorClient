@@ -41,8 +41,9 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
                     if bean.code == 100 {
                         self.dismiss(animated: false, completion: nil)
                         self.vc?.header?.beginRefreshing()
+                    }else {
+                       Toast(bean.msg!)
                     }
-                    Toast(bean.msg!)
                 })
             })
         }

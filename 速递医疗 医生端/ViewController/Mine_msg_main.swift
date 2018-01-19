@@ -48,19 +48,24 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
         let notificationdata = bean.notificationdata
         if notificationdata != "{}" && notificationdata != nil  {
             if let jsonData = notificationdata!.data(using: String.Encoding.utf8, allowLossyConversion: false) {
-                let json = JSON.init(data:jsonData)
-                if json["order_id"].int != nil {
-                    // 跳转到订单详情页
-                    let vc = UIStoryboard.init(name: "Date", bundle: nil).instantiateViewController(withIdentifier: "OrderDetail") as! Order_Detail
-                    vc.userorderId = json["order_id"].intValue
-                    self.present(vc, animated: false, completion: nil)
+                do {
+                    let json = try JSON.init(data:jsonData)
+                    if json["order_id"].int != nil {
+                        // 跳转到订单详情页
+                        let vc = UIStoryboard.init(name: "Date", bundle: nil).instantiateViewController(withIdentifier: "OrderDetail") as! Order_Detail
+                        vc.userorderId = json["order_id"].intValue
+                        self.present(vc, animated: false, completion: nil)
+                    }
+                    else if json["sick_id"].int != nil {
+                        // 跳转到病情页
+                        let vc = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Detail") as! Home_detail
+                        vc.patientId = json["sick_id"].intValue
+                        self.present(vc, animated: false, completion: nil)
+                    }
+                }catch {
+                    dPrint(message: "jsonParseError")
                 }
-                else if json["sick_id"].int != nil {
-                    // 跳转到病情页
-                    let vc = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Detail") as! Home_detail
-                    vc.patientId = json["sick_id"].intValue
-                    self.present(vc, animated: false, completion: nil)
-                }
+                
             }
         }
     }

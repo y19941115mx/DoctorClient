@@ -1,8 +1,8 @@
-# Uncomment the next line to define a global platform for your project
-platform :ios, '11.0'
+# Uncomment the nexti:1 line to define a global platform for your project
+platform :ios, '10.0'
 use_frameworks!
 
-target '速递医疗 医生端' do
+target 'DoctorClient' do
     # 网络访问
     pod 'Moya'
     # Toast
@@ -21,8 +21,8 @@ target '速递医疗 医生端' do
     # 下拉刷新加载
     pod 'MJRefresh'
 	# 高德定位
-    pod 'AMapLocation'
-    pod 'AMapSearch'
+    pod 'AMapLocation-NO-IDFA'
+    pod 'AMapSearch-NO-IDFA'
     # 环信
     pod 'Hyphenate'
     # 环信UI

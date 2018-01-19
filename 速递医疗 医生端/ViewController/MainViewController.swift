@@ -9,6 +9,7 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTabBar()
+        APPLICATION.tabBarController = self
     }
 
     override func didReceiveMemoryWarning() {

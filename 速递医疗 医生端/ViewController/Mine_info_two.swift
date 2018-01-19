@@ -10,10 +10,11 @@ import UIKit
 
 class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var reviewBtn: UIButton!
     @IBOutlet weak var tableView: BaseTableView!
     let tableTitle = ["身份证照片","职称照片", "行医资格证照片","工作证照片","其他照片"]
     
-    var tableData = [String]()
+    var tableData = ["", "", "", "", ""]
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,6 +40,12 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let msg = user_default.typename.getStringValue()
+        if msg == "审核中" || msg == "已审核" {
+            reviewBtn.isHidden = true
+        }else {
+            reviewBtn.isHidden = false
+        }
 
         // Do any additional setup after loading the view.
     }
