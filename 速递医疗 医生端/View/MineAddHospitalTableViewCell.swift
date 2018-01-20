@@ -35,11 +35,8 @@ class MineAddHospitalTableViewCell: UITableViewCell {
     @IBAction func delAction(_ sender: Any) {
         AlertUtil.popAlert(vc: self.vc!, msg: "确认删除该地址") {
             let id = self.data?.docaddressid
-            NetWorkUtil.init(method: .deleteaddress(id!)).newRequest(handler: { (bean, json) in
-                if bean.code == 100 {
-                    self.vc?.refreshData()
-                }
-                DoctorClient.showToast(self.vc!.view, bean.msg!)
+            NetWorkUtil.init(method: .deleteaddress(id!)).newRequest(successhandler: { (bean, json) in
+                    self.vc?.refreshBtn()
             })
         }
     }

@@ -15,9 +15,7 @@ class ChatViewController: EaseMessageViewController, EaseMessageViewControllerDe
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
-        // Do any additional setup after loading the view.
         self.showRefreshHeader = true
-        self.tableViewDidTriggerHeaderRefresh()
     }
     
     func messageViewController(_ viewController: EaseMessageViewController!, modelFor message: EMMessage!) -> IMessageModel! {

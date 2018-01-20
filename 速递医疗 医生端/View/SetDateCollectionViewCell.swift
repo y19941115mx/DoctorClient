@@ -28,8 +28,8 @@ class SetDateCollectionViewCell: UICollectionViewCell {
     
     @IBAction func delAction(_ sender: Any) {
         let id = self.data?.doccalendarid
-        NetWorkUtil.init(method: .deletecalendar(id!)).newRequest { (bean, json) in
-            if bean.code == 100 {
+        NetWorkUtil.init(method: .deletecalendar(id!)).newRequest(successhandler:{ (bean, json) in
+            
                 let vc = self.vc as! SetDateViewController
                 for (index,item) in vc.currentDate.enumerated() {
                     if item.doccalendarid == id {
@@ -37,10 +37,6 @@ class SetDateCollectionViewCell: UICollectionViewCell {
                     }
                 }
                 vc.collectionView.reloadData()
-            }else {
-                DoctorClient.showToast((self.vc?.view)!, bean.msg!)
-            }
-        }
-        
+        })
     }
 }

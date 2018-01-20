@@ -21,6 +21,12 @@
 # import <Hyphenate/Hyphenate.h>
 #import <AlipaySDK/AlipaySDK.h>
 
+#import "SelectedListView.h"
+// U-Share核心SDK
+#import <UMSocialCore/UMSocialCore.h>
+
+// U-Share分享面板SDK，未添加分享面板SDK可将此行去掉
+#import <UShareUI/UShareUI.h>
 
 
 

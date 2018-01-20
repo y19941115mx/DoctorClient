@@ -45,13 +45,10 @@ class Mine_tradePlan: BaseTableInfoViewController {
                             showToast(self.view, "价格格式错误")
                             return
                         }
-                        NetWorkUtil.init(method: API.updateprice(price!)).newRequest(handler: { (bean, json) in
-                            if bean.code == 100 {
-                                self.tableInfo[0][1] = text
-                                self.infoTableView.reloadRows(at: [indexpath], with: .none)
-                            }else {
-                                showToast(self.view, bean.msg!)
-                            }
+                        NetWorkUtil.init(method: API.updateprice(price!)).newRequest(successhandler: { (bean, json) in
+                            
+                            self.tableInfo[0][1] = text
+                            self.infoTableView.reloadRows(at: [indexpath], with: .none)
                         })
                     }
                 })
@@ -66,14 +63,10 @@ class Mine_tradePlan: BaseTableInfoViewController {
                 AlertUtil.popMenu(vc: self, title: "设置默认出诊地点", msg: "", btns: btns, handler: { (str) in
                     let index = btns.index(of: str)
                     let addressidid = self.infos[index!].docaddressid
-                    NetWorkUtil.init(method: API.setaddress(addressidid)).newRequest(handler: { (bean, josn) in
-                        if bean.code == 100 {
+                    NetWorkUtil.init(method: API.setaddress(addressidid)).newRequest(successhandler: { (bean, josn) in
                             // 改变table
                             self.tableInfo[1][0] = str
                             self.infoTableView.reloadData()
-                        }else {
-                            showToast(self.view, bean.msg!)
-                        }
                     })
                 })
             }else {
@@ -83,10 +76,10 @@ class Mine_tradePlan: BaseTableInfoViewController {
         }
     }
     
-        private func getInfo() {
-            // 获取地点
-            NetWorkUtil<BaseListBean<MineLocationBean>>.init(method: .getalladdress)
-                .newRequestWithoutHUD { (bean, json) in
+    private func getInfo() {
+        // 获取地点
+        NetWorkUtil<BaseListBean<MineLocationBean>>.init(method: .getalladdress)
+            .newRequestWithOutHUD(successhandler: { (bean, json) in
                 let datas = bean.dataList
                 if datas != nil {
                     for data in datas! {
@@ -97,14 +90,14 @@ class Mine_tradePlan: BaseTableInfoViewController {
                         self.infos.append(data)
                     }
                 }
-            }
-            // 获取价格
-            NetWorkUtil.init(method: .getprice).newRequestWithOutHUD { (bean, json) in
-                let price = json["data"].doubleValue
-                self.tableInfo[0][1] = String(price)
-                self.infoTableView.reloadData()
-            }
-        }
+        })
+        // 获取价格
+        NetWorkUtil.init(method: .getprice).newRequestWithOutHUD(successhandler:{ (bean, json) in
+            let price = json["data"].doubleValue
+            self.tableInfo[0][1] = String(price)
+            self.infoTableView.reloadData()
+        })
+    }
     
     
     

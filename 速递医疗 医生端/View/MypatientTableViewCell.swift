@@ -44,9 +44,8 @@ class MypatientTableViewCell: UITableViewCell {
     // 点击取消
     @IBAction func click_delete(_ sender: UIButton) {
         AlertUtil.popAlert(vc: self.vc, msg: "确认取消", okhandler: {
-            NetWorkUtil<BaseAPIBean>.init(method: .cancelgraborder(self.data!.preorderid)).newRequest(handler: { (bean, json) in
-                Toast(bean.msg!)
-                self.vc.refreshData()
+            NetWorkUtil<BaseAPIBean>.init(method: .cancelgraborder(self.data!.preorderid)).newRequest(successhandler: { (bean, json) in
+                self.vc.refreshBtn()
             })
         })
     }
@@ -107,7 +106,7 @@ class MypatientTableViewCell2: UITableViewCell {
                 if text == "" {
                     Toast("输入信息不能为空")
                 }else {
-                    NetWorkUtil<BaseListBean<DoctorBean>>.init(method: API.getdoctorbyname(text)).newRequest(handler: { (bean, json) in
+                    NetWorkUtil<BaseListBean<DoctorBean>>.init(method: API.getdoctorbyname(text)).newRequest(successhandler: { (bean, json) in
                         if bean.code == 100 {
                             let mdata = bean.dataList
                             var docnames = [String]()
@@ -117,14 +116,14 @@ class MypatientTableViewCell2: UITableViewCell {
                                 for item in mdata! {
                                     docnames.append(item.name!)
                                 }
-                                AlertUtil.popMenu(vc: self.vc, title: "选择医生", msg: "", btns: docnames, handler: { (str) in
-                                    let index = docnames.index(of: str)
-                                    let doc = mdata![index!]
-                                    NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, doc.docId)).newRequestWithoutHUD { (bean, json) in
-                                        Toast(bean.msg!)
-                                        self.vc.refreshData()
-                                    }
-                                })
+//                                AlertUtil.popMenu(vc: self.vc, title: "选择医生", msg: "", btns: docnames, handler: { (str) in
+//                                    let index = docnames.index(of: str)
+//                                    let doc = mdata![index!]
+//                                    NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, doc.docId)).newRequest(successhandler: { (bean, json) in
+//                                        Toast(bean.msg!)
+//                                        self.vc.refreshData()
+//                                    })
+//                                })
                             }
                         }
                     })
@@ -132,14 +131,13 @@ class MypatientTableViewCell2: UITableViewCell {
             })
             
         }, delhandler: {
-            NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, 0)).newRequestWithoutHUD { (bean, json) in
-                Toast(bean.msg!)
-                self.vc.refreshData()
-            }
+            NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, 0)).newRequestWithOutHUD(successhandler:  { (bean, json) in
+                self.vc.refreshBtn()
+            })
         })
     }
     
-
+    
 }
 
 

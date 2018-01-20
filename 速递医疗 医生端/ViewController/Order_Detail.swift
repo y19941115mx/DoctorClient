@@ -47,14 +47,12 @@ class Order_Detail: BasicCollectionViewBrowserController,UICollectionViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetWorkUtil<BaseBean<OrderBean>>.init(method: .getorderdetail(userorderId!)).newRequest { (bean, json) in
-            if bean.code == 100 {
-                let order = bean.data!
-                self.updateView(bean: order)
-            }else {
-                showError(self.view, bean.msg!)
-            }
-        }
+        NetWorkUtil<BaseBean<OrderBean>>.init(method: .getorderdetail(userorderId!)).newRequest(successhandler: { (bean, json) in
+            
+            let order = bean.data!
+            self.updateView(bean: order)
+            
+        })
     }
     
     
@@ -72,7 +70,7 @@ class Order_Detail: BasicCollectionViewBrowserController,UICollectionViewDataSou
             self.imageLayout.reloadData()
         }else {
             self.imageLayout.isHidden = true
-          self.height.constant -= 80
+            self.height.constant -= 80
         }
         locLabel.text = bean.docaddresslocation
         appointTimeLabel.text = bean.userorderappointment
@@ -87,5 +85,5 @@ class Order_Detail: BasicCollectionViewBrowserController,UICollectionViewDataSou
     }
     
     
-
+    
 }

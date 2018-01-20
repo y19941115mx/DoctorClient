@@ -45,7 +45,7 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
     }
     private func initData() {
         
-        NetWorkUtil<sickDetailBean>.init(method:API.getsickdetail(self.patientId!) ).newRequest(handler: {sick,json  in
+        NetWorkUtil<sickDetailBean>.init(method:API.getsickdetail(self.patientId!) ).newRequest(successhandler: {sick,json  in
             self.sickBean = sick.sickDetail
             if let sick = self.sickBean {
                 self.account = sick.userhuanxinaccount
@@ -99,18 +99,13 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
         priceTextField.keyboardType = .decimalPad
         AlertUtil.popTextFields(vc: self, title: "输入参考价格", textfields: [priceTextField]){ textFields in
             let price = Double(textFields[0].text!)
-            NetWorkUtil<BaseAPIBean>.init(method: API.graborder((self.sickBean?.usersickid)!, price!)).newRequest(handler: {bean, json in
-                if bean.code == 100 {
+            NetWorkUtil<BaseAPIBean>.init(method: API.graborder((self.sickBean?.usersickid)!, price!)).newRequest(successhandler: {bean, json in
                     self.navigationController?.setNavigationBarHidden(false, animated: false)
                     self.navigationController?.popViewController(animated: false)
                     NavigationUtil<Mypatient_main>.setTabBarSonController(index: 1, handler: { (vc) in
                         let sonvc = vc.vcs[0] as! Mypatient_page_check
                         sonvc.refreshBtn()
                     })
-                    
-                }else {
-                    showToast(self.view, bean.msg!)
-                }
             })
         }
     }

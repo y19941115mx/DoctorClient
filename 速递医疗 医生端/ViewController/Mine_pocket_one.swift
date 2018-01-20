@@ -39,13 +39,11 @@ class Mine_pocket_one: BaseTableInfoViewController {
                 if account == "" || name == "" {
                     showToast(self.view, "账号或姓名为空")
                 }else {
-                    NetWorkUtil.init(method: API.updatealipayaccount(account, name)).newRequest(handler: { (bean, json) in
+                    NetWorkUtil.init(method: API.updatealipayaccount(account, name)).newRequest(successhandler: { (bean, json) in
                         showToast(self.view, bean.msg!)
-                        if bean.code == 100 {
-                            self.tableInfo[0][0] = account
-                            self.flags = [[false],[false]]
-                            self.tableView.reloadData()
-                        }
+                        self.tableInfo[0][0] = account
+                        self.flags = [[false],[false]]
+                        self.tableView.reloadData()
                     })
                 }
                 
@@ -58,24 +56,21 @@ class Mine_pocket_one: BaseTableInfoViewController {
     }
     
     private func getdata() {
-        NetWorkUtil.init(method: .getbalance).newRequest { (bean, json) in
-            if bean.code == 100 {
-                let data = json["data"].doubleValue
-                self.balance.text = String(data)
-            }else {
-                showToast(self.view, bean.msg!)
-            }
-        }
-        NetWorkUtil.init(method: .getalipayaccount).newRequestWithOutHUD { (bean, json) in
+        NetWorkUtil.init(method: .getbalance).newRequest(successhandler:{ (bean, json) in
+            
+            let data = json["data"].doubleValue
+            self.balance.text = String(data)
+        })
+        NetWorkUtil.init(method: .getalipayaccount).newRequestWithOutHUD(successhandler: { (bean, json) in
             let data = json["data"]
             let str = data["alipayaccount"].stringValue
             if str != "" {
                 self.tableInfo[0][0] = str
                 self.tableView.reloadData()
             }else {
-               self.flags = [[true],[false]]
+                self.flags = [[true],[false]]
             }
-        }
+        })
     }
     
     @IBAction func unwindToMinePocket(sender: UIStoryboardSegue){

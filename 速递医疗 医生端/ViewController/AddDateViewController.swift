@@ -60,25 +60,23 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
             }
         case 1:
             self.btns =  [String]()
-            NetWorkUtil<BaseListBean<MineLocationBean>>.init(method: .getalladdress).newRequest(handler: { (bean, json) in
-                if bean.code == 100 {
-                    self.locMsg = bean.dataList
-                    if self.locMsg == nil {
-                        showToast(self.view, "请添加坐诊地点")
-                    }else {
-                        
-                        for item in self.locMsg! {
-                            self.btns.append(item.docaddresslocation!)
-                        }
-                        AlertUtil.popMenu(vc: self, title: "选择坐诊地点", msg: "", btns: self.btns, handler: { (str) in
-                            self.tableInfo[indexPath.section][indexPath.row] = str
-                            self.tableView.reloadRows(at: [indexPath], with: .none)
-                            self.flag2 = true
-                        })
+            NetWorkUtil<BaseListBean<MineLocationBean>>.init(method: .getalladdress).newRequest(successhandler: { (bean, json) in
+                
+                self.locMsg = bean.dataList
+                if self.locMsg == nil {
+                    showToast(self.view, "请添加坐诊地点")
+                }else {
+                    
+                    for item in self.locMsg! {
+                        self.btns.append(item.docaddresslocation!)
                     }
-                }else{
-                    showToast(self.view, bean.msg!)
+                    AlertUtil.popMenu(vc: self, title: "选择坐诊地点", msg: "", btns: self.btns, handler: { (str) in
+                        self.tableInfo[indexPath.section][indexPath.row] = str
+                        self.tableView.reloadRows(at: [indexPath], with: .none)
+                        self.flag2 = true
+                    })
                 }
+                
             })
             
         case 2:
@@ -99,7 +97,7 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
             textField.placeholder = "请输入备注"
             textField.keyboardType = .namePhonePad
             AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
-                self.tableInfo[indexPath.section][indexPath.row] = "已填写"
+                self.tableInfo[indexPath.section][indexPath.row] = textFields[0].text!
                 self.tableView.reloadRows(at: [indexPath], with: .none)
             })
         }
@@ -141,13 +139,10 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
                     dateArr.append(dateString)
                 }
                 let dateStr = Array<String>.ArraytoString(array: dateArr, separator: ",")
-                NetWorkUtil.init(method: .addcalendar(dateStr, self.price, tableInfo[0][5], locBean.docaddressid, tableInfo[0][2], tableInfo[0][3], tableInfo[0][4])).newRequest(handler: { (bean, json) in
-                    if bean.code == 100 {
-                        self.dismiss(animated: false, completion: nil)
-                        showToast((self.presentingViewController?.view)!, bean.msg!)
-                    }else {
-                        showToast(self.view, bean.msg!)
-                    }
+                NetWorkUtil.init(method: .addcalendar(dateStr, self.price, tableInfo[0][5], locBean.docaddressid, tableInfo[0][2], tableInfo[0][3], tableInfo[0][4])).newRequest(successhandler: { (bean, json) in
+                    self.dismiss(animated: false, completion: nil)
+                    showToast((self.presentingViewController?.view)!, bean.msg!)
+                    
                 })
             }else {
                 showToast(self.view, "信息填写不完整")
@@ -190,7 +185,7 @@ class AddTimeViewController: BaseTableInfoViewController,PGDatePickerDelegate {
                 }
                 tableInfo[1][0] = endTime!
             }else {
-               showToast(self.view, "请选择开始时间")
+                showToast(self.view, "请选择开始时间")
             }
         }
         self.tableView.reloadData()

@@ -85,15 +85,12 @@ class RegisterViewController: BaseTextViewController{
             self.view.makeToast("请输入6-15位数字或字母")
         }else{
 //            //1.发送注册请求
-            NetWorkUtil.init(method: API.docregister(phoneText, MD5(passwordText), msgCode)).newRequest(handler: { (bean, json) in
-                if bean.code == 100 {
-                    let vc = self.presentingViewController as! LoginViewController
-                    vc.tv_phone.text = phoneText
-                    self.dismiss(animated: false, completion: nil)
-                    showToast(vc.view, bean.msg!)
-                }else {
-                    showToast(self.view, bean.msg!)
-                }
+            NetWorkUtil.init(method: API.docregister(phoneText, MD5(passwordText), msgCode)).newRequest(successhandler: { (bean, json) in
+                let vc = self.presentingViewController as! LoginViewController
+                vc.tv_phone.text = phoneText
+                self.dismiss(animated: false, completion: nil)
+                showToast(vc.view, bean.msg!)
+                
             })
 
         }
@@ -106,18 +103,12 @@ class RegisterViewController: BaseTextViewController{
             return
         }
         let phoneNum = photoTextField.text!
-        NetWorkUtil.init(method: .phonetest(phoneNum)).newRequest { (bean, json) in
-            // 发送验证码
-            if bean.code == 100 {
-                //开始倒计时
-                self.isCounting = true
-                NetWorkUtil.init(method: API.getmsgcode(phoneNum)).newRequest(handler: { (bean, json) in
-                    showToast(self.view, bean.msg!)
-                })
-            }else {
-                showToast(self.view, bean.msg!)
-            }
-        }
+        NetWorkUtil.init(method: .phonetest(phoneNum)).newRequest(successhandler: { (bean, json) in
+            self.isCounting = true
+            NetWorkUtil.init(method: API.getmsgcode(phoneNum)).newRequest(successhandler: { (bean, json) in
+                showToast(self.view, "发送验证码成功")
+            }, failhandler: nil)
+        }, failhandler: nil)
         
     }
     
@@ -130,8 +121,6 @@ class RegisterViewController: BaseTextViewController{
         registerButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
         registerButton.isEnabled = (!phoneText.isEmpty && !msgCode.isEmpty
             && !passwordText.isEmpty)
-//        sendMsgButton.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
-//        sendMsgButton.isEnabled = !phoneText.isEmpty
     }
     
     @IBAction func backAction(_ sender: Any) {

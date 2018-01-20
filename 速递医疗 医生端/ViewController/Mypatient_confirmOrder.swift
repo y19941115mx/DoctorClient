@@ -37,13 +37,11 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
             Toast("出诊价格不能为0")
         }else {
             AlertUtil.popAlert(vc: self, msg: "确认提交订单，操作不可撤销", okhandler: {
-                NetWorkUtil.init(method: .confirmorder(self.orderId!, Double(self.tableInfo[0][0])!, self.trafficType, Double(self.tableInfo[1][1])!, self.hotelType, Double(self.tableInfo[2][1])!, self.foodType, Double(self.tableInfo[3][1])!)).newRequest(handler: { (bean, json) in
-                    if bean.code == 100 {
-                        self.dismiss(animated: false, completion: nil)
-                        self.vc?.header?.beginRefreshing()
-                    }else {
-                       Toast(bean.msg!)
-                    }
+                NetWorkUtil.init(method: .confirmorder(self.orderId!, Double(self.tableInfo[0][0])!, self.trafficType, Double(self.tableInfo[1][1])!, self.hotelType, Double(self.tableInfo[2][1])!, self.foodType, Double(self.tableInfo[3][1])!)).newRequest(successhandler: { (bean, json) in
+                    
+                    self.dismiss(animated: false, completion: nil)
+                    self.vc?.header?.beginRefreshing()
+                    
                 })
             })
         }
@@ -113,18 +111,18 @@ class MypatientConfirmOrder:BaseTableInfoViewController {
                     self.tableView.reloadRows(at: [indexPath], with: .none)
                 })
             default:
-                    // 餐饮价格
-                    textField.placeholder = "输入餐饮价格"
-                    AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
+                // 餐饮价格
+                textField.placeholder = "输入餐饮价格"
+                AlertUtil.popTextFields(vc: self, title: "输入内容", textfields: [textField], okhandler: { (textFields) in
                     let text = textFields[0].text ?? "0.0"
                     self.tableInfo[indexPath.section][indexPath.row] = text
                     self.tableView.reloadRows(at: [indexPath], with: .none)
-                    })
-                }
+                })
             }
-
         }
         
-        
-        
+    }
+    
+    
+    
 }

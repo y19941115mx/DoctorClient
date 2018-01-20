@@ -51,16 +51,14 @@ class SetDateViewController: BaseViewController, UICollectionViewDataSource, UIC
     
     private func setupCalendar() {
         let res = StringUTil.DateToComponents(calendar.currentPage)
-        NetWorkUtil<BaseListBean<MineCalendarBean>>.init(method: .getcalendarbymonth(res.year!, res.month!)).newRequest { (bean, json) in
-            if bean.code == 100 {
-                if let list = bean.dataList {
-                    self.dates = list
-                    self.calendar.reloadData()
-                }
-            }else {
-                showToast(self.view, bean.msg!)
+        NetWorkUtil<BaseListBean<MineCalendarBean>>.init(method: .getcalendarbymonth(res.year!, res.month!)).newRequest(successhandler: { (bean, json) in
+            
+            if let list = bean.dataList {
+                self.dates = list
+                self.calendar.reloadData()
             }
-        }
+            
+        })
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {

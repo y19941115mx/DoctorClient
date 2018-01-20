@@ -18,13 +18,13 @@ class MineTableViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NetWorkUtil.init(method: .getalipayaccount).newRequestWithOutHUD { (bean, json) in
+        NetWorkUtil.init(method: .getalipayaccount).newRequestWithOutHUD(successhandler:{ (bean, json) in
             let data = json["data"]
             let str = data["alipayaccount"].stringValue
             if str == "" {
                 self.pocketimgView.isRedPoint = true
             }
-        }
+        })
     }
     
 

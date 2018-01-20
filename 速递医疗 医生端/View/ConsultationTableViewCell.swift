@@ -83,7 +83,7 @@ class ConsultationTableViewCell: UITableViewCell {
         }
         
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -100,11 +100,10 @@ class ConsultationTableViewCell: UITableViewCell {
     @objc private func delAction(button:UIButton) {
         AlertUtil.popAlert(vc: self.vc!, msg: "确认取消会诊，操作无法撤销") {
             let id = self.data?.hosporderid
-            NetWorkUtil.init(method: API.cancelconsultation(id!)).newRequest(handler: { (bean, json) in
-                if bean.code == 100 {
-                    self.vc?.refreshData()
-                }
-                Toast(bean.msg!)
+            NetWorkUtil.init(method: API.cancelconsultation(id!)).newRequest(successhandler: { (bean, json) in
+                
+                self.vc?.refreshBtn()
+                
             })
         }
     }

@@ -78,17 +78,12 @@ class ResetViewController: BaseTextViewController {
             self.view.makeToast("请输入6-15位数字或字母")
         }else{
             //1.发送重置密码请求
-            NetWorkUtil<BaseAPIBean>.init(method: API.editpassword(phoneText, MD5(passwordText), msgCode)).newRequest(handler: {bean,json  in
-                if bean.code == 100 {
-                    // 重置成功，返回登录界面
-                    let vc = self.presentingViewController as! LoginViewController
-                    vc.tv_phone.text = phoneText
-                    self.dismiss(animated: false, completion: nil)
-                    showToast(vc.view, "重置密码成功！")
-
-                }else {
-                    showToast(self.view, bean.msg!)
-                }
+            NetWorkUtil<BaseAPIBean>.init(method: API.editpassword(phoneText, MD5(passwordText), msgCode)).newRequest(successhandler: {bean,json  in
+                // 重置成功，返回登录界面
+                let vc = self.presentingViewController as! LoginViewController
+                vc.tv_phone.text = phoneText
+                self.dismiss(animated: false, completion: nil)
+                showToast(vc.view, "重置密码成功！")
             })
                         
         }
@@ -104,20 +99,15 @@ class ResetViewController: BaseTextViewController {
         //开始倒计时
         isCounting = true
         //验证手机号码
-        NetWorkUtil<BaseAPIBean>.init(method: .phonetest(phoneNum)).newRequest(handler: {bean,json  in
+        NetWorkUtil<BaseAPIBean>.init(method: .phonetest(phoneNum)).newRequest(successhandler: { bean, json in
+            ToastError("手机号未注册")
+        },failhandler: {bean,json  in
             if bean.code == 200 {
                 // 发送手机验证码
-                NetWorkUtil<BaseAPIBean>.init(method: API.getmsgcode(phoneNum)).newRequest(handler: {bean, json in
-                    if bean.code == 100 {
-                        showToast(self.view, "发送验证码成功")
-                    }else {
-                        showToast(self.view, bean.msg!)
-                    }
+                NetWorkUtil<BaseAPIBean>.init(method: API.getmsgcode(phoneNum)).newRequest(successhandler: {bean, json in
+                    showToast(self.view, "发送验证码成功")
                 })
-            }else if bean.code == 100 {
-                showToast(self.view, "手机号未注册")
-            }
-            else {
+            }else {
                 showToast(self.view, bean.msg!)
             }
         })

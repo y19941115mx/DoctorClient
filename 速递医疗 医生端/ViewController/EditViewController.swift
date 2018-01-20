@@ -24,18 +24,18 @@ class EditViewController: BaseViewController,UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         flagLabel.isHidden = true
     }
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        if StringUTil.trimmingCharactersWithWhiteSpaces(textView.text).count == 0 {
-//            flagLabel.isHidden = false
-//        }else {
-//            flagLabel.isHidden = true
-//        }
+    //    func textViewDidEndEditing(_ textView: UITextView) {
+    //        if StringUTil.trimmingCharactersWithWhiteSpaces(textView.text).count == 0 {
+    //            flagLabel.isHidden = false
+    //        }else {
+    //            flagLabel.isHidden = true
+    //        }
     
-//    }
+    //    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NetWorkUtil.init(method: .getinfo).newRequest { (bean, json) in
+        NetWorkUtil.init(method: .getinfo).newRequest(successhandler:{ (bean, json) in
             let data = json["data"]
             if self.flag == 0 {
                 self.msg = data["docabs"].stringValue
@@ -46,7 +46,7 @@ class EditViewController: BaseViewController,UITextViewDelegate {
                 self.flagLabel.isHidden = true
                 self.textView.text = self.msg
             }
-        }
+        })
         
     }
     
@@ -58,16 +58,12 @@ class EditViewController: BaseViewController,UITextViewDelegate {
         if flag == 1 {
             api = API.updateexpert(text)
         }
-        NetWorkUtil.init(method: api).newRequest(handler: { (bean, json) in
-            if bean.code == 100 {
-                self.dismiss(animated: false, completion: nil)
-            }else{
-                showToast(self.view, bean.msg!)
-            }
+        NetWorkUtil.init(method: api).newRequest(successhandler: { (bean, json) in
+            self.dismiss(animated: false, completion: nil)
             
         })
     }
-        
+    
     @IBAction func Back_acion(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }

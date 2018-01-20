@@ -52,7 +52,7 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NetWorkUtil.init(method: .getsecondinfo).newRequest { (bean, json) in
+        NetWorkUtil.init(method: .getsecondinfo).newRequest(successhandler: { (bean, json) in
             let data = json["data"]
             let IdCard = data["doccardphoto"].stringValue
             let workCard = data["docworkcardphoto"].stringValue
@@ -61,7 +61,7 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let otherPhoto = data["docotherphoto"].stringValue
             self.tableData = [IdCard, titleCard, qualCard, workCard, otherPhoto]
             self.tableView.reloadData()
-        }
+        })
         
     }
     
@@ -86,12 +86,11 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @IBAction func updateInfo(_ sender: Any) {
-        NetWorkUtil.init(method: .reviewinfo).newRequest { (bean, json) in
-            if bean.code == 100 {
-                self.dismiss(animated: false, completion: nil)
-            }
+        NetWorkUtil.init(method: .reviewinfo).newRequest(successhandler: { (bean, json) in
+            
+            self.dismiss(animated: false, completion: nil)
             Toast(bean.msg!)
-        }
+        })
     }
     
 

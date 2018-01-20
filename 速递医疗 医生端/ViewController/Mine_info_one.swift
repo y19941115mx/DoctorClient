@@ -225,7 +225,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         // 加载数据
-        NetWorkUtil.init(method: .getfirstinfo).newRequest { (bean, json) in
+        NetWorkUtil.init(method: .getfirstinfo).newRequest(successhandler: { (bean, json) in
             Toast(bean.msg!)
             let data = json["data"]
             if data != JSON.null {
@@ -251,7 +251,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 self.bean = MineLocationBean.init(name: "", province: data["dochospprovince"].stringValue, city: data["dochospcity"].stringValue, distinct: data["dochosparea"].stringValue, adress: data["dochospother"].stringValue, lon: APPLICATION.lon, lat: APPLICATION.lat)
                 self.tableView.reloadData()
             }
-        }
+        })
         
     }
     
@@ -263,12 +263,10 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 return
             }
         }
-        NetWorkUtil<BaseAPIBean>.init(method: .updatefirstinfo(tableData[0] as! String, tableData[1] as! String, tableData[2] as! String, tableData[3] as! String, tableData[4] as! String, tableData[5] as! String, tableData[6] as! String,self.oneDepart, self.twoDepart,  tableData[8] as! Bool, (bean?.docaddressprovince)!, (bean?.docaddresscity)!, (bean?.docaddressarea)!, (bean?.docaddresslon)!, (bean?.docaddresslat)!)).newRequest { (bean, json) in
-            if bean.code == 100 {
-                self.nextBtn.isEnabled = true
-            }
+        NetWorkUtil<BaseAPIBean>.init(method: .updatefirstinfo(tableData[0] as! String, tableData[1] as! String, tableData[2] as! String, tableData[3] as! String, tableData[4] as! String, tableData[5] as! String, tableData[6] as! String,self.oneDepart, self.twoDepart,  tableData[8] as! Bool, (bean?.docaddressprovince)!, (bean?.docaddresscity)!, (bean?.docaddressarea)!, (bean?.docaddresslon)!, (bean?.docaddresslat)!)).newRequest(successhandler:  { (bean, json) in
+            self.nextBtn.isEnabled = true
             showToast(self.view, bean.msg!)
-        }
+        })
     }
     
     @objc func clickBtn(button:UIButton){

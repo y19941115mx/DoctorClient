@@ -13,6 +13,7 @@ import SwiftyJSON
 import SwiftHash
 import SnapKit
 import RealmSwift
+import LEEAlert
 
 
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -51,19 +52,18 @@ public func showToast(_ view:UIView, _ message:String) {
     view.makeToast(message, duration: 2.0, position: .bottom, style:style)
 }
 
-public func showError(_ view:UIView, _ message:String) {
-    var style = ToastStyle()
-    style.backgroundColor = UIColor.red
-    view.makeToast(message, duration: 2.0, position: .bottom, style:style)
+public func ToastError(_ message:String) {
+    //时间
+    SVProgressHUD.setMinimumDismissTimeInterval(1)
+    SVProgressHUD.showError(withStatus: message)
 }
 
 public func Toast(_ message:String) {
-    var style = ToastStyle()
-    style.backgroundColor = UIColor.APPColor
-    let view = APPLICATION.window?.rootViewController?.view
-    view!.makeToast(message, duration: 2.0, position: .bottom, style:style)
+    SVProgressHUD.setMinimumDismissTimeInterval(1)
+    SVProgressHUD.showSuccess(withStatus: message)
 }
 
+// 网络请求
 // 网络请求
 class NetWorkUtil<T:BaseAPIBean> {
     var method:API?
@@ -84,28 +84,7 @@ class NetWorkUtil<T:BaseAPIBean> {
         }
     }
     
-    func newRequestWithOutHUD(handler:@escaping (_ bean:T, _ JSONObj:JSON) -> Void) {
-        let Provider = MoyaProvider<API>()
-        Provider.request(method!) { result in
-            switch result {
-            case let .success(response):
-                do {
-                    let jsonObj =  try response.mapJSON()
-                    let bean = Mapper<T>().map(JSONObject: jsonObj)
-                    let json = JSON(jsonObj)
-                    handler(bean!, json)
-                }catch {
-                    dPrint(message: "response:\(response)")
-                    Toast(CATCHMSG)
-                }
-            case let .failure(error):
-                dPrint(message: "error:\(error)")
-                Toast(ERRORMSG)
-            }
-        }
-    }
-    
-    func newRequest(handler:@escaping (_ bean:T, _ JSONObj:JSON) -> Void) {
+    func newRequest(successhandler:((_ bean:T, _ JSONObj:JSON) -> Void)?,failhandler:((_ bean:T, _ JSONObj:JSON) -> Void)? = nil ) {
         let Provider = MoyaProvider<API>()
         SVProgressHUD.show()
         Provider.request(method!) { result in
@@ -116,20 +95,32 @@ class NetWorkUtil<T:BaseAPIBean> {
                     let jsonObj =  try response.mapJSON()
                     let bean = Mapper<T>().map(JSONObject: jsonObj)
                     let json = JSON(jsonObj)
-                    handler(bean!, json)
+                    if let bean = bean {
+                        if bean.code == 100 {
+                            if successhandler != nil {
+                                successhandler!(bean, json)
+                            }
+                        }else {
+                            if failhandler != nil {
+                                failhandler!(bean, json)
+                            }else {
+                                ToastError(bean.msg!)
+                            }
+                        }
+                    }
                 }catch {
                     dPrint(message: "response:\(response)")
-                    Toast(CATCHMSG)
+                    ToastError(CATCHMSG)
                 }
             case let .failure(error):
                 SVProgressHUD.dismiss()
                 dPrint(message: "error:\(error)")
-                Toast(ERRORMSG)
+                ToastError(ERRORMSG)
             }
         }
     }
     
-    func newRequestWithoutHUD(handler:@escaping (_ bean:T, _ JSONObj:JSON) -> Void) {
+    func newRequestWithOutHUD(successhandler:((_ bean:T, _ JSONObj:JSON) -> Void)? ,failhandler:((_ bean:T, _ JSONObj:JSON) -> Void)? = nil) {
         let Provider = MoyaProvider<API>()
         Provider.request(method!) { result in
             switch result {
@@ -138,14 +129,26 @@ class NetWorkUtil<T:BaseAPIBean> {
                     let jsonObj =  try response.mapJSON()
                     let bean = Mapper<T>().map(JSONObject: jsonObj)
                     let json = JSON(jsonObj)
-                    handler(bean!, json)
+                    if let bean = bean {
+                        if bean.code == 100 {
+                            if successhandler != nil {
+                                successhandler!(bean, json)
+                            }
+                        }else {
+                            if failhandler != nil {
+                                failhandler!(bean, json)
+                            }else {
+                                ToastError(bean.msg!)
+                            }
+                        }
+                    }
                 }catch {
                     dPrint(message: "response:\(response)")
-                    Toast(CATCHMSG)
+                    ToastError(CATCHMSG)
                 }
             case let .failure(error):
                 dPrint(message: "error:\(error)")
-                Toast(ERRORMSG)
+                ToastError(ERRORMSG)
             }
         }
     }
@@ -166,8 +169,8 @@ class MapUtil {
                 failHandler()
                 if error.code == AMapLocationErrorCode.locateFailed.rawValue {
                     //定位错误：此时location和regeocode没有返回值，不进行annotation的添加
-                    let msg = "定位错误:{\(error.code) - \(error.localizedDescription)};"
-                    Toast(msg)
+//                    let msg = "定位错误:{\(error.code) - \(error.localizedDescription)};"
+//                    Toast(msg)
                     return
                 }
                 else if error.code == AMapLocationErrorCode.reGeocodeFailed.rawValue
@@ -178,8 +181,8 @@ class MapUtil {
                     || error.code == AMapLocationErrorCode.cannotConnectToHost.rawValue {
                     
                     //逆地理错误：在带逆地理的单次定位中，逆地理过程可能发生错误，此时location有返回值，regeocode无返回值，进行annotation的添加
-                    let msg = "获取地理位置失败，请检查GPS设置;"
-                    Toast(msg)
+//                    let msg = "获取地理位置失败，请检查GPS设置;"
+//                    Toast(msg)
                 }
             }else {
                 if let location = location  {
@@ -222,21 +225,17 @@ enum user_default:String {
     static func logout(_ msg:String) {
         let vc_login = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
         APPLICATION.window?.rootViewController = vc_login
-        NetWorkUtil<BaseAPIBean>.init(method: .exit).newRequestWithOutHUD { (bean, json) in
-            if bean.code == 100 {
-                user_default.clearUserDefault()
-                EMClient.shared().logout(false, completion: { (error)
-                    in
-                    if error == nil {
-                        Toast("\(msg)账号退出成功")
-                    }else {
-                        Toast("\(msg)账号退出失败")
-                    }
-                })
-            }else {
-                Toast(bean.msg!)
-            }
-        }
+        NetWorkUtil<BaseAPIBean>.init(method: .exit).newRequestWithOutHUD(successhandler: { (bean, json) in
+            user_default.clearUserDefault()
+            EMClient.shared().logout(false, completion: { (error)
+                in
+                if error == nil {
+                    Toast("\(msg) 账号退出成功")
+                }else {
+                    Toast("\(msg) 账号退出失败")
+                }
+            })
+        })
         
     }
 }
@@ -245,11 +244,28 @@ enum user_default:String {
 // Alert 相关
 class AlertUtil: NSObject {
     
+    class func popOptional(optional:[String], handler:@escaping (_ value: String)->()) {
+        let view = SelectedListView.init(frame: CGRect.init(x: 0, y: 0, width: 280, height: 0), style: .plain)
+        view.isSingle = true
+        
+        var arr = [SelectedListModel]()
+        for (index, item) in optional.enumerated() {
+            arr.append(SelectedListModel.init(sid: index, title: item))
+        }
+        view.array = arr
+        view.selectedBlock = { array in
+            LEEAlert.close(completionBlock: {
+                handler(array![0].title)
+            })
+        }
+        LEEAlert.alert().config.leeTitle("测试")!.leeItemInsets(UIEdgeInsets.init(top: 20, left: 0, bottom: 20, right: 0))!.leeCustomView(view)!.leeItemInsets(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0))!.leeHeaderInsets(UIEdgeInsets.init(top: 10, left: 0, bottom: 0, right: 0))!.leeClickBackgroundClose(true)!.leeShow()
+    }
+    
     /**
      选择弹出框
      - parameter title: 标题
      - parameter msg:   消息
-     - parameter btns:  弹框项
+     - parameter btns:  弹框
      */
     class func popMenu(vc:UIViewController, title:String,msg:String,btns:[String], handler:@escaping (_ value: String)->()) {
         

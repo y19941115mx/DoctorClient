@@ -35,7 +35,7 @@ class Consultation_confirmOrder: BaseTableInfoViewController {
         if flag != nil {
             saveBtn.isHidden = true
             self.tableView.allowsSelection = false
-            NetWorkUtil<BaseBean<ConsultationBean>>.init(method: API.getconsultationdetail(self.orderId!)).newRequest(handler: { (bean, json) in
+            NetWorkUtil<BaseBean<ConsultationBean>>.init(method: API.getconsultationdetail(self.orderId!)).newRequest(successhandler: { (bean, json) in
                 if bean.code == 100 && bean.data != nil {
                     let res = bean.data!
                     self.tableInfo = [["\(res.orderhospprice!)"],["\(res.orderhosptpricetypename!)", "\(res.orderhosptprice!)"],["\(res.orderhospapricetypename!)", "\(res.orderhospaprice!)"],["\(res.orderhospepricetypename!)", "\(res.orderhospeprice!)"]]
@@ -54,12 +54,12 @@ class Consultation_confirmOrder: BaseTableInfoViewController {
             showToast(self.view, "出诊价格不能为0")
         }else {
             AlertUtil.popAlert(vc: self, msg: "确认提交订单，操作不可撤销", okhandler: {
-                NetWorkUtil.init(method: .confirmconsultation(self.orderId!, Double(self.tableInfo[0][0])!, self.trafficType, Double(self.tableInfo[1][1])!, self.hotelType, Double(self.tableInfo[2][1])!, self.foodType, Double(self.tableInfo[3][1])!)).newRequest(handler: { (bean, json) in
-                    if bean.code == 100 {
-                        self.dismiss(animated: false, completion: nil)
-                        self.vc?.header?.beginRefreshing()
-                    }
-                    showError(self.view, bean.msg!)
+                NetWorkUtil.init(method: .confirmconsultation(self.orderId!, Double(self.tableInfo[0][0])!, self.trafficType, Double(self.tableInfo[1][1])!, self.hotelType, Double(self.tableInfo[2][1])!, self.foodType, Double(self.tableInfo[3][1])!)).newRequest(successhandler: { (bean, json) in
+                    
+                    self.dismiss(animated: false, completion: nil)
+                    self.vc?.header?.beginRefreshing()
+                    
+                    
                 })
             })
         }

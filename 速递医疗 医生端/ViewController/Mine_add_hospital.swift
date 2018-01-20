@@ -30,7 +30,7 @@ class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDele
         return cell!
     }
     
-
+    
     @IBOutlet weak var tabelView: BaseTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDele
         self.header?.beginRefreshing()
         
     }
-
+    
     //MARK: - Action
     
     func searchPOI(withKeyword keyword: String?) {
@@ -53,7 +53,7 @@ class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDele
         let request = AMapPOIKeywordsSearchRequest()
         request.keywords = keyword
         request.requireExtension = true
-//        request.city = "北京"
+        //        request.city = "北京"
         search.aMapPOIKeywordsSearch(request)
     }
     
@@ -102,15 +102,12 @@ class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDele
         AlertUtil.popMenu(vc: self, title: "选择地点", msg: "", btns: btns) { (str) in
             let index = btns.index(of: str)
             let bean = POIS[index!]
-            NetWorkUtil.init(method: API.addaddress(bean.docaddresslocation!, bean.docaddressprovince!, bean.docaddresscity!, bean.docaddressarea!, bean.docaddressother!, bean.docaddresslon!, bean.docaddresslat!)).newRequest(handler: { (bean, json) in
-                if bean.code == 100 {
-                    self.refreshData()
-                }
-                showToast(self.view, bean.msg!)
+            NetWorkUtil.init(method: API.addaddress(bean.docaddresslocation!, bean.docaddressprovince!, bean.docaddresscity!, bean.docaddressarea!, bean.docaddressother!, bean.docaddresslon!, bean.docaddresslat!)).newRequest(successhandler: { (bean, json) in
+                self.refreshBtn()
             })
         }
         
-       
+        
     }
     
 }

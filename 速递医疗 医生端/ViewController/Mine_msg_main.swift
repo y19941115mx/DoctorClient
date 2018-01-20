@@ -39,11 +39,11 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
         let bean = data[indexPath.row]
         data[indexPath.row].notificationread = true
         tableView.reloadRows(at: [indexPath], with: .none)
-        NetWorkUtil.init(method: .updatenotificationtoread(bean.notificationid!)).newRequestWithOutHUD { (bean, json) in
-            if bean.code == 100 {
+        NetWorkUtil.init(method: .updatenotificationtoread(bean.notificationid!)).newRequestWithOutHUD(successhandler: { (bean, json) in
+            
                 UIApplication.shared.applicationIconBadgeNumber -= 1
-            }
-        }
+            
+        })
         // 获取数据跳转对应页面
         let notificationdata = bean.notificationdata
         if notificationdata != "{}" && notificationdata != nil  {
@@ -85,14 +85,9 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
     
     private func cleanMsgAction() {
         AlertUtil.popAlert(vc: self, msg: "确认删除所有通知", okhandler: {
-            NetWorkUtil.init(method: .deleteallreceivenotification).newRequest(handler: { (bean, json) in
-                if bean.code == 100 {
+            NetWorkUtil.init(method: .deleteallreceivenotification).newRequest(successhandler: { (bean, json) in
                     UIApplication.shared.applicationIconBadgeNumber = 0
-                    self.refreshData()
-                }else {
-                    showToast(self.view, bean.msg!)
-                }
-                
+                    self.refreshBtn()
             })
         })
     }
@@ -102,12 +97,9 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
             item.notificationread = true
         }
         tableView.reloadData()
-        NetWorkUtil.init(method: .updateallnotificationtoread).newRequestWithOutHUD(handler: { (bean, json) in
-            if bean.code == 100 {
+        NetWorkUtil.init(method: .updateallnotificationtoread).newRequestWithOutHUD(successhandler: { (bean, json) in
+            
                 UIApplication.shared.applicationIconBadgeNumber = 0
-            }else {
-                showToast(self.view, bean.msg!)
-            }
         })
     }
     

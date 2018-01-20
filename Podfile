@@ -37,4 +37,14 @@ target 'DoctorClient' do
 	pod 'Bugly'
     # 本地数据库
     pod 'RealmSwift'
+    # 弹出框
+    pod 'LEEAlert'
+    # 社交分享
+    pod 'UMengUShare/UI'
+    # 集成微信(精简版0.2M)
+    pod 'UMengUShare/Social/ReducedWeChat'
+    # 集成QQ/QZone/TIM(精简版0.5M)
+    pod 'UMengUShare/Social/ReducedQQ'
+    # 集成新浪微博(精简版1M)
+    pod 'UMengUShare/Social/ReducedSina'
 end

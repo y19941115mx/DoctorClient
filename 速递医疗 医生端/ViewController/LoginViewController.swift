@@ -48,48 +48,50 @@ class LoginViewController: BaseTextViewController {
         self.view.endEditing(true)
         let phoneNum = tv_phone.text!
         let passNum =  tv_pwd.text!
-        // FIXME:  需要做字符串长度验证
+        
+        // FIXME:  需要做字符串验证
         // 登录
-        NetWorkUtil<BaseAPIBean>.init(method: .doclogin(phoneNum, MD5(passNum))).newRequest { (bean, json) in
-            if bean.code == 100 {
-                let data = json["data"]
-                let userId = data["id"].intValue
-                let typename = data["typename"].stringValue
-                var account = data["huanxinaccount"].stringValue
-                let pix = data["pix"].stringValue
-                let token = data["token"].stringValue
-                let username = data["name"].stringValue
-                let title = data["title"].stringValue
-                user_default.setUserDefault(key: .userId, value: String(userId))
-                user_default.setUserDefault(key: .typename, value: typename)
-                user_default.setUserDefault(key: .pix, value: pix)
-                user_default.setUserDefault(key: .token, value: token)
-                user_default.setUserDefault(key: .username, value: username)
-                user_default.setUserDefault(key: .title, value: title)
-                user_default.setUserDefault(key: .password, value: MD5(passNum))
-                // 上传channelid
-                if user_default.channel_id.getStringValue() != nil {
-                    NetWorkUtil<BaseAPIBean>.init(method: API.updatechannelid(user_default.channel_id.getStringValue()!)).newRequestWithoutHUD(handler: { (bean, json) in
-                        Toast(bean.msg!)
-                    })
-                }
-                
-                // 服务器环信注册失败 重新注册
-                if account == "" {
-                    NetWorkUtil<BaseAPIBean>.init(method: API.huanxinregister).newRequestWithoutHUD(handler: { (bean, json) in
-                        if bean.code == 100 {
-                            account = "doc_\(userId)"
-                        }
-                    })
-                }
-                user_default.setUserDefault(key: .account, value: account)
-                user_default.setUserDefault(key: .phoneNum, value: phoneNum)
-                let vc_main = MainViewController()
-                APPLICATION.window?.rootViewController = vc_main
-            }else {
-                showToast(self.view, bean.msg!)
+        NetWorkUtil<BaseAPIBean>.init(method: API.doclogin(phoneNum, MD5(passNum))).newRequest(successhandler: { (bean, json) in
+            let data = json["data"]
+            let userId = data["id"].intValue
+            let typename = data["typename"].stringValue
+            var account = data["huanxinaccount"].stringValue
+            let pix = data["pix"].stringValue
+            let token = data["token"].stringValue
+            let username = data["name"].stringValue
+            let title = data["title"].stringValue
+            user_default.setUserDefault(key: .userId, value: String(userId))
+            user_default.setUserDefault(key: .typename, value: typename)
+            user_default.setUserDefault(key: .pix, value: pix)
+            user_default.setUserDefault(key: .token, value: token)
+            user_default.setUserDefault(key: .username, value: username)
+            user_default.setUserDefault(key: .title, value: title)
+            user_default.setUserDefault(key: .password, value: MD5(passNum))
+            // 上传chanelid
+            NetWorkUtil.init(method:API.updatechannelid(user_default.channel_id.getStringValue()!))
+                .newRequestWithOutHUD(successhandler: nil)
+            // 储存数据
+            user_default.setUserDefault(key: .userId, value: String(userId))
+            user_default.setUserDefault(key: .typename, value: typename)
+            user_default.setUserDefault(key: .pix, value: pix)
+            user_default.setUserDefault(key: .token, value: token)
+            user_default.setUserDefault(key: .username, value: username)
+            user_default.setUserDefault(key: .title, value: title)
+            user_default.setUserDefault(key: .password, value: MD5(passNum))
+            
+            // 注册环信
+            if account == "" {
+                NetWorkUtil.init(method: .huanxinregister).newRequestWithOutHUD(successhandler: { (bean, sjon) in
+                    account = "user_\(userId)"
+                })
             }
-        }
+            user_default.setUserDefault(key: .account, value: account)
+            user_default.setUserDefault(key: .phoneNum, value: phoneNum)
+            // 进入首页
+            let vc_main = MainViewController()
+            APPLICATION.window?.rootViewController = vc_main
+            
+        })
     }
     
     @IBAction func resetAction(_ sender: Any) {

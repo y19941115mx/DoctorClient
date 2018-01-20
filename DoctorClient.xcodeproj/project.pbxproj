@@ -43,6 +43,8 @@
 		84165C1D1FC3043000F32DF5 /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84165C1C1FC3042F00F32DF5 /* tableViewController.swift */; };
 		84165C1F1FC307D600F32DF5 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84165C1E1FC307D600F32DF5 /* Mine.storyboard */; };
 		842875B11FD267310004587B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842875B01FD267310004587B /* ChatViewController.swift */; };
+		8430442D2013A81000C243FD /* SelectedListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843044292013A81000C243FD /* SelectedListModel.m */; };
+		8430442E2013A81000C243FD /* SelectedListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430442A2013A81000C243FD /* SelectedListView.m */; };
 		843E71E91FC70E4D00829CA4 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E71E81FC70E4D00829CA4 /* ResetViewController.swift */; };
 		847C137B1FD2ACB800B32BB7 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 847C13791FD2ACB700B32BB7 /* AlipaySDK.bundle */; };
 		847C137D1FD2ACE100B32BB7 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847C137A1FD2ACB700B32BB7 /* AlipaySDK.framework */; };
@@ -137,6 +139,10 @@
 		84165C1C1FC3042F00F32DF5 /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
 		84165C1E1FC307D600F32DF5 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		842875B01FD267310004587B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		843044292013A81000C243FD /* SelectedListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedListModel.m; sourceTree = "<group>"; };
+		8430442A2013A81000C243FD /* SelectedListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedListView.m; sourceTree = "<group>"; };
+		8430442B2013A81000C243FD /* SelectedListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedListModel.h; sourceTree = "<group>"; };
+		8430442C2013A81000C243FD /* SelectedListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedListView.h; sourceTree = "<group>"; };
 		843E71E81FC70E4D00829CA4 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		847C13791FD2ACB700B32BB7 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		847C137A1FD2ACB700B32BB7 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
@@ -370,6 +376,17 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		843044282013A81000C243FD /* SelectedListView */ = {
+			isa = PBXGroup;
+			children = (
+				843044292013A81000C243FD /* SelectedListModel.m */,
+				8430442A2013A81000C243FD /* SelectedListView.m */,
+				8430442B2013A81000C243FD /* SelectedListModel.h */,
+				8430442C2013A81000C243FD /* SelectedListView.h */,
+			);
+			path = SelectedListView;
+			sourceTree = "<group>";
+		};
 		84BB03B01FB2A53C006FBCAF /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +403,7 @@
 		84BB03B51FB2A8F2006FBCAF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				843044282013A81000C243FD /* SelectedListView */,
 				847C13791FD2ACB700B32BB7 /* AlipaySDK.bundle */,
 				847C137A1FD2ACB700B32BB7 /* AlipaySDK.framework */,
 				84031D181FD14BCE0058D437 /* LibBPush */,
@@ -520,9 +538,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DoctorClient/Pods-DoctorClient-resources.sh",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -543,6 +565,7 @@
 				"${BUILT_PRODUCTS_DIR}/HJPhotoBrowser/HJPhotoBrowser.framework",
 				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.7/HyphenateFullSDK/Hyphenate.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/LEEAlert/LEEAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
@@ -569,6 +592,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyphenate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LEEAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
@@ -668,6 +692,7 @@
 				840647641FA6A4BD009B21C4 /* API.swift in Sources */,
 				84B8EDF51FDFEF8A00E27B41 /* Consultation_main.swift in Sources */,
 				84B8EDEA1FDFAA5700E27B41 /* ConsultationTableViewCell.swift in Sources */,
+				8430442E2013A81000C243FD /* SelectedListView.m in Sources */,
 				840647441FA6A259009B21C4 /* AppDelegate.swift in Sources */,
 				8491F3071FDC26DD0061702C /* MinePocketCollectionViewCell.swift in Sources */,
 				8408B6FE1FDAC0A3004403F4 /* EditViewController.swift in Sources */,
@@ -677,6 +702,7 @@
 				84031D131FCD4A2A0058D437 /* Mypatient_main.swift in Sources */,
 				84B730881FD4CBD3004A36B9 /* HomeMainTableViewCell.swift in Sources */,
 				298DD5671FB2E1D200BBCE14 /* Home_main.swift in Sources */,
+				8430442D2013A81000C243FD /* SelectedListModel.m in Sources */,
 				8408B6F71FDAA7CA004403F4 /* Mine_info_two.swift in Sources */,
 				8408B6F61FDAA7CA004403F4 /* Mine_info_photo.swift in Sources */,
 				8491F3101FDCE5350061702C /* Mine_pocket_two.swift in Sources */,

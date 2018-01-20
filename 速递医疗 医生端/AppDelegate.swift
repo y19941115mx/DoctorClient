@@ -20,13 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
     var lat:String = "0"
     var departData = [String:[String]]()
     var tabBarController:UITabBarController?
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // bugly 配置
         Bugly.start(withAppId: StaticClass.BuglyAPPID)
         //        进度条设置
         SVProgressHUD.setDefaultStyle(.custom)
-        SVProgressHUD.setForegroundColor(UIColor.APPColor)
-        SVProgressHUD.setBackgroundColor(UIColor.clear)
         SVProgressHUD.setDefaultMaskType(.black) // 可点击取消
         SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
         //        获取基本数据

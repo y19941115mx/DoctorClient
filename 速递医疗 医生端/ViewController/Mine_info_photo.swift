@@ -107,7 +107,7 @@ class Mine_info_photo: UIViewController,UICollectionViewDataSource, UICollection
                 for i in 0..<count{
                     datas.append(ImageUtil.image2Data(image:imgResource[i]))
                 }
-                NetWorkUtil.init(method: .updatesecondinfo(self.type, datas)).newRequest(handler: { (bean, json) in
+                NetWorkUtil.init(method: .updatesecondinfo(self.type, datas)).newRequest(successhandler: { (bean, json) in
                     showToast(self.view, bean.msg!)
                 })
             }else {

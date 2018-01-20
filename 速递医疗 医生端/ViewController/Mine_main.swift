@@ -36,13 +36,11 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
     
     override func viewDidAppear(_ animated: Bool) {
         // 更新账号审核状态
-        NetWorkUtil.init(method: .getreviewinfo).newRequestWithoutHUD { (bean, json) in
+        NetWorkUtil.init(method: .getreviewinfo).newRequestWithOutHUD(successhandler:  { (bean, json) in
             let data = json["data"]
             let msg = data["typename"].stringValue
             self.typeLabel.text = "\(msg)"
-        }
-        
-        
+        })
     }
     
     //MARK:- action
@@ -71,7 +69,7 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         // 显示选中的图片
         photoImageView.image = selectedImage
         //上传头像
-        NetWorkUtil<BaseAPIBean>.init(method: API.updatepix(ImageUtil.image2Data(image: selectedImage))).newRequest(handler: {bean,json  in
+        NetWorkUtil<BaseAPIBean>.init(method: API.updatepix(ImageUtil.image2Data(image: selectedImage))).newRequest(successhandler: {bean,json  in
             showToast(self.view, bean.msg!)
         })
         // Dismiss the picker.
