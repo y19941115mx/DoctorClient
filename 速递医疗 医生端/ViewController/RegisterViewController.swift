@@ -86,10 +86,9 @@ class RegisterViewController: BaseTextViewController{
         }else{
 //            //1.发送注册请求
             NetWorkUtil.init(method: API.docregister(phoneText, MD5(passwordText), msgCode)).newRequest(successhandler: { (bean, json) in
-                let vc = self.presentingViewController as! LoginViewController
-                vc.tv_phone.text = phoneText
-                self.dismiss(animated: false, completion: nil)
-                showToast(vc.view, bean.msg!)
+                NavigationUtil.setRootViewController(vc: self.LoginVc)
+                self.LoginVc.tv_phone.text = phoneText
+                showToast(self.LoginVc.view, bean.msg!)
                 
             })
 

@@ -65,6 +65,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        APPLICATION.homeMainVc = self
         // 初始化地址数据
         let path = Bundle.main.path(forResource: "address", ofType:"plist")
         self.addressArray = NSArray(contentsOfFile: path!) as! Array
@@ -121,7 +122,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
     override func getData() {
         //刷新数据
         self.selectedPage = 1
-        let Provider = MoyaProvider<API>()
+        let Provider = NetWorkUtil.setRequestTimeout()
         if self.refreshHandler != nil {
             self.refreshHandler!()
         }
@@ -155,7 +156,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
                         }
                         
                     }else {
-                        showToast(self.view, (bean?.msg!)!)
+                        ToastError((bean?.msg!)!)
                     }
                     
                 }catch {
@@ -163,15 +164,14 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
                     if self.data.count == 0{
                         self.showRefreshBtn()
                     }
-                    showToast(self.view,CATCHMSG)
+                    ToastError(CATCHMSG)
                 }
             case let .failure(error):
                 self.header?.endRefreshing()
                 if self.data.count == 0{
                     self.showRefreshBtn()
                 }
-                dPrint(message: "error:\(error)")
-                showToast(self.view, ERRORMSG)
+                ToastError(ERRORMSG)
             }
         }
     }
@@ -181,7 +181,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
         
         //获取更多数据
         getMoreHandler()
-        let Provider = MoyaProvider<API>()
+        let Provider = NetWorkUtil.setRequestTimeout()
         Provider.request(self.getMoreMethod!) { result in
             switch result {
             case let .success(response):
@@ -190,7 +190,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
                     let bean = Mapper<BaseListBean<SickBean>>().map(JSONObject: try response.mapJSON())
                     if bean?.code == 100 {
                         if bean?.dataList?.count == 0 || bean?.dataList == nil{
-                            showToast(self.view, "已经到底了")
+                            self.footer!.endRefreshingWithNoMoreData()
                             return
                         } else {
                             // 保存数据库
@@ -209,36 +209,33 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
                         }
                         
                     }else {
-                        showToast(self.view, (bean?.msg!)!)
+                        ToastError((bean?.msg!)!)
                     }
                 }catch {
                     self.footer?.endRefreshing()
-                    showToast(self.view, CATCHMSG)
+                    ToastError(CATCHMSG)
                 }
             case let .failure(error):
                 self.footer?.endRefreshing()
-                dPrint(message: "error:\(error)")
-                showToast(self.view, ERRORMSG)
+                ToastError(ERRORMSG)
             }
         }
     }
     
     // MARK: - private method
+    //MARK: - 私有方法
     private func loginHuanxin() {
         // 环信登录
         let account = user_default.account.getStringValue()
         let pass = user_default.password.getStringValue()
         
         EMClient.shared().login(withUsername: account!, password: pass, completion: { (name, error) in
-            if error == nil {
-                Toast("环信登录成功")
-                self.updateView()
-            }else {
-                dPrint(message:"环信错误码:\(error?.code.rawValue)")
-                Toast("环信登录失败")
+            if error != nil {
+                // 弹出提示
+                AlertUtil.popAlert(vc: self, msg: "环信服务绑定失败", hasCancel:false, okhandler: {
+                })
             }
         })
-        
         
     }
     

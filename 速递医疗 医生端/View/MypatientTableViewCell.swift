@@ -116,14 +116,15 @@ class MypatientTableViewCell2: UITableViewCell {
                                 for item in mdata! {
                                     docnames.append(item.name!)
                                 }
-//                                AlertUtil.popMenu(vc: self.vc, title: "选择医生", msg: "", btns: docnames, handler: { (str) in
-//                                    let index = docnames.index(of: str)
-//                                    let doc = mdata![index!]
-//                                    NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, doc.docId)).newRequest(successhandler: { (bean, json) in
-//                                        Toast(bean.msg!)
-//                                        self.vc.refreshData()
-//                                    })
-//                                })
+                                AlertUtil.popOptional(optional: docnames, handler: { (str) in
+                                    let index = docnames.index(of: str)
+                                    let doc = mdata![index!]
+                                    NetWorkUtil<BaseAPIBean>.init(method: .refuseorder(self.data!.userorderid, doc.docId)).newRequest(successhandler: { (bean, json) in
+                                        Toast(bean.msg!)
+                                        self.vc.refreshData()
+                                    })
+
+                                })
                             }
                         }
                     })

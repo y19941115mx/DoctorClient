@@ -99,7 +99,7 @@ class Mine_add_hospital: BaseRefreshController<MineLocationBean>, AMapSearchDele
                 btns.append(item.docaddresslocation!)
             }
         }
-        AlertUtil.popMenu(vc: self, title: "选择地点", msg: "", btns: btns) { (str) in
+        AlertUtil.popOptional(optional: btns) { (str) in
             let index = btns.index(of: str)
             let bean = POIS[index!]
             NetWorkUtil.init(method: API.addaddress(bean.docaddresslocation!, bean.docaddressprovince!, bean.docaddresscity!, bean.docaddressarea!, bean.docaddressother!, bean.docaddresslon!, bean.docaddresslat!)).newRequest(successhandler: { (bean, json) in

@@ -24,9 +24,9 @@ target 'DoctorClient' do
     pod 'AMapLocation-NO-IDFA'
     pod 'AMapSearch-NO-IDFA'
     # 环信
-    pod 'Hyphenate'
+    pod 'HyphenateLite'
     # 环信UI
-    pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
+    pod 'EaseUILite', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
     # 日历插件
     pod 'FSCalendar'
     # 时间选择器

@@ -69,14 +69,15 @@ class MyDateTableViewCell: UITableViewCell {
                                         mBtns.append(item.hospname!)
                                     }
                                 }
-                                AlertUtil.popMenu(vc: self.vc!, title: "选择医院", msg: "", btns: mBtns, handler: { (str) in
+
+                                AlertUtil.popOptional(optional: mBtns, handler: { (str) in
                                     let index = mBtns.index(of: str)
                                     let hospital = list![index!]
                                     let id = hospital.hosploginid!
                                     NetWorkUtil.init(method: API.finishorder(self.data!.userorderid, isHospital, id)).newRequest(successhandler: { (bean, json) in
-                                        Toast(bean.msg!)
                                         self.vc?.refreshBtn()
                                     })
+
                                 })
                                 
                             })

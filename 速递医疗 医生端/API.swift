@@ -89,6 +89,7 @@ public enum API {
 }
 // 配置请求
 extension API: TargetType {
+    // MARK: - 设置请求超时时间
     public var baseURL: URL { return URL(string: StaticClass.BaseApi)! }
     public var path: String {
         switch self {

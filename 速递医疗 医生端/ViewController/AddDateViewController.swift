@@ -70,7 +70,7 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
                     for item in self.locMsg! {
                         self.btns.append(item.docaddresslocation!)
                     }
-                    AlertUtil.popMenu(vc: self, title: "选择坐诊地点", msg: "", btns: self.btns, handler: { (str) in
+                    AlertUtil.popOptional(optional: self.btns, handler: { (str) in
                         self.tableInfo[indexPath.section][indexPath.row] = str
                         self.tableView.reloadRows(at: [indexPath], with: .none)
                         self.flag2 = true

@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
     var lat:String = "0"
     var departData = [String:[String]]()
     var tabBarController:UITabBarController?
+    var homeMainVc:Home_main?
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -39,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
         self.setupHuanxin()
         //  本地数据库设置
         DBHelper.setUpDB()
+        //        友盟社交化分享
+        self.setUpUmeng()
         return true
     }
     
@@ -52,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         EMClient.shared().applicationWillEnterForeground(application)
+        APPLICATION.homeMainVc?.updateView()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -173,6 +177,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
             }
         }, failture:{ error in dPrint(message: error)
         })
+    }
+    private func setUpUmeng() {
+        UMSocialManager.default().umSocialAppkey = StaticClass.UmengAPPID
+        
+        /* 微信聊天 */
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wxd97a67a007393b4e", appSecret: "q7uv1349nx0da2pto9cmo8gku3zs6nx9", redirectURL: "http://mobile.umeng.com/social")
+        //        qq
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106152098v", appSecret: "KexLaOiU6VVzxgQb", redirectURL: "http://mobile.umeng.com/social")
+        //        微博
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "1234957746", appSecret: "b3564b393bfcb42672d8e84f084ea550", redirectURL: "https://sns.whalecloud.com/sina2/callback")
+        
     }
     
 }

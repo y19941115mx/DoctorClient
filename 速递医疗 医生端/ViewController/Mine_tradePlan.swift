@@ -60,7 +60,7 @@ class Mine_tradePlan: BaseTableInfoViewController {
                 for item in infos {
                     btns.append(item.docaddresslocation!)
                 }
-                AlertUtil.popMenu(vc: self, title: "设置默认出诊地点", msg: "", btns: btns, handler: { (str) in
+                AlertUtil.popOptional(optional: btns, handler:{ (str) in
                     let index = btns.index(of: str)
                     let addressidid = self.infos[index!].docaddressid
                     NetWorkUtil.init(method: API.setaddress(addressidid)).newRequest(successhandler: { (bean, josn) in

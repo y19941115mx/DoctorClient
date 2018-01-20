@@ -12,7 +12,6 @@ class Mine_info_photo: UIViewController,UICollectionViewDataSource, UICollection
     
 
     @IBOutlet weak var collectionView2: UICollectionView!
-    var imageString:String?
 //    type 1为身份证照片，2为职称照片，3为行医资格证照片，4为工作证照片，5为其他照片
     var type = 0
     var imgResource = [UIImage]()

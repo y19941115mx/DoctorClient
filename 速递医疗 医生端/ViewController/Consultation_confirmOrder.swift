@@ -84,7 +84,7 @@ class Consultation_confirmOrder: BaseTableInfoViewController {
             switch indexPath.row {
             case 0:
                 // 交通类型
-                AlertUtil.popMenu(vc: self, title: "选择交通类型", msg: "", btns: self.popTitle, handler: { (str) in
+                AlertUtil.popOptional(optional: self.popTitle, handler:{ (str) in
                     let index = self.popTitle.index(of: str)
                     self.trafficType = index! + 1
                     self.tableInfo[indexPath.section][indexPath.row] = str
@@ -103,7 +103,7 @@ class Consultation_confirmOrder: BaseTableInfoViewController {
             switch indexPath.row {
             case 0:
                 // 住宿类型
-                AlertUtil.popMenu(vc: self, title: "选择住宿类型", msg: "", btns: self.popTitle, handler: { (str) in
+                AlertUtil.popOptional(optional: self.popTitle, handler: { (str) in
                     let index = self.popTitle.index(of: str)
                     self.hotelType = index! + 1
                     self.tableInfo[indexPath.section][indexPath.row] = str
@@ -122,7 +122,7 @@ class Consultation_confirmOrder: BaseTableInfoViewController {
             switch indexPath.row {
             case 0:
                 // 餐饮类型
-                AlertUtil.popMenu(vc: self, title: "选择餐饮类型", msg: "", btns: self.popTitle, handler: { (str) in
+                AlertUtil.popOptional(optional: self.popTitle, handler:{ (str) in
                     let index = self.popTitle.index(of: str)
                     self.foodType = index! + 1
                     self.tableInfo[indexPath.section][indexPath.row] = str

@@ -14,7 +14,7 @@
         <!--Mine Table View Controller-->
         <scene sceneID="Pxl-4B-tVO">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="UXD-66-MPt" customClass="MineTableViewController" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="UXD-66-MPt" customClass="MineTableViewController" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="8" sectionFooterHeight="1" id="lzV-5O-O2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="468"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,7 +115,7 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isRedPoint" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="我的钱包" id="hsO-lE-oUQ" customClass="RedPointImageView" customModule="速递医疗_医生端" customModuleProvider="target">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="我的钱包" id="hsO-lE-oUQ" customClass="RedPointImageView" customModule="DoctorClient" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="11" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <userDefinedRuntimeAttributes>
@@ -219,7 +219,7 @@
         <!--Mine main-->
         <scene sceneID="NgF-iM-Xpb">
             <objects>
-                <viewController id="mo3-Pq-MLQ" customClass="Mine_main" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mo3-Pq-MLQ" customClass="Mine_main" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="buA-Br-RQC"/>
                         <viewControllerLayoutGuide type="bottom" id="KJI-PP-ICu"/>
@@ -345,7 +345,7 @@
         <!--Mine introduce main-->
         <scene sceneID="8z2-t9-dNC">
             <objects>
-                <viewController id="ulB-bS-9c2" customClass="Mine_introduce_main" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ulB-bS-9c2" customClass="Mine_introduce_main" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aUx-iD-GKR"/>
                         <viewControllerLayoutGuide type="bottom" id="z5N-h1-sfu"/>
@@ -387,7 +387,7 @@
                                     <constraint firstItem="a2s-rM-854" firstAttribute="top" secondItem="Zzd-Zk-Zf5" secondAttribute="top" constant="20" id="Xfw-bG-Vlq"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mgR-ej-wLK" customClass="BaseGropTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mgR-ej-wLK" customClass="BaseGropTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="404"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -451,7 +451,7 @@
         <!--Mine info one-->
         <scene sceneID="EV4-mx-nb0">
             <objects>
-                <viewController id="uMK-G7-q1Q" customClass="Mine_info_one" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uMK-G7-q1Q" customClass="Mine_info_one" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HB4-aA-Hde"/>
                         <viewControllerLayoutGuide type="bottom" id="lmK-lJ-zzT"/>
@@ -537,7 +537,7 @@
                                     <segue destination="zrn-rf-uHE" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="nct-h4-qPf"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bUH-nD-Rre" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bUH-nD-Rre" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="120" width="375" height="268"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -632,7 +632,7 @@
         <!--Mine info two-->
         <scene sceneID="FZQ-kO-xvO">
             <objects>
-                <viewController id="zrn-rf-uHE" customClass="Mine_info_two" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zrn-rf-uHE" customClass="Mine_info_two" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lI4-OW-3nu"/>
                         <viewControllerLayoutGuide type="bottom" id="xae-27-cgg"/>
@@ -681,7 +681,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DZD-g8-0rd" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DZD-g8-0rd" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="98.5" width="375" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -774,7 +774,7 @@
         <!--Mine setting-->
         <scene sceneID="LiX-JX-9Ce">
             <objects>
-                <viewController id="HCc-75-Z0L" customClass="Mine_setting" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HCc-75-Z0L" customClass="Mine_setting" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Adw-43-fKv"/>
                         <viewControllerLayoutGuide type="bottom" id="yf0-V7-dQP"/>
@@ -817,7 +817,7 @@
                                     <constraint firstAttribute="bottom" secondItem="BCw-CB-RzO" secondAttribute="bottom" constant="12" id="qOK-9S-kxl"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="PHI-RF-knz" customClass="BaseGropTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="PHI-RF-knz" customClass="BaseGropTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="404"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -875,7 +875,7 @@
         <!--Mine history Order-->
         <scene sceneID="zVx-Dj-VGr">
             <objects>
-                <viewController id="lHz-jZ-aWp" customClass="Mine_historyOrder" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lHz-jZ-aWp" customClass="Mine_historyOrder" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o5R-mW-sLV"/>
                         <viewControllerLayoutGuide type="bottom" id="Led-kp-W2s"/>
@@ -916,7 +916,7 @@
                                     <constraint firstItem="E2U-mu-yig" firstAttribute="top" secondItem="Crq-3F-Ppv" secondAttribute="top" constant="20" id="h4J-oM-20S"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gqe-WS-meq" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gqe-WS-meq" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="74" width="375" height="394"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -1016,7 +1016,7 @@
         <!--Mine pocket one-->
         <scene sceneID="lcC-Nr-hi3">
             <objects>
-                <viewController id="yCu-Tz-VyS" customClass="Mine_pocket_one" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yCu-Tz-VyS" customClass="Mine_pocket_one" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kqE-6D-4PR"/>
                         <viewControllerLayoutGuide type="bottom" id="eSb-EQ-hV2"/>
@@ -1047,7 +1047,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-ED-1Sz">
-                                        <rect key="frame" x="328" y="25" width="37" height="34"/>
+                                        <rect key="frame" x="328" y="24.5" width="37" height="34"/>
                                         <state key="normal" title="明细"/>
                                         <connections>
                                             <segue destination="7G6-EL-ZSq" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="Hci-2U-f3W"/>
@@ -1093,7 +1093,7 @@
                                     <constraint firstItem="Mcl-Yb-q5f" firstAttribute="leading" secondItem="OPh-Bg-Wka" secondAttribute="leading" constant="20" id="z5p-EY-iob"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dls-My-Ck0" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dls-My-Ck0" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="157.5" width="375" height="310.5"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
@@ -1127,7 +1127,7 @@
         <!--Mine info photo-->
         <scene sceneID="3MU-XG-eLx">
             <objects>
-                <viewController id="lZI-yl-Wdh" customClass="Mine_info_photo" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lZI-yl-Wdh" customClass="Mine_info_photo" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NRa-jH-mCH"/>
                         <viewControllerLayoutGuide type="bottom" id="j2Q-oQ-AmU"/>
@@ -1198,7 +1198,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xq6-iv-JNS">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xq6-iv-JNS">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1260,7 +1260,7 @@
         <!--Edit View Controller-->
         <scene sceneID="wie-OP-Kk2">
             <objects>
-                <viewController storyboardIdentifier="EditSick" id="cEa-yB-2cX" customClass="EditViewController" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditSick" id="cEa-yB-2cX" customClass="EditViewController" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IVd-kA-ity"/>
                         <viewControllerLayoutGuide type="bottom" id="v0O-G9-ViL"/>
@@ -1347,7 +1347,7 @@
         <!--Data Source-->
         <scene sceneID="ea6-Ms-ZCv">
             <objects>
-                <viewController id="1dg-xc-fyh" customClass="SetDateViewController" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1dg-xc-fyh" customClass="SetDateViewController" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="erg-X6-9o3"/>
                         <viewControllerLayoutGuide type="bottom" id="nI5-UH-vqE"/>
@@ -1366,7 +1366,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKp-fT-Z1k">
-                                        <rect key="frame" x="332" y="27" width="33" height="32"/>
+                                        <rect key="frame" x="332" y="26.5" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="添加">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1376,7 +1376,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ml-Xf-oiY">
-                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="ButtonAcion:" destination="1dg-xc-fyh" eventType="touchUpInside" id="cy9-mZ-9h3"/>
@@ -1435,7 +1435,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="E0Q-Ok-vBo" customClass="SetDateCollectionViewCell" customModule="速递医疗_医生端" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="E0Q-Ok-vBo" customClass="SetDateCollectionViewCell" customModule="DoctorClient" customModuleProvider="target">
                                         <rect key="frame" x="37.5" y="0.0" width="300" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1547,7 +1547,7 @@
         <!--Data Source-->
         <scene sceneID="bh1-gv-AbO">
             <objects>
-                <viewController id="1sb-ZE-Pp2" customClass="AddDateViewController" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1sb-ZE-Pp2" customClass="AddDateViewController" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b2T-PF-Nk6"/>
                         <viewControllerLayoutGuide type="bottom" id="to6-gZ-GAW"/>
@@ -1623,7 +1623,7 @@
                                     <outlet property="delegate" destination="1sb-ZE-Pp2" id="Ple-Zz-D2R"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bmM-Rj-TIq" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bmM-Rj-TIq" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="251" width="375" height="187.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1686,7 +1686,7 @@
         <!--Mine msg main-->
         <scene sceneID="Gj4-iS-ib2">
             <objects>
-                <viewController storyboardIdentifier="mineMsg" id="FhE-bD-1ym" customClass="Mine_msg_main" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mineMsg" id="FhE-bD-1ym" customClass="Mine_msg_main" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZFe-BO-Tb1"/>
                         <viewControllerLayoutGuide type="bottom" id="KGW-Bz-bhp"/>
@@ -1721,7 +1721,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title=". . ."/>
                                         <connections>
-                                            <action selector="ListAction:" destination="FhE-bD-1ym" eventType="touchUpInside" id="L55-XM-Mp5"/>
+                                            <segue destination="HKP-Ic-MNZ" kind="popoverPresentation" popoverAnchorView="22E-nA-8ID" id="9ie-hT-1ya">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1737,7 +1739,7 @@
                                     <constraint firstItem="FbS-hS-wt1" firstAttribute="centerX" secondItem="SuB-48-JRu" secondAttribute="centerX" id="tCX-Tl-BTm"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DJw-gs-GHu" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DJw-gs-GHu" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="404"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -1827,7 +1829,7 @@
         <!--Mine pocket two-->
         <scene sceneID="L30-zm-yUt">
             <objects>
-                <viewController id="oBv-YA-wnw" customClass="Mine_pocket_two" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oBv-YA-wnw" customClass="Mine_pocket_two" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kAM-4E-u1f"/>
                         <viewControllerLayoutGuide type="bottom" id="z8U-Fd-NI3"/>
@@ -1912,7 +1914,7 @@
         <!--Mine add hospital-->
         <scene sceneID="6Ow-bG-79U">
             <objects>
-                <viewController id="8K8-jk-1y1" customClass="Mine_add_hospital" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8K8-jk-1y1" customClass="Mine_add_hospital" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="br9-yE-jKp"/>
                         <viewControllerLayoutGuide type="bottom" id="Ucv-fw-jTT"/>
@@ -1931,7 +1933,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRZ-LQ-5Lf">
-                                        <rect key="frame" x="332" y="27" width="33" height="32"/>
+                                        <rect key="frame" x="332" y="26.5" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="添加">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1941,7 +1943,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSk-uj-aNK">
-                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="backAcion:" destination="8K8-jk-1y1" eventType="touchUpInside" id="Uhn-WA-qNr"/>
@@ -1960,7 +1962,7 @@
                                     <constraint firstAttribute="bottom" secondItem="ZlP-qJ-fp3" secondAttribute="bottom" constant="12" id="vUn-Cb-dBK"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lPu-GH-uow" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lPu-GH-uow" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -1992,7 +1994,7 @@
         <!--Mine trade Plan-->
         <scene sceneID="pxR-i3-GZI">
             <objects>
-                <viewController id="ZPX-Kz-aam" customClass="Mine_tradePlan" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZPX-Kz-aam" customClass="Mine_tradePlan" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mhW-Oz-3XI"/>
                         <viewControllerLayoutGuide type="bottom" id="m9K-YW-5XJ"/>
@@ -2034,7 +2036,7 @@
                                     <constraint firstItem="ein-yS-Mks" firstAttribute="top" secondItem="lcU-4W-bWP" secondAttribute="top" constant="32" id="xqI-BF-y97"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mBe-QO-f1J" customClass="BaseGropTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mBe-QO-f1J" customClass="BaseGropTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="404"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <sections/>
@@ -2069,7 +2071,7 @@
         <!--Mine balance-->
         <scene sceneID="vzp-Cb-uaJ">
             <objects>
-                <viewController id="7G6-EL-ZSq" customClass="Mine_balance" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7G6-EL-ZSq" customClass="Mine_balance" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qPO-Qh-ZCt"/>
                         <viewControllerLayoutGuide type="bottom" id="is4-CP-YZj"/>
@@ -2110,7 +2112,7 @@
                                     <constraint firstAttribute="height" constant="64" id="yMw-iN-EwN"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KXS-bb-5hc" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KXS-bb-5hc" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="404"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -2193,7 +2195,7 @@
         <!--Add Time View Controller-->
         <scene sceneID="Od3-9p-nVU">
             <objects>
-                <viewController storyboardIdentifier="addDate" id="mkd-YN-Adb" customClass="AddTimeViewController" customModule="速递医疗_医生端" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addDate" id="mkd-YN-Adb" customClass="AddTimeViewController" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oU0-NG-u2V"/>
                         <viewControllerLayoutGuide type="bottom" id="WgM-Fr-ds1"/>
@@ -2247,7 +2249,7 @@
                                     <constraint firstItem="v6B-uO-lmU" firstAttribute="centerX" secondItem="bS8-GZ-79s" secondAttribute="centerX" id="wCr-fw-bvT"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PLM-6J-4Yq" customClass="BaseTableView" customModule="速递医疗_医生端" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PLM-6J-4Yq" customClass="BaseTableView" customModule="DoctorClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <sections/>
@@ -2272,6 +2274,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ae-W3-bP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-94" y="-679"/>
+        </scene>
+        <!--Info Vc-->
+        <scene sceneID="y9I-aa-d3Z">
+            <objects>
+                <tableViewController id="HKP-Ic-MNZ" customClass="infoVc" customModule="DoctorClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ebf-SU-GMg">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="aOJ-Ln-JrQ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="ahH-6F-f85" style="IBUITableViewCellStyleDefault" id="Lqa-0m-Cg5">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lqa-0m-Cg5" id="Mm4-zw-hoE">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="全部已读" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ahH-6F-f85">
+                                                    <rect key="frame" x="16" y="0.0" width="118" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="uSt-at-z70" style="IBUITableViewCellStyleDefault" id="9pS-GF-c7h">
+                                        <rect key="frame" x="0.0" y="44" width="150" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9pS-GF-c7h" id="sAJ-QW-z9p">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="全部删除" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uSt-at-z70">
+                                                    <rect key="frame" x="16" y="0.0" width="118" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="HKP-Ic-MNZ" id="VsM-Vz-vEm"/>
+                            <outlet property="delegate" destination="HKP-Ic-MNZ" id="fwA-Rf-ip9"/>
+                        </connections>
+                    </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="150" height="100"/>
+                    <size key="freeformSize" width="150" height="100"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nc2-p2-imH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2254" y="-3791"/>
         </scene>
     </scenes>
     <resources>

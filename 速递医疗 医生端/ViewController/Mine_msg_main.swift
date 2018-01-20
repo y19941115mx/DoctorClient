@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSource, UITableViewDelegate {
+class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var ReadFlag: UIView!
     
@@ -68,6 +68,7 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
                 
             }
         }
+        
     }
     
     
@@ -83,40 +84,70 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func BackAcion(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let popoverViewController = segue.destination as? infoVc {
+            popoverViewController.popoverPresentationController!.delegate = self
+            popoverViewController.vc = self
+            popoverViewController.data = self.data
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+}
+
+class infoVc:UITableViewController {
+    
+    var vc:Mine_msg_main!
+    var data:[NotificationBean]!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.separatorStyle = .none
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            self.readAllMsgAction()
+        }else if indexPath.row == 1{
+            self.cleanMsgAction()
+        }
+    }
+    
+    private func readAllMsgAction() {
+        self.dismiss(animated: false, completion: nil)
+        for item in data {
+            item.notificationread = true
+        }
+        self.vc.tableView.reloadData()
+        NetWorkUtil.init(method: .updateallnotificationtoread).newRequestWithOutHUD(successhandler: { (bean, json) in
+            if bean.code == 100 {
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            }else {
+                ToastError(bean.msg!)
+            }
+        })
+    }
+    
     private func cleanMsgAction() {
+        self.dismiss(animated: false, completion: nil)
         AlertUtil.popAlert(vc: self, msg: "确认删除所有通知", okhandler: {
             NetWorkUtil.init(method: .deleteallreceivenotification).newRequest(successhandler: { (bean, json) in
-                    UIApplication.shared.applicationIconBadgeNumber = 0
-                    self.refreshBtn()
+                showToast(self.view, bean.msg!)
+                UIApplication.shared.applicationIconBadgeNumber = 0
+                self.vc.refreshBtn()
             })
         })
     }
     
-    private func readAllMsgAction() {
-        for item in data {
-            item.notificationread = true
-        }
-        tableView.reloadData()
-        NetWorkUtil.init(method: .updateallnotificationtoread).newRequestWithOutHUD(successhandler: { (bean, json) in
-            
-                UIApplication.shared.applicationIconBadgeNumber = 0
-        })
-    }
-    
-    // 弹出操作对话框
-    @IBAction func ListAction(_ sender: Any) {
-        AlertUtil.popMenu(vc: self, title: "操作", msg: "", btns: ["全部已读", "全部删除"]) { (str) in
-            if str == "全部已读" {
-                self.readAllMsgAction()
-            }else {
-                self.cleanMsgAction()
-            }
-        }
-        
-    }
-    @IBAction func BackAcion(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
-    }
     
 }
 

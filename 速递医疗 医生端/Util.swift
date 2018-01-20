@@ -37,6 +37,7 @@ struct StaticClass {
     static let HuanxinAppkey = "1133171107115421#medicalclient"
     static let BuglyAPPID = "4ec5df48d6"
     static let ShareSDKAPPKey = "2336f7199e004"
+    static let UmengAPPID = "5a630b9e8f4a9d2b7e0000e0"
 }
 //日志打印
 public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #function,lineNumber:Int = #line){
@@ -84,8 +85,21 @@ class NetWorkUtil<T:BaseAPIBean> {
         }
     }
     
+    class func setRequestTimeout() -> MoyaProvider<API> {
+        let requestClosure = { (endpoint: Endpoint<API>, done: @escaping MoyaProvider<API>.RequestResultClosure) in
+            do {
+                var request = try endpoint.urlRequest()
+                request.timeoutInterval = 5   //设置请求超时时间
+                done(.success(request))
+            }catch {
+                ToastError(ERRORMSG)
+            }
+        }
+        return  MoyaProvider<API>(requestClosure: requestClosure)
+    }
+    
     func newRequest(successhandler:((_ bean:T, _ JSONObj:JSON) -> Void)?,failhandler:((_ bean:T, _ JSONObj:JSON) -> Void)? = nil ) {
-        let Provider = MoyaProvider<API>()
+        let Provider = NetWorkUtil.setRequestTimeout()
         SVProgressHUD.show()
         Provider.request(method!) { result in
             switch result {
@@ -121,7 +135,7 @@ class NetWorkUtil<T:BaseAPIBean> {
     }
     
     func newRequestWithOutHUD(successhandler:((_ bean:T, _ JSONObj:JSON) -> Void)? ,failhandler:((_ bean:T, _ JSONObj:JSON) -> Void)? = nil) {
-        let Provider = MoyaProvider<API>()
+        let Provider = NetWorkUtil.setRequestTimeout()
         Provider.request(method!) { result in
             switch result {
             case let .success(response):
@@ -138,17 +152,17 @@ class NetWorkUtil<T:BaseAPIBean> {
                             if failhandler != nil {
                                 failhandler!(bean, json)
                             }else {
-                                ToastError(bean.msg!)
+//                                ToastError(bean.msg!)
                             }
                         }
                     }
                 }catch {
                     dPrint(message: "response:\(response)")
-                    ToastError(CATCHMSG)
+//                    ToastError(CATCHMSG)
                 }
             case let .failure(error):
                 dPrint(message: "error:\(error)")
-                ToastError(ERRORMSG)
+//                ToastError(ERRORMSG)
             }
         }
     }
@@ -213,6 +227,7 @@ enum user_default:String {
     
     //UserDefaults 清空数据
     static func clearUserDefault(){
+        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.removeObject(forKey: "typename")
         UserDefaults.standard.removeObject(forKey: "pix")
         UserDefaults.standard.removeObject(forKey: "token")
@@ -258,7 +273,7 @@ class AlertUtil: NSObject {
                 handler(array![0].title)
             })
         }
-        LEEAlert.alert().config.leeTitle("测试")!.leeItemInsets(UIEdgeInsets.init(top: 20, left: 0, bottom: 20, right: 0))!.leeCustomView(view)!.leeItemInsets(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0))!.leeHeaderInsets(UIEdgeInsets.init(top: 10, left: 0, bottom: 0, right: 0))!.leeClickBackgroundClose(true)!.leeShow()
+        LEEAlert.alert().config.leeTitle("请选择")!.leeItemInsets(UIEdgeInsets.init(top: 20, left: 0, bottom: 20, right: 0))!.leeCustomView(view)!.leeItemInsets(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0))!.leeHeaderInsets(UIEdgeInsets.init(top: 10, left: 0, bottom: 0, right: 0))!.leeClickBackgroundClose(true)!.leeShow()
     }
     
     /**
@@ -287,20 +302,24 @@ class AlertUtil: NSObject {
         vc.present(alertController, animated: true, completion: nil)
     }
     
-    class func popAlert(vc:UIViewController, msg:String, okhandler: @escaping ()->())
+    class func popAlert(vc:UIViewController, msg:String,hasCancel:Bool = true,okhandler: @escaping ()->())
     {
         // 弹出提示框
         let alertController = UIAlertController(title: "提示",
                                                 message: msg, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        if hasCancel {
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+        }
         let okAction = UIAlertAction(title: "确认", style: .default, handler: {
             action in
             okhandler()
         })
-        alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         vc.present(alertController, animated: true, completion: nil)
     }
+    
+    
     class func popAlertWithDelAction(vc:UIViewController, msg:String, oktitle:String,deltitle:String,okhandler: @escaping ()->(), delhandler: @escaping ()->())
     {
         // 弹出提示框

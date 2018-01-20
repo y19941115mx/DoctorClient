@@ -18,7 +18,6 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var tableView: BaseTableView!
-//    var tableData:[Any] = ["请输入真实的中文姓名","请选择昵称","请输入真实的身份证号","请选择性别","请输入年龄","请输入常驻医院", "请选择医院级别", "请选择所属科室", false]
     var tableData:[Any] = ["","","","","","", "", "", false]
     // 科室信息
     var proIndex:Int = 0
@@ -89,7 +88,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
             })
         case 1:
-            AlertUtil.popMenu(vc: self, title: "选择职称", msg: "", btns: ["助理医师", "执业医师","主治医师", "副主任医师", "主任医师"], handler: { (str) in
+            AlertUtil.popOptional(optional: ["助理医师", "执业医师","主治医师", "副主任医师", "主任医师"], handler: { (str) in
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -105,7 +104,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 }
             })
         case 3:
-            AlertUtil.popMenu(vc: self, title: "选择职称", msg: "", btns: ["男", "女"], handler: { (str) in
+            AlertUtil.popOptional(optional: ["男", "女"], handler: { (str) in
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -132,7 +131,7 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 }
             })
         case 6:
-            AlertUtil.popMenu(vc: self, title: "选择医院级别", msg: "", btns: ["一级甲等", "一级乙等","一级丙等","二级甲等","二级乙等","二级丙等","三级甲等","三级乙等","三级丙等"], handler: { (str) in
+            AlertUtil.popOptional(optional: ["一级甲等", "一级乙等","一级丙等","二级甲等","二级乙等","二级丙等","三级甲等","三级乙等","三级丙等"], handler: { (str) in
                 self.tableData[indexPath.row] = str
                 tableView.reloadRows(at: [indexPath], with: .none)
             })
@@ -208,25 +207,8 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.viewDidLoad()
         nextBtn.setBackgroundImage(ImageUtil.color2img(color: UIColor.APPGrey), for: .disabled)
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // 初始化POI
-        search = AMapSearchAPI()
-        search.delegate = self
-        let msg = user_default.typename.getStringValue()
-        if msg == "审核中" || msg == "已审核" {
-            saveBtn.isHidden = true
-            self.tableView.allowsSelection = false
-        }else {
-            saveBtn.isHidden = false
-            self.tableView.allowsSelection = true
-        }
-        
         // 加载数据
         NetWorkUtil.init(method: .getfirstinfo).newRequest(successhandler: { (bean, json) in
-            Toast(bean.msg!)
             let data = json["data"]
             if data != JSON.null {
                 let name = data["docname"].stringValue
@@ -252,6 +234,23 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 初始化POI
+        search = AMapSearchAPI()
+        search.delegate = self
+        let msg = user_default.typename.getStringValue()
+        if msg == "等待审核" || msg == "已审核" {
+            saveBtn.isHidden = true
+            self.tableView.allowsSelection = false
+        }else {
+            saveBtn.isHidden = false
+            self.tableView.allowsSelection = true
+        }
+        
+        
         
     }
     
@@ -350,7 +349,8 @@ class Mine_info_one: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 btns.append(item.docaddresslocation!)
             }
         }
-        AlertUtil.popMenu(vc: self, title: "选择医院", msg: "", btns: btns) { (str) in
+
+        AlertUtil.popOptional(optional:btns) { (str) in
             let index = btns.index(of: str)
             self.bean = POIS[index!]
             self.tableData[5] = (self.bean?.docaddresslocation)!
