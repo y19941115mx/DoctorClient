@@ -34,6 +34,7 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
             label_info.text = "已上传"
         }
         label_title.text = title
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -65,21 +66,21 @@ class Mine_info_two: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditPhoto" {
-            let row = self.tableView.indexPathForSelectedRow?.row
-            let string = self.tableData[row!]
-            let vc = segue.destination as! Mine_info_photo
-            vc.type = row! + 1
-            if string != "" {
-                var images = [UIImage]()
-                for str in StringUTil.splitImage(str: string) {
-                    images.append(ImageUtil.URLToImg(url: URL.init(string: str)!))
-                }
-                vc.imgResource = images
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pixString = self.tableData[indexPath.row]
+        if let vc = UIStoryboard.init(name: "Mine", bundle: nil).instantiateViewController(withIdentifier: "editPhoto")
+            as? Mine_info_photo {
+            if pixString != "" {
+                vc.imgString = pixString
             }
+            vc.type = indexPath.row + 1
+            self.present(vc, animated:false, completion: nil)
+        }else {
+            ToastError("暂时无法点击")
         }
+        
     }
+    
     
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)

@@ -8,28 +8,47 @@
 
 import UIKit
 
-class Mine_info_photo: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-
+class Mine_info_photo: BasePickImgViewController,UICollectionViewDataSource, UICollectionViewDelegate{
+    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var collectionView2: UICollectionView!
+    
+    var imgResource = [UIImage]()
+    let Title = ["身份证照片","职称照片", "行医资格证照片","工作证照片","其他照片"]
 //    type 1为身份证照片，2为职称照片，3为行医资格证照片，4为工作证照片，5为其他照片
     var type = 0
-    var imgResource = [UIImage]()
-    let Title = ["身份证照片", "工作证照片","行医资格证照片","职称照片","其他照片"]
-    
-    @IBOutlet weak var label: UILabel!
+    var imgString = ""
     
     
-    
-    @IBAction func addPicture(_ sender: UIButton) {
-        AlertUtil.popMenu(vc: self, title: "请选择", msg: "", btns: ["从图库选择", "拍照"]) { (str) in
-            if str == "拍照" {
-                self.pickImage(1)
-            }else {
-                self.pickImage(0)
+    // Mark: - ViewController
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        label.text = "请上传\(Title[self.type - 1])"
+        handler = {selectedImage in
+            self.imgResource.append(selectedImage)
+            // 显示选中的图片
+            self.collectionView2.reloadData()
+        }
+        for str in StringUTil.splitImage(str: imgString) {
+            if str != "" {
+                self.imgResource.append(ImageUtil.URLToImg(url: URL.init(string: str)!))
             }
         }
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        for str in StringUTil.splitImage(str: imgString) {
+//            if str != "" {
+//                self.imgResource.append(ImageUtil.URLToImg(url: URL.init(string: str)!))
+//            }
+//        }
+//        if imgResource.count != 0 {
+//            self.collectionView2.reloadData()
+//        }
+//    }
+    
+    
+
     
     // MARK: - UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -51,47 +70,10 @@ class Mine_info_photo: UIViewController,UICollectionViewDataSource, UICollection
         }
     }
     
-    // MARK: - pickImage
     
-    @IBAction func pickImage(_ type: Int) {
-        let imagePickerController = UIImagePickerController()
-        
-        // Only allow photos to be picked, not taken.
-        if type == 0{
-            imagePickerController.sourceType = .photoLibrary
-        }else {
-            imagePickerController.sourceType = .camera
-        }
-        
-        // Make sure ViewController is notified when the user picks an image.
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-        
-    }
-    
-    //MARK:- UIImagePickerControllerDelegate
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
-        // Dismiss the picker if the user canceled.
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
-        imgResource.append(selectedImage)
-        // 显示选中的图片
-        collectionView2.reloadData()
-        // Dismiss the picker.
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        label.text = "请上传\(Title[self.type - 1])"
+    // MARK: - acion
+    @IBAction func addPicture(_ sender: UIButton) {
+        updatePicture()
     }
 
    
