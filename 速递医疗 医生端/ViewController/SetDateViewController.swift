@@ -38,7 +38,7 @@ class SetDateViewController: BaseViewController, UITableViewDelegate,UITableView
         timelabel.text = data.doccalendartime
         interLabel.text = data.doccalendartimeinterval
         localLabel.text =  data.docaddresslocation
-        priceLabel.text = "\(data.doccalendarprice)"
+        priceLabel.text = "出诊价格：\(data.doccalendarprice)元"
         return cell
     }
     
