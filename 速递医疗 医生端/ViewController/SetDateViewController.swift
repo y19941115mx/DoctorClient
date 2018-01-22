@@ -17,6 +17,7 @@ class SetDateViewController: BaseViewController, UITableViewDelegate,UITableView
     var tableTitle = ""
     
     
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.tableTitle
     }
@@ -39,6 +40,9 @@ class SetDateViewController: BaseViewController, UITableViewDelegate,UITableView
         interLabel.text = data.doccalendartimeinterval
         localLabel.text =  data.docaddresslocation
         priceLabel.text = "出诊价格：\(data.doccalendarprice)元"
+        let longPressGR = UILongPressGestureRecognizer.init(target: self, action: #selector(SetDateViewController.delAction(_:)))
+        longPressGR.minimumPressDuration = 1
+        cell.addGestureRecognizer(longPressGR)
         return cell
     }
     
@@ -71,6 +75,24 @@ class SetDateViewController: BaseViewController, UITableViewDelegate,UITableView
         if sender.tag == 666 {
             self.dismiss(animated: false, completion: nil)
         }
+    }
+    
+    // 长按删除
+    @objc func delAction(_ sender: UILongPressGestureRecognizer) {
+        let touchPoint = sender.location(in: self.tableVIew)
+        if sender.state == .began {
+            let indexPath = self.tableVIew.indexPathForRow(at: touchPoint)
+            let bean = currentDate[indexPath!.row]
+            AlertUtil.popAlert(vc: self, msg: "确定删除病情"){
+                NetWorkUtil.init(method: .deletecalendar(bean.doccalendarid)).newRequestWithOutHUD(successhandler:{ (bean, json) in
+                    self.currentDate.remove(at: indexPath!.row)
+                    self.tableVIew.reloadData()
+                    self.setupCalendar()
+                })
+            }
+        }
+        
+        
     }
     
     
@@ -234,6 +256,9 @@ class EditDateViewController:BaseTableInfoViewController, PGDatePickerDelegate {
             self.dismiss(animated: false, completion: nil)
         })
     }
+    
+    
+
     
     @objc func clickBack() {
         self.dismiss(animated: false, completion: nil)

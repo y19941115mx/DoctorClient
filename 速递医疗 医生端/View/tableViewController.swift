@@ -11,6 +11,7 @@ import UIKit
 class MineTableViewController: UITableViewController {
     
     @IBOutlet weak var pocketimgView: RedPointImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsetsMake(-35+8, 0, 0, 0)
@@ -23,7 +24,6 @@ class MineTableViewController: UITableViewController {
             let str = data["alipayaccount"].stringValue
             
             self.pocketimgView.isRedPoint = ( str == "" )
-            
         })
     }
     
