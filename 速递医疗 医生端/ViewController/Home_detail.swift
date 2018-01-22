@@ -34,6 +34,7 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.APPGrey
         imageLayout.delegate = self
         imageLayout.dataSource = self
         imageLayout.showsVerticalScrollIndicator = true
@@ -52,19 +53,21 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
                 self.patientNameText = sick.familyname
                 self.patientName.text = self.patientNameText
                 self.sexLabel.text = sick.familymale
-                self.ageLabel.text = "\(sick.familyage)"
+                self.ageLabel.text = "\(sick.familyage)岁"
                 self.deptLabel.text = "\(sick.usersickprimarydept ?? "") \(sick.usersickseconddept ?? "")"
                 self.timeLabel.text =  sick.usersickptime
                 if sick.usersickdesc == nil {
                     sick.usersickdesc = ""
                 }
-                self.describeLabel.text = sick.usersickdesc!
+                self.describeLabel.text = "病情描述：\(sick.usersickdesc!)"
+                let descHeightConstant = self.describeLabel.frame.size.height - 15
                 if sick.usersickpic != nil &&  sick.usersickpic != ""{
                     self.picArray = StringUTil.splitImage(str: sick.usersickpic!)
+                    self.height.constant += descHeightConstant + 5 
                     self.imageLayout.reloadData()
                 } else {
                     self.imageLayout.isHidden = true
-                    self.height.constant -= 100
+                    self.height.constant = self.height.constant - 100 + descHeightConstant
                 }
                 ImageUtil.setAvator(path: sick.userloginpix!, imageView: self.pixImgView)
                 
