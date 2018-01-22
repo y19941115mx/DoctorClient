@@ -65,6 +65,9 @@ public enum API {
     
     case deletecalendar(Int)  // 删除坐诊计划
     case getcalendar(Int) // 获取日程表
+    case editcalendar(Int, Int, Double, String,String,String)   //修改日程
+    
+
     
     case listhistoryorder(Int) // 获取历史订单
     case getbalance //获取我的钱包
@@ -215,6 +218,8 @@ extension API: TargetType {
             return "/getcalendarbymonth"
         case .addfeedback:
             return "/addfeedback"
+        case .editcalendar:
+            return "/editcalendar"
         }
     }
     public var method: Moya.Method {
@@ -362,6 +367,8 @@ extension API: TargetType {
             
         case .addfeedback(let str):
             return .requestParameters(parameters: ["type":4, "feedbackidea":str], encoding: URLEncoding.default)
+        case .editcalendar(let id, let addressId, let price, let day, let time, let str):
+            return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "doccalendarid":id, "doccalendaradressid":addressId, "doccalendarprice":price, "doccalendarday":day, "doccalendartimeinterval":time, "doccalendaraffair":str], encoding: URLEncoding.default)
         }
     }
     

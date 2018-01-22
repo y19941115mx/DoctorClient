@@ -14,9 +14,10 @@ class Mine_setting: BaseTableInfoViewController{
     @IBOutlet weak var tableView: UITableView!
     
     lazy var messageObject:UMSocialMessageObject = {
-        let shareObject = UMShareWebpageObject.shareObject(withTitle: "速运医疗", descr: "为更多的病人服务，不再让病人为挂号而苦恼。", thumImage: #imageLiteral(resourceName: "applogo"))
+        let shareObject = UMShareWebpageObject.shareObject(withTitle: "速递医运", descr: "为更多的病人服务，不再让病人为挂号而苦恼。", thumImage: #imageLiteral(resourceName: "applogo"))
         //设置网页地址
-        shareObject?.webpageUrl = "\(StaticClass.ShareURL)?docloginid=\(user_default.userId.getStringValue() ?? "")"
+//        shareObject?.webpageUrl = "\(StaticClass.ShareURL)?docloginid=\(user_default.userId.getStringValue() ?? "")"
+        shareObject?.webpageUrl = "http://www.dsdoc120.com/"
         
         //创建分享消息对象
         let messageObject = UMSocialMessageObject()

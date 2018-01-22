@@ -397,13 +397,13 @@ class MineLocationBean:Mappable {
 class MineCalendarBean:Mappable {
     var doccalendarid = 0
     var doccalendaradressid = 0
-    var docaddresslocation:String?
-    var doccalendarday:String?
-    var doccalendaraffair:String?
-    var doccalendartime:String?
+    var docaddresslocation:String = ""
+    var doccalendarday:String = ""
+    var doccalendaraffair:String = ""
+    var doccalendartime:String = ""
     
-    var doccalendartimeinterval:String?
-    var doccalendarprice:Double?
+    var doccalendartimeinterval:String = ""
+    var doccalendarprice:Double = 0.0
     
     
     required init?(map: Map) {
