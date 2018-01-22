@@ -31,6 +31,7 @@ struct StaticClass {
     static let RootIP = "http://118.89.172.204:6221"
     //    static let RootIP = "http://120.77.32.15:8080"
     static let BaseApi = RootIP + "/internetmedical/doctor"
+    static let BaseCommonAPI = RootIP + "/internetmedical/common"
     static let GetDept = RootIP + "/internetmedical/doctor/getdept"
     static let GaodeAPIKfey = "dc63bec745429fca2107bdd7e57f7e3c"
     static let TuisongAPIKey = "uf3RsBMfrhLyZhD4G5GPrTxQa2huBIIS"
@@ -38,6 +39,7 @@ struct StaticClass {
     static let BuglyAPPID = "4ec5df48d6"
     static let ShareSDKAPPKey = "2336f7199e004"
     static let UmengAPPID = "5a630b9e8f4a9d2b7e0000e0"
+    static let ShareURL = "118.89.172.204:6221/SystemManage/Doctor/schedule.action"
 }
 //日志打印
 public func dPrint<N>(message:N,fileName:String = #file,methodName:String = #function,lineNumber:Int = #line){

@@ -71,6 +71,7 @@
 		8491F3101FDCE5350061702C /* Mine_pocket_two.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F30F1FDCE5350061702C /* Mine_pocket_two.swift */; };
 		8491F3121FDCF04B0061702C /* Mine_msg_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F3111FDCF04B0061702C /* Mine_msg_main.swift */; };
 		8496F8081FE60C3F0038D39E /* address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8496F8071FE60C3F0038D39E /* address.plist */; };
+		84B69374201591ED0000F316 /* TriLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B69373201591EC0000F316 /* TriLabelView.swift */; };
 		84B730881FD4CBD3004A36B9 /* HomeMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */; };
 		84B8EDEA1FDFAA5700E27B41 /* ConsultationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EDE81FDFAA5700E27B41 /* ConsultationTableViewCell.swift */; };
 		84B8EDEB1FDFAA5700E27B41 /* ConsultationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B8EDE91FDFAA5700E27B41 /* ConsultationTableViewCell.xib */; };
@@ -170,6 +171,7 @@
 		8491F3111FDCF04B0061702C /* Mine_msg_main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine_msg_main.swift; sourceTree = "<group>"; };
 		8496F8071FE60C3F0038D39E /* address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = address.plist; sourceTree = "<group>"; };
 		849CC0871FD179B20090D6B8 /* 速递医疗 医生端.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "速递医疗 医生端.entitlements"; sourceTree = "<group>"; };
+		84B69373201591EC0000F316 /* TriLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriLabelView.swift; sourceTree = "<group>"; };
 		84B730871FD4CBD3004A36B9 /* HomeMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainTableViewCell.swift; sourceTree = "<group>"; };
 		84B8EDE81FDFAA5700E27B41 /* ConsultationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationTableViewCell.swift; sourceTree = "<group>"; };
 		84B8EDE91FDFAA5700E27B41 /* ConsultationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsultationTableViewCell.xib; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				8491F3061FDC26DD0061702C /* MinePocketCollectionViewCell.xib */,
 				8491F3091FDCE08B0061702C /* InfoTableViewCell.swift */,
 				8491F30A1FDCE08B0061702C /* InfoTableViewCell.xib */,
+				84B69373201591EC0000F316 /* TriLabelView.swift */,
 				84B8EDE81FDFAA5700E27B41 /* ConsultationTableViewCell.swift */,
 				84B8EDE91FDFAA5700E27B41 /* ConsultationTableViewCell.xib */,
 				84B8EDEC1FDFB61B00E27B41 /* MyDateTableViewCell.swift */,
@@ -676,6 +679,7 @@
 				84B8EDFE1FE0087600E27B41 /* MineAddHospitalTableViewCell.swift in Sources */,
 				84B8EE031FE0162200E27B41 /* Mine_add_hospital.swift in Sources */,
 				84BB03B41FB2A673006FBCAF /* BaseAPIBean.swift in Sources */,
+				84B69374201591ED0000F316 /* TriLabelView.swift in Sources */,
 				84BB03C11FB2A8F2006FBCAF /* XLSlideSegmented.m in Sources */,
 				84B8EDF71FDFF1E400E27B41 /* Consultation_page.swift in Sources */,
 				8406475F1FA6A49D009B21C4 /* MainViewController.swift in Sources */,

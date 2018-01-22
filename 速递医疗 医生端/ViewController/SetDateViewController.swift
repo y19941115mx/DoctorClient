@@ -10,9 +10,36 @@ import UIKit
 import SnapKit
 import FSCalendar
 
-class SetDateViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,FSCalendarDelegate, FSCalendarDataSource {
+class SetDateViewController: BaseViewController, UITableViewDelegate,UITableViewDataSource,FSCalendarDelegate, FSCalendarDataSource {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableVIew: BaseTableView!
+    var tableTitle = ""
+    
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.tableTitle
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentDate.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let data = currentDate[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.selectionStyle = .none
+        let timelabel = cell.viewWithTag(1) as! UILabel
+        let interLabel = cell.viewWithTag(2) as! UILabel
+        let descLabel = cell.viewWithTag(4) as! UILabel
+        let localLabel = cell.viewWithTag(3) as! UILabel
+        descLabel.text = data.doccalendaraffair ?? ""
+        timelabel.text = data.doccalendartime ?? ""
+        interLabel.text = data.doccalendartimeinterval ?? ""
+        localLabel.text =  data.docaddresslocation ?? ""
+        return cell
+    }
+    
+    
     
     @IBOutlet weak var calendar: FSCalendar!
     
@@ -26,27 +53,16 @@ class SetDateViewController: BaseViewController, UICollectionViewDataSource, UIC
     }
     
     
+    
+    
+    
     @IBAction func ButtonAcion(_ sender: UIButton) {
         if sender.tag == 666 {
             self.dismiss(animated: false, completion: nil)
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currentDate.count
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SetDateCollectionViewCell
-        cell.updateView(data: currentDate[indexPath.row], vc:self)
-        return cell
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: SCREEN_WIDTH - 20, height: 100)
-    }
-    
-    
+
     //MARK: - 日历相关
     
     private func setupCalendar() {
@@ -82,11 +98,13 @@ class SetDateViewController: BaseViewController, UICollectionViewDataSource, UIC
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
         let res = StringUTil.DateToString(date, formatter)
+        formatter.dateFormat = "YYYY年MM月dd日"
+        self.tableTitle = StringUTil.DateToString(date, formatter)
         for item in dates {
             if res == item.doccalendarday! {
                 self.currentDate.append(item)
             }
         }
-        self.collectionView.reloadData()
+        self.tableVIew.reloadData()
     }
 }

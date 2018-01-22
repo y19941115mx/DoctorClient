@@ -27,9 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
         // bugly 配置
         Bugly.start(withAppId: StaticClass.BuglyAPPID)
         //        进度条设置
-        SVProgressHUD.setDefaultStyle(.custom)
-        SVProgressHUD.setDefaultMaskType(.black) // 可点击取消
-        SVProgressHUD.setDefaultAnimationType(.native) // 设置样式 圆圈的转动动作 另一个是菊花
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultMaskType(.clear)
+        SVProgressHUD.setDefaultAnimationType(.native)
         //        获取基本数据
         self.initData()
         //      高德地图设置
@@ -184,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
         /* 微信聊天 */
         UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wxd97a67a007393b4e", appSecret: "q7uv1349nx0da2pto9cmo8gku3zs6nx9", redirectURL: "http://mobile.umeng.com/social")
         //        qq
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106152098v", appSecret: "KexLaOiU6VVzxgQb", redirectURL: "http://mobile.umeng.com/social")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106692422", appSecret: "2ekX4LCWlRqbqa9C", redirectURL: "http://mobile.umeng.com/social")
         //        微博
         UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "1234957746", appSecret: "b3564b393bfcb42672d8e84f084ea550", redirectURL: "https://sns.whalecloud.com/sina2/callback")
         

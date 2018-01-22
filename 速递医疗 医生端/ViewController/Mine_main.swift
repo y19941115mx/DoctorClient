@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 
@@ -15,11 +16,35 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var careerLable: UILabel!
 
-    @IBOutlet weak var typeLabel: UILabel!
 
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
 
+    
+    @IBOutlet weak var titleView: UIView!
+    var msg:String = ""
+    // 审核状态label
+    lazy var stateLabelView:TriLabelView = {
+        let triLabelView = TriLabelView()
+        triLabelView.position = .BottomRight
+        triLabelView.labelText = "审核中"
+        triLabelView.viewColor = UIColor.orange
+        triLabelView.textColor = UIColor.white
+        triLabelView.labelFont = UIFont.systemFont(ofSize: 12)
+        triLabelView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer.init(target: self, action: #selector(Mine_main.click_state_label))
+        triLabelView.addGestureRecognizer(gesture)
+        titleView.addSubview(triLabelView)
+        triLabelView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(120)
+            make.width.equalTo(120)
+        }
+        return triLabelView
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +53,6 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
             nameLabel.text = "匿名用户"
         }
         careerLable.text = user_default.title.getStringValue()
-        typeLabel.text = user_default.typename.getStringValue()
         idLabel.text = "id: \(user_default.userId.getStringValue()!)"
         ImageUtil.setAvator(path: user_default.pix.getStringValue()!, imageView: photoImageView)
 
@@ -38,8 +62,14 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
         // 更新账号审核状态
         NetWorkUtil.init(method: .getreviewinfo).newRequestWithOutHUD(successhandler:  { (bean, json) in
             let data = json["data"]
-            let msg = data["typename"].stringValue
-            self.typeLabel.text = "\(msg)"
+            let name = data["typename"].stringValue
+            let type = data["type"].intValue
+            if type == 4 {
+                self.stateLabelView.labelText = "审核失败"
+                self.msg = data["msg"].stringValue
+            }else {
+                self.stateLabelView.labelText = name
+            }
         })
     }
     
@@ -105,6 +135,12 @@ class Mine_main: BaseViewController, UIImagePickerControllerDelegate, UINavigati
 
     @IBAction func unwindToMine(sender: UIStoryboardSegue){
 
+    }
+    
+    @objc func click_state_label() {
+        if msg != "" {
+            AlertUtil.popAlert(vc: self, msg: msg, hasCancel: false,okhandler: {})
+        }
     }
 }
 

@@ -83,6 +83,7 @@ public enum API {
     case updatealipayaccount(String,String) // 修改支付宝账号
     
     case getprice //获取医生出诊价格
+    case addfeedback(String) // 提交反馈
     
     
     
@@ -90,7 +91,14 @@ public enum API {
 // 配置请求
 extension API: TargetType {
     // MARK: - 设置请求超时时间
-    public var baseURL: URL { return URL(string: StaticClass.BaseApi)! }
+    public var baseURL: URL {
+        switch self {
+        case .addfeedback:
+            return URL.init(string: StaticClass.BaseCommonAPI)!
+        default:
+            return URL(string: StaticClass.BaseApi)!
+        }
+    }
     public var path: String {
         switch self {
         case .doclogin:
@@ -205,6 +213,8 @@ extension API: TargetType {
             return "/listbalancerecord"
         case .getcalendarbymonth:
             return "/getcalendarbymonth"
+        case .addfeedback:
+            return "/addfeedback"
         }
     }
     public var method: Moya.Method {
@@ -350,6 +360,8 @@ extension API: TargetType {
         case .getcalendarbymonth(let year, let month):
             return .requestParameters(parameters: ["docloginid":user_default.userId.getStringValue()!, "year":year, "month":month], encoding: URLEncoding.default)
             
+        case .addfeedback(let str):
+            return .requestParameters(parameters: ["type":4, "feedbackidea":str], encoding: URLEncoding.default)
         }
     }
     

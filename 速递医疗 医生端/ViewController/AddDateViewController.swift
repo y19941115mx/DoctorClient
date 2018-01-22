@@ -14,13 +14,19 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: BaseTableView!
     var currentdate = [Date]()
+    var currentDateStr = ""
+    
     // 选中
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         if StringUTil.isEarlyThanNow(date) {
             showToast(self.view, "请选择正确的日期")
             calendar.deselect(date)
         }else {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY年MM月dd日"
+            currentDateStr = StringUTil.DateToString(date, formatter)
             currentdate.append(date)
+            tableView.reloadData()
         }
     }
     // 取消选中
@@ -107,12 +113,16 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
     // MARK: - view
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tableData = [["0.0","请选择坐诊地点","","","",""]]
-        let tableTitle = [["设置出诊价格", "坐诊地点","上午","下午","晚上", "备注"]]
+        let tableData = [["未设置","未设置","未设置","未设置","未设置","未设置"]]
+        let tableTitle = [["坐诊价格", "坐诊地点","上午","下午","晚上", "备注"]]
         initViewController(tableTiles: tableTitle, tableInfo: tableData, tableView: tableView, clickHandler: {indexpath in
             self.clickTable(indexPath: indexpath)
         })
         // Do any additional setup after loading the view.
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.currentDateStr
     }
     
     
@@ -145,7 +155,7 @@ class AddDateViewController: BaseTableInfoViewController,FSCalendarDelegate {
                     
                 })
             }else {
-                showToast(self.view, "信息填写不完整")
+                showToast(self.view, "价格和坐诊地点为必填项")
             }
             
         }
@@ -235,7 +245,7 @@ class AddTimeViewController: BaseTableInfoViewController,PGDatePickerDelegate {
         datePicker.locale = Locale(identifier: "zh_CN")
         switch self.timeType {
         case .上午:
-            datePicker.maximumDate = NSDate.setHour(11, minute: 59)
+            datePicker.maximumDate = NSDate.setHour(12, minute: 0)
             datePicker.minimumDate = NSDate.setHour(7, minute: 0)
         case .下午:
             datePicker.maximumDate = NSDate.setHour(18, minute: 0)
