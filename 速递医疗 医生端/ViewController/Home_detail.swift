@@ -60,7 +60,7 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
                     sick.usersickdesc = ""
                 }
                 self.describeLabel.text = "病情描述：\(sick.usersickdesc!)"
-                let descHeightConstant = self.describeLabel.frame.size.height - 15
+                let descHeightConstant = "病情描述：\(sick.usersickdesc!)".getTextRectHeight(font: self.describeLabel.font, width: self.describeLabel.frame.width) - 15
                 if sick.usersickpic != nil &&  sick.usersickpic != ""{
                     self.picArray = StringUTil.splitImage(str: sick.usersickpic!)
                     self.height.constant += descHeightConstant + 5 

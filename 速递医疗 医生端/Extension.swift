@@ -110,5 +110,14 @@ extension String {
         let rect:CGRect = self.boundingRect(with: size, options: option, attributes: attributes, context: nil)
         return rect
     }
+    
+    func getTextRectHeight(font:UIFont, width:CGFloat) -> CGFloat {
+        // 传入字符串的字体、最大宽高，返回字符串实际占用的宽高(.width   .height)
+        let attributes = [NSAttributedStringKey.font:font]
+        let option = NSStringDrawingOptions.usesLineFragmentOrigin
+        let textMaxSize = CGSize(width: width, height: CGFloat(MAXFLOAT))
+        let rect:CGRect = self.boundingRect(with: textMaxSize, options: option, attributes: attributes, context: nil)
+        return rect.height
+    }
 }
 
