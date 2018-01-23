@@ -154,7 +154,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
                             let collectionView = self.scrollView as! UICollectionView
                             collectionView.reloadData()
                         }
-                        
+                        self.footer?.resetNoMoreData()
                     }else {
                         ToastError((bean?.msg!)!)
                     }
@@ -171,6 +171,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
                 if self.data.count == 0{
                     self.showRefreshBtn()
                 }
+                dPrint(message: error)
                 ToastError(ERRORMSG)
             }
         }

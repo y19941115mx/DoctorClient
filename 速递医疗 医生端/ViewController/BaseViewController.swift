@@ -211,6 +211,7 @@ class BaseRefreshController<T:Mappable>:BaseViewController {
                             let collectionView = self.scrollView as! UICollectionView
                             collectionView.reloadData()
                         }
+                        self.footer?.resetNoMoreData()
                         
                     }else {
                         ToastError((bean?.msg!)!)
