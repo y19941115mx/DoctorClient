@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
             
         }
         
-        BPush.registerChannel([:], apiKey:StaticClass.TuisongAPIKey , pushMode: BPushMode.development, withFirstAction: "打开", withSecondAction: "关闭", withCategory: "test", useBehaviorTextInput: true, isDebug: true)
+        BPush.registerChannel([:], apiKey:StaticClass.TuisongAPIKey , pushMode: BPushMode.production, withFirstAction: "打开", withSecondAction: "关闭", withCategory: "test", useBehaviorTextInput: true, isDebug: true)
         //        关闭地理推送
         BPush.disableLbs()
         
