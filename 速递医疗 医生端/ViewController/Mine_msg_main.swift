@@ -60,7 +60,8 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
                         // 跳转到病情页
                         let vc = UIStoryboard.init(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Detail") as! Home_detail
                         vc.patientId = json["sick_id"].intValue
-                        self.present(vc, animated: false, completion: nil)
+                        self.navigationController?.pushViewController(vc, animated: false)
+                        self.navigationController?.setNavigationBarHidden(false, animated: false)
                     }
                 }catch {
                     dPrint(message: "jsonParseError")
@@ -74,6 +75,7 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavTitle(title: "我的消息")
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
@@ -82,6 +84,12 @@ class Mine_msg_main: BaseRefreshController<NotificationBean>,UITableViewDataSour
         })
         self.header?.beginRefreshing()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 隐藏navigation
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     

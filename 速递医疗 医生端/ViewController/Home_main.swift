@@ -251,7 +251,7 @@ class Home_main:BaseRefreshController<SickBean>, UITableViewDataSource, UITableV
             if count == 0 {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "message"), style: .plain, target: self, action: #selector(self.showContantList))
             }else {
-                let buttonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "potMsg"), style: .plain, target: self, action: #selector(self.showContantList))
+                let buttonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "message"), style: .plain, target: self, action: #selector(self.showContantList))
                 buttonItem.tintColor = UIColor.red
                 self.navigationItem.rightBarButtonItem = buttonItem
             }

@@ -113,6 +113,7 @@ class Home_detail: BasicCollectionViewBrowserController, UICollectionViewDataSou
         }
     }
     
+    
     @IBAction func sixin(_ sender: UIButton) {
         if account == nil || account == "" {
             Toast("环信账号异常")

@@ -32,7 +32,7 @@ class Mypatient_page_check: BaseRefreshController<mypatient_check>, UITableViewD
         let bean = data[indexPath.row]
         let id = bean.usersickid
         vc.patientId = id
-        self.present(vc, animated: false, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class Mypatient_page_checked: BaseRefreshController<mypatient_checked>, UITableV
         let bean = data[indexPath.row]
         let id = bean.usersickid
         vc.patientId = id
-        self.present(vc, animated: false, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     
