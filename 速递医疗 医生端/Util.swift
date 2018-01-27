@@ -28,7 +28,7 @@ let CATCHMSG = "解析服务器数据失败"
 // 全局变量
 struct StaticClass {
     //     static let RootIP = "http://1842719ny8.iok.la:14086"
-    static let RootIP = "http://118.89.172.204:6221"
+    static let RootIP = "http://www.dsdoc120.com:6221"
     //    static let RootIP = "http://120.77.32.15:8080"
     static let BaseApi = RootIP + "/internetmedical/doctor"
     static let BaseCommonAPI = RootIP + "/internetmedical/common"
