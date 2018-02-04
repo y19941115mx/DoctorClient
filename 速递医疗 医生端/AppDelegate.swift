@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
         
         MapUtil.singleLocation(successHandler: {location, reGeocode in
             if reGeocode != nil {
-                showToast((APPLICATION.window?.rootViewController?.view)!, "定位成功："+(reGeocode?.country)! + (reGeocode?.city)! + (reGeocode?.aoiName)!)
+                showToast((APPLICATION.window?.rootViewController?.view)!, "定位成功")
             }
         }, failHandler: {})
         
