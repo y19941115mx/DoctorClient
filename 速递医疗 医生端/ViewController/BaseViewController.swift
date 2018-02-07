@@ -373,7 +373,7 @@ class  BasicCollectionViewBrowserController:BaseViewController, UICollectionView
     }
     
     func photoBrowser(_ browser: HJPhotoBrowser!, placeholderImageFor index: Int) -> UIImage! {
-        return #imageLiteral(resourceName: "photo_default")
+        return #imageLiteral(resourceName: "photo_loading")
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

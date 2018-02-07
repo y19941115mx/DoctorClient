@@ -68,8 +68,10 @@ class LoginViewController: BaseTextViewController {
             user_default.setUserDefault(key: .title, value: title)
             user_default.setUserDefault(key: .password, value: MD5(passNum))
             // 上传chanelid
-            NetWorkUtil.init(method:API.updatechannelid(user_default.channel_id.getStringValue()!))
-                .newRequestWithOutHUD(successhandler: nil)
+            if user_default.channel_id.getStringValue() != nil {
+                NetWorkUtil.init(method:API.updatechannelid(user_default.channel_id.getStringValue()!))
+                    .newRequestWithOutHUD(successhandler: nil)
+            }
             // 储存数据
             user_default.setUserDefault(key: .userId, value: String(userId))
             user_default.setUserDefault(key: .typename, value: typename)

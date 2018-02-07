@@ -231,7 +231,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tb4-nB-UUe" userLabel="TitleView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_default" translatesAutoresizingMaskIntoConstraints="NO" id="t4r-Uh-wr7">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoDefault" translatesAutoresizingMaskIntoConstraints="NO" id="t4r-Uh-wr7">
                                         <rect key="frame" x="20" y="40" width="80" height="80"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -1036,7 +1036,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-ED-1Sz">
-                                        <rect key="frame" x="328" y="24.5" width="37" height="34"/>
+                                        <rect key="frame" x="328" y="25" width="37" height="34"/>
                                         <state key="normal" title="明细"/>
                                         <connections>
                                             <segue destination="7G6-EL-ZSq" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="Hci-2U-f3W"/>
@@ -1135,7 +1135,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-yg-GhP">
-                                        <rect key="frame" x="332" y="26.5" width="33" height="32"/>
+                                        <rect key="frame" x="332" y="27" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="保存">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1145,7 +1145,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkJ-bT-vh3">
-                                        <rect key="frame" x="8" y="31" width="47" height="22"/>
+                                        <rect key="frame" x="8" y="30.5" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="buttonAction:" destination="lZI-yl-Wdh" eventType="touchUpInside" id="n0B-7z-ObX"/>
@@ -1200,7 +1200,7 @@
                                     <outlet property="delegate" destination="lZI-yl-Wdh" id="XrU-mL-3OX"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_picture" translatesAutoresizingMaskIntoConstraints="NO" id="Mvu-T0-a4x">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPicture" translatesAutoresizingMaskIntoConstraints="NO" id="Mvu-T0-a4x">
                                 <rect key="frame" x="10" y="96" width="60" height="60"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -1708,7 +1708,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification_system" translatesAutoresizingMaskIntoConstraints="NO" id="8FQ-XZ-Ox5">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notificationSystem" translatesAutoresizingMaskIntoConstraints="NO" id="8FQ-XZ-Ox5">
                                                     <rect key="frame" x="10" y="10" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="lh5-XS-G5b"/>
@@ -1892,7 +1892,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRZ-LQ-5Lf">
-                                        <rect key="frame" x="332" y="26.5" width="33" height="32"/>
+                                        <rect key="frame" x="332" y="27" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="添加">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1902,7 +1902,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSk-uj-aNK">
-                                        <rect key="frame" x="10" y="31" width="47" height="22"/>
+                                        <rect key="frame" x="10" y="30.5" width="47" height="22"/>
                                         <state key="normal" title="返回" image="back"/>
                                         <connections>
                                             <action selector="backAcion:" destination="8K8-jk-1y1" eventType="touchUpInside" id="Uhn-WA-qNr"/>
@@ -2332,11 +2332,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add_picture" width="129" height="128"/>
+        <image name="addPicture" width="129" height="128"/>
         <image name="back" width="10" height="15"/>
         <image name="myreferral" width="20" height="20"/>
-        <image name="notification_system" width="256" height="256"/>
-        <image name="photo_default" width="717" height="603"/>
+        <image name="notificationSystem" width="256" height="256"/>
+        <image name="photoDefault" width="717" height="603"/>
         <image name="下拉" width="20" height="20"/>
         <image name="个人信息" width="20" height="20"/>
         <image name="亲属信息" width="20" height="20"/>

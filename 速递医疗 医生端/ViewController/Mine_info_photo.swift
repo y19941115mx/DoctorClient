@@ -35,19 +35,6 @@ class Mine_info_photo: BasePickImgViewController,UICollectionViewDataSource, UIC
         }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        for str in StringUTil.splitImage(str: imgString) {
-//            if str != "" {
-//                self.imgResource.append(ImageUtil.URLToImg(url: URL.init(string: str)!))
-//            }
-//        }
-//        if imgResource.count != 0 {
-//            self.collectionView2.reloadData()
-//        }
-//    }
-    
-    
 
     
     // MARK: - UICollectionView

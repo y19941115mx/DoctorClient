@@ -21,7 +21,7 @@ class ChatViewController: EaseMessageViewController, EaseMessageViewControllerDe
     func messageViewController(_ viewController: EaseMessageViewController!, modelFor message: EMMessage!) -> IMessageModel! {
         //用户可以根据自己的用户体系，根据message设置用户昵称和头像
         let model:IMessageModel = EaseMessageModel.init(message: message)
-        model.avatarImage = #imageLiteral(resourceName: "photo_default")
+        model.avatarImage = #imageLiteral(resourceName: "photo_loading")
         if model.nickname == user_default.account.getStringValue() {
             model.avatarURLPath = user_default.pix.getStringValue()
             model.nickname = ""
@@ -82,7 +82,7 @@ class ConversationListViewController: EaseConversationListViewController,EaseCon
             model.avatarURLPath = user!.user_photo
             model.title = user!.nick_name
         }
-        model.avatarImage = #imageLiteral(resourceName: "photo_default")
+        model.avatarImage = #imageLiteral(resourceName: "photo_loading")
         return model
     }
     

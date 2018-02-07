@@ -11,7 +11,7 @@ import SVProgressHUD
 import SwiftyJSON
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, EMClientDelegate {
     
     var window: UIWindow?
     var locationManager:AMapLocationManager = AMapLocationManager()
@@ -121,9 +121,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMClientDelegate {
         locationManager.reGeocodeTimeout = 2
         
         MapUtil.singleLocation(successHandler: {location, reGeocode in
-            if reGeocode != nil {
-                showToast((APPLICATION.window?.rootViewController?.view)!, "定位成功")
-            }
         }, failHandler: {})
         
     }
