@@ -574,6 +574,7 @@ public class DBHelper:NSObject {
 
 public class NavigationUtil<T:UIViewController>:NSObject{
     class public func setTabBarSonController(index:Int, handler:((T)->Void)?,nvcIndex:Int = 0){
+        APPLICATION.tabBarController?.selectedIndex = index
         var vc = APPLICATION.tabBarController?.viewControllers![index]
         if vc is UINavigationController {
             let nvc = vc as! UINavigationController
@@ -583,7 +584,6 @@ public class NavigationUtil<T:UIViewController>:NSObject{
             if let handler = handler {
                 handler(vc)
             }
-            APPLICATION.tabBarController?.selectedIndex = index
         }
     }
     class public func setRootViewController(vc:UIViewController) {
