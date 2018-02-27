@@ -106,6 +106,15 @@
                                     <constraint firstAttribute="width" constant="80" id="soG-dT-akH"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©合肥顶岭医疗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81E-Ba-BFR">
+                                <rect key="frame" x="117.5" y="457" width="85" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="cfE-7k-gjr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -119,12 +128,14 @@
                             <constraint firstItem="ofW-sR-w1p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="I7z-8Q-uhx"/>
                             <constraint firstItem="l5Y-d5-E2R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="LzC-3I-u61"/>
                             <constraint firstItem="MED-n8-Mi9" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="PVc-uU-r2i"/>
+                            <constraint firstItem="81E-Ba-BFR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pbu-gS-myc"/>
                             <constraint firstItem="MED-n8-Mi9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Sj1-0F-gFc"/>
                             <constraint firstItem="l5Y-d5-E2R" firstAttribute="top" secondItem="bYX-rv-cXL" secondAttribute="bottom" constant="60" id="TeS-ih-R3b"/>
                             <constraint firstItem="bYX-rv-cXL" firstAttribute="centerY" secondItem="MED-n8-Mi9" secondAttribute="centerY" id="dnD-jy-ug8"/>
                             <constraint firstItem="jRK-FZ-KED" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jQM-b7-jSN"/>
                             <constraint firstAttribute="trailing" secondItem="MED-n8-Mi9" secondAttribute="trailing" id="juY-SV-dGV"/>
                             <constraint firstItem="bYX-rv-cXL" firstAttribute="centerX" secondItem="MED-n8-Mi9" secondAttribute="centerX" id="ryy-cR-dBv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="81E-Ba-BFR" secondAttribute="bottom" constant="8" id="xCA-5I-abR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -181,7 +192,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLY-QY-mKQ">
-                                        <rect key="frame" x="129.5" y="43.5" width="130.5" height="32"/>
+                                        <rect key="frame" x="129.5" y="44" width="130.5" height="32"/>
                                         <color key="backgroundColor" red="0.49944639210000003" green="0.84990459679999997" blue="0.98690015080000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="EGx-A9-ReE"/>
@@ -250,6 +261,12 @@
                                     <constraint firstAttribute="height" constant="80" id="dec-dY-0ZI"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©合肥顶岭医疗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlV-dv-nWO">
+                                <rect key="frame" x="118" y="457" width="84" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -260,7 +277,9 @@
                             <constraint firstItem="Kcu-eg-lr1" firstAttribute="leading" secondItem="4O0-TT-Trp" secondAttribute="leading" constant="30" id="6af-mP-T3d"/>
                             <constraint firstItem="cOR-s6-MdT" firstAttribute="top" secondItem="4O0-TT-Trp" secondAttribute="top" id="9k4-SY-W4P"/>
                             <constraint firstItem="TbY-hu-jx2" firstAttribute="centerY" secondItem="cOR-s6-MdT" secondAttribute="centerY" id="ADR-Qt-O6T"/>
+                            <constraint firstItem="trC-um-gPo" firstAttribute="top" secondItem="BlV-dv-nWO" secondAttribute="bottom" constant="8" id="AfE-ng-ner"/>
                             <constraint firstAttribute="trailing" secondItem="Kcu-eg-lr1" secondAttribute="trailing" constant="30" id="L9B-Em-bY2"/>
+                            <constraint firstItem="BlV-dv-nWO" firstAttribute="centerX" secondItem="4O0-TT-Trp" secondAttribute="centerX" id="NsL-q8-sMc"/>
                             <constraint firstItem="Kcu-eg-lr1" firstAttribute="top" secondItem="TbY-hu-jx2" secondAttribute="bottom" constant="60" id="Wpu-ne-cw6"/>
                             <constraint firstAttribute="trailing" secondItem="cOR-s6-MdT" secondAttribute="trailing" id="Z9x-dS-ctv"/>
                             <constraint firstItem="cOR-s6-MdT" firstAttribute="leading" secondItem="4O0-TT-Trp" secondAttribute="leading" id="d47-Tr-0pU"/>
@@ -387,6 +406,15 @@
                                     <constraint firstAttribute="width" constant="80" id="sZG-sz-hCh"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©合肥顶岭医疗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryT-7u-1ac">
+                                <rect key="frame" x="117.5" y="457" width="85" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="a8e-pS-mKw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -394,10 +422,12 @@
                             <constraint firstItem="T4W-Oj-JUx" firstAttribute="leading" secondItem="SVR-fI-au2" secondAttribute="leading" constant="30" id="5NF-EL-nqq"/>
                             <constraint firstItem="g6l-8o-EYq" firstAttribute="centerX" secondItem="EjF-eI-JUo" secondAttribute="centerX" id="7hb-aq-luS"/>
                             <constraint firstAttribute="trailing" secondItem="EjF-eI-JUo" secondAttribute="trailing" id="B8T-oj-vsF"/>
+                            <constraint firstItem="yn3-DH-wmf" firstAttribute="top" secondItem="ryT-7u-1ac" secondAttribute="bottom" constant="8" id="E8k-ia-Y9G"/>
                             <constraint firstItem="EjF-eI-JUo" firstAttribute="leading" secondItem="SVR-fI-au2" secondAttribute="leading" id="Peb-yU-ryQ"/>
                             <constraint firstItem="ZGa-q5-XkB" firstAttribute="top" secondItem="g6l-8o-EYq" secondAttribute="bottom" constant="60" id="US9-sm-Dy2"/>
                             <constraint firstItem="2dv-28-b9S" firstAttribute="centerX" secondItem="SVR-fI-au2" secondAttribute="centerX" id="VcF-cn-AYM"/>
                             <constraint firstItem="EjF-eI-JUo" firstAttribute="top" secondItem="SVR-fI-au2" secondAttribute="top" id="YeV-bA-jgg"/>
+                            <constraint firstItem="ryT-7u-1ac" firstAttribute="centerX" secondItem="SVR-fI-au2" secondAttribute="centerX" id="bUI-24-oQX"/>
                             <constraint firstItem="2dv-28-b9S" firstAttribute="top" secondItem="T4W-Oj-JUx" secondAttribute="bottom" id="dwI-mF-4vo"/>
                             <constraint firstAttribute="trailing" secondItem="ZGa-q5-XkB" secondAttribute="trailing" constant="30" id="j3n-lf-9Ee"/>
                             <constraint firstItem="ZGa-q5-XkB" firstAttribute="leading" secondItem="SVR-fI-au2" secondAttribute="leading" constant="30" id="mu5-7E-z79"/>
