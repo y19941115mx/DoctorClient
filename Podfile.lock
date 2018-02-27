@@ -5,6 +5,7 @@ PODS:
     - AMapFoundation-NO-IDFA (~> 1.4)
   - AMapSearch-NO-IDFA (5.7.0):
     - AMapFoundation-NO-IDFA (~> 1.4)
+  - Bugly (2.5.0)
   - DACircularProgress (2.3.1)
   - EaseUILite (3.3.7):
     - HyphenateLite (~> 3.3.6)
@@ -60,6 +61,7 @@ PODS:
 DEPENDENCIES:
   - AMapLocation-NO-IDFA
   - AMapSearch-NO-IDFA
+  - Bugly
   - EaseUILite (from `https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git`)
   - FSCalendar
   - HJPhotoBrowser
@@ -100,6 +102,7 @@ SPEC CHECKSUMS:
   AMapFoundation-NO-IDFA: b6cbefab250ae8ab2e31aa9bb3dbbb98137cd76f
   AMapLocation-NO-IDFA: a75b762ae9a90840ce683de12504ac843a9f3b6c
   AMapSearch-NO-IDFA: 612a92f75ff20544f42d376dfcf3c034da4ad0b6
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   EaseUILite: a90e5aab0b6ed9768cb8bbe44d4bd040bb6d0cbd
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
@@ -125,6 +128,6 @@ SPEC CHECKSUMS:
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   UMengUShare: 9e2d22f32aeaf09702ca833ec530895aab995c4f
 
-PODFILE CHECKSUM: f978ed155260fb7cc94244a99ce88d8984be7d16
+PODFILE CHECKSUM: ab25bda2e68d03d3af596f6bcd026e69943398d3
 
 COCOAPODS: 1.3.1

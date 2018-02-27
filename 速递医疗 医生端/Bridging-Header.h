@@ -6,7 +6,7 @@
 //  Copyright © 2017年 victor. All rights reserved.
 //
 
-
+#import <Bugly/Bugly.h>
 # import "XLSlideSwitch.h"
 # import "XLSegmentedSlideSwitch.h"
 # import <AMapFoundationKit/AMapFoundationKit.h>

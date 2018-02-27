@@ -34,7 +34,7 @@ target 'DoctorClient' do
     # 图片浏览
     pod 'HJPhotoBrowser'
 	# bug收集
-#    pod 'Bugly'
+    pod 'Bugly'
     # 本地数据库
     pod 'RealmSwift'
     # 弹出框
